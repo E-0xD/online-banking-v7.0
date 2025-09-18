@@ -16,18 +16,20 @@
                 </p>
             </div>
 
-            <div class="text-center lg:text-left">
-                <div
-                    class="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-xl flex items-center justify-center mx-auto lg:mx-0 mb-3">
-                    <i class="fa-solid fa-phone text-lg text-primary-600 dark:text-primary-400"></i>
+            @if (config('app.phone'))
+                <div class="text-center lg:text-left">
+                    <div
+                        class="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-xl flex items-center justify-center mx-auto lg:mx-0 mb-3">
+                        <i class="fa-solid fa-phone text-lg text-primary-600 dark:text-primary-400"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 dark:text-white mb-2 text-sm">Phone Banking</h3>
+                    <p class="text-gray-600 dark:text-gray-300 text-xs">
+                        Available 24/7<br>
+                        Call: {{ config('app.phone') }}<br>
+                        International: {{ config('app.phone') }}
+                    </p>
                 </div>
-                <h3 class="font-bold text-gray-900 dark:text-white mb-2 text-sm">Phone Banking</h3>
-                <p class="text-gray-600 dark:text-gray-300 text-xs">
-                    Available 24/7<br>
-                    Call: +1 646 851 2747<br>
-                    International: +1 646 851 2747
-                </p>
-            </div>
+            @endif
 
             <div class="text-center lg:text-left">
                 <div
@@ -37,22 +39,22 @@
                 <h3 class="font-bold text-gray-900 dark:text-white mb-2 text-sm">Email Support</h3>
                 <p class="text-gray-600 dark:text-gray-300 text-xs">
                     Response within 24hrs<br>
-                    info@firsttruistcus.com
+                    {{ config('app.email') }}
                 </p>
             </div>
 
-            <div class="text-center lg:text-left">
-                <div
-                    class="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-xl flex items-center justify-center mx-auto lg:mx-0 mb-3">
-                    <i class="fa-solid fa-map-marker-alt text-lg text-primary-600 dark:text-primary-400"></i>
+            @if (config('app.address'))
+                <div class="text-center lg:text-left">
+                    <div
+                        class="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-xl flex items-center justify-center mx-auto lg:mx-0 mb-3">
+                        <i class="fa-solid fa-map-marker-alt text-lg text-primary-600 dark:text-primary-400"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 dark:text-white mb-2 text-sm">Visit Us</h3>
+                    <p class="text-gray-600 dark:text-gray-300 text-xs">
+                        {{ config('app.address') }}
+                    </p>
                 </div>
-                <h3 class="font-bold text-gray-900 dark:text-white mb-2 text-sm">Visit Us</h3>
-                <p class="text-gray-600 dark:text-gray-300 text-xs">
-                    123 Banking Street<br>
-                    Financial District<br>
-                    New York, NY 10001
-                </p>
-            </div>
+            @endif
         </div>
     </div>
 </section>
