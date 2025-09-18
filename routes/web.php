@@ -21,3 +21,5 @@ Route::prefix('services')->group(function () {
     Route::get('/loan/and/credit', [ServiceController::class, 'loanAndCredit'])->name('services.loan_and_credit');
     Route::get('/grant', [ServiceController::class, 'grant'])->name('services.grant');
 });
+
+require __DIR__ . '/auth.php';
