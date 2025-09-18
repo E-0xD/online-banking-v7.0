@@ -26,7 +26,7 @@
                  </h2>
 
                  <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-                     First Truist Credit Union is a full-service credit union built on the foundation of
+                     {{ config('app.name') }} is a full-service credit union built on the foundation of
                      providing our members with every step of their financial journey. We're committed to helping
                      our members achieve their financial goals through personalized service and competitive
                      rates.

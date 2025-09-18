@@ -29,7 +29,7 @@
                 </div>
 
                 <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4 lg:mb-6">
-                    First Truist Credit Union
+                    {{ config('app.name') }}
                 </h1>
 
                 <!-- Mobile Tagline -->

@@ -17,11 +17,11 @@
             <div
                 class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-primary-100 to-primary-200 dark:from-primary-900/50 dark:to-primary-800/50 text-primary-700 dark:text-primary-300 rounded-full text-sm font-semibold mb-4 shadow-lg backdrop-blur-sm border border-primary-200/50 dark:border-primary-700/50">
                 <i class="fa-solid fa-chart-line mr-2 animate-pulse"></i>
-                First Truist Credit Union Rates
+                {{ config('app.name') }} Rates
             </div>
             <h2
                 class="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-gray-900 via-primary-800 to-gray-900 dark:from-white dark:via-primary-300 dark:to-white bg-clip-text text-transparent mb-4">
-                First Truist Credit Union Member Care
+                {{ config('app.name') }} Member Care
             </h2>
             <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
                 Discover competitive rates designed to help your money grow faster
@@ -83,8 +83,8 @@
                         <div class="text-sm text-gray-500 dark:text-gray-400 mb-3 font-medium">APY*</div>
                         <div class="font-bold text-gray-900 dark:text-white mb-2 text-sm">18 MONTH CERTIFICATE
                         </div>
-                        <div class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">First Truist
-                            Credit Union Certificate Rates</div>
+                        <div class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">{{ config('app.name') }}
+                            Certificate Rates</div>
                     </div>
                     <div class="mt-4 text-center">
                         <span
@@ -115,8 +115,8 @@
                             4.00%</div>
                         <div class="text-sm text-gray-500 dark:text-gray-400 mb-3 font-medium">APR*</div>
                         <div class="font-bold text-gray-900 dark:text-white mb-2 text-sm">CREDIT CARDS</div>
-                        <div class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">First Truist
-                            Credit Union Credit Card Rates</div>
+                        <div class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">{{ config('app.name') }}
+                            Credit Card Rates</div>
                     </div>
                     <div class="mt-4 text-center">
                         <span
@@ -147,8 +147,8 @@
                             15.49%</div>
                         <div class="text-sm text-gray-500 dark:text-gray-400 mb-3 font-medium">APR*</div>
                         <div class="font-bold text-gray-900 dark:text-white mb-2 text-sm">LOANS</div>
-                        <div class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">First Truist
-                            Credit Union Standard Loan Rates</div>
+                        <div class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">{{ config('app.name') }}
+                            Standard Loan Rates</div>
                     </div>
                     <div class="mt-4 text-center">
                         <span
