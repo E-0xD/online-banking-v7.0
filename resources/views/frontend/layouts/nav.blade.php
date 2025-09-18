@@ -27,7 +27,7 @@
 
             <!-- Desktop Navigation with modern styling -->
             <div class="hidden lg:flex items-center space-x-1">
-                <a href="index.html"
+                <a href="/"
                     class="relative px-4 py-2 text-gray-700 dark:text-gray-300 font-medium transition-all duration-300 hover:text-primary-600 dark:hover:text-primary-400 group">
                     <span class="relative z-10">Home</span>
                     <div
@@ -155,7 +155,7 @@
 
         <div class="relative px-6 py-6 space-y-2">
             <!-- Navigation Links with enhanced styling -->
-            <a href="index.html"
+            <a href="/"
                 class="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-all duration-300 rounded-2xl hover:bg-gradient-to-r hover:from-primary-50 hover:to-primary-100 dark:hover:from-primary-900/30 dark:hover:to-primary-800/30 hover:shadow-lg hover:translate-x-2 group">
                 <i
                     class="fa-solid fa-home mr-4 text-primary-500 group-hover:scale-110 transition-transform duration-300"></i>
