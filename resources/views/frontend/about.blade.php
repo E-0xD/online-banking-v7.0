@@ -1,0 +1,9 @@
+@extends('frontend.layouts.app')
+@section('content')
+    @include('frontend.sections.about.hero')
+    @include('frontend.sections.about.mission')
+    @include('frontend.sections.about.values')
+    @include('frontend.sections.about.history')
+    @include('frontend.sections.about.stats')
+    @include('frontend.sections.about.cta')
+@endsection

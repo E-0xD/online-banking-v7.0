@@ -1,16 +1,10 @@
 @extends('frontend.layouts.app')
 @section('content')
-    @include('frontend.layouts.partials.hero')
-
-    @include('frontend.layouts.partials.rates')
-
-    @include('frontend.layouts.partials.services')
-
-    @include('frontend.layouts.partials.feature')
-
-    @include('frontend.layouts.partials.feature_two')
-
-    @include('frontend.layouts.partials.testimonials')
-
-    @include('frontend.layouts.partials.contact')
+    @include('frontend.sections.home.hero')
+    @include('frontend.sections.home.rates')
+    @include('frontend.sections.home.services')
+    @include('frontend.sections.home.feature')
+    @include('frontend.sections.home.feature_two')
+    @include('frontend.sections.home.testimonials')
+    @include('frontend.sections.home.contact')
 @endsection
