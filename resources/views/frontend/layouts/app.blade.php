@@ -2,17 +2,17 @@
 <html lang="en" x-data="{ darkMode: false, mobileMenuOpen: false }" x-init="darkMode = localStorage.getItem('darkMode') === 'true' || (!localStorage.getItem('darkMode') && window.matchMedia('(prefers-color-scheme: dark)').matches)" :class="{ 'dark': darkMode }">
 
     <head>
-        <title>Home - First Truist Credit Union</title>
+        <title>{{ $title }} - {{ config('app.name') }}</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="csrf-token" content="3GLYtLNj0mU7CAjVDGsvmdGAF6oicfxkHyfnLTKA">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <meta name="robots" content="index, follow">
-        <meta name="apple-mobile-web-app-title" content="First Truist Credit Union">
-        <meta name="application-name" content="First Truist Credit Union">
-        <meta name="description"
-            content="Swift and Secure Money Transfer to any UK bank account will become a breeze with First Truist Credit Union.">
-        <link rel="shortcut icon"
-            href="/frontend/storage/app/public/photos/QeDeSHnRvDtKS1uEZmq5svmALu0FqZgcUBzHS5hx.png">
+        <meta name="apple-mobile-web-app-title" content="{{ config('app.name') }}">
+        <meta name="application-name" content="{{ config('app.name') }}">
+        <meta name="description" content="{{ config('app.meta.description') }}">
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="{{ asset(config('app.assets.og_image')) }}" />
+        <link rel="shortcut icon" href="{{ asset(config('app.assets.favicon')) }}">
 
         @include('frontend.layouts.partials.dark_mode_initialization')
 

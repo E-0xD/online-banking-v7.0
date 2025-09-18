@@ -13,7 +13,32 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'First Trust Credit Union'),
+    'email' => env('APP_EMAIL', 'info@firsttrustcreditunion.com'),
+    'phone' => env('APP_PHONE', '+44 1753 815000'),
+    'address' => env('APP_ADDRESS', '123 High St, Anytown, UK'),
+    'slogan' => env('APP_SLOGAN', 'Building financial strength together with personalized banking solutions for every member. Your trusted partner in financial growth.'),
+
+    'assets' => [
+        'logo' => env('APP_LOGO', 'assets/images/logo.png'),
+        'logo_light' => env('APP_LOGO_LIGHT', 'assets/images/logo_light.png'),
+        'favicon' => env('APP_FAVICON', 'assets/images/favicon.png'),
+        'og_image' => env('APP_OG_IMAGE', 'assets/images/og_image.jpg'),
+    ],
+
+    'messages' => [
+        'error' => env('APP_ERROR_MESSAGE', 'Something went wrong while processing your request. Please try again shortly or reach out to support for assistance.'),
+
+        'success' => env('APP_SUCCESS_MESSAGE', 'Your request has been successfully processed.'),
+    ],
+
+    'meta' => [
+
+        'description' => env('APP_DESCRIPTION', 'Experience secure and convenient online banking with our platform. Manage your finances, transfer funds, and enjoy 24/7 access to your accounts. Explore our advanced features for a seamless and personalized banking experience.'),
+
+        'keywords' => env('APP_KEYWORDS', 'Online Banking, Internet Banking, Secure Banking, Financial Management, Fund Transfer, Bill Payments, 24/7 Access, Digital Banking, Personalized Banking'),
+    ],
+
 
     /*
     |--------------------------------------------------------------------------

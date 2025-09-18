@@ -20,8 +20,8 @@
                     <div
                         class="absolute inset-0 bg-primary-400/20 rounded-xl blur-lg group-hover:bg-primary-400/30 transition-all duration-300">
                     </div>
-                    <img src="/frontend/storage/app/public/photos/tIcwYUeq1quOiVebKPCbXbWbj5zDzA5BPRAurhvj.png"
-                        alt="First Truist Credit Union" class="relative h-10 lg:h-10 w-auto">
+                    <img src="{{ asset(config('app.assets.logo')) }}" alt="{{ config('app.name') }}"
+                        class="relative h-10 lg:h-10 w-auto">
                 </div>
             </div>
 

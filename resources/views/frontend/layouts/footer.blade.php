@@ -29,13 +29,12 @@
                         <div
                             class="absolute inset-0 bg-white/20 rounded-2xl blur-lg group-hover:bg-white/30 transition-all duration-300">
                         </div>
-                        <img src="/frontend/storage/app/public/photos/tIcwYUeq1quOiVebKPCbXbWbj5zDzA5BPRAurhvj.png"
-                            alt="First Truist Credit Union" class="relative h-10 w-auto">
+                        <img src="{{ asset(config('app.assets.logo')) }}" alt="{{ config('app.name') }}"
+                            class="relative h-10 w-auto">
                     </div>
                 </div>
                 <p class="text-primary-100 mb-6 text-sm leading-relaxed">
-                    Building financial strength together with personalized banking solutions for every member.
-                    Your trusted partner in financial growth.
+                    {{ config('app.slogan') }}
                 </p>
 
                 <!-- Enhanced Social Links -->
@@ -194,7 +193,7 @@
             <div class="flex flex-col lg:flex-row justify-between items-center space-y-4 lg:space-y-0">
                 <div class="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-6">
                     <p class="text-primary-100 text-sm">
-                        © 2025 First Truist Credit Union. All rights reserved.
+                        © {{ date('Y') }} {{ config('app.name') }}. All rights reserved.
                     </p>
                     <div class="flex items-center space-x-2 text-primary-200 text-xs">
                         <i class="fa-solid fa-shield-alt text-green-400"></i>
@@ -213,7 +212,7 @@
                         of Service</a>
                     <a href="contact.html"
                         class="text-primary-100 hover:text-white text-sm transition-colors duration-300 hover:underline">Accessibility</a>
-                    <a href="index.html"
+                    <a href="/"
                         class="text-primary-100 hover:text-white text-sm transition-colors duration-300 hover:underline">Sitemap</a>
                 </div>
             </div>
