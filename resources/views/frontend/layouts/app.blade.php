@@ -45,7 +45,7 @@
 
         @include('frontend.layouts.footer')
 
-        @include('frontend.layouts.partials.mobile_fixed_login_register_button_two')
+        {{-- @include('frontend.layouts.partials.mobile_fixed_login_register_button_two') --}}
 
         @include('frontend.layouts.partials.additional_script')
 
