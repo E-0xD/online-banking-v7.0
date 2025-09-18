@@ -8,12 +8,12 @@
             Take the first step towards achieving your financial goals with our grant programs
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="register.html"
+            <a href="{{ route('register') }}"
                 class="inline-flex items-center px-8 py-4 bg-white text-primary-600 font-bold rounded-2xl transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1">
                 <i class="fa-solid fa-file-alt mr-3"></i>
                 Start Application
             </a>
-            <a href="contact.html"
+            <a href="{{ route('contact') }}"
                 class="inline-flex items-center px-8 py-4 bg-primary-700 hover:bg-primary-800 text-white font-semibold rounded-2xl transition-all duration-300 border-2 border-white/30">
                 <i class="fa-solid fa-phone mr-3"></i>
                 Speak with Advisor

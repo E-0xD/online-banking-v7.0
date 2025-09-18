@@ -62,12 +62,12 @@
 
                 <!-- CTA Buttons -->
                 <div class="flex flex-col sm:flex-row gap-3 lg:gap-4 mb-8 lg:mb-12">
-                    <a href="register.html"
+                    <a href="{{ route('register') }}"
                         class="inline-flex items-center justify-center px-6 lg:px-8 py-3 lg:py-4 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-xl lg:rounded-2xl transition-all duration-300 shadow-2xl shadow-primary-600/30 hover:shadow-primary-600/50 hover:-translate-y-1 hover:scale-105">
                         <i class="fa-solid fa-user-plus mr-2 lg:mr-3"></i>
                         Open Account Today
                     </a>
-                    <a href="login.html"
+                    <a href="{{ route('login') }}"
                         class="inline-flex items-center justify-center px-6 lg:px-8 py-3 lg:py-4 bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white font-semibold rounded-xl lg:rounded-2xl transition-all duration-300 border border-white/30 hover:border-white/50 hover:-translate-y-1">
                         <i class="fa-solid fa-sign-in-alt mr-2 lg:mr-3"></i>
                         Login to Banking

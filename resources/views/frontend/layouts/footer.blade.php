@@ -82,27 +82,27 @@
                     Quick Links
                 </h4>
                 <ul class="space-y-3">
-                    <li><a href="about.html"
+                    <li><a href="{{ route('about') }}"
                             class="group flex items-center text-primary-100 hover:text-white transition-all duration-300 text-sm">
                             <i
                                 class="fa-solid fa-chevron-right text-xs mr-3 text-primary-400 group-hover:translate-x-1 transition-transform duration-300"></i>
                             <span class="group-hover:translate-x-1 transition-transform duration-300">About
                                 Us</span>
                         </a></li>
-                    <li><a href="chart.html"
+                    <li><a href="{{ route('services.personal_banking') }}"
                             class="group flex items-center text-primary-100 hover:text-white transition-all duration-300 text-sm">
                             <i
                                 class="fa-solid fa-chevron-right text-xs mr-3 text-primary-400 group-hover:translate-x-1 transition-transform duration-300"></i>
                             <span class="group-hover:translate-x-1 transition-transform duration-300">Services</span>
                         </a></li>
-                    <li><a href="grants.html"
+                    <li><a href="{{ route('services.grant') }}"
                             class="group flex items-center text-primary-100 hover:text-white transition-all duration-300 text-sm">
                             <i
                                 class="fa-solid fa-chevron-right text-xs mr-3 text-primary-400 group-hover:translate-x-1 transition-transform duration-300"></i>
                             <span class="group-hover:translate-x-1 transition-transform duration-300">Grants &
                                 Aid</span>
                         </a></li>
-                    <li><a href="contact.html"
+                    <li><a href="{{ route('contact') }}"
                             class="group flex items-center text-primary-100 hover:text-white transition-all duration-300 text-sm">
                             <i
                                 class="fa-solid fa-chevron-right text-xs mr-3 text-primary-400 group-hover:translate-x-1 transition-transform duration-300"></i>
@@ -118,28 +118,28 @@
                     Services
                 </h4>
                 <ul class="space-y-3">
-                    <li><a href="chart.html"
+                    <li><a href="{{ route('services.personal_banking') }}"
                             class="group flex items-center text-primary-100 hover:text-white transition-all duration-300 text-sm">
                             <i
                                 class="fa-solid fa-chevron-right text-xs mr-3 text-teal-400 group-hover:translate-x-1 transition-transform duration-300"></i>
                             <span class="group-hover:translate-x-1 transition-transform duration-300">Personal
                                 Banking</span>
                         </a></li>
-                    <li><a href="alerts.html"
+                    <li><a href="{{ route('services.business_banking') }}"
                             class="group flex items-center text-primary-100 hover:text-white transition-all duration-300 text-sm">
                             <i
                                 class="fa-solid fa-chevron-right text-xs mr-3 text-teal-400 group-hover:translate-x-1 transition-transform duration-300"></i>
                             <span class="group-hover:translate-x-1 transition-transform duration-300">Business
                                 Banking</span>
                         </a></li>
-                    <li><a href="send-money.html"
+                    <li><a href="{{ route('services.loan_and_credit') }}"
                             class="group flex items-center text-primary-100 hover:text-white transition-all duration-300 text-sm">
                             <i
                                 class="fa-solid fa-chevron-right text-xs mr-3 text-teal-400 group-hover:translate-x-1 transition-transform duration-300"></i>
                             <span class="group-hover:translate-x-1 transition-transform duration-300">Loans &
                                 Credit</span>
                         </a></li>
-                    <li><a href="login.html"
+                    <li><a href="{{ route('login') }}"
                             class="group flex items-center text-primary-100 hover:text-white transition-all duration-300 text-sm">
                             <i
                                 class="fa-solid fa-chevron-right text-xs mr-3 text-teal-400 group-hover:translate-x-1 transition-transform duration-300"></i>
@@ -156,21 +156,21 @@
                     Member Services
                 </h4>
                 <ul class="space-y-3">
-                    <li><a href="login.html"
+                    <li><a href="{{ route('login') }}"
                             class="group flex items-center text-primary-100 hover:text-white transition-all duration-300 text-sm">
                             <i
                                 class="fa-solid fa-chevron-right text-xs mr-3 text-purple-400 group-hover:translate-x-1 transition-transform duration-300"></i>
                             <span class="group-hover:translate-x-1 transition-transform duration-300">Online
                                 Banking</span>
                         </a></li>
-                    <li><a href="apps.html"
+                    <li><a href="{{ route('app') }}"
                             class="group flex items-center text-primary-100 hover:text-white transition-all duration-300 text-sm">
                             <i
                                 class="fa-solid fa-chevron-right text-xs mr-3 text-purple-400 group-hover:translate-x-1 transition-transform duration-300"></i>
                             <span class="group-hover:translate-x-1 transition-transform duration-300">Mobile
                                 App</span>
                         </a></li>
-                    <li><a href="contact.html"
+                    <li><a href="{{ route('contact') }}"
                             class="group flex items-center text-primary-100 hover:text-white transition-all duration-300 text-sm">
                             <i
                                 class="fa-solid fa-chevron-right text-xs mr-3 text-purple-400 group-hover:translate-x-1 transition-transform duration-300"></i>
@@ -197,13 +197,13 @@
                     </div>
                 </div>
                 <div class="flex flex-wrap justify-center lg:justify-end space-x-6">
-                    <a href="privacy.html"
+                    <a href="{{ route('privacy_policy') }}"
                         class="text-primary-100 hover:text-white text-sm transition-colors duration-300 hover:underline">Privacy
                         Policy</a>
-                    <a href="terms-of-service.html"
+                    <a href="{{ route('term_of_service') }}"
                         class="text-primary-100 hover:text-white text-sm transition-colors duration-300 hover:underline">Terms
                         of Service</a>
-                    <a href="contact.html"
+                    <a href="{{ route('contact') }}"
                         class="text-primary-100 hover:text-white text-sm transition-colors duration-300 hover:underline">Accessibility</a>
                     <a href="/"
                         class="text-primary-100 hover:text-white text-sm transition-colors duration-300 hover:underline">Sitemap</a>

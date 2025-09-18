@@ -31,7 +31,7 @@
                     <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i>Overdraft
                         protection available</li>
                 </ul>
-                <a href="register.html"
+                <a href="{{ route('register') }}"
                     class="inline-flex items-center text-blue-600 dark:text-blue-400 font-semibold hover:text-blue-700 dark:hover:text-blue-300 transition-colors">
                     Open Account <i class="fa-solid fa-arrow-right ml-2"></i>
                 </a>
@@ -58,7 +58,7 @@
                     <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i>Mobile banking
                         access</li>
                 </ul>
-                <a href="register.html"
+                <a href="{{ route('register') }}"
                     class="inline-flex items-center text-green-600 dark:text-green-400 font-semibold hover:text-green-700 dark:hover:text-green-300 transition-colors">
                     Open Account <i class="fa-solid fa-arrow-right ml-2"></i>
                 </a>
@@ -85,7 +85,7 @@
                     <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i>Debit card
                         included</li>
                 </ul>
-                <a href="register.html"
+                <a href="{{ route('register') }}"
                     class="inline-flex items-center text-purple-600 dark:text-purple-400 font-semibold hover:text-purple-700 dark:hover:text-purple-300 transition-colors">
                     Open Account <i class="fa-solid fa-arrow-right ml-2"></i>
                 </a>
@@ -112,7 +112,7 @@
                     <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i>Guaranteed rate
                         of return</li>
                 </ul>
-                <a href="register.html"
+                <a href="{{ route('register') }}"
                     class="inline-flex items-center text-orange-600 dark:text-orange-400 font-semibold hover:text-orange-700 dark:hover:text-orange-300 transition-colors">
                     Open Account <i class="fa-solid fa-arrow-right ml-2"></i>
                 </a>
@@ -139,7 +139,7 @@
                     <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i>Retirement
                         planning tools</li>
                 </ul>
-                <a href="register.html"
+                <a href="{{ route('register') }}"
                     class="inline-flex items-center text-teal-600 dark:text-teal-400 font-semibold hover:text-teal-700 dark:hover:text-teal-300 transition-colors">
                     Open Account <i class="fa-solid fa-arrow-right ml-2"></i>
                 </a>
@@ -166,7 +166,7 @@
                     <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i>Parent/guardian
                         oversight</li>
                 </ul>
-                <a href="register.html"
+                <a href="{{ route('register') }}"
                     class="inline-flex items-center text-pink-600 dark:text-pink-400 font-semibold hover:text-pink-700 dark:hover:text-pink-300 transition-colors">
                     Open Account <i class="fa-solid fa-arrow-right ml-2"></i>
                 </a>

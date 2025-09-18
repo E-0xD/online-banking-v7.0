@@ -74,7 +74,7 @@
                     </div>
                 </div>
 
-                <a href="register.html"
+                <a href="{{ route('register') }}"
                     class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white font-bold rounded-2xl transition-all duration-300 shadow-2xl hover:shadow-primary-500/25 hover:-translate-y-1 hover:scale-105 group">
                     <i class="fa-solid fa-arrow-right mr-3 group-hover:translate-x-1 transition-transform"></i>
                     Open Account Now

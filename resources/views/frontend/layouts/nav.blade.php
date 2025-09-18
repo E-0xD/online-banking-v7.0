@@ -34,7 +34,7 @@
                         class="absolute inset-0 bg-primary-50 dark:bg-primary-900/30 rounded-xl scale-0 group-hover:scale-100 transition-transform duration-300 origin-center">
                     </div>
                 </a>
-                <a href="about.html"
+                <a href="{{ route('about') }}"
                     class="relative px-4 py-2 text-gray-700 dark:text-gray-300 font-medium transition-all duration-300 hover:text-primary-600 dark:hover:text-primary-400 group">
                     <span class="relative z-10">About</span>
                     <div
@@ -55,27 +55,27 @@
                     <div
                         class="absolute top-full left-0 mt-2 w-64 bg-white dark:bg-gray-800 rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
                         <div class="p-2">
-                            <a href="chart.html"
+                            <a href="{{ route('services.personal_banking') }}"
                                 class="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/30 rounded-xl transition-all duration-300">
                                 <i class="fa-solid fa-user mr-3 text-primary-500"></i>
                                 Personal Banking
                             </a>
-                            <a href="alerts.html"
+                            <a href="{{ route('services.business_banking') }}"
                                 class="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/30 rounded-xl transition-all duration-300">
                                 <i class="fa-solid fa-briefcase mr-3 text-blue-500"></i>
                                 Business Banking
                             </a>
-                            <a href="send-money.html"
+                            <a href="{{ route('services.loan_and_credit') }}"
                                 class="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/30 rounded-xl transition-all duration-300">
                                 <i class="fa-solid fa-handshake mr-3 text-green-500"></i>
                                 Loans & Credit
                             </a>
-                            <a href="login.html"
+                            <a href="{{ route('login') }}"
                                 class="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/30 rounded-xl transition-all duration-300">
                                 <i class="fa-solid fa-credit-card mr-3 text-purple-500"></i>
                                 Cards
                             </a>
-                            <a href="grants.html"
+                            <a href="{{ route('services.grant') }}"
                                 class="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/30 rounded-xl transition-all duration-300">
                                 <i class="fa-solid fa-hand-holding-dollar mr-3 text-orange-500"></i>
                                 Grants & Aid
@@ -83,7 +83,7 @@
                         </div>
                     </div>
                 </div>
-                <a href="contact.html"
+                <a href="{{ route('contact') }}"
                     class="relative px-4 py-2 text-gray-700 dark:text-gray-300 font-medium transition-all duration-300 hover:text-primary-600 dark:hover:text-primary-400 group">
                     <span class="relative z-10">Contact</span>
                     <div
@@ -105,7 +105,7 @@
                 </button>
 
                 <!-- Login Button with hover effects -->
-                <a href="login.html"
+                <a href="{{ route('login') }}"
                     class="relative px-4 py-2.5 text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-semibold transition-all duration-300 group">
                     <span class="relative z-10">Login</span>
                     <div
@@ -114,7 +114,7 @@
                 </a>
 
                 <!-- Open Account Button with premium styling -->
-                <a href="register.html"
+                <a href="{{ route('register') }}"
                     class="relative px-6 py-2.5 bg-gradient-to-r from-primary-600 via-primary-500 to-primary-600 hover:from-primary-700 hover:via-primary-600 hover:to-primary-700 text-white font-semibold rounded-2xl transition-all duration-300 shadow-lg shadow-primary-600/25 hover:shadow-xl hover:shadow-primary-600/40 hover:-translate-y-0.5 group overflow-hidden">
                     <span class="relative z-10 flex items-center">
                         <i class="fa-solid fa-sparkles mr-2 group-hover:animate-spin"></i>
@@ -163,7 +163,7 @@
                 <i
                     class="fa-solid fa-chevron-right ml-auto text-xs opacity-0 group-hover:opacity-100 transition-all duration-300"></i>
             </a>
-            <a href="about.html"
+            <a href="{{ route('about') }}"
                 class="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-all duration-300 rounded-2xl hover:bg-gradient-to-r hover:from-primary-50 hover:to-primary-100 dark:hover:from-primary-900/30 dark:hover:to-primary-800/30 hover:shadow-lg hover:translate-x-2 group">
                 <i
                     class="fa-solid fa-info-circle mr-4 text-teal-500 group-hover:scale-110 transition-transform duration-300"></i>
@@ -183,27 +183,27 @@
                         :class="{ 'rotate-180': servicesOpen }"></i>
                 </button>
                 <div x-show="servicesOpen" x-transition class="ml-8 space-y-1">
-                    <a href="chart.html"
+                    <a href="{{ route('services.personal_banking') }}"
                         class="flex items-center px-4 py-2 text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 text-sm transition-all duration-300 rounded-xl hover:bg-gradient-to-r hover:from-primary-50 hover:to-primary-100 dark:hover:from-primary-900/30 dark:hover:to-primary-800/30">
                         <i class="fa-solid fa-user mr-3 text-primary-400"></i>
                         Personal Banking
                     </a>
-                    <a href="alerts.html"
+                    <a href="{{ route('services.business_banking') }}"
                         class="flex items-center px-4 py-2 text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 text-sm transition-all duration-300 rounded-xl hover:bg-gradient-to-r hover:from-primary-50 hover:to-primary-100 dark:hover:from-primary-900/30 dark:hover:to-primary-800/30">
                         <i class="fa-solid fa-briefcase mr-3 text-blue-400"></i>
                         Business Banking
                     </a>
-                    <a href="send-money.html"
+                    <a href="{{ route('services.loan_and_credit') }}"
                         class="flex items-center px-4 py-2 text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 text-sm transition-all duration-300 rounded-xl hover:bg-gradient-to-r hover:from-primary-50 hover:to-primary-100 dark:hover:from-primary-900/30 dark:hover:to-primary-800/30">
                         <i class="fa-solid fa-handshake mr-3 text-green-400"></i>
                         Loans & Credit
                     </a>
-                    <a href="login.html"
+                    <a href="{{ route('login') }}"
                         class="flex items-center px-4 py-2 text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 text-sm transition-all duration-300 rounded-xl hover:bg-gradient-to-r hover:from-primary-50 hover:to-primary-100 dark:hover:from-primary-900/30 dark:hover:to-primary-800/30">
                         <i class="fa-solid fa-credit-card mr-3 text-purple-400"></i>
                         Cards
                     </a>
-                    <a href="grants.html"
+                    <a href="{{ route('services.grant') }}"
                         class="flex items-center px-4 py-2 text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 text-sm transition-all duration-300 rounded-xl hover:bg-gradient-to-r hover:from-primary-50 hover:to-primary-100 dark:hover:from-primary-900/30 dark:hover:to-primary-800/30">
                         <i class="fa-solid fa-hand-holding-dollar mr-3 text-orange-400"></i>
                         Grants & Aid
@@ -211,7 +211,7 @@
                 </div>
             </div>
 
-            <a href="contact.html"
+            <a href="{{ route('contact') }}"
                 class="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-all duration-300 rounded-2xl hover:bg-gradient-to-r hover:from-primary-50 hover:to-primary-100 dark:hover:from-primary-900/30 dark:hover:to-primary-800/30 hover:shadow-lg hover:translate-x-2 group">
                 <i
                     class="fa-solid fa-envelope mr-4 text-orange-500 group-hover:scale-110 transition-transform duration-300"></i>
@@ -221,7 +221,7 @@
             </a>
 
             <!-- Additional Mobile Links -->
-            <a href="apps.html"
+            <a href="{{ route('app') }}"
                 class="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-all duration-300 rounded-2xl hover:bg-gradient-to-r hover:from-primary-50 hover:to-primary-100 dark:hover:from-primary-900/30 dark:hover:to-primary-800/30 hover:shadow-lg hover:translate-x-2 group">
                 <i
                     class="fa-solid fa-mobile-alt mr-4 text-indigo-500 group-hover:scale-110 transition-transform duration-300"></i>
