@@ -31,6 +31,8 @@
             rel="stylesheet">
 
         @include('frontend.layouts.partials.style')
+
+        @include('partials.google_translator')
     </head>
 
     <body class="font-sans bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
@@ -48,6 +50,8 @@
         @include('frontend.layouts.partials.additional_script')
 
         @include('frontend.layouts.partials.language_translation_script')
+
+        @include('partials.live_chat')
     </body>
 
 </html>

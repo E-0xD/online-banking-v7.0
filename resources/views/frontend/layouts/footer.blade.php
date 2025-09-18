@@ -177,13 +177,6 @@
                             <span class="group-hover:translate-x-1 transition-transform duration-300">ATM
                                 Locations</span>
                         </a></li>
-                    <li><a href="verify.html"
-                            class="group flex items-center text-primary-100 hover:text-white transition-all duration-300 text-sm">
-                            <i
-                                class="fa-solid fa-chevron-right text-xs mr-3 text-purple-400 group-hover:translate-x-1 transition-transform duration-300"></i>
-                            <span class="group-hover:translate-x-1 transition-transform duration-300">Security
-                                Center</span>
-                        </a></li>
                 </ul>
             </div>
         </div>
