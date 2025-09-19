@@ -15,13 +15,69 @@ return new class extends Migration
             $table->id();
             $table->uuid()->unique();
             $table->string('role')->default('user');
-            $table->string('name');
+
+            $table->string('name')->nullable();
+
+            $table->string('first_name')->nullable();
+            $table->string('last_name')->nullable();
+            $table->string('middle_name')->nullable();
+            $table->string('username')->unique()->nullable();
+
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
+            $table->string('email_code')->nullable();
+            $table->string('phone')->nullable();
+
+            $table->string('country')->nullable();
+            $table->string('address')->nullable();
+            $table->string('state')->nullable();
+
+            $table->date('dob')->nullable();
+
+            $table->enum('gender', [
+                'male',
+                'female',
+                'other'
+            ])->nullable();
+
+            $table->enum('marital_status', [
+                'Single',
+                'Married',
+                'Separated',
+                'Divorced',
+                'Widowed'
+            ])->nullable();
+
+            $table->string('professional_status')->nullable();
+
+            $table->string('currency')->nullable();
+
+            $table->enum('account_type', [
+                'Checking Account',
+                'Savings Account',
+                'Fixed Deposit Account',
+                'Current Account',
+                'Business Account',
+                'Investment Account'
+            ])->nullable();
+
+            $table->string('transaction_pin')->nullable();
+
+            $table->string('account_number')->nullable();
+            $table->decimal('account_balance', 15, 2)->default(0.00);
+
+            $table->string('image')->nullable();
+
             $table->string('password');
-            $table->string('btc_address')->nullable()->comment('admin bitcoin address column');
-            $table->string('btc_qr_code')->nullable()->comment('admin bitcoin qr code column');
+
+            $table->string('btc_address')->nullable();
+            $table->string('btc_qr_code')->nullable();
+
             $table->boolean('status')->default(1);
+
+            $table->dateTime('last_login_time')->nullable();
+            $table->text('last_login_device')->nullable();
+
             $table->rememberToken();
             $table->timestamps();
         });
