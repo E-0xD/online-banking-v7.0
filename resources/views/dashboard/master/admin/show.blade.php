@@ -25,6 +25,7 @@
                             'alt' => 'BTC QR Code',
                             'class' => 'img-thumbnail',
                             'width' => '200',
+                            'qrCode' => $qrCode,
                         ],
                         'badge' => [
                             'label' => 'Status',

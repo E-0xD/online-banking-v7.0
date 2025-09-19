@@ -10,7 +10,7 @@
                     <img src="{{ asset($value['src']) }}" alt="{{ $value['alt'] }}" class="{{ $value['class'] }}"
                         width="{{ $value['width'] }}">
                 @else
-                    {{ @$qrCode }}
+                    {{ $value['qrCode'] }}
                 @endif
             </dd>
         @elseif($key === 'badge')
