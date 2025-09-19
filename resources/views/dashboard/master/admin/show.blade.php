@@ -14,38 +14,26 @@
 
         <div class="row">
             <div class="col-lg-12">
-                <div class="card">
-                    <div class="card-body">
-                        <dl class="row">
-                            <dt class="col-sm-4">Name:</dt>
-                            <dd class="col-sm-8">{{ $admin->name }}</dd>
-
-                            <dt class="col-sm-4">Email:</dt>
-                            <dd class="col-sm-8">{{ $admin->email }}</dd>
-
-                            <dt class="col-sm-4">BTC Address:</dt>
-                            <dd class="col-sm-8">{{ $admin->btc_address ?? 'N/A' }}</dd>
-
-                            <dt class="col-sm-4">BTC QR Code:</dt>
-                            <dd class="col-sm-8">
-                                @if ($admin->btc_qr_code)
-                                    <img src="{{ asset($admin->btc_qr_code) }}" alt="BTC QR Code" class="img-thumbnail"
-                                        width="200">
-                                @else
-                                    {{ @$qrCode }}
-                                @endif
-                            </dd>
-
-                            <dt class="col-sm-4">Status:</dt>
-                            <dd class="col-sm-8">
-                                <span class="{{ $admin->status->badge() }}">
-                                    {{ $admin->status->label() }}
-                                </span>
-                            </dd>
-                        </dl>
-                        <x-dashboard.master.back-button href="{{ route('master.admin.index') }}" />
-                    </div><!-- end card-body -->
-                </div><!-- end card -->
+                <x-dashboard.master.card>
+                    <x-dashboard.master.details-list :options="[
+                        'Name' => $admin->name,
+                        'Email' => $admin->email,
+                        'BTC Address' => $admin->btc_address ?? 'N/A',
+                        'image' => [
+                            'label' => 'BTC QR Code',
+                            'src' => $admin->btc_qr_code,
+                            'alt' => 'BTC QR Code',
+                            'class' => 'img-thumbnail',
+                            'width' => '200',
+                        ],
+                        'badge' => [
+                            'label' => 'Status',
+                            'value' => $admin->status->label(),
+                            'badge' => $admin->status->badge(),
+                        ],
+                    ]" />
+                    <x-dashboard.master.back-button href="{{ route('master.admin.index') }}" />
+                </x-dashboard.master.card>
             </div>
             <!-- end col -->
         </div>

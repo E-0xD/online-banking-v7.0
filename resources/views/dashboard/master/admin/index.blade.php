@@ -14,14 +14,14 @@
 
         <div class="row">
             <div class="col-lg-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="card-title mb-0">Manage and Track All Admin Accounts</h4>
-                    </div>
-                    <div class="card-body">
-                        <x-dashboard.master.admins :admins="$admins" />
-                    </div><!-- end card-body -->
-                </div><!-- end card -->
+                <x-dashboard.master.card>
+                    @slot('header')
+                        Manage and Track All Admin Accounts
+                    @endslot
+
+                    <x-dashboard.master.admins :admins="$admins" />
+
+                </x-dashboard.master.card>
             </div>
             <!-- end col -->
         </div>
