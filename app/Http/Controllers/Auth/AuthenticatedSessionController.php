@@ -43,7 +43,7 @@ class AuthenticatedSessionController extends Controller
                 RateLimiter::clear($key);
 
                 if (Auth::user()->role === 'user') {
-                    if (Auth::user()->status === 0) {
+                    if (Auth::user()->status->value === 0) {
                         Auth::logout();
                         return back()->withErrors([
                             'email' => 'Your account is currently inactive and cannot be used to log in. Please contact an administrator to reactivate your account.',
@@ -54,9 +54,9 @@ class AuthenticatedSessionController extends Controller
 
                     return redirect()->route('user.dashboard');
                 }
-                
+
                 if (Auth::user()->role === 'admin') {
-                    if (Auth::user()->status === 0) {
+                    if (Auth::user()->status->value === 0) {
                         Auth::logout();
                         return back()->withErrors([
                             'email' => 'Your account is currently inactive and cannot be used to log in. Please contact an administrator to reactivate your account.',
