@@ -7,7 +7,12 @@ use App\Http\Controllers\Controller;
 
 class RegisteredUserController extends Controller
 {
-    public function create() {}
+    public function create()
+    {
+        $data = ['title' => 'Create Account'];
+
+        return view('auth.register', $data);
+    }
 
     public function store(Request $request) {}
 }

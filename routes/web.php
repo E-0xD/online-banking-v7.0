@@ -18,14 +18,14 @@ Route::post('/contact', [ContactController::class, 'store']);
 
 Route::get('/app', AppController::class)->name('app');
 
-Route::get('/privacy/policy', PrivacyPolicyController::class)->name('privacy_policy');
+Route::get('/privacy-policy', PrivacyPolicyController::class)->name('privacy_policy');
 
-Route::get('/term/of/service', TermOfServiceController::class)->name('term_of_service');
+Route::get('/term-of-service', TermOfServiceController::class)->name('term_of_service');
 
 Route::prefix('services')->group(function () {
-    Route::get('/personal/banking', [ServiceController::class, 'personalBanking'])->name('services.personal_banking');
-    Route::get('/business/banking', [ServiceController::class, 'businessBanking'])->name('services.business_banking');
-    Route::get('/loan/and/credit', [ServiceController::class, 'loanAndCredit'])->name('services.loan_and_credit');
+    Route::get('/personal-banking', [ServiceController::class, 'personalBanking'])->name('services.personal_banking');
+    Route::get('/business-banking', [ServiceController::class, 'businessBanking'])->name('services.business_banking');
+    Route::get('/loan-and-credit', [ServiceController::class, 'loanAndCredit'])->name('services.loan_and_credit');
     Route::get('/grant', [ServiceController::class, 'grant'])->name('services.grant');
 });
 

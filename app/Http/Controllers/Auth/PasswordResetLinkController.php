@@ -7,7 +7,12 @@ use App\Http\Controllers\Controller;
 
 class PasswordResetLinkController extends Controller
 {
-    public function create() {}
+    public function create()
+    {
+        $data = ['title' => 'Forgot Password'];
+
+        return view('auth.forgot_password', $data);
+    }
 
     public function store(Request $request) {}
 }
