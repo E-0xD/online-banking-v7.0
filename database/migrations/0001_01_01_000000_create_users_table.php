@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('btc_address')->nullable()->comment('Admin Field Bitcoin Address');
-            $table->string('btc_qr_code')->nullable()->comment('Admin Field Bitcoin QR Code');
+            $table->string('btc_address')->nullable()->comment('admin bitcoin address column');
+            $table->string('btc_qr_code')->nullable()->comment('admin bitcoin qr code column');
             $table->boolean('status')->default(1);
             $table->rememberToken();
             $table->timestamps();

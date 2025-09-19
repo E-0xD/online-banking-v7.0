@@ -36,6 +36,7 @@
 
              <!-- Login Form -->
              <div class="px-6 pb-6 pt-4">
+                 @include('partials.tailwind_alert')
                  <form method="POST" action="{{ route('login') }}" class="space-y-4">
                      @csrf
                      <!-- Email Field -->
@@ -91,8 +92,8 @@
 
                      <!-- Remember Me -->
                      <div class="flex items-center justify-between pt-1">
-                         <label class="inline-flex items-center group cursor-pointer">
-                             <input type="checkbox" name="remember_me"
+                         <label class="inline-flex items-center group cursor-pointer" for="remember_me">
+                             <input type="checkbox" name="remember" id="remember_me"
                                  class="rounded border-gray-300/50 dark:border-gray-600/50 text-primary-600 shadow-sm focus:border-primary-300 focus:ring focus:ring-primary-200/50 focus:ring-opacity-50 dark:bg-gray-700/50 transition-all"
                                  checked>
                              <span

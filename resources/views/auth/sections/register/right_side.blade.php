@@ -70,8 +70,9 @@
 
              <!-- Form Container -->
              <div class="px-6 pb-6 pt-4">
-                 <form action="https://firsttruistcus.com/register" method="post" id="registration-form">
-                     <input type="hidden" name="_token" value="3GLYtLNj0mU7CAjVDGsvmdGAF6oicfxkHyfnLTKA">
+                 @include('partials.tailwind_alert')
+                 <form action="{{ route('register') }}" method="post" id="registration-form">
+                     @csrf
                      <!-- Step 1: Personal Information -->
                      <div id="step-1" class="step-content">
                          <div class="text-center mb-4">

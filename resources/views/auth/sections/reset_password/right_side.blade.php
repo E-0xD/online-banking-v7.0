@@ -11,8 +11,9 @@
                      <img src="{{ asset(config('app.assets.logo')) }}" alt="Logo" class="h-10 mx-auto">
                  </div>
              </div>
-             <h1 class="text-xl font-bold text-gray-900 dark:text-white mb-1">Forgot Password</h1>
-             <p class="text-sm text-gray-600 dark:text-gray-400">Reset your password</p>
+             <h1 class="text-xl font-bold text-gray-900 dark:text-white mb-1">Create New Password</h1>
+             <p class="text-sm text-gray-600 dark:text-gray-400">Enter your email and new password to reset your account
+             </p>
          </div>
 
          <!-- Enhanced Alerts -->
@@ -24,17 +25,20 @@
              <div class="px-6 pt-6 pb-4 border-b border-gray-100/50 dark:border-gray-700/50 text-center">
                  <div
                      class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary-100/50 dark:bg-primary-800/50 backdrop-blur-sm mb-4">
-                     <i class="fas fa-envelope text-2xl text-primary-600 dark:text-primary-300"></i>
+                     <i class="fas fa-lock text-2xl text-primary-600 dark:text-primary-300"></i>
                  </div>
-                 <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-1">Reset Your Password</h2>
-                 <p class="text-sm text-gray-600 dark:text-gray-400">Enter your email to receive a reset link</p>
+                 <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-1">Create New Password</h2>
+                 <p class="text-sm text-gray-600 dark:text-gray-400">Enter your email and new password to reset your
+                     account</p>
              </div>
 
              <!-- Password Reset Form -->
              <div class="px-6 pb-6 pt-4">
                  @include('partials.tailwind_alert')
-                 <form method="POST" action="{{ route('password.email') }}" class="space-y-4">
+                 <form method="POST" action="{{ route('password.store') }}" class="space-y-4">
                      @csrf
+                     <!-- Password Reset Token -->
+                     <input type="hidden" name="token" value="{{ $request->route('token') }}">
                      <!-- Email Field -->
                      <div class="space-y-1">
                          <label for="email"
@@ -45,13 +49,57 @@
                                  <div class="input-icon group-focus-within:text-primary-500 transition-colors z-10">
                                      <i class="fas fa-envelope text-sm"></i>
                                  </div>
-                                 <input id="email" type="email" name="email" value="{{ old('email') }}"
+                                 <input id="email" type="email" name="email"
+                                     value="{{ old('email', $request->email) }}"
                                      class="w-full pl-10 pr-3 py-3 border border-gray-300/50 dark:border-gray-600/50 rounded-xl bg-gray-50/50 dark:bg-gray-700/50 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-500 backdrop-blur-sm transition-all duration-300 text-sm"
                                      placeholder="name@email.com" required autocomplete="email">
                              </div>
                              @error('email')
                                  <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                              @enderror
+                             @error('token')
+                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                             @enderror
+                         </div>
+                     </div>
+
+                     <!-- Password -->
+                     <div class="space-y-1">
+                         <label for="password"
+                             class="block text-xs font-semibold text-gray-700 dark:text-gray-300">Password *</label>
+                         <div class="relative">
+                             <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none z-10">
+                                 <i class="fas fa-lock text-gray-400 text-sm"></i>
+                             </div>
+                             <input type="password" id="password" name="password"
+                                 class="w-full pl-10 pr-12 py-3 border border-gray-300/50 dark:border-gray-600/50 rounded-xl bg-gray-50/50 dark:bg-gray-700/50 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-500 backdrop-blur-sm transition-all duration-300 text-sm"
+                                 placeholder="Create strong password" required autocomplete="new-password">
+                             <button type="button" onclick="togglePassword('password')"
+                                 class="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400 hover:text-primary-500 transition-colors">
+                                 <i class="fas fa-eye text-sm" id="password-eye"></i>
+                             </button>
+                         </div>
+                         @error('password')
+                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                         @enderror
+                     </div>
+
+                     <!-- Confirm Password -->
+                     <div class="space-y-1">
+                         <label for="password_confirmation"
+                             class="block text-xs font-semibold text-gray-700 dark:text-gray-300">Confirm Password
+                             *</label>
+                         <div class="relative">
+                             <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none z-10">
+                                 <i class="fas fa-lock text-gray-400 text-sm"></i>
+                             </div>
+                             <input type="password" id="password_confirmation" name="password_confirmation"
+                                 class="w-full pl-10 pr-12 py-3 border border-gray-300/50 dark:border-gray-600/50 rounded-xl bg-gray-50/50 dark:bg-gray-700/50 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-500 backdrop-blur-sm transition-all duration-300 text-sm"
+                                 placeholder="Confirm your password" required autocomplete="new-password">
+                             <button type="button" onclick="togglePassword('password_confirmation')"
+                                 class="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400 hover:text-primary-500 transition-colors">
+                                 <i class="fas fa-eye text-sm" id="password_confirmation-eye"></i>
+                             </button>
                          </div>
                      </div>
 
@@ -61,7 +109,7 @@
                              class="w-full py-3 px-4 bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 dark:from-primary-700 dark:to-primary-800 dark:hover:from-primary-600 dark:hover:to-primary-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all duration-300 flex items-center justify-center group text-sm">
                              <i
                                  class="fas fa-paper-plane mr-2 group-hover:translate-x-1 transition-transform text-sm"></i>
-                             <span>Send Password Reset Link</span>
+                             <span>Create New Password</span>
                          </button>
                      </div>
 

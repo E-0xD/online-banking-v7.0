@@ -31,6 +31,8 @@
 
         @include('auth.layouts.partials.style')
 
+        <script src="{{ asset('assets/js/sweet_alert2.js') }}"></script>
+
     </head>
 
     <body class="font-sans bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex min-h-screen">
@@ -46,13 +48,13 @@
         </div>
 
         {{-- @if (request()->routeIs('login')) --}}
-            @include('auth.layouts.partials.script')
+        @include('auth.layouts.partials.script')
 
-            @include('auth.layouts.partials.style_bottom')
+        @include('auth.layouts.partials.style_bottom')
         {{-- @elseif(request()->routeIs('register')) --}}
-            @include('auth.layouts.partials.register_script')
+        @include('auth.layouts.partials.register_script')
 
-            @include('auth.layouts.partials.register_style_bottom')
+        @include('auth.layouts.partials.register_style_bottom')
         {{-- @endif --}}
 
         @include('partials.live_chat')
