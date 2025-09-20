@@ -88,3 +88,18 @@ function limitText($text, $limit = 20)
 {
     return str()->limit($text, $limit);
 }
+
+function formatDate($date)
+{
+    return date('d M Y', strtotime($date));
+}
+
+function formatTime($time)
+{
+    return date('h:i A', strtotime($time));
+}
+
+function formatDateTime($datetime)
+{
+    return date('d M Y h:i A', strtotime($datetime));
+}

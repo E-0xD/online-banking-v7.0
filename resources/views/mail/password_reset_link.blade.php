@@ -112,7 +112,7 @@
                 <p><a id='links' href='{{ $passwordResetLink }}' class='button'>Reset Password</a></p>
                 <p>If you didn't request a password reset, please ignore this email.</p>
                 <p>
-                    <strong>Important:</strong> This link will expire in 120 minutes for security reasons. If you don't
+                    <strong>Important:</strong> This link will expire in 60 minutes for security reasons. If you don't
                     verify your email within this time, you'll need to request a new code.
                 </p>
             </div>

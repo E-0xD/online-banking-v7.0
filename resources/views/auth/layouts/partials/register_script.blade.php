@@ -123,7 +123,7 @@
         });
 
         // PIN input validation (numbers only, max 4 digits)
-        $('#pin').on('input', function() {
+        $('#transaction_pin').on('input', function() {
             this.value = this.value.replace(/[^0-9]/g, '').slice(0, 4);
         });
 

@@ -9,21 +9,18 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class PasswordResetLink extends Mailable implements ShouldQueue
+class EmailVerificationCode extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
-    public $user, $passwordResetLink, $subject;
-
+    public $user, $subject;
     /**
      * Create a new message instance.
      */
-    public function __construct($user, $passwordResetLink, $subject)
+    public function __construct($user, $subject)
     {
         $this->user = $user;
-        $this->passwordResetLink = $passwordResetLink;
         $this->subject = $subject;
     }
-
 
     /**
      * Get the message envelope.
@@ -41,7 +38,7 @@ class PasswordResetLink extends Mailable implements ShouldQueue
     public function content(): Content
     {
         return new Content(
-            view: 'mail.password_reset_link',
+            view: 'mail.email_verification_code',
         );
     }
 

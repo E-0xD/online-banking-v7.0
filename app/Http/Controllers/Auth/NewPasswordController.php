@@ -8,6 +8,7 @@ use App\Models\PasswordResetToken;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\NewPasswordControllerStoreRequest;
 
@@ -28,7 +29,8 @@ class NewPasswordController extends Controller
         $request->validated();
 
         try {
-            $user = User::where('role', 'user')->where('email', $request->email)->first();
+            $user = User::where('role', 'user')->where('id', Auth::id())->firstOrFail();
+
             if (!$user) {
                 return redirect()->route('login')->with('error', 'User not found');
             }
@@ -41,7 +43,7 @@ class NewPasswordController extends Controller
                 return redirect()->route('login')->with('error', 'Invalid or expired token');
             }
 
-            if (isset($passwordResetToken->created_at) && $passwordResetToken->created_at->addHours(2)->isPast()) {
+            if (isset($passwordResetToken->created_at) && $passwordResetToken->created_at->addMinutes(60)->isPast()) {
                 return redirect()->route('login')->with('error', 'Token has expired');
             }
 

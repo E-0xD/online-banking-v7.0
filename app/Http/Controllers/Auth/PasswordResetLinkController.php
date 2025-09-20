@@ -10,6 +10,7 @@ use App\Models\PasswordResetToken;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\PasswordResetLinkControllerStoreRequest;
 
@@ -29,7 +30,7 @@ class PasswordResetLinkController extends Controller
         try {
             DB::beginTransaction();
 
-            $user = User::where('role', 'user')->where('email', $request->email)->first();
+            $user = User::where('role', 'user')->where('id', Auth::id())->firstOrFail();
 
             if (!$user) {
                 DB::rollBack();
@@ -48,9 +49,12 @@ class PasswordResetLinkController extends Controller
 
             $passwordResetToken = PasswordResetToken::where('email', $user->email)->first();
 
-            $passwordResetLink = route('password.reset', ['token' => $passwordResetToken->token, 'email' => $passwordResetToken->email]);
+            $passwordResetLink = route('password.reset', [
+                'token' => $passwordResetToken->token,
+                'email' => $passwordResetToken->email
+            ]);
 
-            Mail::to($user->email)->send(new PasswordResetLink($user, $passwordResetLink, 'Password Reset Link'));
+            Mail::to($user->email)->queue(new PasswordResetLink($user, $passwordResetLink, 'Password Reset Link'));
 
             DB::commit();
 
