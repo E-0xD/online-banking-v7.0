@@ -14,4 +14,7 @@ Route::middleware('user')->prefix('user')->group(function () {
 
     Route::get('/profile/change/password', [ProfileController::class, 'changePassword'])->name('user.profile.change_password');
     Route::patch('/profile/change/password', [ProfileController::class, 'changePasswordStore']);
+
+    Route::get('/profile/change/transaction/pin', [ProfileController::class, 'changeTransactionPin'])->name('user.profile.change_transaction_pin');
+    Route::patch('/profile/change/transaction/pin', [ProfileController::class, 'changeTransactionPinStore']);
 });

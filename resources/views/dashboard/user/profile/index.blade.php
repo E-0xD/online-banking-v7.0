@@ -79,7 +79,7 @@
                             <i class="ti ti-shield-lock fs-20"></i> Two-Factor Authentication
                         </a>
 
-                        <a href="#" class="btn btn-primary w-100 mb-2">
+                        <a href="{{ route('user.profile.change_transaction_pin') }}" class="btn btn-primary w-100 mb-2">
                             <i class="ti ti-key fs-20"></i> Transaction PIN
                         </a>
 
@@ -286,10 +286,6 @@
         </div>
     </div>
     @if (session('logout_after_delay'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-
         <!-- Hidden logout form -->
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display:none;">
             @csrf

@@ -120,4 +120,50 @@ class ProfileController extends Controller
             return redirect()->back()->with('error', config('app.messages.error'));
         }
     }
+
+    public function changeTransactionPin()
+    {
+        $breadcrumbs = [
+            ['label' => config('app.name'), 'url' => '/'],
+            ['label' => 'Profile', 'url' => route('user.profile.index')],
+            ['label' => 'Change Transaction PIN', 'url' => route('user.profile.change_transaction_pin'), 'active' => true]
+        ];
+
+        $data = [
+            'title' => 'Change Transaction PIN',
+            'breadcrumbs' => $breadcrumbs,
+            'user' => User::where('role', 'user')->where('id', Auth::id())->firstOrFail()
+        ];
+
+        return view('dashboard.user.profile.change_transaction_pin', $data);
+    }
+
+    public function changeTransactionPinStore(Request $request)
+    {
+        $request->validate([
+            'transaction_pin' => 'required|confirmed|digits:4|numeric',
+            'current_password' => 'required',
+        ]);
+
+        try {
+            $user = User::where('role', 'user')->where('id', Auth::id())->firstOrFail();
+
+            if (!password_verify($request->current_password, $user->password)) {
+                return redirect()->back()->with('error', 'Current password is incorrect');
+            }
+
+            DB::beginTransaction();
+
+            $user->transaction_pin = Hash::make($request->transaction_pin);
+            $user->save();
+
+            DB::commit();
+
+            return redirect()->route('user.profile.index')->with('success', 'Transaction PIN changed successfully');
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            DB::rollBack();
+            return redirect()->back()->with('error', config('app.messages.error'));
+        }
+    }
 }

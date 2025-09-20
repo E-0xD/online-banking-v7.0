@@ -32,7 +32,7 @@ class RegisteredUserControllerStoreRequest extends FormRequest
             'country' => ['required', 'string', 'max:255'],
             'currency' => ['required', 'string', 'max:255'],
             'account_type' => ['required', 'string', 'max:255'],
-            'transaction_pin' => ['required', 'string', 'max:4'],
+            'transaction_pin' => ['required', 'numeric','digits:4'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ];
     }
