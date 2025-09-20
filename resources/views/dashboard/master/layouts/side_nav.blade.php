@@ -23,7 +23,7 @@
 
             <li class="side-nav-item">
                 <a href="{{ route('master.dashboard') }}" class="side-nav-link">
-                    <span class="menu-icon"><i class="ti ti-dashboard"></i></span>
+                    <span class="menu-icon"><i class="ti ti-layout-dashboard"></i></span>
                     <span class="menu-text"> Dashboard </span>
                 </a>
             </li>

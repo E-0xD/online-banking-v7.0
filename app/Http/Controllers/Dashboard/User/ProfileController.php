@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Trait\FileUpload;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 
 class ProfileController extends Controller
@@ -63,6 +64,56 @@ class ProfileController extends Controller
             DB::commit();
 
             return redirect()->route('user.profile.index')->with('success', 'Image changed successfully');
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            DB::rollBack();
+            return redirect()->back()->with('error', config('app.messages.error'));
+        }
+    }
+
+    public function changePassword()
+    {
+        $breadcrumbs = [
+            ['label' => config('app.name'), 'url' => '/'],
+            ['label' => 'Profile', 'url' => route('user.profile.index')],
+            ['label' => 'Change Password', 'url' => route('user.profile.change_password'), 'active' => true]
+        ];
+
+        $data = [
+            'title' => 'Change Password',
+            'breadcrumbs' => $breadcrumbs,
+            'user' => User::where('role', 'user')->where('id', Auth::id())->firstOrFail()
+        ];
+
+        return view('dashboard.user.profile.change_password', $data);
+    }
+
+    public function changePasswordStore(Request $request)
+    {
+        $request->validate([
+            'current_password' => 'required',
+            'password' => 'required|confirmed',
+        ]);
+
+        try {
+
+            $user = User::where('role', 'user')->where('id', Auth::id())->firstOrFail();
+
+            if (!password_verify($request->current_password, $user->password)) {
+                return redirect()->back()->with('error', 'Current password is incorrect');
+            }
+
+            DB::beginTransaction();
+
+            $user->password = Hash::make($request->password);
+            $user->save();
+
+            DB::commit();
+
+            return redirect()
+                ->route('user.profile.index')
+                ->with('success', 'Password changed successfully. You will be logged out in 15 seconds for security reasons.')
+                ->with('logout_after_delay', true);
         } catch (\Exception $e) {
             Log::error($e->getMessage());
             DB::rollBack();

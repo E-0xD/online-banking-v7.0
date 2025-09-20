@@ -71,7 +71,7 @@
                             <i class="ti ti-photo fs-20"></i> Change Image
                         </a>
 
-                        <a href="#" class="btn btn-primary w-100 mb-2">
+                        <a href="{{ route('user.profile.change_password') }}" class="btn btn-primary w-100 mb-2">
                             <i class="ti ti-lock fs-20"></i> Password Settings
                         </a>
 
@@ -285,4 +285,21 @@
             </div>
         </div>
     </div>
+    @if (session('logout_after_delay'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+
+        <!-- Hidden logout form -->
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display:none;">
+            @csrf
+        </form>
+
+        <script>
+            // Delay logout for 5 seconds, then submit the form
+            setTimeout(function() {
+                document.getElementById('logout-form').submit();
+            }, 15000); // 5000ms = 5 seconds
+        </script>
+    @endif
 @endsection
