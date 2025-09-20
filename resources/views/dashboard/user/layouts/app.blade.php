@@ -37,6 +37,14 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+        <style>
+            /* .btn-primary {
+                background-color: #232e51e3 !important;
+                color: #fff !important;
+                border-color: #232e51e3 !important;
+            } */
+        </style>
     </head>
 
     <body>
@@ -102,6 +110,20 @@
                 });
             });
         </script>
+
+        @if (session('logout_after_delay'))
+            <!-- Hidden logout form -->
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display:none;">
+                @csrf
+            </form>
+
+            <script>
+                // Delay logout for 5 seconds, then submit the form
+                setTimeout(function() {
+                    document.getElementById('logout-form').submit();
+                }, 15000); // 5000ms = 5 seconds
+            </script>
+        @endif
 
         @include('partials.live_chat')
     </body>

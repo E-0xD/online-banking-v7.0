@@ -75,8 +75,9 @@
                             <i class="ti ti-lock fs-20"></i> Password Settings
                         </a>
 
-                        <a href="#" class="btn btn-primary w-100 mb-2">
+                        <a href="{{ route('user.profile.two_factor_authentication') }}" class="btn btn-primary w-100 mb-2">
                             <i class="ti ti-shield-lock fs-20"></i> Two-Factor Authentication
+                            {!! $user->two_factor_authentication->checkBadge() !!}
                         </a>
 
                         <a href="{{ route('user.profile.change_transaction_pin') }}" class="btn btn-primary w-100 mb-2">
@@ -285,17 +286,4 @@
             </div>
         </div>
     </div>
-    @if (session('logout_after_delay'))
-        <!-- Hidden logout form -->
-        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display:none;">
-            @csrf
-        </form>
-
-        <script>
-            // Delay logout for 5 seconds, then submit the form
-            setTimeout(function() {
-                document.getElementById('logout-form').submit();
-            }, 15000); // 5000ms = 5 seconds
-        </script>
-    @endif
 @endsection

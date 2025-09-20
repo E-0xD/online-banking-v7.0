@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Dashboard\User;
 
+use App\Enum\TwoFactorAuthenticationStatus;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -160,6 +161,66 @@ class ProfileController extends Controller
             DB::commit();
 
             return redirect()->route('user.profile.index')->with('success', 'Transaction PIN changed successfully');
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            DB::rollBack();
+            return redirect()->back()->with('error', config('app.messages.error'));
+        }
+    }
+
+    public function twoFactorAuthentication()
+    {
+        $breadcrumbs = [
+            ['label' => config('app.name'), 'url' => '/'],
+            ['label' => 'Profile', 'url' => route('user.profile.index')],
+            ['label' => 'Two-Factor Authentication', 'url' => route('user.profile.two_factor_authentication'), 'active' => true]
+        ];
+
+        $data = [
+            'title' => 'Two-Factor Authentication',
+            'breadcrumbs' => $breadcrumbs,
+            'user' => User::where('role', 'user')->where('id', Auth::id())->firstOrFail()
+        ];
+
+        return view('dashboard.user.profile.two_factor_authentication', $data);
+    }
+
+    public function twoFactorAuthenticationStore(Request $request)
+    {
+        try {
+            $user = User::where('role', 'user')->where('id', Auth::id())->firstOrFail();
+
+            DB::beginTransaction();
+
+            $user->two_factor_authentication = TwoFactorAuthenticationStatus::ENABLED->value;
+            $user->save();
+
+            DB::commit();
+
+            return redirect()->route('user.profile.two_factor_authentication')
+                ->with('success', 'Two-Factor Authentication is now active for your account. You will be logged out in 15 seconds for security reasons.')
+                ->with('logout_after_delay', true);
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            DB::rollBack();
+            return redirect()->back()->with('error', config('app.messages.error'));
+        }
+    }
+    public function twoFactorAuthenticationDisable(Request $request)
+    {
+        try {
+            $user = User::where('role', 'user')->where('id', Auth::id())->firstOrFail();
+
+            DB::beginTransaction();
+
+            $user->two_factor_authentication = TwoFactorAuthenticationStatus::DISABLED->value;
+            $user->save();
+
+            DB::commit();
+
+            return redirect()->route('user.profile.two_factor_authentication')
+                ->with('success', 'Two-Factor Authentication is now disabled for your account. You will be logged out in 15 seconds for security reasons.')
+                ->with('logout_after_delay', true);
         } catch (\Exception $e) {
             Log::error($e->getMessage());
             DB::rollBack();

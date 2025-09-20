@@ -17,4 +17,8 @@ Route::middleware('user')->prefix('user')->group(function () {
 
     Route::get('/profile/change/transaction/pin', [ProfileController::class, 'changeTransactionPin'])->name('user.profile.change_transaction_pin');
     Route::patch('/profile/change/transaction/pin', [ProfileController::class, 'changeTransactionPinStore']);
+
+    Route::get('/profile/two/factor/authentication', [ProfileController::class, 'twoFactorAuthentication'])->name('user.profile.two_factor_authentication');
+    Route::post('/profile/two/factor/authentication', [ProfileController::class, 'twoFactorAuthenticationStore']);
+    Route::post('/profile/two/factor/authentication/disable', [ProfileController::class, 'twoFactorAuthenticationDisable'])->name('user.profile.two_factor_authentication.disable');
 });

@@ -72,6 +72,8 @@ return new class extends Migration
             $table->string('btc_address')->nullable();
             $table->string('btc_qr_code')->nullable();
 
+            $table->boolean('two_factor_authentication')->default(0);
+
             $table->boolean('status')->default(1);
 
             $table->dateTime('last_login_time')->nullable();
