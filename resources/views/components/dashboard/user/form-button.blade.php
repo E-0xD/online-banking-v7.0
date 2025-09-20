@@ -1,4 +1,5 @@
 @props([
     'name' => 'Submit',
+    'class' => 'btn btn-success',
 ])
-<button type="submit" class="btn btn-success">{{ $name }}</button>
+<button type="submit" class="{{ $class }}">{{ $name }}</button>

@@ -67,8 +67,8 @@
                         </div>
                     </div>
                     <div class="card-footer border-top border-dashed">
-                        <a href="#" class="btn btn-primary w-100 mb-2">
-                            <i class="ti ti-photo fs-20"></i> Change Profile Image
+                        <a href="{{ route('user.profile.change_image') }}" class="btn btn-primary w-100 mb-2">
+                            <i class="ti ti-photo fs-20"></i> Change Image
                         </a>
 
                         <a href="#" class="btn btn-primary w-100 mb-2">

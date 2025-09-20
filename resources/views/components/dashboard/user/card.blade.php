@@ -4,7 +4,7 @@
  ])
  <div class="card">
      @if ($header)
-         <div class="card-header">
+         <div class="card-header border-bottom border-dashed">
              <h4 class="card-title mb-0">{{ $header }}</h4>
          </div>
      @endif
@@ -14,7 +14,7 @@
      </div>
 
      @if ($footer)
-         <div class="card-footer">
+         <div class="card-footer border-top border-dashed">
              {{ $footer }}
          </div>
      @endif

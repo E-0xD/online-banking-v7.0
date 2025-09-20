@@ -2,12 +2,17 @@
 
 namespace App\Http\Controllers\Dashboard\User;
 
-use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use App\Trait\FileUpload;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class ProfileController extends Controller
 {
+    use FileUpload;
     public function index()
     {
         $breadcrumbs = [
@@ -18,9 +23,50 @@ class ProfileController extends Controller
         $data = [
             'title' => 'Profile',
             'breadcrumbs' => $breadcrumbs,
-            'user' => Auth::user()
+            'user' => User::where('role', 'user')->where('id', Auth::id())->firstOrFail()
         ];
 
         return view('dashboard.user.profile.index', $data);
+    }
+
+    public function changeImage()
+    {
+        $breadcrumbs = [
+            ['label' => config('app.name'), 'url' => '/'],
+            ['label' => 'Profile', 'url' => route('user.profile.index')],
+            ['label' => 'Change Image', 'url' => route('user.profile.change_image'), 'active' => true]
+        ];
+
+        $data = [
+            'title' => 'Change Image',
+            'breadcrumbs' => $breadcrumbs,
+            'user' => User::where('role', 'user')->where('id', Auth::id())->firstOrFail()
+        ];
+
+        return view('dashboard.user.profile.change_image', $data);
+    }
+
+    public function changeImageStore(Request $request)
+    {
+        $request->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        try {
+            DB::beginTransaction();
+
+            $user = User::where('role', 'user')->where('id', Auth::id())->firstOrFail();
+
+            $user->image = $this->imageInterventionUpdateFile($request, 'image', '/uploads/dashboard/user/image/', 400, 400, $user?->image);;
+            $user->save();
+
+            DB::commit();
+
+            return redirect()->route('user.profile.index')->with('success', 'Image changed successfully');
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            DB::rollBack();
+            return redirect()->back()->with('error', config('app.messages.error'));
+        }
     }
 }

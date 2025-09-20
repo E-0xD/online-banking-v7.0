@@ -1,4 +1,5 @@
  @props([
+     'class' => 'col-md-6 mb-3',
      'name' => null,
      'label' => null,
      'type' => 'text',
@@ -10,7 +11,7 @@
      'formText' => null,
  ])
 
- <div class="col-md-6 mb-3">
+ <div class="{{ $class }}">
      @if ($label)
          <label for="{{ $id ?? $name }}" class="form-label">{{ $label }}</label>
      @endif
