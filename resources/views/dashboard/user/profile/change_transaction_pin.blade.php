@@ -36,20 +36,14 @@
                             placeholder="Enter your current password" class="col-md-12 mb-3"
                             formText="For security verification" />
 
-                        <div class="alert alert-warning d-flex align-items-start p-3 rounded">
-                            <i class="fa-solid fa-exclamation-triangle text-warning me-2 mt-1"></i>
-                            <div>
-                                <h6 class="fw-semibold mb-1">Security Reminder</h6>
-                                <p class="mb-0 small">
-                                    Keep your transaction PIN confidential. Never share it with anyone.
-                                </p>
-                            </div>
-                        </div>
+                        <x-dashboard.user.warning-list title="Security Reminder" :options="['Keep your transaction PIN confidential. Never share it with anyone.']" />
 
                         <x-dashboard.user.form-button name="Update Transaction PIN" class="btn btn-primary w-100" />
                     </form>
 
                 </x-dashboard.user.card>
+
+                <x-dashboard.user.support-card />
             </div>
         </div>
     </div>

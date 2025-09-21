@@ -62,31 +62,19 @@
                         <i class="fa-solid fa-lightbulb"></i> Security Tips
                     @endslot
 
-                    <ul class="space-y-2 list-unstyled">
-                        <li class="flex items-start">
-                            <i class="fa-solid fa-check-circle text-success text-xs mr-2 mt-0.5 flex-shrink-0"></i>
-                            <span class="text-xs">Use a strong, unique password</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fa-solid fa-check-circle text-success text-xs mr-2 mt-0.5 flex-shrink-0"></i>
-                            <span class="text-xs">Enable two-factor authentication</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fa-solid fa-check-circle text-success text-xs mr-2 mt-0.5 flex-shrink-0"></i>
-                            <span class="text-xs">Keep your email secure</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fa-solid fa-check-circle text-success text-xs mr-2 mt-0.5 flex-shrink-0"></i>
-                            <span class="text-xs">Log out when using shared devices</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fa-solid fa-check-circle text-success text-xs mr-2 mt-0.5 flex-shrink-0"></i>
-                            <span class="text-xs">Regularly check your account
-                                activity</span>
-                        </li>
-                    </ul>
+                    <x-dashboard.user.tips :options="[
+                        'Use a strong, unique password',
+                        'Enable two-factor authentication',
+                        'Keep your email secure',
+                        'Log out when using shared devices',
+                        'Regularly check your account activity',
+                    ]" />
 
                 </x-dashboard.user.card>
+            </div>
+
+            <div class="col-md-12">
+                <x-dashboard.user.support-card />
             </div>
         </div>
     </div>

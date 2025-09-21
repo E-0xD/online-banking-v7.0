@@ -63,7 +63,7 @@
                         <div class="mt-3">
                             <h4 class="fs-15">Account Details :</h4>
                             <p class="mb-0 text-muted fs-14 mt-2">Account Type: {{ $user->account_type }},
-                                Professional Status: {{ $user->professional_status }}</p>
+                                Professional Status: {{ $user->employment }}</p>
                         </div>
                     </div>
                     <div class="card-footer border-top border-dashed">
@@ -139,13 +139,9 @@
                         <h4 class="card-title mb-0">User Information</h4>
                     </div>
                     <div class="card-body">
-                        <div class="alert alert-info d-flex align-items-center" role="alert">
-                            <iconify-icon icon="solar:info-circle-bold-duotone" class="fs-20 me-1"></iconify-icon>
-                            <div class="lh-1">
-                                <strong>Account Information - </strong>
-                                To update your personal information, please contact our customer support team.
-                            </div>
-                        </div>
+
+                        <x-dashboard.user.info-list title="Account Information" :options="['To update your personal information, please contact our customer support team.']" />
+
                         <div class="row justify-content-between align-items-center">
                             <div class="col-lg-3 col-6 border-end border-dashed">
                                 <p class="text-muted mb-1">Gender</p>
@@ -178,8 +174,8 @@
                                 <p class="mb-0 text-muted">Nationality</p>
                             </div>
                             <div class="col-lg-3 col-6">
-                                <h3 class="fw-medium">{{ $user->professional_status }}</h3>
-                                <p class="mb-0 text-muted">Professional Status</p>
+                                <h3 class="fw-medium">{{ $user->employment }}</h3>
+                                <p class="mb-0 text-muted">Employment Type</p>
                             </div>
                         </div>
                     </div>

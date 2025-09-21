@@ -49,7 +49,7 @@
                     <div class="dropdown-menu dropdown-menu-end">
                         @if (auth()->user()->hasPendingKYC())
                             <!-- item-->
-                            <a href="{{ route('user.kyc.index') }}" class="dropdown-item bg-danger">
+                            <a href="{{ route('user.kyc.index') }}" class="dropdown-item">
                                 <i class="ti ti-id me-1 fs-17 align-middle"></i>
                                 <span class="align-middle">Verify KYC</span>
                             </a>

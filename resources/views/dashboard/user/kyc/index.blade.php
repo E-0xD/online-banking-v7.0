@@ -15,12 +15,10 @@
         <div class="row">
             <div class="col-md-12">
 
-                <div class="card">
-                    <div class="card-header border-bottom border-dashed">
-                        <h3 class="card-title mb-0">Account Verification</h3>
-                        </p>
-                    </div>
-                </div>
+                <x-dashboard.user.card>
+                    <h3 class="card-title mb-0">Account Verification</h3>
+                    </p>
+                </x-dashboard.user.card>
 
                 <x-dashboard.user.card>
                     @slot('header')

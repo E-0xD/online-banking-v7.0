@@ -1,12 +1,12 @@
  @props([
      'title' => null,
      'description' => null,
-     'icon' => null,
+     'icon' => 'fa-solid fa-info',
      'listIcon' => null,
      'bgColor' => 'bg-primary',
      'options' => [],
  ])
- <div class="{{ $bgColor }} bg-opacity-10 border border-primary border-opacity-25 rounded-3 p-3 mb-3">
+ <div class="{{ $bgColor }} bg-opacity-10 border border-primary border-opacity-25 rounded-4 p-3 mb-3">
      <!-- Header -->
      <h6 class="text-primary fw-semibold mb-2 d-flex align-items-center text-uppercase small">
          @if ($icon)

@@ -23,12 +23,21 @@
                         @csrf
                         @method('PATCH')
 
-                        <x-dashboard.user.form-input name="image" label="Image" type="file" class="col-md-12 mb-3" />
+                        <x-dashboard.user.form-input name="image" type="file" class="col-md-12 mb-3" />
 
                         <x-dashboard.user.form-button name="Change Image" class="btn btn-primary" />
                     </form>
 
                 </x-dashboard.user.card>
+
+                <x-dashboard.user.info-list title="How to change your profile image" :options="[
+                    'Click on the Choose File button.',
+                    'Select the image file you want to upload.',
+                    'Click on the Change Image button.',
+                    'Your profile image will be updated.',
+                ]" />
+
+                <x-dashboard.user.support-card />
             </div>
         </div>
     </div>

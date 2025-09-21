@@ -41,16 +41,9 @@
                                 'At least one number',
                             ]" />
 
-                        <div class="alert alert-warning d-flex align-items-start p-3 rounded">
-                            <i class="fa-solid fa-exclamation-triangle text-warning me-2 mt-1"></i>
-                            <div>
-                                <h6 class="fw-semibold mb-1">Security Reminder</h6>
-                                <p class="mb-0 small">
-                                    After changing your password, you'll be required to log in again with your new
-                                    credentials.
-                                </p>
-                            </div>
-                        </div>
+                        <x-dashboard.user.warning-list title="Security Reminder" :options="[
+                            'After changing your password, you\'ll be required to log in again with your new credentials.',
+                        ]" />
 
                         <x-dashboard.user.form-button name="Change Password" class="btn btn-primary w-100" />
                     </form>

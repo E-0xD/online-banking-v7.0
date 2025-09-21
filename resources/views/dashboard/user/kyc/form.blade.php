@@ -14,14 +14,11 @@
 
         <div class="row">
             <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header border-bottom border-dashed">
-                        <h3 class="card-title mb-0">Account Information</h3>
-                        <p>To comply with regulations, please provide your information to complete the verification process.
-                        </p>
-                    </div>
-                </div>
-
+                <x-dashboard.user.card>
+                    <h3 class="card-title mb-0">Account Information</h3>
+                    <p>To comply with regulations, please provide your information to complete the verification process.
+                    </p>
+                </x-dashboard.user.card>
                 <form action="{{ route('user.kyc.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
 
@@ -163,27 +160,16 @@
 
                     </x-dashboard.user.card>
 
-                    <div class="card">
-                        <div class="card-body">
+                    <x-dashboard.user.card>
+                        @if ($user->hasPendingKYC())
+                            <x-dashboard.user.warning-list title="KYC Verification" :options="['Your previous application is under review, please wait.']" />
+                        @endif
 
-                            @if ($user->hasPendingKYC())
-                                <div class="alert alert-warning d-flex align-items-start p-3 rounded">
-                                    <i class="fa-solid fa-exclamation-triangle text-warning me-2 mt-1"></i>
-                                    <div>
-                                        {{-- <h6 class="fw-semibold mb-1">Security Reminder</h6> --}}
-                                        <p class="mb-0 small">
-                                            Your previous application is under review, please wait.
-                                        </p>
-                                    </div>
-                                </div>
-                            @endif
-
-                            @if (!$user->hasPendingKYC())
-                                <x-dashboard.user.form-button class="btn btn-primary w-100"
-                                    icon="fa-solid fa-check-circle me-2" name="Submit Application" />
-                            @endif
-                        </div>
-                    </div>
+                        @if (!$user->hasPendingKYC())
+                            <x-dashboard.user.form-button class="btn btn-primary w-100"
+                                icon="fa-solid fa-check-circle me-2" name="Submit Application" />
+                        @endif
+                    </x-dashboard.user.card>
 
                 </form>
 
