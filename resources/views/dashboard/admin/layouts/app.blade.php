@@ -52,7 +52,9 @@
             <!-- ============================================================== -->
             <div class="page-content">
 
-                @include('partials.sweet_alert')
+                {{-- @include('partials.sweet_alert') --}}
+
+                @include('partials.bootstrap_alert')
 
                 @yield('content')
                 <!-- container -->

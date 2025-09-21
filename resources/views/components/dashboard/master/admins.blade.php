@@ -14,16 +14,14 @@
                  <tr>
                      <td>{{ $index + 1 }}</td>
                      <td>
-                         <x-dashboard.master.link href="{{ route('master.admin.show', $admin->uuid) }}"
-                             name="{{ $admin->name }}" />
+                         <a href="{{ route('master.admin.show', $admin->uuid) }}">{{ $admin->name }}</a>
                      </td>
                      <td>{{ $admin->email }}</td>
                      <td>
                          <span class="{{ $admin->status->badge() }}">{{ $admin->status->label() }}</span>
                      </td>
                      <td>
-                         <x-dashboard.master.link href="{{ route('master.admin.edit', $admin->uuid) }}"
-                             class="btn btn-primary m-1" name="Edit" />
+                         <a href="{{ route('master.admin.edit', $admin->uuid) }}" class="btn btn-primary">Edit</a>
                      </td>
                  </tr>
              @endforeach

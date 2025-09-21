@@ -70,26 +70,24 @@ class AuthenticatedSessionController extends Controller
 
                     request()->session()->regenerate();
 
-                    return redirect()->route('user.dashboard');
+                    return redirect()->route('user.dashboard')->with('success', 'Logged in successfully.');
                 }
 
                 if ($user->role === 'admin') {
                     if ($user->status->value === 0) {
                         Auth::logout();
-                        return back()->withErrors([
-                            'email' => 'Your account is currently inactive and cannot be used to log in. Please contact an administrator to reactivate your account.',
-                        ])->onlyInput('email');
+                        return redirect()->back()->with('error', 'Your account is currently inactive and cannot be used to log in. Please contact an administrator to reactivate your account.');
                     }
 
                     request()->session()->regenerate();
 
-                    return redirect()->route('admin.dashboard');
+                    return redirect()->route('admin.dashboard')->with('success', 'Logged in successfully.');
                 }
 
                 if ($user->role === 'master') {
                     request()->session()->regenerate();
 
-                    return redirect()->route('master.dashboard');
+                    return redirect()->route('master.dashboard')->with('success', 'Logged in successfully.');
                 }
             }
 
@@ -117,6 +115,6 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerateToken();
 
         // 4️⃣ Redirects the user to the login page
-        return redirect()->route('login');
+        return redirect()->route('login')->with('success', 'Logged out successfully.');
     }
 }

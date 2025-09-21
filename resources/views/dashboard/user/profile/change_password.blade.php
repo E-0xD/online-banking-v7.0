@@ -32,45 +32,14 @@
                         <x-dashboard.user.form-input name="password_confirmation" label="Password Confirmation"
                             type="password" placeholder="Confirm your new password" class="col-md-12 mb-3" />
 
-                        <div class="bg-primary bg-opacity-10 border border-primary border-opacity-25 rounded-3 p-3 mb-3">
-                            <!-- Header -->
-                            <h6 class="text-primary fw-semibold mb-2 d-flex align-items-center text-uppercase small">
-                                <i class="fa-solid fa-shield text-primary me-2"></i>
-                                Password Requirements
-                            </h6>
-                            <!-- Description -->
-                            <p class="text-primary small mb-2">
-                                Ensure that these requirements are met:
-                            </p>
-
-                            <!-- List -->
-                            <ul class="list-unstyled mb-0 small">
-                                <li class="d-flex align-items-center mb-1 text-primary">
-                                    <span
-                                        class="me-2 d-inline-flex align-items-center justify-content-center rounded-circle bg-primary"
-                                        style="width:6px;height:6px;"></span>
-                                    Minimum 8 characters long – the more, the better
-                                </li>
-                                <li class="d-flex align-items-center mb-1 text-primary">
-                                    <span
-                                        class="me-2 d-inline-flex align-items-center justify-content-center rounded-circle bg-primary"
-                                        style="width:6px;height:6px;"></span>
-                                    At least one lowercase character
-                                </li>
-                                <li class="d-flex align-items-center mb-1 text-primary">
-                                    <span
-                                        class="me-2 d-inline-flex align-items-center justify-content-center rounded-circle bg-primary"
-                                        style="width:6px;height:6px;"></span>
-                                    At least one uppercase character
-                                </li>
-                                <li class="d-flex align-items-center mb-1 text-primary">
-                                    <span
-                                        class="me-2 d-inline-flex align-items-center justify-content-center rounded-circle bg-primary"
-                                        style="width:6px;height:6px;"></span>
-                                    At least one number
-                                </li>
-                            </ul>
-                        </div>
+                        <x-dashboard.user.info-list title="Password Requirements"
+                            description="Ensure that these requirements are met:" icon="fa-solid fa-shield"
+                            :options="[
+                                'Minimum 8 characters long – the more, the better',
+                                'At least one lowercase character',
+                                'At least one uppercase character',
+                                'At least one number',
+                            ]" />
 
                         <div class="alert alert-warning d-flex align-items-start p-3 rounded">
                             <i class="fa-solid fa-exclamation-triangle text-warning me-2 mt-1"></i>
