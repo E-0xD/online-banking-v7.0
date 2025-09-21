@@ -11,7 +11,7 @@
                     <img src="{{ asset(config('app.assets.logo')) }}" alt="Logo" class="h-10 mx-auto">
                 </div>
             </div>
-            <h1 class="text-xl font-bold text-gray-900 dark:text-white mb-1">Email Verification</h1>
+            <h1 class="text-xl font-bold text-gray-900 dark:text-white mb-1">Two-Factor Auth</h1>
             <p class="text-sm text-gray-600 dark:text-gray-400">Enter verification code</p>
         </div>
 
@@ -24,7 +24,7 @@
                 </p>
             </div>
         </div>
-        
+
         @include('partials.tailwind_alert')
 
         <!-- Enhanced Verification Card -->
@@ -36,15 +36,14 @@
                     class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary-100/50 dark:bg-primary-800/50 backdrop-blur-sm mb-4">
                     <i class="fas fa-envelope-open-text text-2xl text-primary-600 dark:text-primary-300"></i>
                 </div>
-                <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-1">Enter Verification
-                    Code</h2>
-                <p class="text-sm text-gray-600 dark:text-gray-400">We've sent a 6-digit code to your
-                    email</p>
+                <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-1">Two-Factor Authentication</h2>
+                <p class="text-sm text-gray-600 dark:text-gray-400">Enter the 6-digit code sent to your email</p>
             </div>
 
             <!-- Verification Form -->
             <div class="px-6 pb-6 pt-4">
-                <form method="POST" action="{{ route('verify.email') }}" class="space-y-4">
+                <form method="POST" action="{{ route('two_factor_authentication', ['id' => $user->uuid]) }}"
+                    class="space-y-4">
                     @csrf
                     <!-- Verification Code Field -->
                     <div class="space-y-1">
@@ -67,11 +66,24 @@
                     <div class="pt-2">
                         <button type="submit"
                             class="w-full py-3 px-4 bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 dark:from-primary-700 dark:to-primary-800 dark:hover:from-primary-600 dark:hover:to-primary-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all duration-300 flex items-center justify-center group text-sm">
-                            <i class="fas fa-check-circle mr-2 group-hover:scale-110 transition-transform text-sm"></i>
-                            <span>Verify Email</span>
+                            <i
+                                class="fas fa-sign-in-alt mr-2 group-hover:translate-x-1 transition-transform text-sm"></i>
+                            <span>Verify and Login</span>
                         </button>
                     </div>
                 </form>
+
+                <!-- Action Buttons -->
+                <div class="mt-4 space-y-3">
+                    <form action="{{ route('two_factor_authentication.send', ['id' => $user->uuid]) }}" method="POST">
+                        @csrf
+                        <button type="submit"
+                            class="w-full py-3 px-4 bg-gray-100/90 dark:bg-gray-700/90 hover:bg-gray-200/90 dark:hover:bg-gray-600/90 text-gray-800 dark:text-gray-200 font-medium rounded-xl transition-all duration-300 flex items-center justify-center group text-sm backdrop-blur-sm border border-gray-200/50 dark:border-gray-600/50">
+                            <i class="fas fa-redo mr-2 group-hover:rotate-180 transition-transform text-sm"></i>
+                            Resend Verification Code
+                        </button>
+                    </form>
+                </div>
 
                 <!-- Help Section -->
                 <div
@@ -96,27 +108,6 @@
                     </ul>
                 </div>
 
-                <!-- Action Buttons -->
-                <div class="mt-4 space-y-3">
-                    <form action="{{ route('verify.email.send') }}" method="POST">
-                        @csrf
-                        <button type="submit"
-                            class="w-full py-3 px-4 bg-gray-100/90 dark:bg-gray-700/90 hover:bg-gray-200/90 dark:hover:bg-gray-600/90 text-gray-800 dark:text-gray-200 font-medium rounded-xl transition-all duration-300 flex items-center justify-center group text-sm backdrop-blur-sm border border-gray-200/50 dark:border-gray-600/50">
-                            <i class="fas fa-redo mr-2 group-hover:rotate-180 transition-transform text-sm"></i>
-                            Resend Verification Code
-                        </button>
-                    </form>
-
-                    <form action="{{ route('logout') }}" method="POST">
-                        @csrf
-                        <button type="submit"
-                            class="w-full py-3 px-4 bg-red-50/90 dark:bg-red-900/30 hover:bg-red-100/90 dark:hover:bg-red-800/30 text-red-700 dark:text-red-300 font-medium rounded-xl transition-all duration-300 flex items-center justify-center group text-sm backdrop-blur-sm border border-red-200/50 dark:border-red-800/50">
-                            <i
-                                class="fas fa-sign-out-alt mr-2 group-hover:translate-x-1 transition-transform text-sm"></i>
-                            Sign Out
-                        </button>
-                    </form>
-                </div>
             </div>
         </div>
 

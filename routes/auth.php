@@ -2,10 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\NewPasswordController;
+use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
-use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Http\Controllers\Auth\TwoFactorAuthenticationController;
 
 Route::middleware('guestUser')->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create'])
@@ -41,3 +42,7 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/verify/email/send', [VerifyEmailController::class, 'send'])->name('verify.email.send');
 });
+
+Route::get('/two/factor/authentication', [TwoFactorAuthenticationController::class, 'index'])->name('two_factor_authentication');
+Route::post('/two/factor/authentication', [TwoFactorAuthenticationController::class, 'store']);
+Route::post('/two/factor/authentication/send', [TwoFactorAuthenticationController::class, 'send'])->name('two_factor_authentication.send');

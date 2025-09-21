@@ -16,6 +16,7 @@
          </div>
 
          <!-- Enhanced Alerts -->
+         @include('partials.tailwind_alert')
 
          <!-- Registration Card -->
          <div
@@ -70,7 +71,6 @@
 
              <!-- Form Container -->
              <div class="px-6 pb-6 pt-4">
-                 @include('partials.tailwind_alert')
                  <form action="{{ route('register') }}" method="post" id="registration-form">
                      @csrf
                      <!-- Step 1: Personal Information -->

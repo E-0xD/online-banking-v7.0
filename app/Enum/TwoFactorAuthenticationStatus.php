@@ -26,8 +26,8 @@ enum TwoFactorAuthenticationStatus: int
     public function checkBadge(): string
     {
         return match ($this) {
-            self::ENABLED => '<span class="badge bg-success me-3"> <i class="fa fa-check text-light"></i> On </span>',
-            self::DISABLED => '<span class="badge bg-danger me-3"> <i class="fa fa-times text-light"></i> Off </span>',
+            self::ENABLED => '<span class="badge bg-success me-3"> On </span>',
+            self::DISABLED => '<span class="badge bg-danger me-3"> Off </span>',
         };
     }
 }

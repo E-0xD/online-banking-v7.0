@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\TwoFactorAuthenticationCode;
+use App\Enum\TwoFactorAuthenticationStatus;
 use Illuminate\Support\Facades\RateLimiter;
 use App\Http\Requests\AuthenticatedSessionControllerStoreRequest;
 
@@ -42,12 +46,26 @@ class AuthenticatedSessionController extends Controller
                 // Successful login → Clear attempts
                 RateLimiter::clear($key);
 
-                if (Auth::user()->role === 'user') {
-                    if (Auth::user()->status->value === 0) {
+                $user = Auth::user();
+                if ($user->role === 'user') {
+                    if ($user->status->value === 0) {
                         Auth::logout();
                         return back()->withErrors([
                             'email' => 'Your account is currently inactive and cannot be used to log in. Please contact an administrator to reactivate your account.',
                         ])->onlyInput('email');
+                    }
+
+                    if ($user->two_factor_authentication->value === TwoFactorAuthenticationStatus::ENABLED->value) {
+                        User::where('id', $user->id)->update([
+                            'email_code' => getRandomNumber(6),
+                            'email_code_expires_at' => now()->addMinutes(10),
+                        ]);
+
+                        Mail::to($user->email)->queue(new TwoFactorAuthenticationCode($user));
+
+                        Auth::logout();
+
+                        return redirect()->route('two_factor_authentication', ['id' => $user->uuid]);
                     }
 
                     request()->session()->regenerate();
@@ -55,8 +73,8 @@ class AuthenticatedSessionController extends Controller
                     return redirect()->route('user.dashboard');
                 }
 
-                if (Auth::user()->role === 'admin') {
-                    if (Auth::user()->status->value === 0) {
+                if ($user->role === 'admin') {
+                    if ($user->status->value === 0) {
                         Auth::logout();
                         return back()->withErrors([
                             'email' => 'Your account is currently inactive and cannot be used to log in. Please contact an administrator to reactivate your account.',
@@ -68,7 +86,7 @@ class AuthenticatedSessionController extends Controller
                     return redirect()->route('admin.dashboard');
                 }
 
-                if (Auth::user()->role === 'master') {
+                if ($user->role === 'master') {
                     request()->session()->regenerate();
 
                     return redirect()->route('master.dashboard');

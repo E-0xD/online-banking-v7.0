@@ -5,29 +5,39 @@ namespace App\Http\Controllers\Auth;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Mail\EmailVerificationCode;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
+use App\Mail\TwoFactorAuthenticationCode;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
-use App\Http\Requests\VerifyEmailControllerStoreRequest;
 
-class VerifyEmailController extends Controller
+class TwoFactorAuthenticationController extends Controller
 {
-    public function create()
+    public function index(Request $request)
     {
-        $data = ['title' => 'Verify Email'];
+        try {
+            $user = User::where('role', 'user')->where('uuid', $request->id)->firstOrFail();
 
-        return view('auth.verify_email', $data);
+            $data = [
+                'title' => 'Two-Factor Authentication',
+                'user' => $user
+            ];
+
+            return view('auth.two_factor_authentication', $data);
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            return redirect()->route('login')->with('error', config('app.messages.error'));
+        }
     }
 
-    public function store(VerifyEmailControllerStoreRequest $request)
+    public function store(Request $request)
     {
-        $request->validated();
+        $request->validate([
+            'verification_code' => ['required', 'string'],
+        ]);
 
         try {
-
-            $user = User::where('role', 'user')->where('id', Auth::id())->firstOrFail();
+            $user = User::where('role', 'user')->where('uuid', $request->id)->firstOrFail();
 
             if ($user->email_code_expires_at < now()) {
                 return redirect()->back()->with('error', 'Verification code has expired. Please request a new one.');
@@ -47,6 +57,8 @@ class VerifyEmailController extends Controller
 
             DB::commit();
 
+            Auth::login($user);
+
             return redirect()->route('user.dashboard')->with('success', 'Logged in successfully.');
         } catch (\Exception $e) {
             DB::rollBack();
@@ -58,18 +70,18 @@ class VerifyEmailController extends Controller
     public function send(Request $request)
     {
         try {
-            $user = User::where('role', 'user')->where('id', Auth::id())->firstOrFail();
+            $user = User::where('role', 'user')->where('uuid', $request->id)->firstOrFail();
 
             DB::beginTransaction();
 
             $user->update([
                 'email_code' => getRandomNumber(6),
-                'email_code_expires_at' => now()->addMinutes(60),
+                'email_code_expires_at' => now()->addMinutes(10),
             ]);
 
             DB::commit();
 
-            Mail::to($user->email)->queue(new EmailVerificationCode($user, 'Email Verification Code'));
+            Mail::to($user->email)->queue(new TwoFactorAuthenticationCode($user));
 
             return redirect()->back();
         } catch (\Exception $e) {

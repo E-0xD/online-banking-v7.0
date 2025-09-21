@@ -16,6 +16,7 @@
          </div>
 
          <!-- Enhanced Alerts -->
+         @include('partials.tailwind_alert')
 
          <!-- Enhanced Password Reset Card -->
          <div
@@ -32,7 +33,6 @@
 
              <!-- Password Reset Form -->
              <div class="px-6 pb-6 pt-4">
-                 @include('partials.tailwind_alert')
                  <form method="POST" action="{{ route('password.email') }}" class="space-y-4">
                      @csrf
                      <!-- Email Field -->
