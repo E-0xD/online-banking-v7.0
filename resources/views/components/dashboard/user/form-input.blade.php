@@ -18,7 +18,7 @@
 
      @if ($type === 'textarea')
          <textarea id="{{ $id ?? $name }}" name="{{ $name }}" class="form-control @error($name) is-invalid @enderror"
-             {{ $readonly ? 'readonly' : '' }} {{ $required ? 'required' : '' }} placeholder="{{ $placeholder }}">{{ old($name, $value) }}</textarea>
+             {{ $readonly ? 'readonly' : '' }} {{ $required ? 'required' : '' }} placeholder="{{ $placeholder }}" cols="30" rows="5">{{ old($name, $value) }}</textarea>
      @else
          <input type="{{ $type }}" id="{{ $id ?? $name }}" name="{{ $name }}"
              placeholder="{{ $placeholder }}" class="form-control @error($name) is-invalid @enderror"

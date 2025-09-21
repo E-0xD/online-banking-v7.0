@@ -1,9 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Dashboard\User\ProfileController;
-use App\Http\Controllers\Dashboard\User\DashboardController;
 use App\Http\Controllers\Dashboard\User\KycController;
+use App\Http\Controllers\Dashboard\User\ProfileController;
+use App\Http\Controllers\Dashboard\User\SupportController;
+use App\Http\Controllers\Dashboard\User\DashboardController;
 
 Route::middleware('user')->prefix('user')->group(function () {
     Route::get('/dashboard', DashboardController::class)->name('user.dashboard');
@@ -27,4 +28,8 @@ Route::middleware('user')->prefix('user')->group(function () {
     Route::get('/kyc', [KycController::class, 'index'])->name('user.kyc.index');
     Route::get('/kyc/form', [KycController::class, 'create'])->name('user.kyc.form');
     Route::post('/kyc/store', [KycController::class, 'store'])->name('user.kyc.store');
+
+    // Support Controller
+    ROute::get('/support', [SupportController::class, 'index'])->name('user.support.index');
+    ROute::post('/support/store', [SupportController::class, 'store'])->name('user.support.store');
 });

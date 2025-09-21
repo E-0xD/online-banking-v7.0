@@ -30,9 +30,9 @@
         </div>
 
         <!-- Button -->
-        <button class="btn btn-primary w-100 mb-2">
+        <a href="{{ route('user.support.index') }}" class="btn btn-primary w-100 mb-2">
             <i class="bi bi-chat-dots-fill me-1"></i> Start Live Chat
-        </button>
+        </a>
 
         <!-- Footer text -->
         <small class="text-muted">

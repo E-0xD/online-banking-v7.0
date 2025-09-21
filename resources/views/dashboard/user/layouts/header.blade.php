@@ -67,7 +67,7 @@
                         </a>
 
                         <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item">
+                        <a href="{{ route('user.support.index') }}" class="dropdown-item">
                             <i class="ti ti-help me-1 fs-17 align-middle"></i>
                             <span class="align-middle">Help & Support</span>
                         </a>

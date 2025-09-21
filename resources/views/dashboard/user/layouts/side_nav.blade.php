@@ -107,7 +107,7 @@
             </li>
 
             <li class="side-nav-item">
-                <a href="#" class="side-nav-link">
+                <a href="{{ route('user.support.index') }}" class="side-nav-link">
                     <span class="menu-icon"><i class="ti ti-help-circle"></i></span>
                     <span class="menu-text">Support</span>
                 </a>

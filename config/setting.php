@@ -426,5 +426,25 @@ return  [
         'Pending',
         'Approved',
         'Rejected'
+    ],
+    'supportStatuses' => [
+        'New',
+        'Open',
+        'In Progress',
+        'Pending Customer',
+        'Escalated',
+        'Resolved',
+        'Closed',
+        // Optional / Advanced States for Banks
+        'Awaiting Third Party',
+        'Scheduled / Deferred',
+        'Cancelled',
+        'Duplicate / Merged',
+        'Under Review',
+    ],
+    'priorities' => [
+        'Low Priority',
+        'Medium Priority',
+        'High Priority',
     ]
 ];

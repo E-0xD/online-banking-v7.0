@@ -63,7 +63,7 @@
                         <div class="mt-3">
                             <h4 class="fs-15">Account Details :</h4>
                             <p class="mb-0 text-muted fs-14 mt-2">Account Type: {{ $user->account_type }},
-                                Professional Status: {{ $user->employment }}</p>
+                                Employment Type: {{ $user->employment }}</p>
                         </div>
                     </div>
                     <div class="card-footer border-top border-dashed">
