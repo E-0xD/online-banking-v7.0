@@ -417,9 +417,14 @@ return  [
         "$300,000.00 - $1,000,000.00"
     ],
     'documentTypes' => [
-        'Passport',
+        'International Passport',
         'National ID',
         'Driver License',
         'Other'
+    ],
+    'kyc' => [
+        'Pending',
+        'Approved',
+        'Rejected'
     ]
 ];

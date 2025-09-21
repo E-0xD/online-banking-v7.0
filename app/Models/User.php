@@ -48,4 +48,20 @@ class User extends Authenticatable
             'two_factor_authentication' => TwoFactorAuthenticationStatus::class
         ];
     }
+
+    public function hasPendingKYC(): bool
+    {
+        if ($this->document_type && $this->front_side && $this->back_side && $this->kyc === 'Pending') {
+            return true;
+        }
+        return false;
+    }
+
+    public function hasApprovedKYC(): bool
+    {
+        if ($this->document_type && $this->front_side && $this->back_side && $this->kyc === 'Approved') {
+            return true;
+        }
+        return false;
+    }
 }

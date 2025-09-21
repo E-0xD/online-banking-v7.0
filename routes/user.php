@@ -26,5 +26,5 @@ Route::middleware('user')->prefix('user')->group(function () {
     // KYC Controller
     Route::get('/kyc', [KycController::class, 'index'])->name('user.kyc.index');
     Route::get('/kyc/form', [KycController::class, 'create'])->name('user.kyc.form');
-    Route::post('/kyc', [KycController::class, 'store']);
+    Route::post('/kyc/store', [KycController::class, 'store'])->name('user.kyc.store');
 });

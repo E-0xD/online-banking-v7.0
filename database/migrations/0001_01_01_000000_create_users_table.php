@@ -61,7 +61,7 @@ return new class extends Migration
             $table->string('password');
 
             $table->boolean('two_factor_authentication')->default(0);
-            $table->boolean('kyc')->default(0);
+            $table->enum('kyc', config('setting.kyc'))->default('pending');
             $table->enum('document_type', config('setting.documentTypes'))->nullable();
             $table->string('front_side')->nullable();
             $table->string('back_side')->nullable();

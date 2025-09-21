@@ -22,7 +22,7 @@
                     </div>
                 </div>
 
-                <form action="" method="post" enctype="multipart/form-data">
+                <form action="{{ route('user.kyc.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
 
                     <x-dashboard.user.card>
@@ -164,9 +164,24 @@
                     </x-dashboard.user.card>
 
                     <div class="card">
-                        <div class="card-header border-bottom border-dashed">
-                            <x-dashboard.user.form-button class="btn btn-primary w-100"
-                                icon="fa-solid fa-check-circle me-2" name="Submit Application" />
+                        <div class="card-body">
+
+                            @if ($user->hasPendingKYC())
+                                <div class="alert alert-warning d-flex align-items-start p-3 rounded">
+                                    <i class="fa-solid fa-exclamation-triangle text-warning me-2 mt-1"></i>
+                                    <div>
+                                        {{-- <h6 class="fw-semibold mb-1">Security Reminder</h6> --}}
+                                        <p class="mb-0 small">
+                                            Your previous application is under review, please wait.
+                                        </p>
+                                    </div>
+                                </div>
+                            @endif
+
+                            @if (!$user->hasPendingKYC())
+                                <x-dashboard.user.form-button class="btn btn-primary w-100"
+                                    icon="fa-solid fa-check-circle me-2" name="Submit Application" />
+                            @endif
                         </div>
                     </div>
 
