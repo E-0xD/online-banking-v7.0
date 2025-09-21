@@ -16,7 +16,7 @@
 
      @if ($type === 'select')
          <select id="{{ $id ?? $name }}" name="{{ $name }}"
-             class="form-control @error($name) is-invalid @enderror">
+             class="form-select @error($name) is-invalid @enderror">
              <option value="">-- Select {{ $label }} --</option>
              @foreach ($options as $option)
                  <option value="{{ $option }}" {{ old($name, $value) == $option ? 'selected' : '' }}>
@@ -26,7 +26,7 @@
          </select>
      @elseif($type === 'currencies')
          <select id="{{ $id ?? $name }}" name="{{ $name }}"
-             class="form-control @error($name) is-invalid @enderror">
+             class="form-select @error($name) is-invalid @enderror">
              <option value="">-- Select {{ $label }} --</option>
              @foreach ($currencies as $currency)
                  <option value="{{ $currency['name'] }}-{{ $currency['code'] }}-{{ $currency['symbol'] }}"
@@ -36,7 +36,7 @@
          </select>
      @elseif($type === 'selectKeyValuePair')
          <select id="{{ $id ?? $name }}" name="{{ $name }}"
-             class="form-control @error($name) is-invalid @enderror">
+             class="form-select @error($name) is-invalid @enderror">
              <option value="">-- Select {{ $label }} --</option>
              @foreach ($options as $key => $value)
                  <option value="{{ $key }}" {{ old($name, $value) == $key ? 'selected' : '' }}>
