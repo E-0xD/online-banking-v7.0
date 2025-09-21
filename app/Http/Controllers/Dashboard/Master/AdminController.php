@@ -44,13 +44,10 @@ class AdminController extends Controller
 
         $admin = User::where('uuid', $uuid)->first();
 
-        $qrCode = QrCode::size(200)->generate('bitcoin:' . $admin->btc_address);
-
         $data = [
             'title' => 'Admin Details',
             'breadcrumbs' => $breadcrumbs,
             'admin' => $admin,
-            'qrCode' => $qrCode
         ];
 
         return view('dashboard.master.admin.show', $data);
@@ -65,13 +62,10 @@ class AdminController extends Controller
 
         $admin = User::where('uuid', $uuid)->first();
 
-        $qrCode = QrCode::size(200)->generate('bitcoin:' . $admin->btc_address);
-
         $data = [
             'title' => 'Edit Admin',
             'breadcrumbs' => $breadcrumbs,
             'admin' => $admin,
-            'qrCode' => $qrCode
         ];
 
         return view('dashboard.master.admin.edit', $data);
@@ -92,8 +86,6 @@ class AdminController extends Controller
             $admin->name = $request->name;
             $admin->email = $request->email;
             $admin->status = $request->status;
-            $admin->btc_address = $request->btc_address;
-            $admin->btc_qr_code = $this->imageInterventionUpdateFile($request, 'btc_qr_code', '/uploads/dashboard/admin/profile/btc_qr_code/', 600, 600, $admin?->btc_qr_code);
 
             if ($request->password) {
                 $admin->password = Hash::make($request->password);

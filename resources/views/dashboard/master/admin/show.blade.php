@@ -18,15 +18,6 @@
                     <x-dashboard.master.details-list :options="[
                         'Name' => $admin->name,
                         'Email' => $admin->email,
-                        'BTC Address' => $admin->btc_address ?? 'N/A',
-                        'image' => [
-                            'label' => 'BTC QR Code',
-                            'src' => $admin->btc_qr_code,
-                            'alt' => 'BTC QR Code',
-                            'class' => 'img-thumbnail',
-                            'width' => '200',
-                            'qrCode' => $qrCode,
-                        ],
                         'badge' => [
                             'label' => 'Status',
                             'value' => $admin->status->label(),

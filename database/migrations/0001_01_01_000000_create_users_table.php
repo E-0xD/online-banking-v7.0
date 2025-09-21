@@ -29,50 +29,42 @@ return new class extends Migration
 
             $table->string('country')->nullable();
             $table->string('address')->nullable();
+            $table->string('city')->nullable();
             $table->string('state')->nullable();
+            $table->string('zip_code')->nullable();
 
+            $table->enum('title', config('setting.titles'))->nullable();
             $table->date('dob')->nullable();
-
-            $table->enum('gender', [
-                'male',
-                'female',
-                'other'
-            ])->nullable();
-
-            $table->enum('marital_status', [
-                'Single',
-                'Married',
-                'Separated',
-                'Divorced',
-                'Widowed'
-            ])->nullable();
-
-            $table->string('professional_status')->nullable();
+            $table->enum('gender', config('setting.genders'))->nullable();
+            $table->enum('marital_status', config('setting.maritalStatus'))->nullable();
+            $table->enum('employment', config('setting.employments'))->nullable();
 
             $table->string('currency')->nullable();
-
-            $table->enum('account_type', [
-                'Checking Account',
-                'Savings Account',
-                'Fixed Deposit Account',
-                'Current Account',
-                'Business Account',
-                'Investment Account'
-            ])->nullable();
+            $table->enum('account_type', config('setting.accountTypes'))->nullable();
 
             $table->string('transaction_pin')->nullable();
-
             $table->string('account_number')->nullable();
             $table->decimal('account_balance', 15, 2)->default(0.00);
+
+            $table->string('security_number')->nullable();
+            $table->string('salary_range')->nullable();
+
+            $table->string('next_of_kin_name')->nullable();
+            $table->string('next_of_kin_address')->nullable();
+            $table->string('next_of_kin_relationship')->nullable();
+            $table->string('next_of_kin_age')->nullable();
+            $table->string('next_of_kin_phone')->nullable();
+            $table->string('next_of_kin_email')->nullable();
 
             $table->string('image')->nullable();
 
             $table->string('password');
 
-            $table->string('btc_address')->nullable();
-            $table->string('btc_qr_code')->nullable();
-
             $table->boolean('two_factor_authentication')->default(0);
+            $table->boolean('kyc')->default(0);
+            $table->enum('document_type', config('setting.documentTypes'))->nullable();
+            $table->string('front_side')->nullable();
+            $table->string('back_side')->nullable();
 
             $table->boolean('status')->default(1);
 

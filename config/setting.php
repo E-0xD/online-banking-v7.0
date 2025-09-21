@@ -372,5 +372,54 @@ return  [
         'Current Account',
         'Business Account',
         'Investment Account',
+    ],
+    'titles' => [
+        'Mr',
+        'Mrs',
+        'Mr & Mrs',
+        'Miss',
+        'Ms',
+        'Dr',
+        'Prof'
+    ],
+    'genders' => [
+        'Male',
+        'Female',
+        'Other'
+    ],
+    'maritalStatus' => [
+        'Single',
+        'Married',
+        'Separated',
+        'Divorced',
+        'Widowed'
+    ],
+    'employments' => [
+        'Self Employed',
+        'Public/Government Office',
+        'Private/Partnership Office',
+        'Business/Sales',
+        'Trading/Market',
+        'Military/Paramilitary',
+        'Politician/Celebrity',
+    ],
+    'salaryRanges' => [
+        "$100.00 - $500.00",
+        "$700.00 - $1,000.00",
+        "$1,000.00 - $2,000.00",
+        "$2,000.00 - $5,000.00",
+        "$5,000.00 - $10,000.00",
+        "$15,000.00 - $20,000.00",
+        "$25,000.00 - $30,000.00",
+        "$30,000.00 - $70,000.00",
+        "$80,000.00 - $140,000.00",
+        "$150,000.00 - $300,000.00",
+        "$300,000.00 - $1,000,000.00"
+    ],
+    'documentTypes' => [
+        'Passport',
+        'National ID',
+        'Driver License',
+        'Other'
     ]
 ];

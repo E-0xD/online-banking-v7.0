@@ -1,8 +1,9 @@
  @props([
      'header' => null,
      'footer' => null,
+     'style' => null,
  ])
- <div class="card">
+ <div class="card" style="{{ $style }}">
      @if ($header)
          <div class="card-header border-bottom border-dashed">
              <h4 class="card-title mb-0">{{ $header }}</h4>

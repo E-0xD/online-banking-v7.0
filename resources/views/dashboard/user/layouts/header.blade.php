@@ -48,7 +48,7 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-end">
                         <!-- item-->
-                        <a href="{{ route('user.profile.index') }}" class="dropdown-item">
+                        <a href="{{ route('user.kyc.index') }}" class="dropdown-item">
                             <i class="ti ti-id me-1 fs-17 align-middle"></i>
                             <span class="align-middle">Verify KYC</span>
                         </a>

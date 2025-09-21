@@ -16,8 +16,7 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        <form action="{{ route('master.admin.update', $admin->uuid) }}" method="post"
-                            enctype="multipart/form-data">
+                        <form action="{{ route('master.admin.update', $admin->uuid) }}" method="post">
                             @csrf
                             @method('PUT')
                             <div class="row">
@@ -41,22 +40,6 @@
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
                                 </div>
-
-                                <x-dashboard.master.form-input name="btc_address" label="BTC Address"
-                                    value="{{ $admin->btc_address }}" />
-
-                                <x-dashboard.master.form-input name="btc_qr_code" label="BTC QR Code" type="file" />
-
-                                @if ($admin->btc_qr_code)
-                                    <div class="mb-3">
-                                        <img src="{{ asset($admin->btc_qr_code) }}" alt="BTC QR Code" class="img-thumbnail"
-                                            width="200">
-                                    </div>
-                                @else
-                                    <div class="mb-3">
-                                        {{ @$qrCode }}
-                                    </div>
-                                @endif
 
                                 <x-dashboard.master.submit-and-back-button href="{{ route('master.admin.index') }}" />
 

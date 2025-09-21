@@ -37,49 +37,21 @@ class UserFactory extends Factory
 
             'country' => fake()->country(),
             'address' => fake()->address(),
+            'city' => fake()->city(),
             'state' => fake()->state(),
+            'zip_code' => fake()->postcode(),
 
             'dob' => fake()->dateTimeBetween('-18 years', 'now'),
 
-            'gender' => fake()->randomElement([
-                'male',
-                'female',
-                'other'
-            ]),
+            'gender' => fake()->randomElement(config('setting.genders')),
 
-            'marital_status' => fake()->randomElement([
-                'Single',
-                'Married',
-                'Separated',
-                'Divorced',
-                'Widowed'
-            ]),
+            'marital_status' => fake()->randomElement(config('setting.maritalStatus')),
 
-            'professional_status' => fake()->randomElement([
-                'employed',
-                'unemployed',
-                'self-employed',
-                'freelancer',
-                'business owner',
-                'entrepreneur',
-                'student',
-                'intern',
-                'retired',
-                'homemaker',
-                'disabled',
-                'unpaid family worker'
-            ]),
+            'employment' => fake()->randomElement(config('setting.employments')),
 
             'currency' => 'United State Dollar-USD-$',
 
-            'account_type' => fake()->randomElement([
-                'Checking Account',
-                'Savings Account',
-                'Fixed Deposit Account',
-                'Current Account',
-                'Business Account',
-                'Investment Account'
-            ]),
+            'account_type' => fake()->randomElement(config('setting.accountTypes')),
 
             'transaction_pin' => fake()->numberBetween(1000, 9999),
             'account_number' => fake()->unique()->numberBetween(1000000000, 9999999999),
