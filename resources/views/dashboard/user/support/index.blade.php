@@ -44,7 +44,7 @@
                             'Our support team typically responds within 24 hours. For urgent matters please select High Priority and we\'ll do our best to assist you sooner.',
                         ]" />
 
-                        <x-dashboard.user.form-button name="Submit Ticket" icon="fa-solid fa-paper-plane me-2"
+                        <x-dashboard.user.form-button name="Submit Ticket" icon="fa-solid fa-paper-plane me-1"
                             class="btn btn-primary w-100" />
 
                         {{-- Body End --}}
@@ -70,7 +70,7 @@
                                 <h2 class="accordion-header">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#faq1">
-                                        <i class="fa-solid fa-paper-plane me-2 text-secondary"></i> How to make a transfer?
+                                        <i class="fa-solid fa-paper-plane me-1 text-secondary"></i> How to make a transfer?
                                     </button>
                                 </h2>
                                 <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
@@ -85,7 +85,7 @@
                                 <h2 class="accordion-header">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#faq2">
-                                        <i class="fa-solid fa-credit-card me-2 text-secondary"></i> How to apply for a card?
+                                        <i class="fa-solid fa-credit-card me-1 text-secondary"></i> How to apply for a card?
                                     </button>
                                 </h2>
                                 <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
@@ -100,7 +100,7 @@
                                 <h2 class="accordion-header">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#faq3">
-                                        <i class="fa-solid fa-wallet me-2 text-secondary"></i> How to check my balance?
+                                        <i class="fa-solid fa-wallet me-1 text-secondary"></i> How to check my balance?
                                     </button>
                                 </h2>
                                 <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
@@ -115,7 +115,7 @@
                                 <h2 class="accordion-header">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#faq4">
-                                        <i class="fa-solid fa-shield me-2 text-secondary"></i> How to enable 2FA?
+                                        <i class="fa-solid fa-shield me-1 text-secondary"></i> How to enable 2FA?
                                     </button>
                                 </h2>
                                 <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
@@ -130,7 +130,7 @@
                                 <h2 class="accordion-header">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#faq5">
-                                        <i class="fa-solid fa-plus me-2 text-secondary"></i> How to deposit funds?
+                                        <i class="fa-solid fa-plus me-1 text-secondary"></i> How to deposit funds?
                                     </button>
                                 </h2>
                                 <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
@@ -145,7 +145,7 @@
                                 <h2 class="accordion-header">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#faq6">
-                                        <i class="fa-solid fa-chart-line me-2 text-secondary"></i> How to track
+                                        <i class="fa-solid fa-chart-line me-1 text-secondary"></i> How to track
                                         transactions?
                                     </button>
                                 </h2>

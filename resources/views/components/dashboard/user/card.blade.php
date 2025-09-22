@@ -3,9 +3,9 @@
      'footer' => null,
      'style' => null,
  ])
- <div class="card border-0 rounded-4 shadow mx-auto" style="{{ $style }}">
+ <div class="card" style="{{ $style }}">
      @if ($header)
-         <div class="card-header border-bottom border-dashed">
+         <div class="card-header border-bottom">
              <h4 class="card-title mb-0">{{ $header }}</h4>
          </div>
      @endif
@@ -15,7 +15,7 @@
      </div>
 
      @if ($footer)
-         <div class="card-footer border-top border-dashed">
+         <div class="card-footer border-top">
              {{ $footer }}
          </div>
      @endif

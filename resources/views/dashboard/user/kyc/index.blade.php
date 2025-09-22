@@ -213,12 +213,12 @@
                     </x-dashboard.user.card>
                     @slot('footer')
                         <a href="{{ route('user.kyc.form') }}" class="btn btn-primary"><i
-                                class="fa-solid fa-check-circle me-2"></i> I Accept &
+                                class="fa-solid fa-check-circle me-1"></i> I Accept &
                             Proceed to
                             Verification</a>
 
                         <a href="{{ route('user.dashboard') }}" class="btn btn-danger"><i
-                                class="fa-solid fa-xmark-circle me-2"></i> Decline</a>
+                                class="fa-solid fa-xmark-circle me-1"></i> Decline</a>
                     @endslot
                 </x-dashboard.user.card>
 

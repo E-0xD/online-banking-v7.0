@@ -1,4 +1,4 @@
-<div class="card text-center border-0 rounded-4 shadow mx-auto">
+<div class="card text-center mx-auto">
     <div class="card-body">
         <!-- Icon -->
         <div class="bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3"

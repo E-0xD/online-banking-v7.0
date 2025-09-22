@@ -5,6 +5,7 @@ use App\Http\Controllers\Dashboard\User\KycController;
 use App\Http\Controllers\Dashboard\User\ProfileController;
 use App\Http\Controllers\Dashboard\User\SupportController;
 use App\Http\Controllers\Dashboard\User\DashboardController;
+use App\Http\Controllers\Dashboard\User\NotificationController;
 
 Route::middleware('user')->prefix('user')->group(function () {
     Route::get('/dashboard', DashboardController::class)->name('user.dashboard');
@@ -30,6 +31,11 @@ Route::middleware('user')->prefix('user')->group(function () {
     Route::post('/kyc/store', [KycController::class, 'store'])->name('user.kyc.store');
 
     // Support Controller
-    ROute::get('/support', [SupportController::class, 'index'])->name('user.support.index');
+    Route::get('/support', [SupportController::class, 'index'])->name('user.support.index');
     ROute::post('/support/store', [SupportController::class, 'store'])->name('user.support.store');
+
+    // Notification Controller
+    Route::get('/notification', [NotificationController::class, 'index'])->name('user.notification.index');
+    Route::get('/notification/{notification}', [NotificationController::class, 'show'])->name('user.notification.show');
+    Route::get('/notification/read/{notification}', [NotificationController::class, 'read'])->name('user.notification.read');
 });

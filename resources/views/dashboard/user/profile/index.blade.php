@@ -68,20 +68,20 @@
                     </div>
                     <div class="card-footer border-top border-dashed">
                         <a href="{{ route('user.profile.change_image') }}" class="btn btn-primary w-100 mb-2">
-                            <i class="ti ti-photo fs-20"></i> Change Image
+                            <i class="ti ti-photo me-1"></i> Change Image
                         </a>
 
                         <a href="{{ route('user.profile.change_password') }}" class="btn btn-primary w-100 mb-2">
-                            <i class="ti ti-lock fs-20"></i> Password Settings
+                            <i class="ti ti-lock me-1"></i> Password Settings
                         </a>
 
                         <a href="{{ route('user.profile.two_factor_authentication') }}" class="btn btn-primary w-100 mb-2">
-                            <i class="ti ti-shield-lock fs-20"></i> Two-Factor Authentication
+                            <i class="ti ti-shield-lock me-1"></i> Two-Factor Authentication
                             {!! $user->two_factor_authentication->checkBadge() !!}
                         </a>
 
                         <a href="{{ route('user.profile.change_transaction_pin') }}" class="btn btn-primary w-100 mb-2">
-                            <i class="ti ti-key fs-20"></i> Transaction PIN
+                            <i class="ti ti-key me-1"></i> Transaction PIN
                         </a>
 
                     </div>

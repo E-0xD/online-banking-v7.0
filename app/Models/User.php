@@ -64,4 +64,14 @@ class User extends Authenticatable
         }
         return false;
     }
+
+    public function support()
+    {
+        return $this->hasMany(Support::class);
+    }
+
+    public function notification()
+    {
+        return $this->hasMany(Notification::class);
+    }
 }

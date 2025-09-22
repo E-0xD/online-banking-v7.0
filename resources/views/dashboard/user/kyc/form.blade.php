@@ -166,8 +166,7 @@
                         @endif
 
                         @if (!$user->hasPendingKYC())
-                            <x-dashboard.user.form-button class="btn btn-primary w-100"
-                                icon="fa-solid fa-check-circle me-2" name="Submit Application" />
+                            <x-dashboard.user.form-button class="btn btn-primary w-100" name="Submit Application" />
                         @endif
                     </x-dashboard.user.card>
 
