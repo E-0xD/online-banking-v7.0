@@ -59,7 +59,7 @@ class ProfileController extends Controller
 
             $user = User::where('role', 'user')->where('id', Auth::id())->firstOrFail();
 
-            $user->image = $this->imageInterventionUpdateFile($request, 'image', '/uploads/dashboard/user/image/', 400, 400, $user?->image);;
+            $user->image = $this->imageInterventionUpdateFile($request, 'image', '/uploads/dashboard/user/image/', 400, 400, $user?->image);
             $user->save();
 
             DB::commit();

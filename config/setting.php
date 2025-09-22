@@ -446,5 +446,15 @@ return  [
         'Low Priority',
         'Medium Priority',
         'High Priority',
+    ],
+    'accountStates' => [
+        'Active',
+        'Disabled',
+        'Kyc',
+        'Frozen'
+    ],
+    'userStatuses' => [
+        1 => 'Active',
+        0 => 'Inactive'
     ]
 ];

@@ -27,6 +27,13 @@
                     <span class="menu-text"> Dashboard </span>
                 </a>
             </li>
+
+            <li class="side-nav-item">
+                <a href="{{ route('admin.user.index') }}" class="side-nav-link">
+                    <span class="menu-icon"><i class="ti ti-users"></i></span>
+                    <span class="menu-text"> Users </span>
+                </a>
+            </li>
         </ul>
     </div>
 </div>

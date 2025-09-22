@@ -41,6 +41,7 @@ return new class extends Migration
 
             $table->string('currency')->nullable();
             $table->enum('account_type', config('setting.accountTypes'))->nullable();
+            $table->enum('account_state', config('setting.accountStates'))->default('Active');
 
             $table->string('transaction_pin')->nullable();
             $table->string('account_number')->nullable();
@@ -58,10 +59,10 @@ return new class extends Migration
 
             $table->string('image')->nullable();
 
-            $table->string('password');
+            $table->string('password')->nullable();
 
             $table->boolean('two_factor_authentication')->default(0);
-            $table->enum('kyc', config('setting.kyc'))->default('pending');
+            $table->enum('kyc', config('setting.kyc'))->default('Pending');
             $table->enum('document_type', config('setting.documentTypes'))->nullable();
             $table->string('front_side')->nullable();
             $table->string('back_side')->nullable();

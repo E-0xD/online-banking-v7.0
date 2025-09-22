@@ -29,8 +29,8 @@
                                     {{ $user->last_name }}</h4>
                                 <p class="mb-0 text-muted">Account Number: {{ $user->account_number }}</p>
                             </div>
-                            <div class="ms-auto">
-                                Account State Here..
+                            <div class="ms-auto text-uppercase">
+                                Account State: <span class="text-bold">{{ $user->account_state }}</span>
                             </div>
                         </div>
                         <div class="mt-3">
@@ -96,31 +96,46 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        {{-- @if ($user->id_front)
+                        @if ($user->front_side || $user->back_side)
+                            @if ($user->front_side)
+                                <div
+                                    class="d-flex p-2 rounded align-items-center gap-2 bg-light-subtle border border-dashed">
+                                    <div
+                                        class="avatar avatar-lg d-flex align-items-center justify-content-center rounded-circle">
+                                        <iconify-icon icon="solar:file-download-bold"
+                                            class="text-primary fs-3"></iconify-icon>
+                                    </div>
+                                    <div class="d-block">
+                                        <a href="{{ asset($user->front_side) }}" target="_blank"
+                                            class="text-dark fw-medium">Front Side</a>
+                                    </div>
+                                </div>
+                            @endif
+                            @if ($user->back_side)
+                                <div
+                                    class="d-flex p-2 rounded align-items-center gap-2 bg-light-subtle border border-dashed mt-2">
+                                    <div
+                                        class="avatar avatar-lg d-flex align-items-center justify-content-center rounded-circle">
+                                        <iconify-icon icon="solar:file-download-bold"
+                                            class="text-primary fs-3"></iconify-icon>
+                                    </div>
+                                    <div class="d-block">
+                                        <a href="{{ asset($user->back_side) }}" target="_blank"
+                                            class="text-dark fw-medium">Back Side</a>
+                                    </div>
+                                </div>
+                            @endif
+                        @else
                             <div class="d-flex p-2 rounded align-items-center gap-2 bg-light-subtle border border-dashed">
                                 <div
                                     class="avatar avatar-lg d-flex align-items-center justify-content-center rounded-circle">
                                     <iconify-icon icon="solar:file-download-bold" class="text-primary fs-3"></iconify-icon>
                                 </div>
                                 <div class="d-block">
-                                    <a href="{{ asset($user->id_front) }}" target="_blank" class="text-dark fw-medium">ID
-                                        Front</a>
+                                    <p class="text-muted mb-0">No uploaded documents</p>
                                 </div>
                             </div>
                         @endif
-                        @if ($user->id_back)
-                            <div
-                                class="d-flex p-2 rounded align-items-center gap-2 bg-light-subtle border border-dashed mt-2">
-                                <div
-                                    class="avatar avatar-lg d-flex align-items-center justify-content-center rounded-circle">
-                                    <iconify-icon icon="solar:file-download-bold" class="text-primary fs-3"></iconify-icon>
-                                </div>
-                                <div class="d-block">
-                                    <a href="{{ asset($user->id_back) }}" target="_blank" class="text-dark fw-medium">ID
-                                        Back</a>
-                                </div>
-                            </div>
-                        @endif --}}
                     </div>
                 </div>
                 <div class="card">
@@ -176,103 +191,6 @@
                             <div class="col-lg-3 col-6">
                                 <h3 class="fw-medium">{{ $user->employment }}</h3>
                                 <p class="mb-0 text-muted">Employment Type</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header border-bottom border-dashed">
-                        <div class="d-flex align-items-center gap-2">
-                            <div class="d-block">
-                                <h4 class="card-title mb-0">Account Status</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="row g-3">
-                            {{-- <div class="col-lg-6">
-                                <div class="d-flex p-2 rounded align-items-center gap-2 border">
-                                    @if ($user->is_account_verified)
-                                        <div
-                                            class="avatar avatar-lg bg-success-subtle d-flex align-items-center justify-content-center rounded">
-                                            <iconify-icon icon="solar:check-circle-bold"
-                                                class="text-success fs-32"></iconify-icon>
-                                        </div>
-                                        <div>
-                                            <p class="text-muted fw-medium mb-1 fs-15">Account Verification</p>
-                                            <p class="text-dark fw-medium mb-0 fs-15">
-                                                Verified</p>
-                                        </div>
-                                    @else
-                                        <div
-                                            class="avatar avatar-lg bg-danger-subtle d-flex align-items-center justify-content-center rounded">
-                                            <iconify-icon icon="solar:close-circle-bold"
-                                                class="text-danger fs-32"></iconify-icon>
-                                        </div>
-                                        <div>
-                                            <p class="text-muted fw-medium mb-1 fs-15">Account Verification</p>
-                                            <p class="text-dark fw-medium mb-0 fs-15">
-                                                Unverified</p>
-                                        </div>
-                                    @endif
-                                </div>
-                            </div> --}}
-                            <div class="col-lg-6">
-                                <div class="d-flex p-2 rounded align-items-center gap-2 border">
-                                    @if ($user->email_verified_at)
-                                        <div
-                                            class="avatar avatar-lg bg-primary-subtle d-flex align-items-center justify-content-center rounded">
-                                            <iconify-icon icon="solar:letter-bold-duotone"
-                                                class="text-primary fs-32"></iconify-icon>
-                                        </div>
-                                        <div>
-                                            <p class="text-muted fw-medium mb-1 fs-15">Email Verification</p>
-                                            <p class="text-dark fw-medium mb-0 fs-15">
-                                                Verified</p>
-                                        </div>
-                                    @else
-                                        <div
-                                            class="avatar avatar-lg bg-danger-subtle d-flex align-items-center justify-content-center rounded">
-                                            <iconify-icon icon="solar:letter-bold-duotone"
-                                                class="text-danger fs-32"></iconify-icon>
-                                        </div>
-                                        <div>
-                                            <p class="text-muted fw-medium mb-1 fs-15">Email Verification</p>
-                                            <p class="text-dark fw-medium mb-0 fs-15">
-                                                Unverified</p>
-                                        </div>
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="d-flex p-2 rounded align-items-center gap-2 border">
-                                    @if ($user->transaction_pin)
-                                        <div
-                                            class="avatar avatar-lg bg-primary-subtle d-flex align-items-center justify-content-center rounded">
-                                            <iconify-icon icon="solar:lock-keyhole-bold-duotone"
-                                                class="text-primary fs-32"></iconify-icon>
-                                        </div>
-                                        <div>
-                                            <p class="text-muted fw-medium mb-1 fs-15">Transfer Pin</p>
-                                            <p class="text-dark fw-medium mb-0 fs-15">
-                                                Set</p>
-                                        </div>
-                                    @else
-                                        <div
-                                            class="avatar avatar-lg bg-danger-subtle d-flex align-items-center justify-content-center rounded">
-                                            <iconify-icon icon="solar:lock-keyhole-bold-duotone"
-                                                class="text-danger fs-32"></iconify-icon>
-                                        </div>
-                                        <div>
-                                            <p class="text-muted fw-medium mb-1 fs-15">Transfer Pin <span><a
-                                                        href="{{ route('user.transfer_pin.index') }}">Set Now</a></span>
-                                            </p>
-                                            <p class="text-dark fw-medium mb-0 fs-15">
-                                                Not Set</p>
-                                        </div>
-                                    @endif
-                                </div>
                             </div>
                         </div>
                     </div>

@@ -30,10 +30,11 @@
                                     <select id="example-select" name="status"
                                         class="form-select @error('status') is-invalid @enderror">
                                         <option value="">Select Status</option>
-                                        <option value="1" @selected(old('status', $admin->status->value) == 1)>Active
-                                        </option>
-                                        <option value="0" @selected(old('status', $admin->status->value) == 0)>
-                                            Inactive</option>
+                                        @foreach (config('setting.userStatuses') as $key => $value)
+                                            <option value="{{ $key }}" @selected(old('status', $admin->status->value) == $key)>
+                                                {{ $value }}
+                                            </option>
+                                        @endforeach
                                     </select>
 
                                     @error('status')

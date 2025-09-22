@@ -122,7 +122,7 @@
                             <x-dashboard.user.form-input name="next_of_kin_relationship" label="Relationship"
                                 class="col-md-6 mb-3" value="{{ $user->next_of_kin_relationship }}" />
 
-                            <x-dashboard.user.form-input name="next_of_kin_age" label="Age" class="col-md-6 mb-3"
+                            <x-dashboard.user.form-input name="next_of_kin_age" label="Age" type="number" class="col-md-6 mb-3"
                                 value="{{ $user->next_of_kin_age }}" />
 
                             <x-dashboard.user.form-input name="next_of_kin_phone" label="Phone" class="col-md-6 mb-3"
