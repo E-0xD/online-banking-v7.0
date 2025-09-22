@@ -21,7 +21,8 @@
                          <span class="{{ $admin->status->badge() }}">{{ $admin->status->label() }}</span>
                      </td>
                      <td>
-                         <a href="{{ route('master.admin.edit', $admin->uuid) }}" class="btn btn-primary">Edit</a>
+                         <a href="{{ route('master.admin.edit', $admin->uuid) }}" class="btn btn-primary"> <i
+                                 class="ti ti-edit me-1"></i> Edit</a>
                      </td>
                  </tr>
              @endforeach

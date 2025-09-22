@@ -15,15 +15,18 @@
         <div class="row">
             <div class="col-lg-12">
                 <x-dashboard.master.card>
-                    <x-dashboard.master.details-list :options="[
-                        'Name' => $admin->name,
-                        'Email' => $admin->email,
-                        'badge' => [
-                            'label' => 'Status',
-                            'value' => $admin->status->label(),
-                            'badge' => $admin->status->badge(),
-                        ],
-                    ]" />
+                    <dl class="row">
+                        <dt class="col-sm-3">Name:</dt>
+                        <dd class="col-sm-9">{{ $admin->name }}</dd>
+
+                        <dt class="col-sm-3">Email:</dt>
+                        <dd class="col-sm-9">{{ $admin->email }}</dd>
+
+                        <dt class="col-sm-3">Status:</dt>
+                        <dd class="col-sm-9">
+                            <span class="{{ $admin->status->badge() }}">{{ $admin->status->label() }}</span>
+                        </dd>
+                    </dl>
                     <x-dashboard.master.back-button href="{{ route('master.admin.index') }}" />
                 </x-dashboard.master.card>
             </div>
