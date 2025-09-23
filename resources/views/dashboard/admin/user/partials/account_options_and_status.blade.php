@@ -17,11 +17,11 @@
                 <a class="dropdown-item" href="#">
                     <i class="fa-solid fa-history me-1"></i>Withdrawals
                 </a>
-                <a class="dropdown-item" href="#"> <i class="fa-solid fa-file-import me-1"></i>Loan
-                    Application</a>
+                <a class="dropdown-item" href="#"> <i class="fa-solid fa-file-import me-1"></i>Loan</a>
                 <a class="dropdown-item" href="#">
-                    <i class="fa-solid fa-credit-card me-1"></i>Card Application
-                </a>
+                    <i class="fa-solid fa-credit-card me-1"></i>Card</a>
+                <a class="dropdown-item" href="{{ route('admin.user.support.index', $user->uuid) }}">
+                    <i class="ti ti-help-circle me-1"></i>Support Ticket</a>
                 <a class="dropdown-item" href="{{ route('admin.user.notification.index', $user->uuid) }}">
                     <i class="fa-solid fa-bell me-1"></i>Notifications
                 </a>

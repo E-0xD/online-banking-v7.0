@@ -6,6 +6,7 @@ use App\Http\Controllers\Dashboard\Admin\DashboardController;
 use App\Http\Controllers\Dashboard\Admin\UserAccountStateController;
 use App\Http\Controllers\Dashboard\Admin\UserKycController;
 use App\Http\Controllers\Dashboard\Admin\UserNotificationController;
+use App\Http\Controllers\Dashboard\Admin\UserSupportController;
 
 Route::middleware('admin')->prefix('admin')->group(function () {
     Route::get('/dashboard', DashboardController::class)->name('admin.dashboard');
@@ -30,4 +31,10 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     Route::get('/user/{user}/notification/{notification}', [UserNotificationController::class, 'show'])->name('admin.user.notification.show');
     Route::delete('/user/{user}/notification/{notification}/delete', [UserNotificationController::class, 'delete'])->name('admin.user.notification.delete');
     Route::delete('/user/{user}/notification/delete/all', [UserNotificationController::class, 'deleteAll'])->name('admin.user.notification.delete_all');
+
+    // User Support Controller
+    Route::get('/user/{user}/support', [UserSupportController::class, 'index'])->name('admin.user.support.index');
+    Route::get('/user/{user}/support/{support}', [UserSupportController::class, 'show'])->name('admin.user.support.show');
+    Route::post('/user/{user}/support/{support}/store', [UserSupportController::class, 'store'])->name('admin.user.support.store');
+    Route::delete('/user/{user}/support/{support}/delete', [UserSupportController::class, 'delete'])->name('admin.user.support.delete');
 });
