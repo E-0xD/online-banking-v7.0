@@ -13,8 +13,9 @@
         </div>
 
         <div class="row">
+            @include('dashboard.admin.user.partials.account_options_and_status')
+
             <div class="col-lg-12">
-                @include('dashboard.admin.user.partials.account_options_and_status')
 
                 <x-dashboard.admin.card>
                     @slot('header')

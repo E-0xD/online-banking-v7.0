@@ -1,4 +1,4 @@
-@extends('dashboard.user.layouts.app')
+@extends('dashboard.admin.layouts.app')
 @section('content')
     <div class="page-container">
 
@@ -8,17 +8,31 @@
             </div>
 
             <div class="text-end">
-                <x-dashboard.user.breadcrumbs :breadcrumbs="$breadcrumbs" />
+                <x-dashboard.admin.breadcrumbs :breadcrumbs="$breadcrumbs" />
             </div>
         </div>
 
         <div class="row">
-            <div class="col-xl-12 col-lg-12">
-                <x-dashboard.user.card>
+            @include('dashboard.admin.user.partials.account_options_and_status')
 
+            <div class="col-lg-12">
+                <x-dashboard.admin.card>
                     @slot('header')
-                        <a onclick="return confirm('Are you sure?')" href="{{ route('user.notification.read_all') }}" class="btn btn-primary btn-sm"> <i
-                                class="fa-solid fa-eye me-1"></i> Read All</a>
+                        Manage All Users Notifications
+
+                        <div class="float-end">
+                            <a href="{{ route('admin.user.notification.create', $user->uuid) }}" type="button"
+                                class="btn btn-primary btn-sm m-1">
+                                <i class="ti ti-plus me-1"></i> New Notification
+                            </a>
+                            <form action="{{ route('admin.user.notification.delete_all', $user->uuid) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button onclick="return confirm('Are you sure?')" type="submit" class="btn btn-danger btn-sm m-1">
+                                    <i class="ti ti-trash me-1"></i> Delete All
+                                </button>
+                            </form>
+                        </div>
                     @endslot
 
                     <div class="table-responsive">
@@ -49,17 +63,31 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <a href="{{ route('user.notification.show', $notification->uuid) }}"
-                                                class="btn btn-warning btn-sm"> <i
-                                                    class="ti ti-eye me-1"></i> View</a>
+                                            <a href="{{ route('admin.user.notification.show', [$user->uuid, $notification->uuid]) }}"
+                                                class="btn btn-warning btn-sm m-1"> <i class="ti ti-eye me-1"></i>
+                                                View</a>
+
+                                            <form
+                                                action="{{ route('admin.user.notification.delete', [$user->uuid, $notification->uuid]) }}"
+                                                method="post">
+                                                @csrf
+                                                @method('DELETE')
+
+                                                <button type="submit" class="btn btn-danger btn-sm m-1"> <i
+                                                        class="ti ti-trash me-1"></i> Delete</button>
+                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
                     </div>
-                </x-dashboard.user.card>
+
+                </x-dashboard.admin.card>
             </div>
+            <!-- end col -->
         </div>
+        <!-- end row -->
+
     </div>
 @endsection

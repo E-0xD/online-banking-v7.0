@@ -38,4 +38,5 @@ Route::middleware('user')->prefix('user')->group(function () {
     Route::get('/notification', [NotificationController::class, 'index'])->name('user.notification.index');
     Route::get('/notification/{notification}', [NotificationController::class, 'show'])->name('user.notification.show');
     Route::get('/notification/{notification}/read', [NotificationController::class, 'read'])->name('user.notification.read');
+    Route::get('/notification/read/all', [NotificationController::class, 'readAll'])->name('user.notification.read_all');
 });

@@ -16,7 +16,7 @@
             <div class="col-lg-12">
                 <x-dashboard.admin.card>
                     @slot('header')
-                        Manage and Track All Users Accounts
+                        Manage All Users Accounts
                     @endslot
 
                     <x-dashboard.admin.users :users="$users" />

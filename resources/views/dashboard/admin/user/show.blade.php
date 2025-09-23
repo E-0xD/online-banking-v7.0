@@ -13,12 +13,12 @@
         </div>
 
         <div class="row">
-            <div class="col-lg-12">
-                @include('dashboard.admin.user.partials.account_options_and_status')
+            @include('dashboard.admin.user.partials.account_options_and_status')
 
+            <div class="col-lg-12">
                 <x-dashboard.admin.card>
                     @slot('header')
-                        Complete User Information
+                        User Profile Details
                     @endslot
 
                     <dl class="row">

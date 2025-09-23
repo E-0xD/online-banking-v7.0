@@ -13,12 +13,13 @@
         </div>
 
         <div class="row">
+            @include('dashboard.admin.user.partials.account_options_and_status')
+
             <div class="col-lg-12">
-                @include('dashboard.admin.user.partials.account_options_and_status')
 
                 <x-dashboard.admin.card>
                     @slot('header')
-                        User Account State Management
+                        User {{ $title }} Management
                     @endslot
 
                     <livewire:dashboard.admin.user-account-state :user-id="$user->uuid" />

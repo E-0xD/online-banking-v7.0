@@ -13,13 +13,15 @@
         </div>
 
         <div class="row">
+            @include('dashboard.admin.user.partials.account_options_and_status')
+
             <div class="col-lg-12">
                 <x-dashboard.admin.card>
                     @slot('header')
-                        Manage All Users Accounts
+                        Create New User Notification
                     @endslot
 
-                    <x-dashboard.admin.users :users="$users" />
+                    <livewire:dashboard.admin.user-create-notification :uuid="$user->uuid" />
 
                 </x-dashboard.admin.card>
             </div>

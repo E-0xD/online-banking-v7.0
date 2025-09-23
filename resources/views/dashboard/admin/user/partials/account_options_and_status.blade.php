@@ -22,7 +22,7 @@
                 <a class="dropdown-item" href="#">
                     <i class="fa-solid fa-credit-card me-1"></i>Card Application
                 </a>
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="{{ route('admin.user.notification.index', $user->uuid) }}">
                     <i class="fa-solid fa-bell me-1"></i>Notifications
                 </a>
             </div>
