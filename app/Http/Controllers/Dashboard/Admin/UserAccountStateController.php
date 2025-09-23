@@ -52,6 +52,7 @@ class UserAccountStateController extends Controller
 
             $user->account_state = $request->account_state;
             $user->account_state_message = $request->account_state_message;
+            $user->status = UserStatus::ACTIVE->value;
 
             $user->save();
 
