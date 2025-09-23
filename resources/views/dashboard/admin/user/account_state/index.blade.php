@@ -21,15 +21,7 @@
                         User Account State Management
                     @endslot
 
-                    @push('livewireStyles')
-                        @livewireStyles
-                    @endpush
-
                     <livewire:dashboard.admin.user-account-state :user-id="$user->uuid" />
-
-                    @push('livewireScripts')
-                        @livewireScripts
-                    @endpush
 
                 </x-dashboard.admin.card>
 
