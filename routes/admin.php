@@ -17,5 +17,4 @@ Route::middleware('admin')->prefix('admin')->group(function () {
 
     // User Account State Controller
     Route::get('/user/{user}/account/state', [UserAccountStateController::class, 'index'])->name('admin.user.account_state.index');
-    Route::patch('/user/{user}/account/state', [UserAccountStateController::class, 'update'])->name('admin.user.account_state.update');
 });
