@@ -44,5 +44,4 @@
         <!-- end row -->
 
     </div>
-    @include('dashboard.admin.user.partials.user_edit_modal')
 @endsection
