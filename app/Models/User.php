@@ -45,7 +45,8 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
             'status' => UserStatus::class,
-            'two_factor_authentication' => TwoFactorAuthenticationStatus::class
+            'two_factor_authentication' => TwoFactorAuthenticationStatus::class,
+            'last_login_time' => 'datetime',
         ];
     }
 

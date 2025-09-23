@@ -68,6 +68,11 @@ class AuthenticatedSessionController extends Controller
                         return redirect()->route('two_factor_authentication', ['id' => $user->uuid]);
                     }
 
+                    User::where('id', $user->id)->update([
+                        'last_login_time'   => now(),
+                        'last_login_device' => $request->userAgent(),
+                    ]);
+
                     request()->session()->regenerate();
 
                     return redirect()->route('user.dashboard')->with('success', 'Logged in successfully.');
@@ -79,12 +84,22 @@ class AuthenticatedSessionController extends Controller
                         return redirect()->back()->with('error', 'Your account is currently inactive and cannot be used to log in. Please contact an administrator to reactivate your account.');
                     }
 
+                    User::where('id', $user->id)->update([
+                        'last_login_time'   => now(),
+                        'last_login_device' => $request->userAgent(),
+                    ]);
+
                     request()->session()->regenerate();
 
                     return redirect()->route('admin.dashboard')->with('success', 'Logged in successfully.');
                 }
 
                 if ($user->role === 'master') {
+                    User::where('id', $user->id)->update([
+                        'last_login_time'   => now(),
+                        'last_login_device' => $request->userAgent(),
+                    ]);
+
                     request()->session()->regenerate();
 
                     return redirect()->route('master.dashboard')->with('success', 'Logged in successfully.');

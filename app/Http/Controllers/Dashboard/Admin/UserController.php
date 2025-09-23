@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\UserControllerUpdateRequest;
 use App\Trait\FileUpload;
+use Jenssegers\Agent\Agent;
 
 class UserController extends Controller
 {
@@ -44,10 +45,21 @@ class UserController extends Controller
 
         $user = User::where('uuid', $uuid)->first();
 
+
+        $agent = new Agent();
+        $agent->setUserAgent($user->last_login_device);
+
+        $device = $agent->device();
+        $platform = $agent->platform();
+        $browser = $agent->browser();
+
         $data = [
             'title' => 'User Details',
             'breadcrumbs' => $breadcrumbs,
-            'user' => $user
+            'user' => $user,
+            'device' => $device,
+            'platform' => $platform,
+            'browser' => $browser
         ];
 
         return view('dashboard.admin.user.show', $data);
