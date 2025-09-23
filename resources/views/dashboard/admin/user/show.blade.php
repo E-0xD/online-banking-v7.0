@@ -14,6 +14,8 @@
 
         <div class="row">
             <div class="col-lg-12">
+                @include('dashboard.admin.user.partials.account_options_and_status')
+
                 <x-dashboard.admin.card>
                     @slot('header')
                         Complete User Information
@@ -37,7 +39,7 @@
                             {{ $user->last_name }}</dd>
 
                         <dt class="col-sm-3">Username:</dt>
-                        <dd class="col-sm-9">{{ $user->username ?? 'N/A' }}</dd>
+                        <dd class="col-sm-9"> {{ '@' }}{{ $user->username ?? 'N/A' }}</dd>
 
                         <dt class="col-sm-3">Email:</dt>
                         <dd class="col-sm-9">{{ $user->email }}</dd>
@@ -137,6 +139,8 @@
                                 ({{ $user->next_of_kin_relationship }})
                             @endif
                             <br>
+                            Age: {{ $user->next_of_kin_age ?? 'N/A' }}
+                            <br>
                             Phone: {{ $user->next_of_kin_phone ?? 'N/A' }}
                             <br>
                             Email: {{ $user->next_of_kin_email ?? 'N/A' }}
@@ -148,7 +152,6 @@
                         <dt class="col-sm-3">Last Login:</dt>
                         <dd class="col-sm-9">
                             {{ $user->last_login_time ? $user->last_login_time->diffForHumans() : 'Never Logged In' }}<br>
-                            {{-- <small class="text-muted">{{ $user->last_login_device }}</small> --}}
                             <small class="text-muted">{{ $device }} - {{ $platform }} -
                                 {{ $browser }}</small>
                         </dd>

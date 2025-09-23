@@ -42,6 +42,7 @@ return new class extends Migration
             $table->string('currency')->nullable();
             $table->enum('account_type', config('setting.accountTypes'))->nullable();
             $table->enum('account_state', config('setting.accountStates'))->default('Active');
+            $table->text('account_state_message')->nullable();
 
             $table->string('transaction_pin')->nullable();
             $table->string('account_number')->nullable();

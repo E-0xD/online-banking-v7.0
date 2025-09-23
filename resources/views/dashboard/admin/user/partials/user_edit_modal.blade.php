@@ -109,7 +109,8 @@
                              class="col-md-6 mb-3" value="{{ $user->next_of_kin_email }}" />
 
                          <x-dashboard.user.form-input name="image" label="Profile Image" type="file"
-                             class="col-md-6 mb-3" formText="{{ $user->image ? 'Change' : 'Upload' }}" />
+                             class="col-md-6 mb-3"
+                             formText="{{ $user->image ? 'Update your profile picture' : 'Upload a profile picture' }}" />
 
                          <x-dashboard.user.form-input name="password" label="Password" type="password"
                              id="new_user_password" class="col-md-6 mb-3" />
@@ -132,7 +133,7 @@
                          </div>
                      </div>
 
-                     <div id="updateMessage" class="mt-3"></div>
+                     <div id="updateMessage"></div>
 
                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 

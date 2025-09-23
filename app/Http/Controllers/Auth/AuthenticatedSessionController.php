@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\TwoFactorAuthenticationCode;
 use App\Enum\TwoFactorAuthenticationStatus;
+use App\Enum\UserStatus;
 use Illuminate\Support\Facades\RateLimiter;
 use App\Http\Requests\AuthenticatedSessionControllerStoreRequest;
 
@@ -36,9 +37,7 @@ class AuthenticatedSessionController extends Controller
         // Check for too many attempts
         if (RateLimiter::tooManyAttempts($key, 5)) {
             $seconds = RateLimiter::availableIn($key);
-            return back()
-                ->withErrors(['email' => "Too many login attempts. Please try again in {$seconds} seconds."])
-                ->onlyInput('email');
+            return redirect()->back()->with('error', "Too many login attempts. Please try again in {$seconds} seconds.");
         }
 
         try {
@@ -48,11 +47,14 @@ class AuthenticatedSessionController extends Controller
 
                 $user = Auth::user();
                 if ($user->role === 'user') {
-                    if ($user->status->value === 0) {
+                    if ($user->status->value === UserStatus::INACTIVE->value) {
                         Auth::logout();
-                        return back()->withErrors([
-                            'email' => 'Your account is currently inactive and cannot be used to log in. Please contact an administrator to reactivate your account.',
-                        ])->onlyInput('email');
+
+                        if (!empty($user->account_state_message)) {
+                            return redirect()->back()->with('error', $user->account_state_message);
+                        } else {
+                            return redirect()->back()->with('error', 'Your account is currently inactive and cannot be used to log in. Please contact an administrator to reactivate your account.');
+                        }
                     }
 
                     if ($user->two_factor_authentication->value === TwoFactorAuthenticationStatus::ENABLED->value) {

@@ -1,4 +1,5 @@
  @props([
+     'class' => 'col-md-6 mb-3',
      'name' => null,
      'label' => null,
      'type' => 'text',
@@ -10,14 +11,15 @@
      'formText' => null,
  ])
 
- <div class="col-md-6 mb-3">
+ <div class="{{ $class }}">
      @if ($label)
          <label for="{{ $id ?? $name }}" class="form-label">{{ $label }}</label>
      @endif
 
      @if ($type === 'textarea')
          <textarea id="{{ $id ?? $name }}" name="{{ $name }}" class="form-control @error($name) is-invalid @enderror"
-             {{ $readonly ? 'readonly' : '' }} {{ $required ? 'required' : '' }} placeholder="{{ $placeholder }}">{{ old($name, $value) }}</textarea>
+             {{ $readonly ? 'readonly' : '' }} {{ $required ? 'required' : '' }} placeholder="{{ $placeholder }}" cols="30"
+             rows="5">{{ old($name, $value) }}</textarea>
      @else
          <input type="{{ $type }}" id="{{ $id ?? $name }}" name="{{ $name }}"
              placeholder="{{ $placeholder }}" class="form-control @error($name) is-invalid @enderror"
