@@ -15,7 +15,7 @@ class NotificationController extends Controller
     {
         $breadcrumbs = [
             ['label' => config('app.name'), 'url' => '/'],
-            ['label' => 'Notification', 'url' => route('user.notification.index'), 'active' => true]
+            ['label' => 'Notification', 'active' => true]
         ];
 
         $user = User::where('role', 'user')->where('id', Auth::id())->firstOrFail();
@@ -36,7 +36,7 @@ class NotificationController extends Controller
         $breadcrumbs = [
             ['label' => config('app.name'), 'url' => '/'],
             ['label' => 'Notification', 'url' => route('user.notification.index'), 'active' => true],
-            ['label' => 'Notification Details', 'url' => route('user.notification.show', $uuid), 'active' => true]
+            ['label' => 'Notification Details', 'active' => true]
         ];
 
         $user = User::where('role', 'user')->where('id', Auth::id())->firstOrFail();

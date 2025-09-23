@@ -20,7 +20,7 @@ class UserController extends Controller
         $breadcrumbs = [
             ['label' => config('app.name'), 'url' => '/'],
             ['label' => 'Dashboard', 'url' => route('admin.dashboard')],
-            ['label' => 'Users', 'url' => route('admin.user.index'), 'active' => true],
+            ['label' => 'Users', 'active' => true],
         ];
 
         $users = User::where('role', 'user')->latest()->get();
@@ -40,7 +40,7 @@ class UserController extends Controller
             ['label' => config('app.name'), 'url' => '/'],
             ['label' => 'Dashboard', 'url' => route('admin.dashboard')],
             ['label' => 'Users', 'url' => route('admin.user.index')],
-            ['label' => 'User Details', 'url' => route('admin.user.show', $uuid), 'active' => true],
+            ['label' => 'User Details', 'active' => true],
         ];
 
         $user = User::where('uuid', $uuid)->first();

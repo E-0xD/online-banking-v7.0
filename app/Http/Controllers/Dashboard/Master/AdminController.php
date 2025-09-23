@@ -22,7 +22,7 @@ class AdminController extends Controller
     {
         $breadcrumbs = [
             ['label' => config('app.name'), 'url' => '/'],
-            ['label' => 'Admins', 'url' => route('master.admin.index'), 'active' => true]
+            ['label' => 'Admins', 'active' => true]
         ];
 
         $data = [
@@ -39,7 +39,7 @@ class AdminController extends Controller
         $breadcrumbs = [
             ['label' => config('app.name'), 'url' => '/'],
             ['label' => 'Admins', 'url' => route('master.admin.index')],
-            ['label' => 'Admin Details', 'url' => route('master.admin.show', $uuid), 'active' => true]
+            ['label' => 'Admin Details', 'active' => true]
         ];
 
         $admin = User::where('uuid', $uuid)->first();
@@ -57,7 +57,7 @@ class AdminController extends Controller
         $breadcrumbs = [
             ['label' => config('app.name'), 'url' => '/'],
             ['label' => 'Admins', 'url' => route('master.admin.index')],
-            ['label' => 'Edit Admin', 'url' => route('master.admin.edit', $uuid), 'active' => true]
+            ['label' => 'Edit Admin', 'active' => true]
         ];
 
         $admin = User::where('uuid', $uuid)->first();

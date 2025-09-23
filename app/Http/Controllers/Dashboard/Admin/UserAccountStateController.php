@@ -13,7 +13,7 @@ class UserAccountStateController extends Controller
             ['label' => config('app.name'), 'url' => '/'],
             ['label' => 'Dashboard', 'url' => route('admin.dashboard')],
             ['label' => 'Users', 'url' => route('admin.user.index')],
-            ['label' => 'User Account State', 'url' => route('admin.user.account_state.index', $uuid), 'active' => true],
+            ['label' => 'User Account State', 'active' => true],
         ];
 
         $user = User::where('uuid', $uuid)->firstOrFail();

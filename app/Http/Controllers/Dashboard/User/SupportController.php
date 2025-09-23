@@ -17,7 +17,7 @@ class SupportController extends Controller
     {
         $breadcrumbs = [
             ['label' => config('app.name'), 'url' => '/'],
-            ['label' => 'Support Center', 'url' => route('user.support.index'), 'active' => true]
+            ['label' => 'Support Center', 'active' => true]
         ];
 
         $data = [

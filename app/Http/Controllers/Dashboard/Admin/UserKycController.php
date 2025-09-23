@@ -14,7 +14,7 @@ class UserKycController extends Controller
             ['label' => config('app.name'), 'url' => '/'],
             ['label' => 'Dashboard', 'url' => route('admin.dashboard')],
             ['label' => 'Users', 'url' => route('admin.user.index')],
-            ['label' => 'KYC Verification', 'url' => route('admin.user.kyc.index', $uuid), 'active' => true],
+            ['label' => 'KYC Verification', 'active' => true],
         ];
 
         $user = User::where('uuid', $uuid)->firstOrFail();

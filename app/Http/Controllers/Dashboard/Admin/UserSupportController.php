@@ -18,7 +18,7 @@ class UserSupportController extends Controller
             ['label' => config('app.name'), 'url' => '/'],
             ['label' => 'Dashboard', 'url' => route('admin.dashboard')],
             ['label' => 'Users', 'url' => route('admin.user.index', $uuid)],
-            ['label' => 'Support Ticket', 'url' => route('admin.user.support.index', $uuid), 'active' => true],
+            ['label' => 'Support Ticket', 'active' => true],
         ];
 
         $user = User::where('uuid', $uuid)->firstOrFail();
@@ -41,7 +41,7 @@ class UserSupportController extends Controller
             ['label' => 'Dashboard', 'url' => route('admin.dashboard')],
             ['label' => 'Users', 'url' => route('admin.user.index')],
             ['label' => 'Support Ticket', 'url' => route('admin.user.support.index', $uuid)],
-            ['label' => 'Support Ticket Details', 'url' => route('admin.user.support.show', [$uuid, $supportUUID]), 'active' => true],
+            ['label' => 'Support Ticket Details', 'active' => true],
         ];
 
         $user = User::where('uuid', $uuid)->firstOrFail();

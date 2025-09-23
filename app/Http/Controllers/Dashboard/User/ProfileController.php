@@ -19,7 +19,7 @@ class ProfileController extends Controller
     {
         $breadcrumbs = [
             ['label' => config('app.name'), 'url' => '/'],
-            ['label' => 'Profile', 'url' => route('user.profile.index'), 'active' => true]
+            ['label' => 'Profile', 'active' => true]
         ];
 
         $data = [
@@ -36,7 +36,7 @@ class ProfileController extends Controller
         $breadcrumbs = [
             ['label' => config('app.name'), 'url' => '/'],
             ['label' => 'Profile', 'url' => route('user.profile.index')],
-            ['label' => 'Change Image', 'url' => route('user.profile.change_image'), 'active' => true]
+            ['label' => 'Change Image', 'active' => true]
         ];
 
         $data = [
@@ -77,7 +77,7 @@ class ProfileController extends Controller
         $breadcrumbs = [
             ['label' => config('app.name'), 'url' => '/'],
             ['label' => 'Profile', 'url' => route('user.profile.index')],
-            ['label' => 'Change Password', 'url' => route('user.profile.change_password'), 'active' => true]
+            ['label' => 'Change Password', 'active' => true]
         ];
 
         $data = [
@@ -127,7 +127,7 @@ class ProfileController extends Controller
         $breadcrumbs = [
             ['label' => config('app.name'), 'url' => '/'],
             ['label' => 'Profile', 'url' => route('user.profile.index')],
-            ['label' => 'Change Transaction PIN', 'url' => route('user.profile.change_transaction_pin'), 'active' => true]
+            ['label' => 'Change Transaction PIN', 'active' => true]
         ];
 
         $data = [
@@ -173,7 +173,7 @@ class ProfileController extends Controller
         $breadcrumbs = [
             ['label' => config('app.name'), 'url' => '/'],
             ['label' => 'Profile', 'url' => route('user.profile.index')],
-            ['label' => 'Two-Factor Authentication', 'url' => route('user.profile.two_factor_authentication'), 'active' => true]
+            ['label' => 'Two-Factor Authentication', 'active' => true]
         ];
 
         $data = [

@@ -2,11 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\Admin\UserController;
-use App\Http\Controllers\Dashboard\Admin\DashboardController;
-use App\Http\Controllers\Dashboard\Admin\UserAccountStateController;
 use App\Http\Controllers\Dashboard\Admin\UserKycController;
-use App\Http\Controllers\Dashboard\Admin\UserNotificationController;
+use App\Http\Controllers\Dashboard\Admin\DashboardController;
 use App\Http\Controllers\Dashboard\Admin\UserSupportController;
+use App\Http\Controllers\Dashboard\Admin\UserAccountStateController;
+use App\Http\Controllers\Dashboard\Admin\UserNotificationController;
+use App\Http\Controllers\Dashboard\Admin\VerificationCodeController;
 
 Route::middleware('admin')->prefix('admin')->group(function () {
     Route::get('/dashboard', DashboardController::class)->name('admin.dashboard');
@@ -37,4 +38,13 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     Route::get('/user/{user}/support/{support}', [UserSupportController::class, 'show'])->name('admin.user.support.show');
     Route::post('/user/{user}/support/{support}/store', [UserSupportController::class, 'store'])->name('admin.user.support.store');
     Route::delete('/user/{user}/support/{support}/delete', [UserSupportController::class, 'delete'])->name('admin.user.support.delete');
+
+    // Verification Code Controller
+    Route::get('/verification/codes', [VerificationCodeController::class, 'index'])->name('admin.verification_code.index');
+    Route::get('/verification/code/create', [VerificationCodeController::class, 'create'])->name('admin.verification_code.create');
+    Route::post('/verification/code/store', [VerificationCodeController::class, 'store'])->name('admin.verification_code.store');
+    Route::get('/verification/code/{verificationCode}', [VerificationCodeController::class, 'show'])->name('admin.verification_code.show');
+    Route::get('/verification/code/{verificationCode}/edit', [VerificationCodeController::class, 'edit'])->name('admin.verification_code.edit');
+    Route::put('/verification/code/{verificationCode}', [VerificationCodeController::class, 'update'])->name('admin.verification_code.update');
+    Route::delete('/verification/code/{verificationCode}/delete', [VerificationCodeController::class, 'delete'])->name('admin.verification_code.delete');
 });

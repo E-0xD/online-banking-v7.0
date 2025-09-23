@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Notification;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,11 +14,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory(2)->create();
+        if (env('APP_ENV') != 'production') {
+            User::factory(2)->create();
 
-        User::factory()->create([
-            'email' => 'user@gmail.com',
-        ]);
+            User::factory()->create([
+                'email' => 'user@gmail.com',
+            ]);
+        }
 
         User::factory()->create([
             'role' => 'admin',
@@ -29,6 +32,12 @@ class DatabaseSeeder extends Seeder
             'role' => 'master',
             'name' => 'Master User',
             'email' => 'master@gmail.com',
+        ]);
+
+        Notification::factory(20)->create();
+
+        $this->call([
+            SettingSeeder::class,
         ]);
     }
 }

@@ -15,7 +15,7 @@ class DashboardController extends Controller
     {
         $breadcrumbs = [
             ['label' => config('app.name'), 'url' => '/'],
-            ['label' => 'Welcome Master Admin', 'url' => route('master.dashboard'), 'active' => true]
+            ['label' => 'Welcome Master Admin', 'active' => true]
         ];
 
         $data = [

@@ -15,7 +15,7 @@ class DashboardController extends Controller
     {
         $breadcrumbs = [
             ['label' => config('app.name'), 'url' => '/'],
-            ['label' => 'Welcome Admin', 'url' => route('admin.dashboard'), 'active' => true]
+            ['label' => 'Welcome Admin', 'active' => true]
         ];
 
         $users = User::where('role', 'user')->latest()->get();

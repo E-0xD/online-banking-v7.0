@@ -17,7 +17,7 @@ class UserNotificationController extends Controller
             ['label' => config('app.name'), 'url' => '/'],
             ['label' => 'Dashboard', 'url' => route('admin.dashboard')],
             ['label' => 'Users', 'url' => route('admin.user.index')],
-            ['label' => 'Notifications', 'url' => route('admin.user.notification.index', $uuid), 'active' => true],
+            ['label' => 'Notifications', 'active' => true],
         ];
 
         $user = User::where('uuid', $uuid)->firstOrFail();
@@ -39,8 +39,8 @@ class UserNotificationController extends Controller
             ['label' => config('app.name'), 'url' => '/'],
             ['label' => 'Dashboard', 'url' => route('admin.dashboard')],
             ['label' => 'Users', 'url' => route('admin.user.index')],
-            ['label' => 'Notifications', 'url' => route('admin.user.notification.index', $uuid), 'active' => true],
-            ['label' => 'Create Notification', 'url' => route('admin.user.notification.create', $uuid), 'active' => true],
+            ['label' => 'Notifications', 'url' => route('admin.user.notification.index', $uuid)],
+            ['label' => 'Create Notification', 'active' => true],
         ];
 
         $user = User::where('uuid', $uuid)->firstOrFail();
@@ -60,7 +60,7 @@ class UserNotificationController extends Controller
             ['label' => config('app.name'), 'url' => '/'],
             ['label' => 'Dashboard', 'url' => route('admin.dashboard')],
             ['label' => 'Users', 'url' => route('admin.user.index')],
-            ['label' => 'Notification Details', 'url' => route('admin.user.notification.index', $uuid), 'active' => true],
+            ['label' => 'Notification Details', 'active' => true],
         ];
 
         $user = User::where('uuid', $uuid)->firstOrFail();

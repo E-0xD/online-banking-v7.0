@@ -21,7 +21,7 @@ class KycController extends Controller
     {
         $breadcrumbs = [
             ['label' => config('app.name'), 'url' => '/'],
-            ['label' => 'Verify Your Identity', 'url' => route('user.kyc.index'), 'active' => true]
+            ['label' => 'Verify Your Identity', 'active' => true]
         ];
 
         $data = [
@@ -41,7 +41,7 @@ class KycController extends Controller
         $breadcrumbs = [
             ['label' => config('app.name'), 'url' => '/'],
             ['label' => 'Verify Your Identity', 'url' => route('user.kyc.index')],
-            ['label' => 'KYC Verification', 'url' => route('user.kyc.form'), 'active' => true]
+            ['label' => 'KYC Verification', 'active' => true]
         ];
 
         $data = [

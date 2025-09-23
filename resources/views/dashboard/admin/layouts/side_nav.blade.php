@@ -34,6 +34,27 @@
                     <span class="menu-text"> Users </span>
                 </a>
             </li>
+
+            <li class="side-nav-item">
+                <a href="javascript:void(0);" class="side-nav-link">
+                    <span class="menu-icon"><i class="ti ti-lock"></i></span>
+                    <span class="menu-text"> Verification Code </span>
+                </a>
+            </li>
+
+            <li class="side-nav-item">
+                <a href="javascript:void(0);" class="side-nav-link">
+                    <span class="menu-icon"><i class="ti ti-wallet"></i></span>
+                    <span class="menu-text">Wallets </span>
+                </a>
+            </li>
+
+            <li class="side-nav-item">
+                <a href="javascript:void(0);" class="side-nav-link">
+                    <span class="menu-icon"><i class="ti ti-settings"></i></span>
+                    <span class="menu-text"> Setting </span>
+                </a>
+            </li>
         </ul>
     </div>
 </div>
