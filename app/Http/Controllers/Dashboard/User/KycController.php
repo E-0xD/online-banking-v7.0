@@ -65,9 +65,12 @@ class KycController extends Controller
 
             $user = User::where('role', 'user')->where('id', Auth::id())->firstOrFail();
 
+            $data['kyc'] = 'Pending';
+
             $data['front_side'] = $this->imageInterventionUpdateFile($request, 'front_side', '/uploads/dashboard/user/document/', 1012, 638, $user?->front_side);
 
             $data['back_side'] = $this->imageInterventionUpdateFile($request, 'back_side', '/uploads/dashboard/user/document/', 1012, 638, $user?->back_side);
+
 
             $user->update($data);
 

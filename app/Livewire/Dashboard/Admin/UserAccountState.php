@@ -53,6 +53,12 @@ class UserAccountState extends Component
                 $user->status = UserStatus::ACTIVE->value;
             }
 
+            if ($this->account_state === 'Kyc') {
+                $user->kyc = 'Pending';
+            } else {
+                $user->kyc = 'Approved';
+            }
+
             $user->account_state = $this->account_state;
             $user->account_state_message = $this->account_state_message;
             $user->save();

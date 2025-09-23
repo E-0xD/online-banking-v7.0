@@ -124,19 +124,11 @@
                         <i class="ti ti-chevron-down d-none d-lg-block align-middle ms-2"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end">
-                        @if (auth()->user()->hasPendingKYC() || auth()->user()->kyc === 'Pending')
                             <!-- item-->
                             <a href="{{ route('user.kyc.index') }}" class="dropdown-item">
                                 <i class="ti ti-id me-1 fs-17 align-middle"></i>
-                                <span class="align-middle">Verify KYC</span>
+                                <span class="align-middle">KYC Verification</span>
                             </a>
-                        @elseif(auth()->user()->hasApprovedKYC())
-                            <!-- item-->
-                            <a href="{{ route('user.kyc.index') }}" class="dropdown-item">
-                                <i class="ti ti-id me-1 fs-17 align-middle"></i>
-                                <span class="align-middle">KYC Approved</span>
-                            </a>
-                        @endif
                         <!-- item-->
                         <a href="{{ route('user.profile.index') }}" class="dropdown-item">
                             <i class="ti ti-user-hexagon me-1 fs-17 align-middle"></i>

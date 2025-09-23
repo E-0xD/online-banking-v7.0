@@ -66,6 +66,14 @@ class User extends Authenticatable
         return false;
     }
 
+    public function hasRejectedKYC(): bool
+    {
+        if ($this->document_type && $this->front_side && $this->back_side && $this->kyc === 'Rejected') {
+            return true;
+        }
+        return false;
+    }
+
     public function support()
     {
         return $this->hasMany(Support::class);

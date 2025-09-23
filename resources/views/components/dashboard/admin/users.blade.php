@@ -27,15 +27,15 @@
                         <span class="{{ $user->status->badge() }}"> {{ $user->status->label() }} </span>
                     </td>
                     <td>
-                        <a href="{{ route('admin.user.show', $user->uuid) }}" class="btn btn-soft-warning  btn-sm m-2">
+                        <a href="{{ route('admin.user.show', $user->uuid) }}" class="btn btn-warning  btn-sm m-2">
                             <i class="ti ti-eye me-1">
                             </i>View </a>
-                        <a href="{{ route('admin.user.edit', $user->uuid) }}" class="btn btn-soft-primary  btn-sm m-2">
+                        <a href="{{ route('admin.user.edit', $user->uuid) }}" class="btn btn-primary  btn-sm m-2">
                             <i class="ti ti-edit me-1">
                             </i>Edit </a>
                         <a onclick="return confirm('Are you sure?')"
-                            href="{{ route('admin.user.delete', $user->uuid) }}"
-                            class="btn btn-soft-danger  btn-sm m-2"> <i class="ti ti-trash me-1">
+                            href="{{ route('admin.user.delete', $user->uuid) }}" class="btn btn-danger  btn-sm m-2"> <i
+                                class="ti ti-trash me-1">
                             </i>Delete </a>
                     </td>
                 </tr>

@@ -1,0 +1,33 @@
+@extends('dashboard.admin.layouts.app')
+@section('content')
+    <div class="page-container">
+
+        <div class="page-title-head d-flex align-items-sm-center flex-sm-row flex-column gap-2">
+            <div class="flex-grow-1">
+                <h4 class="fs-18 fw-semibold mb-0">{{ $title }}</h4>
+            </div>
+
+            <div class="text-end">
+                <x-dashboard.admin.breadcrumbs :breadcrumbs="$breadcrumbs" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                @include('dashboard.admin.user.partials.account_options_and_status')
+
+                <x-dashboard.admin.card>
+                    @slot('header')
+                        User {{ $title }} Management
+                    @endslot
+
+                    <livewire:dashboard.admin.user-kyc-status :uuid="$user->uuid" />
+
+                </x-dashboard.admin.card>
+            </div>
+            <!-- end col -->
+        </div>
+        <!-- end row -->
+
+    </div>
+@endsection

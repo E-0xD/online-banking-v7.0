@@ -122,8 +122,8 @@
                             <x-dashboard.user.form-input name="next_of_kin_relationship" label="Relationship"
                                 class="col-md-6 mb-3" value="{{ $user->next_of_kin_relationship }}" />
 
-                            <x-dashboard.user.form-input name="next_of_kin_age" label="Age" type="number" class="col-md-6 mb-3"
-                                value="{{ $user->next_of_kin_age }}" />
+                            <x-dashboard.user.form-input name="next_of_kin_age" label="Age" type="number"
+                                class="col-md-6 mb-3" value="{{ $user->next_of_kin_age }}" />
 
                             <x-dashboard.user.form-input name="next_of_kin_phone" label="Phone" class="col-md-6 mb-3"
                                 value="{{ $user->next_of_kin_phone }}" />
@@ -163,9 +163,15 @@
                     <x-dashboard.user.card>
                         @if ($user->hasPendingKYC())
                             <x-dashboard.user.warning-list title="KYC Verification" :options="['Your previous application is under review, please wait.']" />
+                        @elseif($user->hasApprovedKYC())
+                            <x-dashboard.user.warning-list icon="fa solid fa-circle-check" color="success"
+                                title="KYC Verification" :options="['Your application has been approved.']" />
+                        @elseif($user->hasRejectedKYC())
+                            <x-dashboard.user.warning-list icon="fa solid fa-circle-xmark" color="danger"
+                                title="KYC Verification" :options="['Your application has been rejected. Please try again.']" />
                         @endif
 
-                        @if (!$user->hasPendingKYC())
+                        @if (!$user->hasPendingKYC() && !$user->hasApprovedKYC())
                             <x-dashboard.user.form-button class="btn btn-primary w-100" name="Submit Application" />
                         @endif
                     </x-dashboard.user.card>

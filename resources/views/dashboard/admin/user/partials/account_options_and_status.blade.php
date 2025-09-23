@@ -36,7 +36,8 @@
             <div class="dropdown-menu " aria-labelledby="dropdownMenuButton"
                 style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(0px, 40px);"
                 data-popper-placement="bottom-start">
-                <a class="dropdown-item" href="#"> <i class="fa-solid fa-id-card me-1"></i> KYC Verification</a>
+                <a class="dropdown-item" href="{{ route('admin.user.kyc.index', $user->uuid) }}"> <i
+                        class="fa-solid fa-id-card me-1"></i> KYC Verification</a>
                 <a class="dropdown-item" href="{{ route('admin.user.account_state.index', $user->uuid) }}"> <i
                         class="fa-solid fa-lock me-1"></i> Account State
                     Setting</a>

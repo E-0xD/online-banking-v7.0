@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\Admin\UserController;
 use App\Http\Controllers\Dashboard\Admin\DashboardController;
 use App\Http\Controllers\Dashboard\Admin\UserAccountStateController;
+use App\Http\Controllers\Dashboard\Admin\UserKycController;
 
 Route::middleware('admin')->prefix('admin')->group(function () {
     Route::get('/dashboard', DashboardController::class)->name('admin.dashboard');
@@ -17,4 +18,7 @@ Route::middleware('admin')->prefix('admin')->group(function () {
 
     // User Account State Controller
     Route::get('/user/{user}/account/state', [UserAccountStateController::class, 'index'])->name('admin.user.account_state.index');
+
+    // User KYC Controller
+    Route::get('/user/{user}/kyc', [UserKycController::class, 'index'])->name('admin.user.kyc.index');
 });
