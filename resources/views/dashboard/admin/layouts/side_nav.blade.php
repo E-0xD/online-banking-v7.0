@@ -36,7 +36,7 @@
             </li>
 
             <li class="side-nav-item">
-                <a href="javascript:void(0);" class="side-nav-link">
+                <a href="{{ route('admin.verification_code.index') }}" class="side-nav-link">
                     <span class="menu-icon"><i class="ti ti-lock"></i></span>
                     <span class="menu-text"> Verification Code </span>
                 </a>
