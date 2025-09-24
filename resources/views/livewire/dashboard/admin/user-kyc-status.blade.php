@@ -33,7 +33,10 @@
         </dd>
     </dl>
 
-    <form wire:submit.prevent="updateKycStatus">
+    <form wire:submit.prevent="updateKycStatus" method="POST">
+        @csrf
+        @method('PATCH')
+
         <div class="col-md-12 mb-3">
             <label class="form-label" for="kyc">KYC Status</label>
             <select id="kyc" wire:model="kyc" class="form-control @error('kyc') is-invalid @enderror">

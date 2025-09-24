@@ -4,10 +4,11 @@
          <div class="grid lg:grid-cols-2 gap-12">
              <!-- Contact Form -->
              <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-8">
+                 @include('partials.tailwind_alert')
                  <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Send us a Message</h2>
 
-                 <form action="https://firsttruistcus.com/homesendcontact" method="POST" class="space-y-6">
-                     <input type="hidden" name="_token" value="3GLYtLNj0mU7CAjVDGsvmdGAF6oicfxkHyfnLTKA">
+                 <form action="{{ route('contact') }}" method="POST" class="space-y-6">
+                     @csrf
                      <div class="grid md:grid-cols-2 gap-6">
                          <div>
                              <label for="name"
@@ -15,6 +16,10 @@
                                  Name</label>
                              <input type="text" id="name" name="name" required
                                  class="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent">
+
+                             @error('name')
+                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                             @enderror
                          </div>
                          <div>
                              <label for="email"
@@ -22,6 +27,10 @@
                                  Address</label>
                              <input type="email" id="email" name="email" required
                                  class="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent">
+
+                             @error('email')
+                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                             @enderror
                          </div>
                      </div>
 
@@ -30,6 +39,10 @@
                              class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Subject</label>
                          <input type="text" id="subject" name="subject" required
                              class="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent">
+
+                         @error('subject')
+                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                         @enderror
                      </div>
 
                      <div>
@@ -37,6 +50,10 @@
                              class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Message</label>
                          <textarea id="message" name="message" rows="6" required
                              class="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent"></textarea>
+
+                         @error('message')
+                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                         @enderror
                      </div>
 
                      <button type="submit"

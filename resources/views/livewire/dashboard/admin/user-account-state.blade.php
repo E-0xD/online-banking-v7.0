@@ -1,7 +1,10 @@
 <div>
     @include('partials.livewire_bootstrap_alert')
 
-    <form wire:submit.prevent="updateAccountState">
+    <form wire:submit.prevent="updateAccountState" method="POST">
+        @csrf
+        @method('PATCH')
+
         <div class="col-md-12 mb-3">
             <label class="form-label" for="account_state">Account State</label>
             <select id="account_state" wire:model="account_state"
@@ -29,8 +32,7 @@
             <a href="{{ route('admin.user.show', $userId) }}" class="btn btn-soft-primary"><i
                     class="fa-solid fa-arrow-left me-1"></i>
                 Back to User Details</a>
-            <button type="submit" class="btn btn-primary"><i
-                    class="fa-solid fa-paper-plane me-1"></i>
+            <button type="submit" class="btn btn-primary"><i class="fa-solid fa-paper-plane me-1"></i>
                 Update Account State</button>
         </div>
     </form>
