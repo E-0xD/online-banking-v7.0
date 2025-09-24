@@ -107,7 +107,7 @@
                 <img src="{{ asset(config('app.assets.logo')) }}" alt="{{ config('app.name') }} Logo">
             </div>
             <div class="content">
-                <p>Hello {{ $user->first_name }} {{ $user->last_name }}</p>
+                <p>Hello {{ $user->name }},</p>
                 <p>We received a request to reset your password. Click the button below to reset your password:</p>
                 <p><a id='links' href='{{ $passwordResetLink }}' class='button'>Reset Password</a></p>
                 <p>If you didn't request a password reset, please ignore this email.</p>

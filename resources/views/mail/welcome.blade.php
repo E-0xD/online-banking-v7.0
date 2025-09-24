@@ -149,7 +149,7 @@
 
             <!-- Body -->
             <div class="content">
-                <p>Welcome, {{ $user->name }}</p>
+                <p>Welcome, {{ $user->name }},</p>
                 <h2>Your Account Is Ready</h2>
                 <p>
                     We're thrilled to have you join our community of valued customers.
