@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\Admin\UserController;
 use App\Http\Controllers\Dashboard\Admin\UserKycController;
 use App\Http\Controllers\Dashboard\Admin\DashboardController;
+use App\Http\Controllers\Dashboard\Admin\SettingController;
 use App\Http\Controllers\Dashboard\Admin\UserSupportController;
 use App\Http\Controllers\Dashboard\Admin\UserAccountStateController;
 use App\Http\Controllers\Dashboard\Admin\UserNotificationController;
@@ -47,4 +48,7 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     Route::get('/verification/code/{verificationCode}/edit', [VerificationCodeController::class, 'edit'])->name('admin.verification_code.edit');
     Route::put('/verification/code/{verificationCode}', [VerificationCodeController::class, 'update'])->name('admin.verification_code.update');
     Route::delete('/verification/code/{verificationCode}/delete', [VerificationCodeController::class, 'delete'])->name('admin.verification_code.delete');
+
+    // Setting Controller
+    Route::get('/setting', [SettingController::class, 'index'])->name('admin.setting.index');
 });
