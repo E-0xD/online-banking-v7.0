@@ -35,12 +35,15 @@ class DatabaseSeeder extends Seeder
             'email' => 'master@gmail.com',
         ]);
 
-        Notification::factory(20)->create();
+        if (env('APP_ENV') != 'production') {
+            Notification::factory(20)->create();
 
-        Wallet::factory(10)->create();
+            Wallet::factory(10)->create();
+        }
 
         $this->call([
             SettingSeeder::class,
+            GrantCategorySeeder::class,
         ]);
     }
 }

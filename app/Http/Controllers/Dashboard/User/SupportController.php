@@ -17,6 +17,7 @@ class SupportController extends Controller
     {
         $breadcrumbs = [
             ['label' => config('app.name'), 'url' => '/'],
+            ['label' => 'Dashboard', 'url' => route('user.dashboard')],
             ['label' => 'Support Center', 'active' => true]
         ];
 
@@ -31,8 +32,6 @@ class SupportController extends Controller
     public function store(SupportControllerStoreRequest $request)
     {
         $data = $request->validated();
-
-        // dd($data);
 
         try {
             DB::beginTransaction();

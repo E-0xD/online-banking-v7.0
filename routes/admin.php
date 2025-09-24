@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\Admin\UserController;
 use App\Http\Controllers\Dashboard\Admin\UserKycController;
 use App\Http\Controllers\Dashboard\Admin\DashboardController;
+use App\Http\Controllers\Dashboard\Admin\GrantCategoryController;
 use App\Http\Controllers\Dashboard\Admin\SettingController;
 use App\Http\Controllers\Dashboard\Admin\UserSupportController;
 use App\Http\Controllers\Dashboard\Admin\UserAccountStateController;
@@ -62,5 +63,16 @@ Route::middleware('admin')->prefix('admin')->group(function () {
         'edit' => 'admin.wallet.edit',
         'update' => 'admin.wallet.update',
         'destroy' => 'admin.wallet.delete',
+    ]);
+
+    // Grant Category Controller
+    Route::resource('grant_category', GrantCategoryController::class)->names([
+        'index' => 'admin.grant_category.index',
+        'create' => 'admin.grant_category.create',
+        'store' => 'admin.grant_category.store',
+        'show' => 'admin.grant_category.show',
+        'edit' => 'admin.grant_category.edit',
+        'update' => 'admin.grant_category.update',
+        'destroy' => 'admin.grant_category.delete',
     ]);
 });

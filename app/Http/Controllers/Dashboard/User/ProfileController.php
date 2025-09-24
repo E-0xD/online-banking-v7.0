@@ -19,6 +19,7 @@ class ProfileController extends Controller
     {
         $breadcrumbs = [
             ['label' => config('app.name'), 'url' => '/'],
+            ['label' => 'Dashboard', 'url' => route('user.dashboard')],
             ['label' => 'Profile', 'active' => true]
         ];
 
@@ -35,6 +36,7 @@ class ProfileController extends Controller
     {
         $breadcrumbs = [
             ['label' => config('app.name'), 'url' => '/'],
+            ['label' => 'Dashboard', 'url' => route('user.dashboard')],
             ['label' => 'Profile', 'url' => route('user.profile.index')],
             ['label' => 'Change Image', 'active' => true]
         ];
@@ -76,6 +78,7 @@ class ProfileController extends Controller
     {
         $breadcrumbs = [
             ['label' => config('app.name'), 'url' => '/'],
+            ['label' => 'Dashboard', 'url' => route('user.dashboard')],
             ['label' => 'Profile', 'url' => route('user.profile.index')],
             ['label' => 'Change Password', 'active' => true]
         ];
@@ -126,6 +129,7 @@ class ProfileController extends Controller
     {
         $breadcrumbs = [
             ['label' => config('app.name'), 'url' => '/'],
+            ['label' => 'Dashboard', 'url' => route('user.dashboard')],
             ['label' => 'Profile', 'url' => route('user.profile.index')],
             ['label' => 'Change Transaction PIN', 'active' => true]
         ];
@@ -172,6 +176,7 @@ class ProfileController extends Controller
     {
         $breadcrumbs = [
             ['label' => config('app.name'), 'url' => '/'],
+            ['label' => 'Dashboard', 'url' => route('user.dashboard')],
             ['label' => 'Profile', 'url' => route('user.profile.index')],
             ['label' => 'Two-Factor Authentication', 'active' => true]
         ];

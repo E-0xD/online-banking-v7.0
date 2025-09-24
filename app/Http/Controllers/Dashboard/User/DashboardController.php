@@ -17,6 +17,7 @@ class DashboardController extends Controller
 
         $breadcrumbs = [
             ['label' => config('app.name'), 'url' => '/'],
+            ['label' => 'Dashboard', 'url' => route('user.dashboard')],
             ['label' => $welcomeMessage, 'active' => true]
         ];
 

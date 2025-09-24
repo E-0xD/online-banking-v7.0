@@ -21,6 +21,7 @@ class KycController extends Controller
     {
         $breadcrumbs = [
             ['label' => config('app.name'), 'url' => '/'],
+            ['label' => 'Dashboard', 'url' => route('user.dashboard')],
             ['label' => 'Verify Your Identity', 'active' => true]
         ];
 
@@ -40,6 +41,7 @@ class KycController extends Controller
     {
         $breadcrumbs = [
             ['label' => config('app.name'), 'url' => '/'],
+            ['label' => 'Dashboard', 'url' => route('user.dashboard')],
             ['label' => 'Verify Your Identity', 'url' => route('user.kyc.index')],
             ['label' => 'KYC Verification', 'active' => true]
         ];
@@ -82,37 +84,5 @@ class KycController extends Controller
             Log::error($e->getMessage());
             return redirect()->back()->with('error', config('app.messages.error'));
         }
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
     }
 }

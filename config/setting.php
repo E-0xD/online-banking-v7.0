@@ -461,5 +461,15 @@ return  [
         'Active',
         'Inactive',
         'Archived'
+    ],
+    'grantCategoryStatuses' => [
+        'Active',
+        'Inactive'
+    ],
+    'organizationTypes' => [
+        'Nonprofit Organization',
+        'For-Profit Business',
+        'Government Entity',
+        'Educational Institution'
     ]
 ];

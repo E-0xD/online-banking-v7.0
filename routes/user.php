@@ -6,6 +6,7 @@ use App\Http\Controllers\Dashboard\User\ProfileController;
 use App\Http\Controllers\Dashboard\User\SupportController;
 use App\Http\Controllers\Dashboard\User\DashboardController;
 use App\Http\Controllers\Dashboard\User\NotificationController;
+use App\Http\Controllers\Dashboard\User\GrantApplicationController;
 
 Route::middleware('user')->prefix('user')->group(function () {
     Route::get('/dashboard', DashboardController::class)->name('user.dashboard');
@@ -39,4 +40,9 @@ Route::middleware('user')->prefix('user')->group(function () {
     Route::get('/notification/{notification}', [NotificationController::class, 'show'])->name('user.notification.show');
     Route::get('/notification/{notification}/read', [NotificationController::class, 'read'])->name('user.notification.read');
     Route::get('/notification/read/all', [NotificationController::class, 'readAll'])->name('user.notification.read_all');
+
+    // Grant Application Controller
+    Route::get('/grant/application', [GrantApplicationController::class, 'index'])->name('user.grant_application.index');
+    Route::get('/grant/application/individual', [GrantApplicationController::class, 'individual'])->name('user.grant_application.individual');
+    Route::get('/grant/application/company', [GrantApplicationController::class, 'company'])->name('user.grant_application.company');
 });
