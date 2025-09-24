@@ -456,5 +456,10 @@ return  [
     'userStatuses' => [
         1 => 'Active',
         0 => 'Inactive'
+    ],
+    'walletStatuses' => [
+        'Active',
+        'Inactive',
+        'Archived'
     ]
 ];

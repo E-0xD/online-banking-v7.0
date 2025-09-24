@@ -9,6 +9,7 @@ use App\Http\Controllers\Dashboard\Admin\UserSupportController;
 use App\Http\Controllers\Dashboard\Admin\UserAccountStateController;
 use App\Http\Controllers\Dashboard\Admin\UserNotificationController;
 use App\Http\Controllers\Dashboard\Admin\VerificationCodeController;
+use App\Http\Controllers\Dashboard\Admin\WalletController;
 
 Route::middleware('admin')->prefix('admin')->group(function () {
     Route::get('/dashboard', DashboardController::class)->name('admin.dashboard');
@@ -51,4 +52,15 @@ Route::middleware('admin')->prefix('admin')->group(function () {
 
     // Setting Controller
     Route::get('/setting', [SettingController::class, 'index'])->name('admin.setting.index');
+
+    // Wallet Controller
+    Route::resource('wallet', WalletController::class)->names([
+        'index' => 'admin.wallet.index',
+        'create' => 'admin.wallet.create',
+        'store' => 'admin.wallet.store',
+        'show' => 'admin.wallet.show',
+        'edit' => 'admin.wallet.edit',
+        'update' => 'admin.wallet.update',
+        'destroy' => 'admin.wallet.delete',
+    ]);
 });

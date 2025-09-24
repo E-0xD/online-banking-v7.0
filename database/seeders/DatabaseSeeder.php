@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Wallet;
 use App\Models\Notification;
 use Illuminate\Database\Seeder;
 
@@ -35,6 +36,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Notification::factory(20)->create();
+
+        Wallet::factory(10)->create();
 
         $this->call([
             SettingSeeder::class,
