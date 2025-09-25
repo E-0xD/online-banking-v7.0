@@ -471,5 +471,15 @@ return  [
         'For-Profit Business',
         'Government Entity',
         'Educational Institution'
+    ],
+    'grantApplicationStatues' => [
+        'Pending',
+        'Approved',
+        'Rejected',
+        'Withdrawn'
+    ],
+    'grantApplicationTypes' => [
+        'Individual',
+        'Company'
     ]
 ];

@@ -15,7 +15,7 @@
         <div class="row">
             <div class="col-xl-12 col-lg-12">
                 <x-dashboard.user.card>
-                    <form action="" method="post">
+                    <form action="{{ route('user.grant_application.individual_submit') }}" method="post">
                         @csrf
 
                         <x-dashboard.user.form-input name="amount" label="Request Amount ({{ currency($user->currency) }})"
@@ -32,7 +32,8 @@
                                 @foreach ($grantCategories as $grantCategory)
                                     <div class="col-md-6 col-lg-4 mb-3">
                                         <div class="form-check border rounded p-4 h-100">
-                                            <input class="form-check-input" type="checkbox" value="{{ $grantCategory->id }}"
+                                            <input class="form-check-input @error('grant_categories') is-invalid @enderror"
+                                                type="checkbox" value="{{ $grantCategory->id }}"
                                                 id="grant_category_{{ $grantCategory->id }}" name="grant_categories[]">
                                             <label class="form-check-label ms-2"
                                                 for="grant_category_{{ $grantCategory->id }}">
@@ -40,6 +41,12 @@
                                                 <br>
                                                 <small class="text-muted">{{ $grantCategory->description }}</small>
                                             </label>
+
+                                            @error('grant_categories')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                         </div>
                                     </div>
                                 @endforeach

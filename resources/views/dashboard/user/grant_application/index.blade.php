@@ -30,7 +30,7 @@
 
                         <!-- Apply as Individual -->
                         <div class="col-md-4">
-                            <div class="card text-center shadow-sm h-100">
+                            <div class="card text-center h-100">
                                 <div class="card-body">
                                     <div class="rounded-circle bg-primary bg-opacity-10 d-inline-flex align-items-center justify-content-center mb-3"
                                         style="width:50px; height:50px;">
@@ -50,7 +50,7 @@
 
                         <!-- Apply as Company -->
                         <div class="col-md-4">
-                            <div class="card text-center shadow-sm h-100">
+                            <div class="card text-center h-100">
                                 <div class="card-body">
                                     <div class="rounded-circle bg-secondary bg-opacity-10 d-inline-flex align-items-center justify-content-center mb-3"
                                         style="width:50px; height:50px;">

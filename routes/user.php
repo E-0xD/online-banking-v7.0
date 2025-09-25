@@ -45,4 +45,8 @@ Route::middleware('user')->prefix('user')->group(function () {
     Route::get('/grant/application', [GrantApplicationController::class, 'index'])->name('user.grant_application.index');
     Route::get('/grant/application/individual', [GrantApplicationController::class, 'individual'])->name('user.grant_application.individual');
     Route::get('/grant/application/company', [GrantApplicationController::class, 'company'])->name('user.grant_application.company');
+    Route::post('/grant/application/individual/submit', [GrantApplicationController::class, 'individualSubmit'])->name('user.grant_application.individual_submit');
+    Route::post('/grant/application/company/submit', [GrantApplicationController::class, 'companySubmit'])->name('user.grant_application.company_submit');
+    Route::get('/grant/application/{uuid}/processing', [GrantApplicationController::class, 'processing'])->name('user.grant_application.processing');
+    Route::get('/grant/application/{uuid}/result', [GrantApplicationController::class, 'result'])->name('user.grant_application.result');
 });

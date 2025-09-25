@@ -23,7 +23,7 @@
                         Please provide the following information about your organization:
                     </p>
 
-                    <form action="" method="post">
+                    <form action="{{ route('user.grant_application.company_submit') }}" method="post">
                         @csrf
 
                         <div class="row">
@@ -37,7 +37,7 @@
                                 class="col-md-6 mb-3" type="select" :options="config('setting.organizationTypes')" />
 
                             <x-dashboard.user.form-input name="founding_year" label="Founding Year *" class="col-md-6 mb-3"
-                                type="date" />
+                                value="{{ old('founding_year', date('Y')) }}" />
 
                             <x-dashboard.user.form-input name="full_mailing_address" label="Full Mailing Address *"
                                 class="col-md-12 mb-3" type="textarea" />
@@ -55,7 +55,7 @@
                             <x-dashboard.user.form-input name="date_of_incorporation" label="Date of Incorporation *"
                                 class="col-md-12 mb-3" type="date" />
 
-                            <x-dashboard.user.form-input name="Project TItle" label="Project Title *" class="col-md-12 mb-3"
+                            <x-dashboard.user.form-input name="project_title" label="Project Title *" class="col-md-12 mb-3"
                                 formText="A concise title for your grant-funded project" />
 
                             <x-dashboard.user.form-input name="project_description" label="Project Description *"
@@ -82,9 +82,6 @@
                     </form>
 
                 </x-dashboard.user.card>
-
-                <x-dashboard.user.back-button href="{{ route('user.grant_application.index') }}"
-                    name="Back to Grant Application" />
             </div>
         </div>
     </div>
