@@ -33,10 +33,14 @@
                         <a href="{{ route('admin.user.edit', $user->uuid) }}" class="btn btn-primary  btn-sm m-1">
                             <i class="ti ti-edit me-1">
                             </i>Edit </a>
-                        <a onclick="return confirm('Are you sure?')"
-                            href="{{ route('admin.user.delete', $user->uuid) }}" class="btn btn-danger  btn-sm m-1"> <i
-                                class="ti ti-trash me-1">
-                            </i>Delete </a>
+                        <form action="{{ route('admin.user.delete', $user->uuid) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger  btn-sm m-1"
+                                onclick="return confirm('Are you sure?')">
+                                <i class="ti ti-trash me-1">
+                                </i>Delete </button>
+                        </form>
                     </td>
                 </tr>
             @endforeach

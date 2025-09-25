@@ -2,15 +2,16 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\Admin\UserController;
+use App\Http\Controllers\Dashboard\Admin\WalletController;
+use App\Http\Controllers\Dashboard\Admin\SettingController;
 use App\Http\Controllers\Dashboard\Admin\UserKycController;
 use App\Http\Controllers\Dashboard\Admin\DashboardController;
-use App\Http\Controllers\Dashboard\Admin\GrantCategoryController;
-use App\Http\Controllers\Dashboard\Admin\SettingController;
 use App\Http\Controllers\Dashboard\Admin\UserSupportController;
+use App\Http\Controllers\Dashboard\Admin\GrantCategoryController;
 use App\Http\Controllers\Dashboard\Admin\UserAccountStateController;
 use App\Http\Controllers\Dashboard\Admin\UserNotificationController;
 use App\Http\Controllers\Dashboard\Admin\VerificationCodeController;
-use App\Http\Controllers\Dashboard\Admin\WalletController;
+use App\Http\Controllers\Dashboard\Admin\UserGrantApplicationController;
 
 Route::middleware('admin')->prefix('admin')->group(function () {
     Route::get('/dashboard', DashboardController::class)->name('admin.dashboard');
@@ -75,4 +76,10 @@ Route::middleware('admin')->prefix('admin')->group(function () {
         'update' => 'admin.grant_category.update',
         'destroy' => 'admin.grant_category.delete',
     ]);
+
+    // User Grant Application Controller
+    Route::get('/user/{user}/grant_application', [UserGrantApplicationController::class, 'index'])->name('admin.user.grant_application.index');
+    Route::get('/user/{user}/grant_application/{grantApplication}', [UserGrantApplicationController::class, 'show'])->name('admin.user.grant_application.show');
+    Route::patch('/user/{user}/grant_application/{grantApplication}/update', [UserGrantApplicationController::class, 'update'])->name('admin.user.grant_application.update');
+    Route::delete('/user/{user}/grant_application/{grantApplication}/delete', [UserGrantApplicationController::class, 'delete'])->name('admin.user.grant_application.delete');
 });

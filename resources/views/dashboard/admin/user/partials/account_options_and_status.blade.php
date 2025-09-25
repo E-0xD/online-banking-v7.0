@@ -18,6 +18,7 @@
                     <i class="fa-solid fa-history me-1"></i>Withdrawals
                 </a>
                 <a class="dropdown-item" href="#"> <i class="fa-solid fa-file-import me-1"></i>Loan</a>
+                <a class="dropdown-item" href="{{ route('admin.user.grant_application.index', $user->uuid) }}"> <i class="fa-solid fa-gift me-1"></i>Grant Application</a>
                 <a class="dropdown-item" href="#">
                     <i class="fa-solid fa-credit-card me-1"></i>Card</a>
                 <a class="dropdown-item" href="{{ route('admin.user.support.index', $user->uuid) }}">
