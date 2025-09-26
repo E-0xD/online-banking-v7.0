@@ -16,14 +16,14 @@
         </div>
 
         <!-- Enhanced Alerts -->
-        <div class="bg-blue-50/90 dark:bg-blue-900/30 backdrop-blur-sm border border-blue-200/50 dark:border-blue-800/50 text-blue-700 dark:text-blue-300 p-3 mb-4 rounded-xl"
+        {{-- <div class="bg-blue-50/90 dark:bg-blue-900/30 backdrop-blur-sm border border-blue-200/50 dark:border-blue-800/50 text-blue-700 dark:text-blue-300 p-3 mb-4 rounded-xl"
             role="alert">
             <div class="flex items-center">
                 <i class="fas fa-info-circle mr-2 text-blue-500 text-sm"></i>
                 <p class="text-sm font-medium">A verification code has been sent to your email address.
                 </p>
             </div>
-        </div>
+        </div> --}}
         
         @include('partials.tailwind_alert')
 

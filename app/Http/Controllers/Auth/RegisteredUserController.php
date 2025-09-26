@@ -57,7 +57,7 @@ class RegisteredUserController extends Controller
 
             DB::commit();
 
-            return redirect()->route('verify.email');
+            return redirect()->route('verify.email')->with('success', 'A verification code has been sent to your email address. Please enter the code to verify your account.');
         } catch (\Exception $e) {
             Log::error($e->getMessage());
             return redirect()->back()->with('error', config('app.messages.error'));

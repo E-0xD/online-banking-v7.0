@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['registeredUser']);
+    }
+
     /**
      * Handle the incoming request.
      */

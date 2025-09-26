@@ -71,7 +71,7 @@ class VerifyEmailController extends Controller
 
             Mail::to($user->email)->queue(new EmailVerificationCode($user, 'Email Verification Code'));
 
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Verification code sent successfully. Please check your email.');
         } catch (\Exception $e) {
             DB::rollBack();
             Log::error($e->getMessage());

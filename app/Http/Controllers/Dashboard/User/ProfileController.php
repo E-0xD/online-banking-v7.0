@@ -15,6 +15,12 @@ use Illuminate\Support\Facades\Log;
 class ProfileController extends Controller
 {
     use FileUpload;
+
+    public function __construct()
+    {
+        $this->middleware(['registeredUser']);
+    }
+
     public function index()
     {
         $breadcrumbs = [

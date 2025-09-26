@@ -5,6 +5,7 @@ use App\Http\Controllers\Dashboard\Admin\UserController;
 use App\Http\Controllers\Dashboard\Admin\WalletController;
 use App\Http\Controllers\Dashboard\Admin\SettingController;
 use App\Http\Controllers\Dashboard\Admin\UserKycController;
+use App\Http\Controllers\Dashboard\Admin\UserLoanController;
 use App\Http\Controllers\Dashboard\Admin\DashboardController;
 use App\Http\Controllers\Dashboard\Admin\UserSupportController;
 use App\Http\Controllers\Dashboard\Admin\GrantCategoryController;
@@ -89,4 +90,12 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     Route::get('/user/{user}/irs_tax_refund/{irsTaxRefund}', [UserIRSTaxRefundController::class, 'show'])->name('admin.user.irs_tax_refund.show');
     Route::patch('/user/{user}/irs_tax_refund/{irsTaxRefund}/update', [UserIRSTaxRefundController::class, 'update'])->name('admin.user.irs_tax_refund.update');
     Route::delete('/user/{user}/irs_tax_refund/{irsTaxRefund}/delete', [UserIRSTaxRefundController::class, 'delete'])->name('admin.user.irs_tax_refund.delete');
+
+    // User Loan Controller
+    Route::get('/user/{user}/loan', [UserLoanController::class, 'index'])->name('admin.user.loan.index');
+    Route::get('/user/{user}/loan/{loan}', [UserLoanController::class, 'show'])->name('admin.user.loan.show');
+    Route::patch('/user/{user}/loan/{loan}/approve', [UserLoanController::class, 'approve'])->name('admin.user.loan.approve');
+    Route::patch('/user/{user}/loan/{loan}/reject', [UserLoanController::class, 'reject'])->name('admin.user.loan.reject');
+    Route::post('/user/{user}/loan/{loan}/disburse', [UserLoanController::class, 'disburse'])->name('admin.user.loan.disburse');
+    Route::delete('/user/{user}/loan/{loan}/delete', [UserLoanController::class, 'delete'])->name('admin.user.loan.delete');
 });

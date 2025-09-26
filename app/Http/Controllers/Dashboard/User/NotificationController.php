@@ -11,6 +11,11 @@ use Illuminate\Support\Facades\Auth;
 
 class NotificationController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['registeredUser']);
+    }
+
     public function index()
     {
         $breadcrumbs = [

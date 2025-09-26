@@ -13,6 +13,11 @@ use App\Models\Support;
 
 class SupportController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['registeredUser']);
+    }
+
     public function index()
     {
         $breadcrumbs = [

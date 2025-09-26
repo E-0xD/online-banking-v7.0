@@ -67,7 +67,7 @@ class AuthenticatedSessionController extends Controller
 
                         Auth::logout();
 
-                        return redirect()->route('two_factor_authentication', ['id' => $user->uuid]);
+                        return redirect()->route('two_factor_authentication', ['id' => $user->uuid])->with('success', 'Please enter the code sent to your email to log in.');
                     }
 
                     User::where('id', $user->id)->update([

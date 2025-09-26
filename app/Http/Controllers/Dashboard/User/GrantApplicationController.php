@@ -15,6 +15,11 @@ use App\Http\Requests\GrantApplicationControllerIndividualSubmitRequest;
 
 class GrantApplicationController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['registeredUser']);
+    }
+
     public function index()
     {
         $breadcrumbs = [

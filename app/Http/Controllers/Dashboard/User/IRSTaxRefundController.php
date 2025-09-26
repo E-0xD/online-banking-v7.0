@@ -14,6 +14,11 @@ use Illuminate\Support\Facades\Hash;
 
 class IRSTaxRefundController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['registeredUser']);
+    }
+
     public function index()
     {
         $breadcrumbs = [

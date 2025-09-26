@@ -77,7 +77,7 @@
             <li class="side-nav-title mt-2">Services</li>
 
             <li class="side-nav-item">
-                <a href="#" class="side-nav-link">
+                <a href="{{ route('user.loan.index') }}" class="side-nav-link">
                     <span class="menu-icon"><i class="ti ti-cash"></i></span>
                     <span class="menu-text">Loan</span>
                 </a>

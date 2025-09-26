@@ -487,5 +487,49 @@ return  [
         'submitted',
         'rejected',
         'refunded'
+    ],
+    'loanDurations' => [
+        6 => '6 Months',
+        12 => '12 Months',
+        24 => '2 Years',
+        36 => '3 Years',
+        48 => '4 Years',
+        60 => '5 Years',
+    ],
+    'creditFacilities' => [
+        'Personal Home Loans',
+        'Joint mortgage',
+        'Automobile Loans',
+        'Salary loans',
+        'Secured Overdraft',
+        'Contract Finance',
+        'Secured Term Loans',
+        'StartUp/Products Financing',
+        'Local Purchase Orders Finance',
+        'Operational Vehicles',
+        'Revenue Loans and Overdraft',
+        'Retail TOD',
+        'Commercial mortgage',
+        'Office Equipment',
+        'Health Finance Product Guideline',
+        'Health Finance',
+    ],
+    'monthlyNetIncomes' => [
+        '$2,000 - $5,000',
+        '$6,000 - $10,000',
+        '$11,000 - $20,000',
+        '$21,000 - $50,000',
+        '$100,000 and above'
+    ],
+    'loanStatuses' => [
+        'pending',
+        'approved',
+        'rejected',
+        'disbursed'
+    ],
+    'loanRepaymentStatues' => [
+        'pending',
+        'paid',
+        'overdue'
     ]
 ];

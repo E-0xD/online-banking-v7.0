@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\User\KycController;
+use App\Http\Controllers\Dashboard\User\LoanController;
 use App\Http\Controllers\Dashboard\User\ProfileController;
 use App\Http\Controllers\Dashboard\User\SupportController;
 use App\Http\Controllers\Dashboard\User\DashboardController;
@@ -59,4 +60,9 @@ Route::middleware('user')->prefix('user')->group(function () {
     Route::get('/irs/tax/refund/track', [IRSTaxRefundController::class, 'track'])->name('user.irs_tax_refund.track');
     Route::post('/irs/tax/refund/track', [IRSTaxRefundController::class, 'trackStore']);
     Route::get('/irs/tax/refund/{uuid}/result', [IRSTaxRefundController::class, 'result'])->name('user.irs_tax_refund.result');
+
+    // Loan Controller
+    Route::get('/loan', [LoanController::class, 'index'])->name('user.loan.index');
+    Route::get('/loan/form', [LoanController::class, 'create'])->name('user.loan.form');
+    Route::post('/loan/store', [LoanController::class, 'store'])->name('user.loan.store');
 });

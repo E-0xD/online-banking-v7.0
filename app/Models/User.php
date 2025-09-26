@@ -93,4 +93,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(IRSTaxRefund::class);
     }
+
+    public function loan()
+    {
+        return $this->hasMany(Loan::class);
+    }
 }

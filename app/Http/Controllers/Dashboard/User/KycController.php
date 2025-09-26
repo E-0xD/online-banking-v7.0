@@ -14,6 +14,12 @@ use Illuminate\Support\Facades\Log;
 class KycController extends Controller
 {
     use FileUpload;
+
+    public function __construct()
+    {
+        $this->middleware(['registeredUser']);
+    }
+
     /**
      * Display a listing of the resource.
      */

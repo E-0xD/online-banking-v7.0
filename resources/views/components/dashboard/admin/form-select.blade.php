@@ -21,7 +21,7 @@
              <option value="">Select {{ $label }}</option>
              @foreach ($options as $option)
                  <option value="{{ $option }}" {{ old($name, $value) == $option ? 'selected' : '' }}>
-                     {{ $option }}
+                     {{ str()->ucfirst($option) }}
                  </option>
              @endforeach
          </select>
@@ -41,7 +41,7 @@
              <option value="">Select {{ $label }}</option>
              @foreach ($options as $key => $value)
                  <option value="{{ $key }}" {{ old($name, $value) == $key ? 'selected' : '' }}>
-                     {{ $value }}
+                     {{ str()->ucfirst($value) }}
                  </option>
              @endforeach
          </select>

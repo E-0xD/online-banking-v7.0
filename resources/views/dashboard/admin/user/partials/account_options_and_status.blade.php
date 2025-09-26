@@ -18,15 +18,16 @@
                     <i class="fa-solid fa-history me-1"></i>Withdrawals
                 </a>
                 <a class="dropdown-item" href="{{ route('admin.user.irs_tax_refund.index', $user->uuid) }}">
-                    <i class="ti ti-receipt-tax me-1"></i>Tax Refund
+                    <i class="ti ti-receipt-tax me-1"></i>Tax Refunds
                 </a>
-                <a class="dropdown-item" href="#"> <i class="fa-solid fa-file-import me-1"></i>Loan</a>
+                <a class="dropdown-item" href="{{ route('admin.user.loan.index', $user->uuid) }}"> <i
+                        class="fa-solid fa-file-import me-1"></i>Loans</a>
                 <a class="dropdown-item" href="{{ route('admin.user.grant_application.index', $user->uuid) }}"> <i
-                        class="fa-solid fa-gift me-1"></i>Grant Application</a>
+                        class="fa-solid fa-gift me-1"></i>Grants</a>
                 <a class="dropdown-item" href="#">
-                    <i class="fa-solid fa-credit-card me-1"></i>Card</a>
+                    <i class="fa-solid fa-credit-card me-1"></i>Cards</a>
                 <a class="dropdown-item" href="{{ route('admin.user.support.index', $user->uuid) }}">
-                    <i class="ti ti-help-circle me-1"></i>Support Ticket</a>
+                    <i class="ti ti-help-circle me-1"></i>Support Tickets</a>
                 <a class="dropdown-item" href="{{ route('admin.user.notification.index', $user->uuid) }}">
                     <i class="fa-solid fa-bell me-1"></i>Notifications
                 </a>
