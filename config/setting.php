@@ -485,7 +485,6 @@ return  [
     'irsTaxRefundStatuses' => [
         'pending',
         'submitted',
-        'accepted',
         'rejected',
         'refunded'
     ]

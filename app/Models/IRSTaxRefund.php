@@ -30,13 +30,13 @@ class IRSTaxRefund extends Model
         return $this->status->value == IRSTaxRefundStatus::Submitted->value;
     }
 
-    public function isAccepted()
-    {
-        return $this->status->value == IRSTaxRefundStatus::Accepted->value;
-    }
-
     public function isRejected()
     {
         return $this->status->value == IRSTaxRefundStatus::Rejected->value;
+    }
+
+    public function isRefunded()
+    {
+        return $this->status->value == IRSTaxRefundStatus::Refunded->value;
     }
 }

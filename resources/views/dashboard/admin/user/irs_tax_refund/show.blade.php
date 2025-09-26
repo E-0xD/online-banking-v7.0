@@ -1,4 +1,4 @@
-@extends('dashboard.user.layouts.app')
+@extends('dashboard.admin.layouts.app')
 @section('content')
     <div class="page-container">
 
@@ -8,15 +8,17 @@
             </div>
 
             <div class="text-end">
-                <x-dashboard.user.breadcrumbs :breadcrumbs="$breadcrumbs" />
+                <x-dashboard.admin.breadcrumbs :breadcrumbs="$breadcrumbs" />
             </div>
         </div>
 
         <div class="row">
+            @include('dashboard.admin.user.partials.account_options_and_status')
+
             <div class="col-lg-12">
-                <x-dashboard.user.card>
+                <x-dashboard.admin.card>
                     @slot('header')
-                        Refund Status
+                        {{ $title }}
                     @endslot
 
                     <p><strong>Filing ID:</strong> {{ $irsTaxRefund->filing_id }}</p>
@@ -34,11 +36,27 @@
                         <p><strong>Rejected On:</strong> {{ $irsTaxRefund->updated_at->format('M d, Y h:i A') }}</p>
                     @endif
 
-                    <x-dashboard.user.back-button href="{{ route('user.irs_tax_refund.index') }}"
-                        name="Back to IRS Tax Refund" />
+                </x-dashboard.admin.card>
+                <x-dashboard.admin.card>
+                    @slot('header')
+                        IRS Tax Refund Status Management
+                    @endslot
 
-                </x-dashboard.user.card>
+                    <form action="{{ route('admin.user.irs_tax_refund.update', [$user->uuid, $irsTaxRefund->uuid]) }}"
+                        method="post">
+                        @csrf
+                        @method('PATCH')
 
+                        <x-dashboard.admin.form-select name="status" id="irs_tax_refund_status" label="Status"
+                            type="select" class="col-md-12 mb-3" value="{{ old('status', $irsTaxRefund->status) }}"
+                            :options="config('setting.irsTaxRefundStatuses')" />
+
+                        <x-dashboard.admin.submit-and-back-button
+                            href="{{ route('admin.user.irs_tax_refund.index', [$user->uuid, $irsTaxRefund->uuid]) }}"
+                            back="Back to IRS Tax Refund" submit="Update Status" />
+                    </form>
+
+                </x-dashboard.admin.card>
             </div>
             <!-- end col -->
         </div>

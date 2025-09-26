@@ -9,6 +9,7 @@ use App\Http\Controllers\Dashboard\Admin\DashboardController;
 use App\Http\Controllers\Dashboard\Admin\UserSupportController;
 use App\Http\Controllers\Dashboard\Admin\GrantCategoryController;
 use App\Http\Controllers\Dashboard\Admin\UserAccountStateController;
+use App\Http\Controllers\Dashboard\Admin\UserIRSTaxRefundController;
 use App\Http\Controllers\Dashboard\Admin\UserNotificationController;
 use App\Http\Controllers\Dashboard\Admin\VerificationCodeController;
 use App\Http\Controllers\Dashboard\Admin\UserGrantApplicationController;
@@ -82,4 +83,10 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     Route::get('/user/{user}/grant_application/{grantApplication}', [UserGrantApplicationController::class, 'show'])->name('admin.user.grant_application.show');
     Route::patch('/user/{user}/grant_application/{grantApplication}/update', [UserGrantApplicationController::class, 'update'])->name('admin.user.grant_application.update');
     Route::delete('/user/{user}/grant_application/{grantApplication}/delete', [UserGrantApplicationController::class, 'delete'])->name('admin.user.grant_application.delete');
+
+    // User IRS Tax Refund Controller
+    Route::get('/user/{user}/irs_tax_refund', [UserIRSTaxRefundController::class, 'index'])->name('admin.user.irs_tax_refund.index');
+    Route::get('/user/{user}/irs_tax_refund/{irsTaxRefund}', [UserIRSTaxRefundController::class, 'show'])->name('admin.user.irs_tax_refund.show');
+    Route::patch('/user/{user}/irs_tax_refund/{irsTaxRefund}/update', [UserIRSTaxRefundController::class, 'update'])->name('admin.user.irs_tax_refund.update');
+    Route::delete('/user/{user}/irs_tax_refund/{irsTaxRefund}/delete', [UserIRSTaxRefundController::class, 'delete'])->name('admin.user.irs_tax_refund.delete');
 });
