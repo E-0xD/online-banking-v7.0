@@ -24,10 +24,18 @@
                     <p><strong>Requested Amount:</strong>
                         {{ currency($loan->user->currency) }}{{ formatAmount($loan->amount) }}</p>
                     <p><strong>Duration:</strong> {{ $loan->duration }} months</p>
+                    <p><strong>Facility:</strong> {{ $loan->facility }}</p>
                     <p><strong>Purpose:</strong> {{ $loan->purpose }}</p>
+                    <p><strong>Monthly Income:</strong> {{ $loan->monthly_income }}</p>
                     <p><strong>Status:</strong>
                         <span class="{{ $loan->status->badge() }}">{{ $loan->status->label() }}</span>
                     </p>
+                    <p><strong>Approved Amount:</strong>
+                        {{ currency($user->currency) }}{{ formatAmount($loan->approved_amount) }}</p>
+                    <p><strong>Interest Rate:</strong> {{ $loan->interest_rate }}%</p>
+                    <p><strong>Total Payable:</strong>
+                        {{ currency($user->currency) }}{{ formatAmount($loan->total_payable) }}</p>
+                    <p><strong>Disbursed At:</strong> {{ formatDateTime($loan->disbursed_at) }}</p>
 
                     @if ($loan->isPending())
                         <form method="POST" action="{{ route('admin.user.loan.approve', [$user->uuid, $loan->uuid]) }}"
@@ -64,6 +72,45 @@
                         </form>
                     @endif
 
+                </x-dashboard.admin.card>
+                <x-dashboard.admin.card>
+                    @slot('header')
+                        Loan Repayments
+                    @endslot
+                    <div class="table-responsive">
+                        <table id="myTable" class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Due Date</th>
+                                    <th>Amount</th>
+                                    <th>Paid At</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($loan->loanRepayment as $loanRepayment)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>
+                                            {{ formatDate($loanRepayment->due_date) }}
+                                        </td>
+                                        <td>
+                                            {{ currency($user->currency) }}{{ formatAmount($loanRepayment->amount) }}
+                                        </td>
+                                        <td>
+                                            {{ $loanRepayment->paid_at ? formatDate($loanRepayment->paid_at) : 'N/A' }}
+                                        </td>
+                                        <td>
+                                            <span class="{{ $loanRepayment->status->badge() }}">
+                                                {{ $loanRepayment->status->label() }}
+                                            </span>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </x-dashboard.admin.card>
             </div>
             <!-- end col -->

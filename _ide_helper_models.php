@@ -133,6 +133,76 @@ namespace App\Models{
  * @property int $id
  * @property string $uuid
  * @property int $user_id
+ * @property string $amount
+ * @property int $duration
+ * @property string $facility
+ * @property string $purpose
+ * @property string $monthly_income
+ * @property \App\Enum\LoanStatus $status
+ * @property string|null $approved_amount
+ * @property string|null $interest_rate
+ * @property string|null $total_payable
+ * @property string|null $disbursed_at
+ * @property string|null $remarks
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\LoanRepayment> $loanRepayment
+ * @property-read int|null $loan_repayment_count
+ * @property-read \App\Models\User $user
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Loan newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Loan newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Loan query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Loan whereAmount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Loan whereApprovedAmount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Loan whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Loan whereDisbursedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Loan whereDuration($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Loan whereFacility($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Loan whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Loan whereInterestRate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Loan whereMonthlyIncome($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Loan wherePurpose($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Loan whereRemarks($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Loan whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Loan whereTotalPayable($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Loan whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Loan whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Loan whereUuid($value)
+ */
+	class Loan extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * @property int $id
+ * @property int $loan_id
+ * @property string $due_date
+ * @property string $amount
+ * @property \App\Enum\LoanRepaymentStatus $status
+ * @property string|null $paid_at
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Loan $loan
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|LoanRepayment newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|LoanRepayment newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|LoanRepayment query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|LoanRepayment whereAmount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|LoanRepayment whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|LoanRepayment whereDueDate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|LoanRepayment whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|LoanRepayment whereLoanId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|LoanRepayment wherePaidAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|LoanRepayment whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|LoanRepayment whereUpdatedAt($value)
+ */
+	class LoanRepayment extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * @property int $id
+ * @property string $uuid
+ * @property int $user_id
  * @property string $title
  * @property string $description
  * @property int $read
@@ -298,7 +368,10 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\GrantApplication> $grantApplication
  * @property-read int|null $grant_application_count
- * @property-read \App\Models\IRSTaxRefund|null $irsTaxRefund
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\IRSTaxRefund> $irsTaxRefund
+ * @property-read int|null $irs_tax_refund_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Loan> $loan
+ * @property-read int|null $loan_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Notification> $notification
  * @property-read int|null $notification_count
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
