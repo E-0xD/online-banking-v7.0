@@ -84,7 +84,7 @@
             </li>
 
             <li class="side-nav-item">
-                <a href="#" class="side-nav-link">
+                <a href="{{ route('user.irs_tax_refund.index') }}" class="side-nav-link">
                     <span class="menu-icon"><i class="ti ti-receipt-tax"></i></span>
                     <span class="menu-text">Tax Refund</span>
                 </a>

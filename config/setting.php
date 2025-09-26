@@ -481,5 +481,12 @@ return  [
     'grantApplicationTypes' => [
         'Individual',
         'Company'
+    ],
+    'irsTaxRefundStatuses' => [
+        'pending',
+        'submitted',
+        'accepted',
+        'rejected',
+        'refunded'
     ]
 ];

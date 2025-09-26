@@ -88,4 +88,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(GrantApplication::class);
     }
+
+    public function irsTaxRefund()
+    {
+        return $this->hasMany(IRSTaxRefund::class);
+    }
 }

@@ -5,6 +5,7 @@
      'listIcon' => null,
      'bgColor' => 'bg-primary',
      'options' => [],
+     'support' => false,
  ])
  <div class="{{ $bgColor }} bg-opacity-10 p-3 mb-3">
      <!-- Header -->
@@ -26,7 +27,7 @@
      <!-- List -->
      <ul class="list-unstyled mb-0 small">
          @foreach ($options as $option)
-             <li class="d-flex align-items-center mb-1 text-primary">
+             <li class="d-flex align-items-center mb-1 text-primary mb-3">
                  <span
                      class="me-1 d-inline-flex align-items-center justify-content-center rounded-circle {{ $bgColor }}"
                      style="width:6px;height:6px;"></span>
@@ -36,5 +37,11 @@
                  {{ $option }}
              </li>
          @endforeach
+
+         @if ($support)
+             <a href="{{ route('user.support.index') }}" class="btn btn-soft-primary rounded-4"> <i class="fa-solid fa-message me-1"></i> Contact
+                 Support</a>
+         @endif
+
      </ul>
  </div>

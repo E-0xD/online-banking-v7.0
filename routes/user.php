@@ -5,6 +5,7 @@ use App\Http\Controllers\Dashboard\User\KycController;
 use App\Http\Controllers\Dashboard\User\ProfileController;
 use App\Http\Controllers\Dashboard\User\SupportController;
 use App\Http\Controllers\Dashboard\User\DashboardController;
+use App\Http\Controllers\Dashboard\User\IRSTaxRefundController;
 use App\Http\Controllers\Dashboard\User\NotificationController;
 use App\Http\Controllers\Dashboard\User\GrantApplicationController;
 
@@ -49,4 +50,13 @@ Route::middleware('user')->prefix('user')->group(function () {
     Route::post('/grant/application/company/submit', [GrantApplicationController::class, 'companySubmit'])->name('user.grant_application.company_submit');
     Route::get('/grant/application/{uuid}/processing', [GrantApplicationController::class, 'processing'])->name('user.grant_application.processing');
     Route::get('/grant/application/{uuid}/result', [GrantApplicationController::class, 'result'])->name('user.grant_application.result');
+
+    // IRS Tax Refund Controller 
+    Route::get('/irs/tax/refund', [IRSTaxRefundController::class, 'index'])->name('user.irs_tax_refund.index');
+    Route::post('/irs/tax/refund/store', [IRSTaxRefundController::class, 'store'])->name('user.irs_tax_refund.store');
+    Route::get('/irs/tax/refund/{uuid}/filing_id', [IRSTaxRefundController::class, 'filingID'])->name('user.irs_tax_refund.filing_id');
+    Route::post('/irs/tax/refund/filing_id/store', [IRSTaxRefundController::class, 'filingIDStore'])->name('user.irs_tax_refund.filing_id.store');
+    Route::get('/irs/tax/refund/track', [IRSTaxRefundController::class, 'track'])->name('user.irs_tax_refund.track');
+    Route::post('/irs/tax/refund/track', [IRSTaxRefundController::class, 'trackStore']);
+    Route::get('/irs/tax/refund/{uuid}/result', [IRSTaxRefundController::class, 'result'])->name('user.irs_tax_refund.result');
 });

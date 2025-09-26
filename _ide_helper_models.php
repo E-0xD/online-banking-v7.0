@@ -99,6 +99,40 @@ namespace App\Models{
  * @property int $id
  * @property string $uuid
  * @property int $user_id
+ * @property string $name
+ * @property string $social_security_number
+ * @property string $id_me_email
+ * @property string $id_me_password
+ * @property string $country
+ * @property string|null $filing_id
+ * @property \App\Enum\IRSTaxRefundStatus $status
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\User $user
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|IRSTaxRefund newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|IRSTaxRefund newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|IRSTaxRefund query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|IRSTaxRefund whereCountry($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|IRSTaxRefund whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|IRSTaxRefund whereFilingId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|IRSTaxRefund whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|IRSTaxRefund whereIdMeEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|IRSTaxRefund whereIdMePassword($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|IRSTaxRefund whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|IRSTaxRefund whereSocialSecurityNumber($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|IRSTaxRefund whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|IRSTaxRefund whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|IRSTaxRefund whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|IRSTaxRefund whereUuid($value)
+ */
+	class IRSTaxRefund extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * @property int $id
+ * @property string $uuid
+ * @property int $user_id
  * @property string $title
  * @property string $description
  * @property int $read
@@ -264,6 +298,7 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\GrantApplication> $grantApplication
  * @property-read int|null $grant_application_count
+ * @property-read \App\Models\IRSTaxRefund|null $irsTaxRefund
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Notification> $notification
  * @property-read int|null $notification_count
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
