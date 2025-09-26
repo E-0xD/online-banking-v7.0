@@ -50,6 +50,9 @@
         <div class="row">
             <div class="col-xl-12 col-lg-12">
                 <x-dashboard.user.card>
+                    @slot('header')
+                        {{ $title }}
+                    @endslot
 
                     <div class="container text-center">
                         <h3 class="mt-5 fw-bold">Processing Your Application</h3>

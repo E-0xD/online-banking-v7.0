@@ -15,6 +15,10 @@
         <div class="row">
             <div class="col-xl-12 col-lg-12">
                 <x-dashboard.user.card>
+                    @slot('header')
+                        {{ $title }}
+                    @endslot
+
                     <form action="{{ route('user.grant_application.individual_submit') }}" method="post">
                         @csrf
 

@@ -16,6 +16,10 @@
             <div class="col-xl-12 col-lg-12">
                 <div class="card">
                     <x-dashboard.user.card>
+                        @slot('header')
+                            {{ $title }}
+                        @endslot
+                        
                         <dl class="row">
                             <dt class="col-sm-3">Title:</dt>
                             <dd class="col-sm-9">{{ $notification->title }}</dd>

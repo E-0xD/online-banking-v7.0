@@ -66,7 +66,7 @@
                                                 </span>
                                                 <span class="flex-grow-1 text-muted">
                                                     <span
-                                                        class="fw-medium text-body">{{ $notification->title }}</span><span
+                                                        class="fw-medium text-body">{{ $notification->title }}</span> <br><span
                                                         class="fw-medium text-body">{{ limitText($notification->description, 20) }}</span>
                                                     <br />
                                                     <span
