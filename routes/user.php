@@ -65,4 +65,7 @@ Route::middleware('user')->prefix('user')->group(function () {
     Route::get('/loan', [LoanController::class, 'index'])->name('user.loan.index');
     Route::get('/loan/form', [LoanController::class, 'create'])->name('user.loan.form');
     Route::post('/loan/store', [LoanController::class, 'store'])->name('user.loan.store');
+    Route::get('/loan/history', [LoanController::class, 'history'])->name('user.loan.history');
+    Route::get('/loan/{uuid}/show', [LoanController::class, 'show'])->name('user.loan.show');
+    Route::get('/loan/{uuid}/repay', [LoanController::class, 'repay'])->name('user.loan.repay');
 });

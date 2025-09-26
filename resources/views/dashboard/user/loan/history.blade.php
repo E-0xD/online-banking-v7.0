@@ -1,4 +1,4 @@
-@extends('dashboard.admin.layouts.app')
+@extends('dashboard.user.layouts.app')
 @section('content')
     <div class="page-container">
 
@@ -8,17 +8,15 @@
             </div>
 
             <div class="text-end">
-                <x-dashboard.admin.breadcrumbs :breadcrumbs="$breadcrumbs" />
+                <x-dashboard.user.breadcrumbs :breadcrumbs="$breadcrumbs" />
             </div>
         </div>
 
         <div class="row">
-            @include('dashboard.admin.user.partials.account_options_and_status')
-
-            <div class="col-lg-12">
-                <x-dashboard.admin.card>
+            <div class="col-xl-12 col-lg-12">
+                <x-dashboard.user.card>
                     @slot('header')
-                        User {{ $title }}
+                        {{ $title }}
                     @endslot
 
                     <div class="table-responsive">
@@ -49,19 +47,9 @@
                                             <span class="{{ $loan->status->badge() }}">{{ $loan->status->label() }}</span>
                                         </td>
                                         <td>
-                                            <a href="{{ route('admin.user.loan.show', [$user->uuid, $loan->uuid]) }}"
+                                            <a href="{{ route('user.loan.show', $loan->uuid) }}"
                                                 class="btn btn-warning btn-sm m-1"> <i class="ti ti-eye me-1"></i>
                                                 View</a>
-
-                                            <form
-                                                action="{{ route('admin.user.loan.delete', [$user->uuid, $loan->uuid]) }}"
-                                                method="post">
-                                                @csrf
-                                                @method('DELETE')
-
-                                                <button type="submit" class="btn btn-danger btn-sm m-1"> <i
-                                                        class="ti ti-trash me-1"></i> Delete</button>
-                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -69,11 +57,8 @@
                         </table>
                     </div>
 
-                </x-dashboard.admin.card>
+                </x-dashboard.user.card>
             </div>
-            <!-- end col -->
         </div>
-        <!-- end row -->
-
     </div>
 @endsection

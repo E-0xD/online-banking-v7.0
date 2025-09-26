@@ -35,4 +35,14 @@ class Loan extends Model
     {
         return $this->status->value == LoanStatus::Approved->value;
     }
+
+    public function isRejected()
+    {
+        return $this->status->value == LoanStatus::Rejected->value;
+    }
+
+    public function isDisbursed()
+    {
+        return $this->status->value == LoanStatus::Disbursed->value;
+    }
 }

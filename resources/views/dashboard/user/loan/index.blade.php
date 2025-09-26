@@ -59,6 +59,15 @@
         <div class="row">
             <div class="col-xl-12 col-lg-12">
                 <x-dashboard.user.card>
+                    @if ($user->loan()->count() > 0)
+                        @slot('header')
+                            <div class="float-end">
+                                <a href="{{ route('user.loan.history') }}" class="btn btn-primary btn-sm"><i
+                                        class="fa-solid fa-history me-1"></i> Loan History
+                                </a>
+                            </div>
+                        @endslot
+                    @endif
                     <!-- Why Choose Us -->
                     <div class="section-box">
                         <h5 class="mb-4">💡 Why Choose Our Loan Services</h5>

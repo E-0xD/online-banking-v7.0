@@ -15,7 +15,7 @@ return new class extends Migration
         Schema::create('loans', function (Blueprint $table) {
             $table->id();
             $table->uuid()->unique();
-            $table->foreignIdFor(User::class)->constrained()->onDelete('cascade');
+            $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
 
             // Loan details
             $table->decimal('amount', 15, 2); // requested loan amount

@@ -14,11 +14,10 @@ return new class extends Migration
     {
         Schema::create('loan_repayments', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Loan::class)->constrained()->onDelete('cascade');
-            $table->date('due_date');
+            $table->foreignIdFor(Loan::class)->constrained()->cascadeOnDelete();
             $table->decimal('amount', 15, 2);
+            $table->timestamp('repaid_at')->nullable();
             $table->enum('status', config('setting.loanRepaymentStatues'))->default('pending');
-            $table->date('paid_at')->nullable();
             $table->timestamps();
         });
     }

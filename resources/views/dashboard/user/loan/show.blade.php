@@ -1,4 +1,4 @@
-@extends('dashboard.admin.layouts.app')
+@extends('dashboard.user.layouts.app')
 @section('content')
     <div class="page-container">
 
@@ -8,14 +8,12 @@
             </div>
 
             <div class="text-end">
-                <x-dashboard.admin.breadcrumbs :breadcrumbs="$breadcrumbs" />
+                <x-dashboard.user.breadcrumbs :breadcrumbs="$breadcrumbs" />
             </div>
         </div>
 
         <div class="row">
-            @include('dashboard.admin.user.partials.account_options_and_status')
-
-            <div class="col-lg-12">
+            <div class="col-xl-12 col-lg-12">
                 <x-dashboard.admin.card>
                     @slot('header')
                         {{ $title }}
@@ -79,46 +77,18 @@
                         @endif
                     </dl>
 
-                    @if ($loan->isPending())
-                        <form method="POST" action="{{ route('admin.user.loan.approve', [$user->uuid, $loan->uuid]) }}"
-                            class="mb-3">
-                            @csrf
-                            @method('PATCH')
-
-                            <x-dashboard.admin.form-input name="approved_amount" label="Approved Amount"
-                                class="col-md-12 mb-3" value="{{ $loan->amount }}" type="number" />
-
-                            <div class="mb-3">
-                                <label>Interest Rate (%)</label>
-                                <input type="number" value="{{ $setting->loan_interest_rate }}" class="form-control"
-                                    disabled>
-                            </div>
-
-                            <x-dashboard.admin.form-button class="btn btn-success" name="Approve Loan" />
-                        </form>
-
-                        <form method="POST" action="{{ route('admin.user.loan.reject', [$user->uuid, $loan->uuid]) }}">
-                            @csrf
-
-                            <x-dashboard.admin.form-input name="remarks" label="Remarks" type="textarea"
-                                class="col-md-12 mb-3" value="{{ $loan->remarks }}" />
-
-                            <x-dashboard.admin.form-button class="btn btn-danger" name="Reject Loan" />
-                        </form>
+                    @if ($loan->isDisbursed() && !$latestLoanRepayment->isPaid())
+                        <a href="{{ route('user.loan.repay', $loan->uuid) }}" onclick="return confirm('Are you sure?')"
+                            class="btn btn-primary">
+                            Repay ({{ currency($loan->user->currency) }}{{ formatAmount($loan->approved_amount) }})
+                        </a>
                     @endif
 
-                    @if ($loan->isApproved())
-                        <form method="POST" action="{{ route('admin.user.loan.disburse', [$user->uuid, $loan->uuid]) }}">
-                            @csrf
-                            <x-dashboard.admin.form-button name="Disburse Loan" />
-                        </form>
-                    @endif
-
+                    <div class="float-end">
+                        <x-dashboard.user.back-button href="{{ route('user.loan.index') }}" name="Back to Loans" />
+                    </div>
                 </x-dashboard.admin.card>
             </div>
-            <!-- end col -->
         </div>
-        <!-- end row -->
-
     </div>
 @endsection

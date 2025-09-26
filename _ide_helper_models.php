@@ -176,10 +176,9 @@ namespace App\Models{
 /**
  * @property int $id
  * @property int $loan_id
- * @property string $due_date
  * @property string $amount
+ * @property \Illuminate\Support\Carbon|null $repaid_at
  * @property \App\Enum\LoanRepaymentStatus $status
- * @property string|null $paid_at
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\Loan $loan
@@ -188,10 +187,9 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|LoanRepayment query()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|LoanRepayment whereAmount($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|LoanRepayment whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|LoanRepayment whereDueDate($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|LoanRepayment whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|LoanRepayment whereLoanId($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|LoanRepayment wherePaidAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|LoanRepayment whereRepaidAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|LoanRepayment whereStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|LoanRepayment whereUpdatedAt($value)
  */

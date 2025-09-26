@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Dashboard\Admin;
 
-use App\Enum\LoanStatus;
 use App\Models\User;
 use App\Models\Setting;
+use App\Enum\LoanStatus;
 use Illuminate\Http\Request;
+use App\Models\LoanRepayment;
+use App\Enum\LoanRepaymentStatus;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
@@ -79,7 +81,6 @@ class UserLoanController extends Controller
             // flat interest calculation
             $interest = ($principal * $rate * $months) / (12 * 100);
             $totalPayable = $principal + $interest;
-            $monthlyInstallment = $totalPayable / $months;
 
             $loan->update([
                 'approved_amount'    => $principal,
@@ -88,14 +89,12 @@ class UserLoanController extends Controller
                 'status'             => LoanStatus::Approved->value,
             ]);
 
-            // store installments in loan_repayments table
-            for ($i = 1; $i <= $months; $i++) {
-                $loan->loanRepayment()->create([
-                    'due_date' => now()->addMonths($i),
-                    'amount'   => $monthlyInstallment,
-                    'status'   => 'pending',
-                ]);
-            }
+            // Record transaction here
+
+            LoanRepayment::create([
+                'loan_id' => $loan->id,
+                'amount' => $request->approved_amount,
+            ]);
 
             $user->notification()->create([
                 'uuid' => str()->uuid(),
