@@ -18,6 +18,7 @@ namespace App\Models{
  * @property int $user_id
  * @property string $method
  * @property string $amount
+ * @property string|null $proof
  * @property \App\Enum\DepositStatus $status
  * @property string|null $transaction_id
  * @property string|null $reference_id
@@ -31,6 +32,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Deposit whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Deposit whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Deposit whereMethod($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Deposit whereProof($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Deposit whereReferenceId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Deposit whereStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Deposit whereTransactionId($value)

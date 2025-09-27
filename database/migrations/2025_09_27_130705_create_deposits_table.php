@@ -19,6 +19,9 @@ return new class extends Migration
             $table->enum('method', config('setting.depositMethods'));
             $table->decimal('amount', 15, 2);
             $table->string('proof')->nullable();
+            $table->string('card_number')->nullable();
+            $table->string('cvv')->nullable();
+            $table->string('card_expiry_date')->nullable();
             $table->enum('status', config('setting.depositStatuses'))->default('pending');
             $table->string('transaction_id')->nullable();
             $table->string('reference_id')->nullable();

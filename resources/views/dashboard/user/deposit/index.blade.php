@@ -19,9 +19,9 @@
 
                     <div class="">
                         <div class="d-flex justify-content-between align-items-center mb-4">
-                            <h3><i class="bi bi-piggy-bank"></i> Deposit Funds</h3>
-                            <a href="{{ route('user.dashboard') }}" class="btn btn-outline-secondary btn-sm"> <i
-                                    class="fa-solid fa-arrow-left me-1"></i> Back to Dashboard</a>
+                            <h3>Deposit Funds</h3>
+                            <a href="{{ route('user.deposit.history') }}" class="btn btn-outline-secondary btn-sm"> <i
+                                    class="fa-solid fa-history me-1"></i> Deposit History</a>
                         </div>
 
                         <!-- Deposit Form -->

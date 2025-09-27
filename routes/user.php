@@ -75,4 +75,9 @@ Route::middleware('user')->prefix('user')->group(function () {
     Route::post('/deposit/store', [DepositController::class, 'store'])->name('user.deposit.store');
     Route::get('/deposit/{referenceID}/payment', [DepositController::class, 'payment'])->name('user.deposit.payment');
     Route::patch('/deposit/{referenceID}/payment', [DepositController::class, 'paymentStore']);
+    Route::patch('/deposit/{referenceID}/credit/card/payment', [DepositController::class, 'creditCardPaymentStore'])->name('user.deposit.credit_card_payment.store');
+    Route::patch('/deposit/{referenceID}/paypal/payment', [DepositController::class, 'paypalPaymentStore'])->name('user.deposit.paypal_payment.store');
+    Route::patch('/deposit/{referenceID}/bank/transfer/payment', [DepositController::class, 'bankTransferPaymentStore'])->name('user.deposit.bank_transfer_payment.store');
+    Route::get('/deposit/history', [DepositController::class, 'history'])->name('user.deposit.history');
+    Route::get('/deposit/{deposit}/show', [DepositController::class, 'show'])->name('user.deposit.show');
 });

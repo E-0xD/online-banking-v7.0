@@ -94,13 +94,13 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-3 gap-4 pb-8">
                 <!-- Routing Number Card -->
-                @if (config('app.routing_number'))
+                @if (@$setting->routing_number)
                     <div
                         class="bg-primary-600 hover:bg-primary-700 transition-all duration-300 rounded-2xl p-6 text-white shadow-2xl hover:shadow-primary-600/30 hover:-translate-y-2 group">
                         <div class="flex items-center justify-between">
                             <div>
                                 <p class="text-primary-100 text-sm font-medium mb-1">ROUTING #</p>
-                                <p class="text-2xl font-bold">{{ config('app.routing_number') }}</p>
+                                <p class="text-2xl font-bold">{{ @$setting->routing_number }}</p>
                             </div>
                             <div
                                 class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
