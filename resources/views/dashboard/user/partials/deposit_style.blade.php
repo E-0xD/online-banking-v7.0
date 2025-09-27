@@ -1,6 +1,6 @@
     <style>
-        .deposit-card {
-            /* border-radius: 12px; */
+        /* .deposit-card {
+            border-radius: 12px;
             overflow: hidden;
         }
 
@@ -13,11 +13,9 @@
 
         .deposit-header h4 {
             color: #fff
-        }
-
+        } */
         .deposit-method {
             border: 1px solid #dee2e6;
-            /* border-radius: 10px; */
             padding: 1rem;
             text-align: center;
             cursor: pointer;
@@ -27,12 +25,12 @@
         .deposit-method.active,
         .deposit-method:hover {
             border-color: #0d6efd;
-            background: #f0f7ff;
+            background: #232E51;
+            color: white
         }
 
         .secure-box {
             border: 1px solid #dee2e6;
-            /* border-radius: 10px; */
             padding: 1rem;
             font-size: 0.9rem;
             color: #6c757d;

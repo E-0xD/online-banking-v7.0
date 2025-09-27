@@ -28,8 +28,9 @@
                         <form action="{{ route('user.deposit.store') }}" method="POST">
                             @csrf
 
-                            <div class="card deposit-card shadow-sm">
-                                <div class="deposit-header">
+                            <div class="card shadow-sm">
+
+                                <div class="text-center">
                                     <h4>Fund Your Account</h4>
                                     <p class="mb-0">Choose your preferred deposit method and amount</p>
                                 </div>
