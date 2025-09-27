@@ -27,6 +27,7 @@ Route::middleware('admin')->prefix('admin')->group(function () {
 
     // User Account State Controller
     Route::get('/user/{user}/account/state', [UserAccountStateController::class, 'index'])->name('admin.user.account_state.index');
+    Route::patch('/user/{user}/account/state/store', [UserAccountStateController::class, 'store'])->name('admin.user.account_state.store');
 
     // User KYC Controller
     Route::get('/user/{user}/kyc', [UserKycController::class, 'index'])->name('admin.user.kyc.index');

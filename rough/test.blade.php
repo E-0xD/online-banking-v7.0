@@ -1,14 +1,35 @@
-{{-- <form action="{{ route('admin.user.account_state.update', $user->uuid) }}" method="post">
-    @csrf
-    @method('PATCH')
-    <!-- Account State -->
-    <x-dashboard.admin.form-select name="account_state" label="Account State" type="select" class="col-md-12 mb-3"
-        value="{{ $user->account_state }}" :options="config('setting.accountStates')" />
+ <form wire:submit.prevent="updateAccountState" method="POST">
+     @csrf
+     @method('PATCH')
 
-    <!-- Message -->
-    <x-dashboard.admin.form-input name="account_state_message" label="Account State Message" type="textarea"
-        class="col-md-12 mb-3" value="{{ $user->account_state_message }}" />
+     <div class="col-md-12 mb-3">
+         <label class="form-label" for="account_state">Account State</label>
+         <select id="account_state" wire:model="account_state"
+             class="form-control @error('account_state') is-invalid @enderror">
+             <option value="">Select Account State</option>
+             @foreach (config('setting.accountStates') as $state)
+                 <option value="{{ $state }}">{{ $state }}</option>
+             @endforeach
+         </select>
 
-    <x-dashboard.admin.submit-and-back-button back="Back to User Details" submit="Update Account State"
-        href="{{ route('admin.user.show', $user->uuid) }}" />
-</form> --}}
+         @error('account_state')
+             <span class="invalid-feedback">{{ $message }}</span>
+         @enderror
+     </div>
+     <div class="col-md-12 mb-3">
+         <label class="form-label" for="account_state_message">Account State Message</label>
+         <textarea wire:model.lazy="account_state_message" type="textarea" id="account_state_message"
+             class="form-control @error('account_state_message') is-invalid @enderror" cols="30" rows="5"></textarea>
+         @error('account_state_message')
+             <span class="invalid-feedback">{{ $message }}</span>
+         @enderror
+     </div>
+
+     <div class="mb-3">
+         <a href="{{ route('admin.user.show', $userId) }}" class="btn btn-soft-primary"><i
+                 class="fa-solid fa-arrow-left me-1"></i>
+             Back to User Details</a>
+         <button type="submit" class="btn btn-primary"><i class="fa-solid fa-paper-plane me-1"></i>
+             Update Account State</button>
+     </div>
+ </form>

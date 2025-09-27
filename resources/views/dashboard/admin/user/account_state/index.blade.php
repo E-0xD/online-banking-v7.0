@@ -22,7 +22,21 @@
                         User {{ $title }} Management
                     @endslot
 
-                    <livewire:dashboard.admin.user-account-state :user-id="$user->uuid" />
+                    <form action="{{ route('admin.user.account_state.store', $user->uuid) }}" method="POST">
+                        @csrf
+                        @method('PATCH')
+
+                        <x-dashboard.admin.form-select name="account_state" id="account_state" label="Account State"
+                            class="col-md-12 mb-3" value="{{ old('account_state', $user->account_state) }}" type="select"
+                            :options="config('setting.accountStates')" />
+
+                        <x-dashboard.admin.form-input name="account_state_message"
+                            value="{{ old('account_state_message', $user->account_state_message) }}" type="textarea"
+                            label="Account State Message" class="col-md-12 mb-3" />
+
+                        <x-dashboard.admin.submit-and-back-button href="{{ route('admin.user.show', $user->uuid) }}"
+                            back="Back to User" submit="Save" />
+                    </form>
 
                 </x-dashboard.admin.card>
 
