@@ -16,6 +16,36 @@ namespace App\Models{
  * @property int $id
  * @property string $uuid
  * @property int $user_id
+ * @property string $method
+ * @property string $amount
+ * @property \App\Enum\DepositStatus $status
+ * @property string|null $transaction_id
+ * @property string|null $reference_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\User $user
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Deposit newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Deposit newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Deposit query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Deposit whereAmount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Deposit whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Deposit whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Deposit whereMethod($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Deposit whereReferenceId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Deposit whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Deposit whereTransactionId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Deposit whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Deposit whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Deposit whereUuid($value)
+ */
+	class Deposit extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * @property int $id
+ * @property string $uuid
+ * @property int $user_id
  * @property string $type
  * @property string|null $name
  * @property string|null $tax_id
@@ -364,6 +394,8 @@ namespace App\Models{
  * @property string|null $remember_token
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Deposit> $deposit
+ * @property-read int|null $deposit_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\GrantApplication> $grantApplication
  * @property-read int|null $grant_application_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\IRSTaxRefund> $irsTaxRefund

@@ -4,54 +4,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Loan Services</title>
+  <title>Deposit Funds</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
   <style>
     body {
-      background-color: #f8fbff;
+      background-color: #f5f7fb;
     }
 
-    .section-box {
-      background: #fff;
-      border-radius: 10px;
-      padding: 25px;
-      margin-bottom: 25px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    .deposit-card {
+      border-radius: 12px;
+      overflow: hidden;
     }
 
-    .loan-type-box {
-      background: #f9fcff;
-      border: 1px solid #e0e6f1;
-      border-radius: 8px;
-      padding: 18px;
-      text-align: left;
-      margin-bottom: 15px;
-      transition: 0.3s;
-    }
-
-    .loan-type-box:hover {
-      background: #eef6ff;
-    }
-
-    .how-it-works-step {
-      background: #eef6ff;
-      border-radius: 50%;
-      width: 32px;
-      height: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      color: #007bff;
-      margin-right: 10px;
-    }
-
-    .cta-section {
-      background: #f0f7ff;
-      border-radius: 10px;
-      padding: 25px;
+    .deposit-header {
+      background: #0d6efd;
+      color: #fff;
       text-align: center;
-      margin-top: 20px;
+      padding: 2rem;
+    }
+
+    .deposit-method {
+      border: 1px solid #dee2e6;
+      border-radius: 10px;
+      padding: 1rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .deposit-method.active,
+    .deposit-method:hover {
+      border-color: #0d6efd;
+      background: #f0f7ff;
+    }
+
+    .secure-box {
+      border: 1px solid #dee2e6;
+      border-radius: 10px;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #6c757d;
     }
   </style>
 </head>
@@ -59,108 +52,103 @@
 <body>
 
   <div class="container py-5">
-
-    <!-- Why Choose Us -->
-    <div class="section-box">
-      <h5 class="mb-4">💡 Why Choose Our Loan Services</h5>
-      <div class="row g-3">
-        <div class="col-md-6">
-          <div><strong>Quick Approval</strong><br><small>Get a decision within hours and funds within days</small></div>
-        </div>
-        <div class="col-md-6">
-          <div><strong>Competitive Rates</strong><br><small>Low interest rates tailored to your credit profile</small>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div><strong>Simple Process</strong><br><small>Straightforward application with minimal paperwork</small>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div><strong>Secure & Confidential</strong><br><small>Your information is protected with bank-level
-              security</small></div>
-        </div>
-      </div>
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h3><i class="bi bi-piggy-bank"></i> Deposit Funds</h3>
+      <a href="#" class="btn btn-outline-secondary btn-sm">Back to Dashboard</a>
     </div>
 
-    <!-- Available Loan Types -->
-    <div class="section-box">
-      <h5 class="mb-4">📌 Available Loan Types</h5>
-      <div class="row">
-        <div class="col-md-4">
-          <div class="loan-type-box">
-            <strong>🏠 Personal Home Loans</strong>
-            <p class="mb-0">Finance your dream home with competitive rates</p>
-          </div>
+    <!-- Deposit Form -->
+    <form action="/deposit" method="POST">
+      <!-- CSRF token for Laravel -->
+      <!-- @csrf -->
+      <div class="card deposit-card shadow-sm">
+        <div class="deposit-header">
+          <h4>Fund Your Account</h4>
+          <p class="mb-0">Choose your preferred deposit method and amount</p>
         </div>
-        <div class="col-md-4">
-          <div class="loan-type-box">
-            <strong>🚗 Automobile Loans</strong>
-            <p class="mb-0">Get on the road with flexible auto financing</p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="loan-type-box">
-            <strong>💼 Business Loans</strong>
-            <p class="mb-0">Grow your business with tailored financing solutions</p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="loan-type-box">
-            <strong>👥 Joint Mortgage</strong>
-            <p class="mb-0">Share responsibility with a co-borrower</p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="loan-type-box">
-            <strong>💳 Secured Overdraft</strong>
-            <p class="mb-0">Access funds when needed with asset backing</p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="loan-type-box">
-            <strong>❤️ Health Finance</strong>
-            <p class="mb-0">Cover medical expenses with flexible payment options</p>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <!-- How It Works -->
-    <div class="section-box">
-      <h5 class="mb-4">ℹ️ How It Works</h5>
-      <div class="d-flex mb-3">
-        <div class="how-it-works-step">1</div>
-        <div>
-          <strong>Apply Online</strong><br>
-          <small>Complete our simple online application form with your details and loan requirements</small>
-        </div>
-      </div>
-      <div class="d-flex mb-3">
-        <div class="how-it-works-step">2</div>
-        <div>
-          <strong>Quick Review</strong><br>
-          <small>Our team reviews your application and may contact you for additional information</small>
-        </div>
-      </div>
-      <div class="d-flex">
-        <div class="how-it-works-step">3</div>
-        <div>
-          <strong>Approval & Disbursement</strong><br>
-          <small>Once approved, the loan amount will be transferred to your account</small>
-        </div>
-      </div>
-    </div>
+        <div class="card-body">
+          <!-- Deposit Methods -->
+          <div class="row g-3 mb-4" id="deposit-methods">
+            <input type="hidden" name="method" id="selectedMethod" value="Credit Card">
+            <div class="col-md-3">
+              <div class="deposit-method active" data-method="Credit Card">
+                <i class="bi bi-credit-card fs-3 d-block mb-2 text-primary"></i>
+                Credit Card
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="deposit-method" data-method="Bank Transfer">
+                <i class="bi bi-bank fs-3 d-block mb-2 text-primary"></i>
+                Bank Transfer
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="deposit-method" data-method="Bitcoin">
+                <i class="bi bi-currency-bitcoin fs-3 d-block mb-2 text-warning"></i>
+                Bitcoin
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="deposit-method" data-method="PayPal">
+                <i class="bi bi-paypal fs-3 d-block mb-2 text-primary"></i>
+                PayPal
+              </div>
+            </div>
+          </div>
 
-    <!-- CTA -->
-    <div class="cta-section">
-      <h5 class="mb-2">Ready to get started?</h5>
-      <p class="mb-3">Apply now and get a decision on your loan application quickly</p>
-      <a href="#" class="btn btn-primary px-4">✍ Apply for a Loan</a>
-    </div>
+          <!-- Deposit Amount -->
+          <div class="mb-4">
+            <label for="amount" class="form-label fw-semibold">Deposit Amount</label>
+            <div class="input-group mb-3">
+              <span class="input-group-text">$</span>
+              <input type="number" class="form-control" id="amount" name="amount" value="0.00" min="1" required>
+            </div>
+            <div class="d-flex gap-2 flex-wrap">
+              <button type="button" class="btn btn-outline-secondary quick-amount">$100</button>
+              <button type="button" class="btn btn-outline-secondary quick-amount">$500</button>
+              <button type="button" class="btn btn-outline-secondary quick-amount">$1000</button>
+              <button type="button" class="btn btn-outline-secondary quick-amount">$5000</button>
+              <button type="button" class="btn btn-outline-secondary quick-amount">$10000</button>
+            </div>
+          </div>
 
+          <!-- Buttons -->
+          <div class="d-flex justify-content-between">
+            <a href="#" class="btn btn-outline-secondary">Back to Dashboard</a>
+            <button type="submit" class="btn btn-primary">Continue to Deposit</button>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <!-- Secure Info -->
+    <div class="secure-box mt-3">
+      <i class="bi bi-shield-lock"></i>
+      All deposits are processed through secure payment channels. Your financial information is never stored on our
+      servers.
+    </div>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Toggle active class & set method
+    document.querySelectorAll('.deposit-method').forEach(method => {
+      method.addEventListener('click', function () {
+        document.querySelectorAll('.deposit-method').forEach(m => m.classList.remove('active'));
+        this.classList.add('active');
+        document.getElementById('selectedMethod').value = this.dataset.method;
+      });
+    });
+
+    // Quick amount buttons
+    document.querySelectorAll('.quick-amount').forEach(button => {
+      button.addEventListener('click', function () {
+        const amount = this.innerText.replace('$', '');
+        document.getElementById('amount').value = amount;
+      });
+    });
+  </script>
 </body>
 
 </html>

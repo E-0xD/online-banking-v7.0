@@ -40,9 +40,9 @@
 
         <style>
             /* .btn-primary {
-                background-color: #232e51e3 !important;
+                background-color: #232E51 !important;
                 color: #fff !important;
-                border-color: #232e51e3 !important;
+                border-color: #232E51 !important;
             } */
         </style>
     </head>

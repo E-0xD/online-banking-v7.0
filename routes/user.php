@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\User\KycController;
 use App\Http\Controllers\Dashboard\User\LoanController;
+use App\Http\Controllers\Dashboard\User\DepositController;
 use App\Http\Controllers\Dashboard\User\ProfileController;
 use App\Http\Controllers\Dashboard\User\SupportController;
 use App\Http\Controllers\Dashboard\User\DashboardController;
@@ -68,4 +69,10 @@ Route::middleware('user')->prefix('user')->group(function () {
     Route::get('/loan/history', [LoanController::class, 'history'])->name('user.loan.history');
     Route::get('/loan/{uuid}/show', [LoanController::class, 'show'])->name('user.loan.show');
     Route::get('/loan/{uuid}/repay', [LoanController::class, 'repay'])->name('user.loan.repay');
+
+    // Deposit Controller
+    Route::get('/deposit', [DepositController::class, 'index'])->name('user.deposit.index');
+    Route::post('/deposit/store', [DepositController::class, 'store'])->name('user.deposit.store');
+    Route::get('/deposit/{referenceID}/payment', [DepositController::class, 'payment'])->name('user.deposit.payment');
+    Route::patch('/deposit/{referenceID}/payment', [DepositController::class, 'paymentStore']);
 });

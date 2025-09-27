@@ -103,3 +103,8 @@ function formatDateTime($datetime)
 {
     return date('d M Y h:i A', strtotime($datetime));
 }
+
+function uploadPath($path, $type = 'user')
+{
+    return '/uploads/dashboard/' . $type . '/' . $path . '/';
+}

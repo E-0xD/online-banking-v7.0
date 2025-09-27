@@ -531,5 +531,16 @@ return  [
         'pending',
         'paid',
         'overdue'
+    ],
+    'depositMethods' => [
+        'Credit Card',
+        'Bank Transfer',
+        'Bitcoin',
+        'Paypal'
+    ],
+    'depositStatuses' => [
+        'pending',
+        'approved',
+        'rejected'
     ]
 ];

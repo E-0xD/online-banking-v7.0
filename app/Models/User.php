@@ -93,4 +93,9 @@ class User extends Authenticatable
     {
         return $this->kyc->value === UserKycStatus::Rejected->value;
     }
+
+    public function deposit()
+    {
+        return $this->hasMany(Deposit::class);
+    }
 }
