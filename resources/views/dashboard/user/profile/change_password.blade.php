@@ -45,7 +45,10 @@
                             'After changing your password, you\'ll be required to log in again with your new credentials.',
                         ]" />
 
-                        <x-dashboard.user.form-button name="Change Password" class="btn btn-primary w-100" />
+                        <div class="float-end">
+                            <x-dashboard.user.submit-and-back-button href="{{ route('user.profile.index') }}"
+                                back="Back to Profile" submit="Change Password" class="btn btn-primary" />
+                        </div>
                     </form>
 
                 </x-dashboard.user.card>

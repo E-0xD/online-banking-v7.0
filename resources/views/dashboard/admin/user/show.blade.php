@@ -70,8 +70,8 @@
                         <dd class="col-sm-9">{{ $user->account_type ?? 'N/A' }}</dd>
 
                         <dt class="col-sm-3">Account State:</dt>
-                        <dd class="col-sm-9 text-uppercase">
-                            {{ $user->account_state }}
+                        <dd class="col-sm-9">
+                            <span class="{{ $user->account_state->badge() }}">{{ $user->account_state->label() }}</span>
                         </dd>
 
                         <dt class="col-sm-3">Account Number:</dt>

@@ -18,6 +18,13 @@
                     @slot('header')
                         Email-Based Two-Factor Authentication <br>
                         <small>Add an extra layer of security to your account</small>
+
+                        <div class="float-end">
+                            <a href="{{ route('user.profile.index') }}" class="btn btn-soft-primary"> <i
+                                    class="fa-solid fa-arrow-left me-1"></i> Back to
+                                Profile</a>
+
+                        </div>
                     @endslot
 
                     <span class="{{ $user->two_factor_authentication->badge() }}">

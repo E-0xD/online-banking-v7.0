@@ -5,6 +5,8 @@ namespace App\Livewire\Dashboard\Admin;
 use App\Models\User;
 use Livewire\Component;
 use App\Enum\UserStatus;
+use App\Enum\UserAccountState as UserAccountStateEnum;
+use App\Enum\UserKycStatus;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
@@ -47,16 +49,16 @@ class UserAccountState extends Component
 
             $user = User::where('uuid', $this->userId)->firstOrFail();
 
-            if ($this->account_state === 'Disabled') {
+            if ($this->account_state === UserAccountStateEnum::Disabled->value) {
                 $user->status = UserStatus::INACTIVE->value;
             } else {
                 $user->status = UserStatus::ACTIVE->value;
             }
 
-            if ($this->account_state === 'Kyc') {
-                $user->kyc = 'Pending';
+            if ($this->account_state === UserAccountStateEnum::Kyc->value) {
+                $user->kyc = UserKycStatus::Pending->value;
             } else {
-                $user->kyc = 'Approved';
+                $user->kyc = UserKycStatus::Approved->value;
             }
 
             $user->account_state = $this->account_state;

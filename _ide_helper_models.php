@@ -338,7 +338,7 @@ namespace App\Models{
  * @property string|null $employment
  * @property string|null $currency
  * @property string|null $account_type
- * @property string $account_state
+ * @property \App\Enum\UserAccountState $account_state
  * @property string|null $account_state_message
  * @property string|null $transaction_pin
  * @property string|null $account_number

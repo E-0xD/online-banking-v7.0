@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 use App\Enum\TwoFactorAuthenticationStatus;
+use App\Enum\UserAccountState;
 use App\Enum\UserKycStatus;
 use App\Enum\UserStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -48,7 +49,8 @@ class User extends Authenticatable
             'status' => UserStatus::class,
             'two_factor_authentication' => TwoFactorAuthenticationStatus::class,
             'last_login_time' => 'datetime',
-            'kyc' => UserKycStatus::class
+            'kyc' => UserKycStatus::class,
+            'account_state' => UserAccountState::class
         ];
     }
 

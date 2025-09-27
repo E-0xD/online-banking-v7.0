@@ -28,10 +28,16 @@
                                 <h4 class="text-dark fw-medium">{{ $user->name }} {{ $user->first_name }}
                                     {{ $user->last_name }}</h4>
                                 <p class="mb-0 text-muted">Account Number: {{ $user->account_number }}</p>
+                                <p class="mb-0 text-muted">Account State:
+                                    <span class="{{ $user->account_state->badge() }}">
+                                        {{ $user->account_state->label() }}
+                                    </span>
+                                </p>
                             </div>
-                            <div class="ms-auto text-uppercase">
-                                Account State: <span class="text-bold">{{ $user->account_state }}</span>
-                            </div>
+                            {{-- <div class="ms-auto">
+                                Account State: <span
+                                    class="{{ $user->account_state->badge() }}">{{ $user->account_state->label() }}</span>
+                            </div> --}}
                         </div>
                         <div class="mt-3">
                             <h4 class="fs-15">Contact Details :</h4>
@@ -66,7 +72,7 @@
                                 Employment Type: {{ $user->employment }}</p>
                         </div>
                     </div>
-                    <div class="card-footer border-top border-dashed">
+                    {{-- <div class="card-footer border-top border-dashed">
                         <a href="{{ route('user.profile.change_image') }}" class="btn btn-primary w-100 mb-2">
                             <i class="ti ti-photo me-1"></i> Change Image
                         </a>
@@ -84,7 +90,50 @@
                             <i class="ti ti-key me-1"></i> Transaction PIN
                         </a>
 
+                    </div> --}}
+                    <div class="card-footer border-top border-dashed">
+                        <div class="list-group list-group-flush">
+                            <a href="{{ route('user.profile.change_image') }}"
+                                class="list-group-item list-group-item-action d-flex align-items-center">
+                                <i class="ti ti-photo text-primary me-2 fs-5"></i>
+                                <div>
+                                    <div class="fw-bold">Change Profile Image</div>
+                                    <small class="text-muted">Update your account photo for better personalization</small>
+                                </div>
+                            </a>
+
+                            <a href="{{ route('user.profile.change_password') }}"
+                                class="list-group-item list-group-item-action d-flex align-items-center">
+                                <i class="ti ti-lock text-warning me-2 fs-5"></i>
+                                <div>
+                                    <div class="fw-bold">Password Settings</div>
+                                    <small class="text-muted">Manage your login password and keep your account
+                                        secure</small>
+                                </div>
+                            </a>
+
+                            <a href="{{ route('user.profile.two_factor_authentication') }}"
+                                class="list-group-item list-group-item-action d-flex align-items-center">
+                                <i class="ti ti-shield-lock text-success me-2 fs-5"></i>
+                                <div class="d-flex flex-column">
+                                    <div class="fw-bold">
+                                        Two-Factor Authentication {!! $user->two_factor_authentication->checkBadge() !!}
+                                    </div>
+                                    <small class="text-muted">Add an extra layer of security to your account</small>
+                                </div>
+                            </a>
+
+                            <a href="{{ route('user.profile.change_transaction_pin') }}"
+                                class="list-group-item list-group-item-action d-flex align-items-center">
+                                <i class="ti ti-key text-danger me-2 fs-5"></i>
+                                <div>
+                                    <div class="fw-bold">Transaction PIN</div>
+                                    <small class="text-muted">Set or update your PIN for financial transactions</small>
+                                </div>
+                            </a>
+                        </div>
                     </div>
+
                 </div>
 
                 <div class="card">

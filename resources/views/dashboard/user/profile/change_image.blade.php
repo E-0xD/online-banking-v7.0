@@ -25,7 +25,8 @@
 
                         <x-dashboard.user.form-input name="image" type="file" class="col-md-12 mb-3" />
 
-                        <x-dashboard.user.form-button name="Change Image" class="btn btn-primary" />
+                        <x-dashboard.user.submit-and-back-button href="{{ route('user.profile.index') }}"
+                            back="Back to Profile" submit="Change Image" class="btn btn-primary" />
                     </form>
 
                 </x-dashboard.user.card>

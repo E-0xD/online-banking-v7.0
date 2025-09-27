@@ -2,3 +2,4 @@
 2. User Ticket History
 3. All Table columns that has status and enum as dataType should be in enum
 4. Done: Remove kyc form if admin have verified kyc
+5. Wor on user account state and related functionality

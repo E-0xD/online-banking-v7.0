@@ -38,7 +38,10 @@
 
                         <x-dashboard.user.warning-list title="Security Reminder" :options="['Keep your transaction PIN confidential. Never share it with anyone.']" />
 
-                        <x-dashboard.user.form-button name="Update Transaction PIN" class="btn btn-primary w-100" />
+                        <div class="float-end">
+                            <x-dashboard.user.submit-and-back-button href="{{ route('user.profile.index') }}"
+                                back="Back to Profile" submit="Update Transaction PIN" class="btn btn-primary" />
+                        </div>
                     </form>
 
                 </x-dashboard.user.card>
