@@ -30,6 +30,8 @@ Route::middleware('admin')->prefix('admin')->group(function () {
 
     // User KYC Controller
     Route::get('/user/{user}/kyc', [UserKycController::class, 'index'])->name('admin.user.kyc.index');
+    Route::patch('/user/{user}/kyc/approve', [UserKycController::class, 'approve'])->name('admin.user.kyc.approve');
+    Route::patch('/user/{user}/kyc/reject', [UserKycController::class, 'reject'])->name('admin.user.kyc.reject');
 
     // User Notification Controller
     Route::get('/user/{user}/notification', [UserNotificationController::class, 'index'])->name('admin.user.notification.index');

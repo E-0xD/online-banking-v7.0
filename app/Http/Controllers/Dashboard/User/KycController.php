@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Dashboard\User;
 
+use App\Enum\UserKycStatus;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -73,7 +74,7 @@ class KycController extends Controller
 
             $user = User::where('role', 'user')->where('id', Auth::id())->firstOrFail();
 
-            $data['kyc'] = 'Pending';
+            $data['kyc'] = UserKycStatus::Pending->value;
 
             $data['front_side'] = $this->imageInterventionUpdateFile($request, 'front_side', '/uploads/dashboard/user/document/', 1012, 638, $user?->front_side);
 

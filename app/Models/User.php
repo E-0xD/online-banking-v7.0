@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 use App\Enum\TwoFactorAuthenticationStatus;
+use App\Enum\UserKycStatus;
 use App\Enum\UserStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -47,31 +48,8 @@ class User extends Authenticatable
             'status' => UserStatus::class,
             'two_factor_authentication' => TwoFactorAuthenticationStatus::class,
             'last_login_time' => 'datetime',
+            'kyc' => UserKycStatus::class
         ];
-    }
-
-    public function hasPendingKYC(): bool
-    {
-        if ($this->document_type && $this->front_side && $this->back_side && $this->kyc === 'Pending') {
-            return true;
-        }
-        return false;
-    }
-
-    public function hasApprovedKYC(): bool
-    {
-        if ($this->document_type && $this->front_side && $this->back_side && $this->kyc === 'Approved') {
-            return true;
-        }
-        return false;
-    }
-
-    public function hasRejectedKYC(): bool
-    {
-        if ($this->document_type && $this->front_side && $this->back_side && $this->kyc === 'Rejected') {
-            return true;
-        }
-        return false;
     }
 
     public function support()
@@ -97,5 +75,20 @@ class User extends Authenticatable
     public function loan()
     {
         return $this->hasMany(Loan::class);
+    }
+
+    public function kycIsApproved()
+    {
+        return $this->kyc->value === UserKycStatus::Approved->value;
+    }
+
+    public function kycIsPending()
+    {
+        return $this->kyc->value === UserKycStatus::Pending->value;
+    }
+
+    public function kycIsRejected()
+    {
+        return $this->kyc->value === UserKycStatus::Rejected->value;
     }
 }

@@ -1,4 +1,4 @@
 1. User Grant Application History
 2. User Ticket History
 3. All Table columns that has status and enum as dataType should be in enum
-4. Remove kyc form if admin have verified kyc
+4. Done: Remove kyc form if admin have verified kyc

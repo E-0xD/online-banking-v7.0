@@ -22,13 +22,70 @@
                         User {{ $title }} Management
                     @endslot
 
-                    <livewire:dashboard.admin.user-kyc-status :uuid="$user->uuid" />
+                    <dl class="row">
+                        <dt class="col-sm-3">Document Type:</dt>
+                        <dd class="col-sm-9">{{ $user->document_type }}</dd>
 
-                </x-dashboard.admin.card>
+                        <dt class="col-sm-3">Document (Front):</dt>
+                        <dd class="col-sm-9">
+                            @if ($user->front_side)
+                                <a href="{{ asset($user->front_side) }}" target="_blank"
+                                    class="btn btn-sm btn-outline-primary">
+                                    View Front
+                                </a>
+                            @else
+                                N/A
+                            @endif
+                        </dd>
+
+                        <dt class="col-sm-3">Document (Back):</dt>
+                        <dd class="col-sm-9">
+                            @if ($user->back_side)
+                                <a href="{{ asset($user->back_side) }}" target="_blank"
+                                    class="btn btn-sm btn-outline-primary">
+                                    View Back
+                                </a>
+                            @else
+                                N/A
+                            @endif
+                        </dd>
+
+                        <dt class="col-sm-3">Status:</dt>
+                        <dd class="col-sm-9">
+                            <span class="{{ $user->kyc->badge() }}">
+                                {{ $user->kyc->label() }}
+                            </span>
+                        </dd>
+                    </dl>
+
+                    @if ($user->kycIsPending())
+                        <div class="mb-3">
+                            <form action="{{ route('admin.user.kyc.approve', $user->uuid) }}" method="post">
+                                @csrf
+                                @method('PATCH')
+
+                                <button type="submit" class="btn btn-success"> <i class="ti ti-check me-1"></i>
+                                    Approve</button>
+                            </form>
+
+                        </div>
+                        <div class="mb-3">
+                            <form action="{{ route('admin.user.kyc.reject', $user->uuid) }}" method="post">
+                                @csrf
+                                @method('PATCH')
+
+                                <button type="submit" class="btn btn-danger"> <i class="fa-solid fa-times me-1"></i>
+                                    Reject</button>
+                            </form>
+                        </div>
+                    @endif
             </div>
-            <!-- end col -->
+
+            </x-dashboard.admin.card>
         </div>
-        <!-- end row -->
+        <!-- end col -->
+    </div>
+    <!-- end row -->
 
     </div>
 @endsection

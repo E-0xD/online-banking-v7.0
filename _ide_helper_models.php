@@ -354,7 +354,7 @@ namespace App\Models{
  * @property string|null $image
  * @property string|null $password
  * @property \App\Enum\TwoFactorAuthenticationStatus $two_factor_authentication
- * @property string $kyc
+ * @property \App\Enum\UserKycStatus $kyc
  * @property string|null $document_type
  * @property string|null $front_side
  * @property string|null $back_side
