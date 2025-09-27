@@ -30,7 +30,7 @@ namespace App\Models{
  * @property string|null $project_description
  * @property string|null $expected_outcome
  * @property string $amount
- * @property string $status
+ * @property \App\Enum\GrantApplicationStatus $status
  * @property string|null $review_notes
  * @property string $submitted_at
  * @property \Illuminate\Support\Carbon|null $created_at

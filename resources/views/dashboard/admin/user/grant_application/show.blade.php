@@ -113,7 +113,9 @@
 
                             <dt class="col-sm-3">Status</dt>
                             <dd class="col-sm-9">
-                                {{ $grantApplication->status }}
+                                <span class="{{ $grantApplication->status->badge() }}">
+                                    {{ $grantApplication->status->label() }}
+                                </span>
                             </dd>
 
                             <dt class="col-sm-3">Submitted At</dt>
@@ -125,27 +127,47 @@
 
                 </x-dashboard.admin.card>
 
-                <x-dashboard.admin.card>
-                    @slot('header')
-                        Manage User Grant Application Status
-                    @endslot
+                @if ($grantApplication->isPending())
+                    <x-dashboard.admin.card>
+                        <div class="mb-3">
+                            <form
+                                action="{{ route('admin.user.grant_application.update', [$user->uuid, $grantApplication->uuid]) }}"
+                                method="post">
+                                @csrf
+                                @method('PATCH')
 
-                    <form
-                        action="{{ route('admin.user.grant_application.update', [$user->uuid, $grantApplication->uuid]) }}"
-                        method="post">
-                        @csrf
-                        @method('PATCH')
+                                <button type="submit" name="status" value="Approved" class="btn btn-success"> <i
+                                        class="ti ti-check me-1"></i>
+                                    Approve</button>
+                            </form>
 
-                        <x-dashboard.admin.form-select name="status" id="grant_application_status" label="Status"
-                            type="select" class="col-md-12 mb-3" value="{{ old('status', $grantApplication->status) }}"
-                            :options="config('setting.grantApplicationStatues')"
-                            formText="Please only update the status when needed to avoid multiple records and approved grant application" />
+                        </div>
+                        <div class="mb-3">
+                            <form
+                                action="{{ route('admin.user.grant_application.update', [$user->uuid, $grantApplication->uuid]) }}"
+                                method="post">
+                                @csrf
+                                @method('PATCH')
 
-                        <x-dashboard.admin.submit-and-back-button
-                            href="{{ route('admin.user.grant_application.index', $user->uuid) }}"
-                            back="Back to Grant Applications" submit="Update Status" />
-                    </form>
-                </x-dashboard.admin.card>
+                                <button type="submit" name="status" value="Rejected" class="btn btn-danger"> <i
+                                        class="fa-solid fa-times me-1"></i>
+                                    Reject</button>
+                            </form>
+                        </div>
+                        <div class="mb-3">
+                            <form
+                                action="{{ route('admin.user.grant_application.update', [$user->uuid, $grantApplication->uuid]) }}"
+                                method="post">
+                                @csrf
+                                @method('PATCH')
+
+                                <button type="submit" name="status" value="Withdrawn" class="btn btn-soft-danger"> <i
+                                        class="fa-solid fa-arrow-left me-1"></i>
+                                    Withdrawn</button>
+                            </form>
+                        </div>
+                    </x-dashboard.admin.card>
+                @endif
             </div>
             <!-- end col -->
         </div>

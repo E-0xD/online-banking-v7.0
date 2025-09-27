@@ -41,7 +41,9 @@
                                             {{ currency($user->currency) }}{{ formatAmount($grantApplication->amount) }}
                                         </td>
                                         <td>
-                                            {{ $grantApplication->status }}
+                                            <span class="{{ $grantApplication->status->badge() }}">
+                                                {{ $grantApplication->status->label() }}
+                                            </span>
                                         </td>
                                         <td>
                                             <a href="{{ route('admin.user.grant_application.show', [$user->uuid, $grantApplication->uuid]) }}"

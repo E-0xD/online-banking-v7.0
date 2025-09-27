@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Dashboard\Admin;
 
+use App\Enum\GrantApplicationStatus;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -71,7 +72,7 @@ class UserGrantApplicationController extends Controller
                 'status' => $request->status
             ]);
 
-            if ($request->status === 'Approved') {
+            if ($request->status === GrantApplicationStatus::Approved->value) {
                 $user->account_balance = $user->account_balance + $grantApplication->amount;
                 $user->save();
 
