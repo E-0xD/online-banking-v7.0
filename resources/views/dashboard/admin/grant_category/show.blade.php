@@ -28,7 +28,11 @@
                         <dd class="col-sm-9">{{ $grantCategory->description }}</dd>
 
                         <dt class="col-sm-3">Status</dt>
-                        <dd class="col-sm-9">{{ $grantCategory->status }}</dd>
+                        <dd class="col-sm-9">
+                            <span class="{{ $grantCategory->status->badge() }}">
+                                {{ $grantCategory->status->label() }}
+                            </span>
+                        </dd>
 
                         <dt class="col-sm-3">Date</dt>
                         <dd class="col-sm-9">{{ formatDate($grantCategory->created_at) }}</dd>

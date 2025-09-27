@@ -40,7 +40,11 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $grantCategory->name }}</a>
                                         </td>
-                                        <td>{{ $grantCategory->status }}</td>
+                                        <td>
+                                            <span class="{{ $grantCategory->status->badge() }}">
+                                                {{ $grantCategory->status->label() }}
+                                            </span>
+                                        </td>
                                         <td>
                                             <a href="{{ route('admin.grant_category.show', $grantCategory->uuid) }}"
                                                 class="btn btn-warning  btn-sm m-1">

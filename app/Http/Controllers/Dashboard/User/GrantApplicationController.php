@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Dashboard\User;
 
+use App\Enum\GrantCategoryStatus;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\GrantCategory;
@@ -45,7 +46,7 @@ class GrantApplicationController extends Controller
             ['label' => 'Individual Grant Application', 'active' => true]
         ];
 
-        $grantCategories = GrantCategory::latest()->get();
+        $grantCategories = GrantCategory::where('status', GrantCategoryStatus::Active->value)->latest()->get();
 
         $data = [
             'title' => 'Individual Grant Application',
