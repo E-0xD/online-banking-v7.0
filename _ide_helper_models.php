@@ -472,7 +472,7 @@ namespace App\Models{
  * @property string $network
  * @property string|null $qr_code_path
  * @property string $balance
- * @property string $status
+ * @property \App\Enum\WalletStatus $status
  * @property string|null $description
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at

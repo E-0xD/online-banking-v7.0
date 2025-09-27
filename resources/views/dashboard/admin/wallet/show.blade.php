@@ -46,7 +46,11 @@
                         <dd class="col-sm-9">{{ formatAmount($wallet->balance) }}{{ $wallet->symbol }}</dd>
 
                         <dt class="col-sm-3">Status</dt>
-                        <dd class="col-sm-9">{{ $wallet->status }}</dd>
+                        <dd class="col-sm-9">
+                            <span class="{{ $wallet->status->badge() }}">
+                                {{ $wallet->status->label() }}
+                            </span>
+                        </dd>
 
                         <dt class="col-sm-3">Description</dt>
                         <dd class="col-sm-9">{{ $wallet->description }}</dd>

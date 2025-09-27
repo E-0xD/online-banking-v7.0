@@ -43,7 +43,11 @@
                                         <td>{{ $wallet->name }}</td>
                                         <td>{{ $wallet->symbol }}</td>
                                         <td>{{ formatAmount($wallet->balance) }}{{ $wallet->symbol }}</td>
-                                        <td>{{ $wallet->status }}</td>
+                                        <td>
+                                            <span class="{{ $wallet->status->badge() }}">
+                                                {{ $wallet->status->label() }}
+                                            </span>
+                                        </td>
                                         <td>
                                             <a href="{{ route('admin.wallet.show', $wallet->uuid) }}"
                                                 class="btn btn-warning btn-sm m-1"> <i class="ti ti-eye me-1"></i> View</a>
