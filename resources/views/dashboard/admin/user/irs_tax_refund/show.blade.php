@@ -37,26 +37,35 @@
                     @endif
 
                 </x-dashboard.admin.card>
-                <x-dashboard.admin.card>
-                    @slot('header')
-                        IRS Tax Refund Status Management
-                    @endslot
+                @if ($irsTaxRefund->isPending() || $irsTaxRefund->isSubmitted())
+                    <x-dashboard.admin.card>
+                        <div class="mb-3">
+                            <form
+                                action="{{ route('admin.user.irs_tax_refund.update', [$user->uuid, $irsTaxRefund->uuid]) }}"
+                                method="post">
+                                @csrf
+                                @method('PATCH')
 
-                    <form action="{{ route('admin.user.irs_tax_refund.update', [$user->uuid, $irsTaxRefund->uuid]) }}"
-                        method="post">
-                        @csrf
-                        @method('PATCH')
+                                <button type="submit" name="status" value="refunded" class="btn btn-success"> <i
+                                        class="ti ti-check me-1"></i>
+                                    Refunded</button>
+                            </form>
 
-                        <x-dashboard.admin.form-select name="status" id="irs_tax_refund_status" label="Status"
-                            type="select" class="col-md-12 mb-3" value="{{ old('status', $irsTaxRefund->status) }}"
-                            :options="config('setting.irsTaxRefundStatuses')" />
+                        </div>
+                        <div class="mb-3">
+                            <form
+                                action="{{ route('admin.user.irs_tax_refund.update', [$user->uuid, $irsTaxRefund->uuid]) }}"
+                                method="post">
+                                @csrf
+                                @method('PATCH')
 
-                        <x-dashboard.admin.submit-and-back-button
-                            href="{{ route('admin.user.irs_tax_refund.index', [$user->uuid, $irsTaxRefund->uuid]) }}"
-                            back="Back to IRS Tax Refund" submit="Update Status" />
-                    </form>
-
-                </x-dashboard.admin.card>
+                                <button type="submit" name="status" value="rejected" class="btn btn-danger"> <i
+                                        class="fa-solid fa-times me-1"></i>
+                                    Rejected</button>
+                            </form>
+                        </div>
+                    </x-dashboard.admin.card>
+                @endif
             </div>
             <!-- end col -->
         </div>

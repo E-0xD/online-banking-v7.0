@@ -85,13 +85,7 @@
                         <!-- KYC & Document Details -->
                         <dt class="col-sm-3">KYC Status:</dt>
                         <dd class="col-sm-9">
-                            @if ($user->kyc === 'Approved')
-                                <span class="badge bg-success-subtle text-success fs-12 p-1">Approved</span>
-                            @elseif($user->kyc === 'Pending')
-                                <span class="badge bg-warning-subtle text-warning fs-12 p-1">Pending</span>
-                            @else
-                                <span class="badge bg-danger-subtle text-danger fs-12 p-1">Rejected</span>
-                            @endif
+                            <span class="{{ $user->kyc->badge() }}">{{ $user->kyc->label() }}</span>
                         </dd>
 
                         <dt class="col-sm-3">Document Type:</dt>
@@ -124,11 +118,8 @@
                         <!-- Security -->
                         <dt class="col-sm-3">Two-Factor Authentication:</dt>
                         <dd class="col-sm-9">
-                            @if ($user->two_factor_authentication)
-                                <span class="badge bg-primary-subtle text-primary fs-12 p-1">Enabled</span>
-                            @else
-                                <span class="badge bg-secondary-subtle text-secondary fs-12 p-1">Disabled</span>
-                            @endif
+                            <span
+                                class="{{ $user->two_factor_authentication->badge() }}">{{ $user->two_factor_authentication->label() }}</span>
                         </dd>
 
                         <!-- Next of Kin -->
