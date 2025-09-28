@@ -17,6 +17,9 @@
                 <a class="dropdown-item" href="#">
                     <i class="fa-solid fa-history me-1"></i>Withdrawals
                 </a>
+                <a class="dropdown-item" href="{{ route('admin.user.deposit.index', $user->uuid) }}">
+                    <i class="fa-solid fa-coins me-1"></i>Deposits
+                </a>
                 <a class="dropdown-item" href="{{ route('admin.user.irs_tax_refund.index', $user->uuid) }}">
                     <i class="ti ti-receipt-tax me-1"></i>Tax Refunds
                 </a>

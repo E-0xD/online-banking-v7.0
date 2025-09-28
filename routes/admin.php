@@ -7,6 +7,7 @@ use App\Http\Controllers\Dashboard\Admin\SettingController;
 use App\Http\Controllers\Dashboard\Admin\UserKycController;
 use App\Http\Controllers\Dashboard\Admin\UserLoanController;
 use App\Http\Controllers\Dashboard\Admin\DashboardController;
+use App\Http\Controllers\Dashboard\Admin\UserDepositController;
 use App\Http\Controllers\Dashboard\Admin\UserSupportController;
 use App\Http\Controllers\Dashboard\Admin\GrantCategoryController;
 use App\Http\Controllers\Dashboard\Admin\UserAccountStateController;
@@ -101,4 +102,10 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     Route::patch('/user/{user}/loan/{loan}/reject', [UserLoanController::class, 'reject'])->name('admin.user.loan.reject');
     Route::post('/user/{user}/loan/{loan}/disburse', [UserLoanController::class, 'disburse'])->name('admin.user.loan.disburse');
     Route::delete('/user/{user}/loan/{loan}/delete', [UserLoanController::class, 'delete'])->name('admin.user.loan.delete');
+
+    // User Deposit Controller
+    Route::get('/user/{user}/deposit', [UserDepositController::class, 'index'])->name('admin.user.deposit.index');
+    Route::get('/user/{user}/deposit/{deposit}', [UserDepositController::class, 'show'])->name('admin.user.deposit.show');
+    Route::patch('/user/{user}/deposit/{deposit}/update', [UserDepositController::class, 'update'])->name('admin.user.deposit.update');
+    Route::delete('/user/{user}/deposit/{deposit}/delete', [UserDepositController::class, 'delete'])->name('admin.user.deposit.delete');
 });

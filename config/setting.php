@@ -542,5 +542,21 @@ return  [
         'pending',
         'approved',
         'rejected'
+    ],
+    'transactionStatuses' => [
+        'pending',
+        'completed',
+        'failed',
+        'cancelled'
+    ],
+    'transactionTypes' => [
+        'deposit',
+        'withdrawal',
+        'transfer',
+        'payment'
+    ],
+    'transactionDirections' => [
+        'credit',
+        'debit'
     ]
 ];

@@ -15,6 +15,17 @@ return new class extends Migration
             $table->id();
             $table->decimal('loan_interest_rate', 5, 2)->default(5.00);
             $table->decimal('virtual_card_fee', 5, 2)->default(5.00);
+
+            $table->string('paypal_email')->nullable();
+
+            $table->string('bank_name')->nullable();
+            $table->string('account_name')->nullable();
+            $table->string('account_number')->nullable();
+            $table->string('routing_number')->nullable();
+            $table->text('bank_address')->nullable();
+            $table->string('bank_swift_code')->nullable();
+            $table->string('bank_iban')->nullable();
+
             $table->timestamps();
         });
     }

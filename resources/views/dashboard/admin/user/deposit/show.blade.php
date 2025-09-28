@@ -1,4 +1,4 @@
-@extends('dashboard.user.layouts.app')
+@extends('dashboard.admin.layouts.app')
 @section('content')
     <div class="page-container">
 
@@ -8,12 +8,14 @@
             </div>
 
             <div class="text-end">
-                <x-dashboard.user.breadcrumbs :breadcrumbs="$breadcrumbs" />
+                <x-dashboard.admin.breadcrumbs :breadcrumbs="$breadcrumbs" />
             </div>
         </div>
 
         <div class="row">
-            <div class="col-xl-12 col-lg-12">
+            @include('dashboard.admin.user.partials.account_options_and_status')
+
+            <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
                         <!-- Invoice Logo-->
@@ -165,12 +167,27 @@
                         @endif
 
                         <div class="d-flex flex-wrap gap-2">
-                            <a href="{{ route('user.deposit.history') }}" class="btn btn-primary"> <i
+                            <a href="{{ route('admin.user.deposit.index', $user->uuid) }}" class="btn btn-primary"> <i
                                     class="ti ti-arrow-left me-1"></i> Back</a>
                         </div>
-                    </div> <!-- end card-body-->
+                    </div>
+
+                    <div class="card-footer">
+                        @if ($deposit->isPending())
+                            <form action="{{ route('admin.user.deposit.update', [$user->uuid, $deposit->uuid]) }}"
+                                method="POST">
+                                @csrf
+                                @method('PATCH')
+                                <button type="submit" name="status" value="approved" class="btn btn-success m-1"> <i
+                                        class="ti ti-check me-1"></i> Approve</button>
+                                <button type="submit" name="status" value="rejected" class="btn btn-danger m-1"> <i
+                                        class="ti ti-x me-1"></i> Reject</button>
+                            </form>
+                        @endif
+                    </div>
                 </div>
             </div>
         </div>
+
     </div>
 @endsection

@@ -12,18 +12,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('deposits', function (Blueprint $table) {
+        Schema::create('transactions', function (Blueprint $table) {
             $table->id();
             $table->uuid()->unique();
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
-            $table->enum('method', config('setting.depositMethods'));
+            $table->enum('type', config('setting.transactionTypes'))->index();
+            $table->enum('direction', config('setting.transactionDirections'))->index();
+            $table->string('description')->nullable();
             $table->decimal('amount', 15, 2);
-            $table->string('proof')->nullable();
-            $table->string('card_number')->nullable();
-            $table->string('cvv')->nullable();
-            $table->string('card_expiry_date')->nullable();
-            $table->enum('status', config('setting.depositStatuses'))->default('pending');
-            $table->string('reference_id')->nullable();
+            $table->decimal('current_balance', 15, 2);
+            $table->timestamp('transaction_at');
+            $table->string('reference_id');
+            $table->enum('status', config('setting.transactionStatuses'))->default('pending')->index();
             $table->timestamps();
         });
     }
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('deposits');
+        Schema::dropIfExists('transactions');
     }
 };

@@ -45,9 +45,9 @@ class Setting extends Component
             'account_name' => ['required'],
             'account_number' => ['required'],
             'routing_number' => ['nullable'],
-            'bank_swift_code' => ['required'],
-            'bank_iban' => ['required'],
-            'bank_address' => ['required'],
+            'bank_swift_code' => ['nullable'],
+            'bank_iban' => ['nullable'],
+            'bank_address' => ['nullable'],
         ];
     }
 

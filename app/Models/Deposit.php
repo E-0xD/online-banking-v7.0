@@ -40,4 +40,19 @@ class Deposit extends Model
     {
         return $this->method == 'Credit Card';
     }
+
+    public function isPending()
+    {
+        return $this->status->value == DepositStatus::Pending->value;
+    }
+
+    public function isApproved()
+    {
+        return $this->status->value == DepositStatus::Approved->value;
+    }
+
+    public function isRejected()
+    {
+        return $this->status->value == DepositStatus::Rejected->value;
+    }
 }
