@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Enum\GrantApplicationStatus;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\GrantApplicationApproved;
 
 class UserGrantApplicationController extends Controller
 {
@@ -103,6 +105,8 @@ class UserGrantApplicationController extends Controller
                     'title' => 'Grant Application Approved',
                     'description' => $message,
                 ]);
+
+                Mail::to($user->email)->queue(new GrantApplicationApproved($user));
             }
 
             $message = "Your grant application has been " . ucfirst($request->status) . ". Please log in to your account to review the update.";
