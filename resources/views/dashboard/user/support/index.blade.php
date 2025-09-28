@@ -17,6 +17,11 @@
                 <x-dashboard.user.card>
                     <h3>Support Center</h3>
                     <p>Get help with your account and services</p>
+
+                    <div class="float-end">
+                        <a href="{{ route('user.support.history') }}" class="btn btn-primary"> <i
+                                class="fa-solid fa-history me-1"></i> Tickets History </a>
+                    </div>
                 </x-dashboard.user.card>
 
                 <form action="{{ route('user.support.store') }}" method="post">

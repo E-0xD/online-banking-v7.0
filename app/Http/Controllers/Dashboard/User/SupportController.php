@@ -57,4 +57,47 @@ class SupportController extends Controller
             return redirect()->back()->with('error', config('app.messages.error'));
         }
     }
+
+    public function history()
+    {
+        $breadcrumbs = [
+            ['label' => config('app.name'), 'url' => '/'],
+            ['label' => 'Dashboard', 'url' => route('user.dashboard')],
+            ['label' => 'Support History', 'active' => true]
+        ];
+
+        $user = User::where('role', 'user')->where('id', Auth::id())->firstOrFail();
+        $supports = $user->support()->latest()->get();
+
+        $data = [
+            'title' => 'Support History',
+            'breadcrumbs' => $breadcrumbs,
+            'user' => $user,
+            'supports' => $supports
+        ];
+
+        return view('dashboard.user.support.history', $data);
+    }
+
+    public function show(string $uuid)
+    {
+        $breadcrumbs = [
+            ['label' => config('app.name'), 'url' => '/'],
+            ['label' => 'Dashboard', 'url' => route('user.dashboard')],
+            ['label' => 'Support History', 'url' => route('user.support.history')],
+            ['label' => 'Ticket Details', 'active' => true],
+        ];
+
+        $user = User::where('role', 'user')->where('id', Auth::id())->firstOrFail();
+        $support = $user->support()->where('uuid', $uuid)->firstOrFail();
+
+        $data = [
+            'title' => 'Ticket Details',
+            'user' => $user,
+            'support' => $support,
+            'breadcrumbs' => $breadcrumbs
+        ];
+
+        return view('dashboard.user.support.show', $data);
+    }
 }

@@ -37,6 +37,8 @@ Route::middleware('user')->prefix('user')->group(function () {
     // Support Controller
     Route::get('/support', [SupportController::class, 'index'])->name('user.support.index');
     ROute::post('/support/store', [SupportController::class, 'store'])->name('user.support.store');
+    ROute::get('/support/history', [SupportController::class, 'history'])->name('user.support.history');
+    ROute::get('/support/{support}/show', [SupportController::class, 'show'])->name('user.support.show');
 
     // Notification Controller
     Route::get('/notification', [NotificationController::class, 'index'])->name('user.notification.index');
