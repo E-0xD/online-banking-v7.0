@@ -27,6 +27,7 @@ return new class extends Migration
             // Loan status & tracking
             $table->enum('status', config('setting.loanStatuses'))
                 ->default('pending');
+            $table->string('reference_id');
             $table->decimal('approved_amount', 15, 2)->nullable(); // if bank approves less than requested
             $table->decimal('interest_rate', 5, 2)->nullable(); // % rate
             $table->decimal('total_payable', 15, 2)->nullable(); // amount + interest

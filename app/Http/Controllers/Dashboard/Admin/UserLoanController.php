@@ -5,12 +5,18 @@ namespace App\Http\Controllers\Dashboard\Admin;
 use App\Models\User;
 use App\Models\Setting;
 use App\Enum\LoanStatus;
+use App\Mail\LoanDisbursed;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
+use App\Enum\TransactionType;
 use App\Models\LoanRepayment;
+use App\Enum\TransactionStatus;
 use App\Enum\LoanRepaymentStatus;
+use App\Enum\TransactionDirection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 
 class UserLoanController extends Controller
 {
@@ -75,11 +81,10 @@ class UserLoanController extends Controller
             $setting = Setting::first();
 
             $principal = $request->approved_amount;
-            $rate = $setting->loan_interest_rate; // annual %
-            $months = $loan->duration;
+            $rate = $setting->loan_interest_rate;
 
             // flat interest calculation
-            $interest = ($principal * $rate * $months) / (12 * 100);
+            $interest = ($principal * $rate) / 100;
             $totalPayable = $principal + $interest;
 
             $loan->update([
@@ -93,7 +98,7 @@ class UserLoanController extends Controller
 
             LoanRepayment::create([
                 'loan_id' => $loan->id,
-                'amount' => $request->approved_amount,
+                'amount' => $totalPayable,
             ]);
 
             $user->notification()->create([
@@ -104,7 +109,7 @@ class UserLoanController extends Controller
 
             DB::commit();
 
-            return redirect()->back()->with('success', 'Loan approved successfully with repayment schedule.');
+            return redirect()->back()->with('success', 'Loan approved successfully.');
         } catch (\Exception $e) {
             DB::rollBack();
             Log::error($e->getMessage());
@@ -124,21 +129,41 @@ class UserLoanController extends Controller
         try {
             DB::beginTransaction();
 
+            // Update account balance
             $user->account_balance = $user->account_balance + $loan->approved_amount;
             $user->save();
 
-            // Record transaction here
-
+            // Update loan status
             $loan->update([
                 'status' => LoanStatus::Disbursed->value,
                 'disbursed_at' => now(),
             ]);
 
+            // Create transaction
+            Transaction::create([
+                'uuid' => str()->uuid(),
+                'user_id' => $user->id,
+                'type' => TransactionType::Payment->value,
+                'direction' => TransactionDirection::Credit->value,
+                'description' => "Loan disbursement for Ref: {$loan->reference_id}",
+                'amount' => $loan->approved_amount,
+                'current_balance' => $user->account_balance,
+                'transaction_at' => now(),
+                'reference_id' => $loan->reference_id,
+                'status' => TransactionStatus::Completed->value,
+            ]);
+
+            // Create notification
+            $message = "Loan of " . currency($user->currency) . formatAmount($loan->approved_amount) . " (Ref: {$loan->reference_id}) has been disbursed.";
+
             $user->notification()->create([
                 'uuid' => str()->uuid(),
                 'title' => 'Loan Disbursed',
-                'description' => 'Your loan has been disbursed successfully. You can now view your loan details in your account dashboard.',
+                'description' => $message
             ]);
+
+            // Send mail
+            Mail::to($user->email)->queue(new LoanDisbursed($user, $loan));
 
             DB::commit();
 

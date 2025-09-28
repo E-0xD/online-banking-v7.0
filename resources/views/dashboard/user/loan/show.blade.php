@@ -80,7 +80,7 @@
                     @if ($loan->isDisbursed() && !$latestLoanRepayment->isPaid())
                         <a href="{{ route('user.loan.repay', $loan->uuid) }}" onclick="return confirm('Are you sure?')"
                             class="btn btn-primary">
-                            Repay ({{ currency($loan->user->currency) }}{{ formatAmount($loan->approved_amount) }})
+                            Repay ({{ currency($loan->user->currency) }}{{ formatAmount($loan->total_payable) }})
                         </a>
                     @endif
 

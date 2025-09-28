@@ -3,15 +3,20 @@
 namespace App\Http\Controllers\Dashboard\User;
 
 use App\Models\User;
-use App\Enum\LoanStatus;
+use App\Mail\LoanRepaid;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
+use App\Enum\TransactionType;
+use App\Models\LoanRepayment;
+use App\Enum\TransactionStatus;
 use App\Enum\LoanRepaymentStatus;
+use App\Enum\TransactionDirection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\UserLoanControllerStoreRequest;
-use App\Models\LoanRepayment;
 
 class LoanController extends Controller
 {
@@ -83,6 +88,7 @@ class LoanController extends Controller
                 'facility' => $request->facility,
                 'purpose' => $request->purpose,
                 'monthly_income' => $request->monthly_income,
+                'reference_id' => generateReferenceId()
             ];
 
             $user->loan()->create($data);
@@ -166,7 +172,7 @@ class LoanController extends Controller
             return redirect()->back()->with('error', 'Loan already repaid.');
         }
 
-        if ($user->account_balance < $loan->approved_amount) {
+        if ($user->account_balance < $loan->total_payable) {
             return redirect()->back()->with('error', 'Insufficient balance.');
         }
 
@@ -174,21 +180,39 @@ class LoanController extends Controller
             DB::beginTransaction();
 
             $latestLoanRepayment->update([
-                'amount' => $loan->approved_amount,
                 'repaid_at' => now(),
                 'status' => LoanRepaymentStatus::Paid->value
             ]);
 
-            $user->account_balance = $user->account_balance - $loan->approved_amount;
+            // Update balance
+            $user->account_balance = $user->account_balance - $loan->total_payable;
             $user->save();
 
-            // Transaction record here
+            // Create transaction
+            Transaction::create([
+                'uuid' => str()->uuid(),
+                'user_id' => $user->id,
+                'type' => TransactionType::Payment->value,
+                'direction' => TransactionDirection::Debit->value,
+                'description' => "Loan repayment for Ref: {$loan->reference_id}",
+                'amount' => $loan->total_payable,
+                'current_balance' => $user->account_balance,
+                'transaction_at' => now(),
+                'reference_id' => $loan->reference_id,
+                'status' => TransactionStatus::Completed->value,
+            ]);
+
+            // Create notification
+            $message = "Loan of " . currency($user->currency) . formatAmount($loan->total_payable) . " (Ref: {$loan->reference_id}) fully repaid.";
 
             $user->notification()->create([
                 'uuid' => str()->uuid(),
                 'title' => 'Loan Repaid',
-                'description' => 'Your loan has been repaid successfully. You can now view your loan details in your account dashboard.',
+                'description' => $message,
             ]);
+
+            // Send mail
+            Mail::to($user->email)->queue(new LoanRepaid($user, $loan));
 
             DB::commit();
 
