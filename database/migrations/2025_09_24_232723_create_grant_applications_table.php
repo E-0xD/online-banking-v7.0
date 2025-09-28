@@ -21,7 +21,7 @@ return new class extends Migration
             $table->enum('type', config('setting.grantApplicationTypes'));
 
             $table->string('name')->nullable();
-            $table->string('tax_id')->unique()->nullable();
+            $table->string('tax_id')->nullable();
             $table->string('organization_type')->nullable();
             $table->year('founding_year')->nullable();
             $table->text('full_mailing_address')->nullable();
@@ -36,6 +36,7 @@ return new class extends Migration
 
             $table->enum('status', config('setting.grantApplicationStatues'))->default('Pending');
             $table->text('review_notes')->nullable();
+            $table->string('reference_id')->nullable();
             $table->timestamp('submitted_at')->useCurrent();
 
             $table->timestamps();

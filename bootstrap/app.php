@@ -16,7 +16,11 @@ return Application::configure(basePath: dirname(__DIR__))
             'user' => App\Http\Middleware\UserMiddleware::class,
             'admin' => App\Http\Middleware\AdminMiddleware::class,
             'master' => App\Http\Middleware\MasterMiddleware::class,
-            'registeredUser' => App\Http\Middleware\RegisteredUserMiddleware::class
+            'registeredUser' => App\Http\Middleware\RegisteredUserMiddleware::class,
+            'accountDormant' => App\Http\Middleware\AccountDormant::class,
+            'accountRestricted' => App\Http\Middleware\AccountRestricted::class,
+            'accountFrozen' => App\Http\Middleware\AccountFrozen::class,
+            'accountPendingVerification' => App\Http\Middleware\AccountPendingVerification::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

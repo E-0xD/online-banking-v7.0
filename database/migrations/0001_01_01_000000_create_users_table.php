@@ -41,7 +41,7 @@ return new class extends Migration
 
             $table->string('currency')->nullable();
             $table->enum('account_type', config('setting.accountTypes'))->nullable();
-            $table->enum('account_state', config('setting.accountStates'))->default('Active');
+            $table->enum('account_state', config('setting.accountStates'))->default('Pending Verification');
             $table->text('account_state_message')->nullable();
 
             $table->string('transaction_pin')->nullable();
@@ -68,7 +68,7 @@ return new class extends Migration
             $table->string('front_side')->nullable();
             $table->string('back_side')->nullable();
 
-            $table->boolean('status')->default(1);
+            $table->boolean('status')->default(1)->comment('For Admin Use Only');
 
             $table->dateTime('last_login_time')->nullable();
             $table->text('last_login_device')->nullable();

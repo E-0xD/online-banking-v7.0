@@ -23,7 +23,7 @@ class GrantApplicationControllerCompanySubmitRequest extends FormRequest
     {
         return [
             'name'                 => ['required', 'string', 'max:255'],
-            'tax_id'               => ['required', 'string', 'regex:/^\d{2}-\d{7}$/', 'unique:grant_applications,tax_id'],
+            'tax_id'               => ['required', 'string', 'regex:/^\d{2}-\d{7}$/'],
             // 'tax_id'               => ['required', 'string', 'unique:grant_applications,tax_id'],
             'organization_type'    => ['required', 'string', 'max:255'],
             'founding_year'        => ['required', 'date_format:Y', 'before_or_equal:' . now()->year],

@@ -7,14 +7,14 @@ function currency($currency, $type = 'symbol')
 
     switch ($type) {
         case 'name':
-            return $explodeCurrency[0];
+            return @$explodeCurrency[0];
             break;
         case 'code':
-            return $explodeCurrency[1];
+            return @$explodeCurrency[1];
         case 'symbol':
-            return $explodeCurrency[2];
+            return @$explodeCurrency[2];
         default:
-            return $explodeCurrency[2];
+            return @$explodeCurrency[2];
             break;
     }
 }

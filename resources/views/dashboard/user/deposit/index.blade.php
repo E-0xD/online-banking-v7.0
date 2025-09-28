@@ -86,15 +86,15 @@
                                         </div>
                                         <div class="d-flex gap-2 flex-wrap">
                                             <button type="button"
-                                                class="btn btn-outline-secondary quick-amount">{{ currency($user->currency) }}100</button>
+                                                class="btn btn-outline-secondary quick-amount">100</button>
                                             <button type="button"
-                                                class="btn btn-outline-secondary quick-amount">{{ currency($user->currency) }}500</button>
+                                                class="btn btn-outline-secondary quick-amount">500</button>
                                             <button type="button"
-                                                class="btn btn-outline-secondary quick-amount">{{ currency($user->currency) }}1000</button>
+                                                class="btn btn-outline-secondary quick-amount">1000</button>
                                             <button type="button"
-                                                class="btn btn-outline-secondary quick-amount">{{ currency($user->currency) }}5000</button>
+                                                class="btn btn-outline-secondary quick-amount">5000</button>
                                             <button type="button"
-                                                class="btn btn-outline-secondary quick-amount">{{ currency($user->currency) }}10000</button>
+                                                class="btn btn-outline-secondary quick-amount">10000</button>
                                         </div>
                                     </div>
 

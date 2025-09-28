@@ -62,7 +62,6 @@ class UserControllerUpdateRequest extends FormRequest
 
             'image'                 => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
             'password'              => 'nullable|string|min:8|',
-            'status'                => 'required',
         ];
     }
 }

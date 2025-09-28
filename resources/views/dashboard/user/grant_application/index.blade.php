@@ -16,6 +16,16 @@
             <div class="col-xl-12 col-lg-12">
                 <x-dashboard.user.card>
 
+                    @if ($user->grantApplication()->count() > 0)
+                        @slot('header')
+                            <div class="float-end">
+                                <a href="{{ route('user.grant_application.history') }}" class="btn btn-primary btn-sm"><i
+                                        class="fa-solid fa-history me-1"></i> Application History
+                                </a>
+                            </div>
+                        @endslot
+                    @endif
+
                     <div class="text-center mb-4">
                         <h4 class="fw-bold">Select Application Type</h4>
                         <p class="text-muted">

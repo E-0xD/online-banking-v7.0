@@ -114,23 +114,6 @@
 
                          <x-dashboard.user.form-input name="password" label="Password" type="password"
                              id="new_user_password" class="col-md-6 mb-3" />
-
-                         <div class="col-md-6 mb-3">
-                             <label for="user_status" class="form-label">Status</label>
-                             <select id="user_status" name="status"
-                                 class="form-select @error('status') is-invalid @enderror">
-                                 <option value="">Select Status</option>
-                                 @foreach (config('setting.userStatuses') as $key => $value)
-                                     <option value="{{ $key }}" @selected(old('status', $user->status->value) == $key)>
-                                         {{ $value }}
-                                     </option>
-                                 @endforeach
-                             </select>
-
-                             @error('status')
-                                 <span class="invalid-feedback">{{ $message }}</span>
-                             @enderror
-                         </div>
                      </div>
 
                      <div id="updateMessage"></div>

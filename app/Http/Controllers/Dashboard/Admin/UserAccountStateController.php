@@ -37,7 +37,7 @@ class UserAccountStateController extends Controller
     {
         $request->validate([
             'account_state' => ['required'],
-            'account_state_message' => ['required'],
+            'account_state_message' => ['nullable'],
         ]);
 
         try {
@@ -45,18 +45,6 @@ class UserAccountStateController extends Controller
             DB::beginTransaction();
 
             $user = User::where('uuid', $uuid)->firstOrFail();
-
-            if ($request->account_state === UserAccountState::Disabled->value) {
-                $user->status = UserStatus::INACTIVE->value;
-            } else {
-                $user->status = UserStatus::ACTIVE->value;
-            }
-
-            if ($request->account_state === UserAccountState::Kyc->value) {
-                $user->kyc = UserKycStatus::Pending->value;
-            } else {
-                $user->kyc = UserKycStatus::Approved->value;
-            }
 
             $user->account_state = $request->account_state;
             $user->account_state_message = $request->account_state_message;

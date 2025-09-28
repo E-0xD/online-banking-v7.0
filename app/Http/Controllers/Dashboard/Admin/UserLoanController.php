@@ -143,7 +143,7 @@ class UserLoanController extends Controller
             Transaction::create([
                 'uuid' => str()->uuid(),
                 'user_id' => $user->id,
-                'type' => TransactionType::Payment->value,
+                'type' => TransactionType::Deposit->value,
                 'direction' => TransactionDirection::Credit->value,
                 'description' => "Loan disbursement for Ref: {$loan->reference_id}",
                 'amount' => $loan->approved_amount,

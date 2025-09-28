@@ -146,11 +146,6 @@
                             <small class="text-muted">{{ $device }} - {{ $platform }} -
                                 {{ $browser }}</small>
                         </dd>
-
-                        <dt class="col-sm-3">Status:</dt>
-                        <dd class="col-sm-9">
-                            <span class="{{ $user->status->badge() }}">{{ $user->status->label() }}</span>
-                        </dd>
                     </dl>
 
                     <!-- Large modal -->

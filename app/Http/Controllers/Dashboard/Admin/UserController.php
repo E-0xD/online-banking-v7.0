@@ -80,7 +80,7 @@ class UserController extends Controller
                 unset($data['password']);
             }
 
-            $data['image'] = $this->imageInterventionUpdateFile($request, 'image', '/uploads/dashboard/user/image/', 400, 400, $user?->image);
+            $data['image'] = $this->imageInterventionUpdateFile($request, 'image', uploadPath('image'), 400, 400, $user?->image);
 
             $user->update($data);
 

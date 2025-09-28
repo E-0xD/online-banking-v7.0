@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers\Dashboard\Admin;
 
-use App\Enum\GrantApplicationStatus;
 use App\Models\User;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
+use App\Enum\TransactionType;
+use App\Enum\TransactionStatus;
+use App\Enum\TransactionDirection;
 use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Log;
+use App\Enum\GrantApplicationStatus;
+use App\Http\Controllers\Controller;
 
 class UserGrantApplicationController extends Controller
 {
@@ -60,6 +64,7 @@ class UserGrantApplicationController extends Controller
     {
         $request->validate([
             'status' => ['required', 'string', 'max:255'],
+            'review_notes' => ['nullable', 'string', 'max:1000'],
         ]);
 
         try {
@@ -69,14 +74,29 @@ class UserGrantApplicationController extends Controller
             $grantApplication = $user->grantApplication()->where('uuid', $grantApplicationUUID)->firstOrFail();
 
             $grantApplication->update([
-                'status' => $request->status
+                'status' => $request->status,
+                'review_notes' => $request->review_notes
             ]);
 
             if ($request->status === GrantApplicationStatus::Approved->value) {
                 $user->account_balance = $user->account_balance + $grantApplication->amount;
                 $user->save();
 
-                $message = "Congratulations! Your grant application has been approved. An amount of" . currency($user->currency) . formatAmount($grantApplication->amount) . " has been credited to your account. Your new balance is " . currency($user->currency) . formatAmount($user->account_balance) . ". Please log in to your account to review the update.";
+                // Save transaction
+                $transaction = Transaction::create([
+                    'uuid' => str()->uuid(),
+                    'user_id' => $user->id,
+                    'type' => TransactionType::Deposit->value,
+                    'direction' => TransactionDirection::Credit->value,
+                    'description' => 'Grant Application Deposit, Ref: ' . $grantApplication->reference_id,
+                    'amount' => $grantApplication->amount,
+                    'current_balance' => $user->account_balance,
+                    'transaction_at' => now(),
+                    'reference_id' => $grantApplication->reference_id,
+                    'status' => TransactionStatus::Completed->value,
+                ]);
+
+                $message = "Congratulations! Your grant application has been approved. An amount of " . currency($user->currency) . formatAmount($grantApplication->amount) . " has been credited to your account. Your new balance is " . currency($user->currency) . formatAmount($user->account_balance) . ". Please log in to your account to review the update.";
 
                 $user->notification()->create([
                     'uuid' => str()->uuid(),
@@ -85,9 +105,37 @@ class UserGrantApplicationController extends Controller
                 ]);
             }
 
+            $message = "Your grant application has been " . ucfirst($request->status) . ". Please log in to your account to review the update.";
+
+            $user->notification()->create([
+                'uuid' => str()->uuid(),
+                'title' => 'Grant Application ' . ucfirst($request->status),
+                'description' => $message,
+            ]);
+
             DB::commit();
 
             return redirect()->route('admin.user.grant_application.show', [$uuid, $grantApplicationUUID])->with('success', 'Grant Application updated successfully.');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Log::error($e->getMessage());
+            return redirect()->back()->withInput()->with('error', $e->getMessage());
+        }
+    }
+
+    public function delete(string $uuid, string $grantApplicationUUID)
+    {
+        try {
+            DB::beginTransaction();
+
+            $user = User::where('uuid', $uuid)->firstOrFail();
+            $grantApplication = $user->grantApplication()->where('uuid', $grantApplicationUUID)->firstOrFail();
+
+            $grantApplication->delete();
+
+            DB::commit();
+
+            return redirect()->route('admin.user.grant_application.index', $uuid)->with('success', 'Grant Application deleted successfully.');
         } catch (\Exception $e) {
             DB::rollBack();
             Log::error($e->getMessage());

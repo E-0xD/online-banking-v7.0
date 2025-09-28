@@ -95,11 +95,25 @@
                                 <p class="amount-approved">{{ currency($user->currency) }}{{ formatAmount(0) }}</p>
 
                                 <!-- Button -->
-                                <div class="mt-3">
+                                <div class="mt-3 mb-3">
                                     <a href="{{ route('user.grant_application.result', $grantApplication->uuid) }}"
                                         class="btn btn-primary">View Application Results <i
                                             class="fa-solid fa-arrow-right ms-1"></i></a>
                                 </div>
+
+                                @if ($grantApplication->isPending()) 
+                                    <div class="mb-3">
+                                        <form action="{{ route('user.grant_application.withdrawn', $grantApplication->uuid) }}"
+                                            method="post">
+                                            @csrf
+                                            @method('PATCH')
+    
+                                            <button type="submit" name="status" value="Withdrawn" class="btn btn-soft-danger">
+                                                <i class="fa-solid fa-arrow-right me-1"></i>
+                                                Withdraw Application</button>
+                                        </form>
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </div>

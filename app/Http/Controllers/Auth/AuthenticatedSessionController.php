@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\TwoFactorAuthenticationCode;
 use App\Enum\TwoFactorAuthenticationStatus;
+use App\Enum\UserAccountState;
 use App\Enum\UserStatus;
 use Illuminate\Support\Facades\RateLimiter;
 use App\Http\Requests\AuthenticatedSessionControllerStoreRequest;
@@ -47,16 +48,22 @@ class AuthenticatedSessionController extends Controller
 
                 $user = Auth::user();
                 if ($user->role === 'user') {
-                    if ($user->status->value === UserStatus::INACTIVE->value) {
+                    if (in_array($user->account_state->value, ['Closed', 'Suspended'])) {
                         Auth::logout();
 
                         if (!empty($user->account_state_message)) {
                             return redirect()->back()->with('error', $user->account_state_message);
                         } else {
-                            return redirect()->back()->with('error', 'Your account is currently inactive and cannot be used to log in. Please contact an administrator to reactivate your account.');
+                            $defaultMessage = match ($user->account_state->value) {
+                                'Closed' => 'Your account has been closed and cannot be accessed. Please contact support for further assistance.',
+                                'Suspended' => 'Your account is currently suspended and cannot be used to log in. Please contact an administrator to resolve this issue.',
+                            };
+
+                            return redirect()->back()->with('error', $defaultMessage);
                         }
                     }
 
+                    // Two Factor Authentication
                     if ($user->two_factor_authentication->value === TwoFactorAuthenticationStatus::ENABLED->value) {
                         User::where('id', $user->id)->update([
                             'email_code' => getRandomNumber(6),
@@ -69,6 +76,7 @@ class AuthenticatedSessionController extends Controller
 
                         return redirect()->route('two_factor_authentication', ['id' => $user->uuid])->with('success', 'Please enter the code sent to your email to log in.');
                     }
+                    // End Two Factor Authentication
 
                     User::where('id', $user->id)->update([
                         'last_login_time'   => now(),

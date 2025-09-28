@@ -52,6 +52,9 @@ Route::middleware('user')->prefix('user')->group(function () {
     Route::post('/grant/application/company/submit', [GrantApplicationController::class, 'companySubmit'])->name('user.grant_application.company_submit');
     Route::get('/grant/application/{uuid}/processing', [GrantApplicationController::class, 'processing'])->name('user.grant_application.processing');
     Route::get('/grant/application/{uuid}/result', [GrantApplicationController::class, 'result'])->name('user.grant_application.result');
+    Route::patch('/grant/application/{uuid}/withdrawn', [GrantApplicationController::class, 'withdrawn'])->name('user.grant_application.withdrawn');
+    Route::get('/grant/application/history', [GrantApplicationController::class, 'history'])->name('user.grant_application.history');
+    Route::get('/grant/application/{uuid}/show', [GrantApplicationController::class, 'show'])->name('user.grant_application.show');
 
     // IRS Tax Refund Controller 
     Route::get('/irs/tax/refund', [IRSTaxRefundController::class, 'index'])->name('user.irs_tax_refund.index');

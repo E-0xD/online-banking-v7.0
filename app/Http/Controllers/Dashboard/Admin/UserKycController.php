@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard\Admin;
 use App\Models\User;
 use App\Enum\UserKycStatus;
 use Illuminate\Http\Request;
+use App\Enum\UserAccountState;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
@@ -41,6 +42,7 @@ class UserKycController extends Controller
 
             $user->update([
                 'kyc' => UserKycStatus::Approved->value,
+                'account_state' => UserAccountState::Active->value
             ]);
 
             $user->notification()->create([

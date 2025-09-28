@@ -1,6 +1,8 @@
 1. User Grant Application History
 2. User Ticket History
-3. All Table columns that has status and enum as dataType should be in enum
+3. All Table columns that has status and enum as dataType should be in enum lasses
 4. Done: Remove kyc form if admin have verified kyc
 5. Done: Work on user account state and related functionality
 6. Make color consistent and match with theme
+7. Make account states work on different functionality
+8. Work on account middle ware to update their routes that were restricted

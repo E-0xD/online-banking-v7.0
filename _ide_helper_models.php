@@ -19,8 +19,10 @@ namespace App\Models{
  * @property string $method
  * @property string $amount
  * @property string|null $proof
+ * @property string|null $card_number
+ * @property string|null $cvv
+ * @property string|null $card_expiry_date
  * @property \App\Enum\DepositStatus $status
- * @property string|null $transaction_id
  * @property string|null $reference_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
@@ -29,13 +31,15 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Deposit newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Deposit query()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Deposit whereAmount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Deposit whereCardExpiryDate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Deposit whereCardNumber($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Deposit whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Deposit whereCvv($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Deposit whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Deposit whereMethod($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Deposit whereProof($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Deposit whereReferenceId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Deposit whereStatus($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Deposit whereTransactionId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Deposit whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Deposit whereUserId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Deposit whereUuid($value)
@@ -48,7 +52,7 @@ namespace App\Models{
  * @property int $id
  * @property string $uuid
  * @property int $user_id
- * @property string $type
+ * @property \App\Enum\GrantApplicationType $type
  * @property string|null $name
  * @property string|null $tax_id
  * @property string|null $organization_type
@@ -64,6 +68,7 @@ namespace App\Models{
  * @property string $amount
  * @property \App\Enum\GrantApplicationStatus $status
  * @property string|null $review_notes
+ * @property string|null $reference_id
  * @property string $submitted_at
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
@@ -87,6 +92,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|GrantApplication whereOrganizationType($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|GrantApplication whereProjectDescription($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|GrantApplication whereProjectTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|GrantApplication whereReferenceId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|GrantApplication whereReviewNotes($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|GrantApplication whereStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|GrantApplication whereSubmittedAt($value)
@@ -171,6 +177,7 @@ namespace App\Models{
  * @property string $purpose
  * @property string $monthly_income
  * @property \App\Enum\LoanStatus $status
+ * @property string $reference_id
  * @property string|null $approved_amount
  * @property string|null $interest_rate
  * @property string|null $total_payable
@@ -194,6 +201,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Loan whereInterestRate($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Loan whereMonthlyIncome($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Loan wherePurpose($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Loan whereReferenceId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Loan whereRemarks($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Loan whereStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Loan whereTotalPayable($value)
@@ -275,14 +283,30 @@ namespace App\Models{
  * @property int $id
  * @property string $loan_interest_rate
  * @property string $virtual_card_fee
+ * @property string|null $paypal_email
+ * @property string|null $bank_name
+ * @property string|null $account_name
+ * @property string|null $account_number
+ * @property string|null $routing_number
+ * @property string|null $bank_address
+ * @property string|null $bank_swift_code
+ * @property string|null $bank_iban
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Setting newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Setting newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Setting query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Setting whereAccountName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Setting whereAccountNumber($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Setting whereBankAddress($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Setting whereBankIban($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Setting whereBankName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Setting whereBankSwiftCode($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Setting whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Setting whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Setting whereLoanInterestRate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Setting wherePaypalEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Setting whereRoutingNumber($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Setting whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Setting whereVirtualCardFee($value)
  */
@@ -315,6 +339,42 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Support whereUuid($value)
  */
 	class Support extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * @property int $id
+ * @property string $uuid
+ * @property int $user_id
+ * @property \App\Enum\TransactionType $type
+ * @property \App\Enum\TransactionDirection $direction
+ * @property string|null $description
+ * @property string $amount
+ * @property string $current_balance
+ * @property string $transaction_at
+ * @property string $reference_id
+ * @property \App\Enum\TransactionStatus $status
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\User $user
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transaction newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transaction newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transaction query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transaction whereAmount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transaction whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transaction whereCurrentBalance($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transaction whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transaction whereDirection($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transaction whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transaction whereReferenceId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transaction whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transaction whereTransactionAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transaction whereType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transaction whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transaction whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transaction whereUuid($value)
+ */
+	class Transaction extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -390,7 +450,7 @@ namespace App\Models{
  * @property string|null $document_type
  * @property string|null $front_side
  * @property string|null $back_side
- * @property \App\Enum\UserStatus $status
+ * @property \App\Enum\UserStatus $status For Admin Use Only
  * @property \Illuminate\Support\Carbon|null $last_login_time
  * @property string|null $last_login_device
  * @property string|null $remember_token

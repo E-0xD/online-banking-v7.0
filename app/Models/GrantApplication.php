@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enum\GrantApplicationType;
 use App\Enum\GrantApplicationStatus;
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,6 +14,7 @@ class GrantApplication extends Model
     {
         return [
             'status' => GrantApplicationStatus::class,
+            'type' => GrantApplicationType::class
         ];
     }
 
@@ -29,5 +31,30 @@ class GrantApplication extends Model
     public function isPending()
     {
         return $this->status->value === GrantApplicationStatus::Pending->value;
+    }
+
+    public function isApproved()
+    {
+        return $this->status->value === GrantApplicationStatus::Approved->value;
+    }
+
+    public function isRejected()
+    {
+        return $this->status->value === GrantApplicationStatus::Rejected->value;
+    }
+
+    public function isWithdrawn()
+    {
+        return $this->status->value === GrantApplicationStatus::Withdrawn->value;
+    }
+
+    public function isTypeCompany()
+    {
+        return $this->type->value === GrantApplicationType::Company->value;
+    }
+
+    public function isTypeIndividual()
+    {
+        return $this->type->value === GrantApplicationType::Individual->value;
     }
 }

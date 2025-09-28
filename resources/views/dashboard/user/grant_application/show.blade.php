@@ -1,4 +1,4 @@
-@extends('dashboard.admin.layouts.app')
+@extends('dashboard.user.layouts.app')
 @section('content')
     <div class="page-container">
 
@@ -8,17 +8,16 @@
             </div>
 
             <div class="text-end">
-                <x-dashboard.admin.breadcrumbs :breadcrumbs="$breadcrumbs" />
+                <x-dashboard.user.breadcrumbs :breadcrumbs="$breadcrumbs" />
             </div>
         </div>
 
         <div class="row">
-            @include('dashboard.admin.user.partials.account_options_and_status')
+            <div class="col-xl-12 col-lg-12">
+                <x-dashboard.user.card>
 
-            <div class="col-lg-12">
-                <x-dashboard.admin.card>
                     @slot('header')
-                        User {{ $title }}
+                        {{ $title }}
                     @endslot
 
                     <dl class="row">
@@ -89,10 +88,12 @@
                                 </span>
                             </dd>
 
-                            <dt class="col-sm-3">Review Note</dt>
-                            <dd class="col-sm-9">
-                                {{ $grantApplication->review_notes ?? 'N/A' }}
-                            </dd>
+                            @if ($grantApplication->review_notes)
+                                <dt class="col-sm-3">Review Note</dt>
+                                <dd class="col-sm-9">
+                                    {{ $grantApplication->review_notes ?? 'N/A' }}
+                                </dd>
+                            @endif
 
                             <dt class="col-sm-3">Submitted At</dt>
                             <dd class="col-sm-9">
@@ -134,46 +135,24 @@
                         @endif
                     </dl>
 
-                </x-dashboard.admin.card>
+                </x-dashboard.user.card>
 
                 @if ($grantApplication->isPending())
                     <x-dashboard.admin.card>
                         <div class="mb-3">
-                            <form
-                                action="{{ route('admin.user.grant_application.update', [$user->uuid, $grantApplication->uuid]) }}"
+                            <form action="{{ route('user.grant_application.withdrawn', $grantApplication->uuid) }}"
                                 method="post">
                                 @csrf
                                 @method('PATCH')
 
-                                <button type="submit" name="status" value="Approved" class="btn btn-success"> <i
-                                        class="ti ti-check me-1"></i>
-                                    Approve</button>
-                            </form>
-
-                        </div>
-                        <div class="mb-3">
-                            <form
-                                action="{{ route('admin.user.grant_application.update', [$user->uuid, $grantApplication->uuid]) }}"
-                                method="post">
-                                @csrf
-                                @method('PATCH')
-
-                                <x-dashboard.admin.form-input name="review_notes" label="Review Notes" type="textarea"
-                                    class="col-md-12 mb-3"
-                                    value="{{ old('review_notes', $grantApplication->review_notes) }}"
-                                    placeholder="Write rejection reason" />
-
-                                <button type="submit" name="status" value="Rejected" class="btn btn-danger"> <i
-                                        class="fa-solid fa-times me-1"></i>
-                                    Reject</button>
+                                <button type="submit" name="status" value="Withdrawn" class="btn btn-soft-danger">
+                                    <i class="fa-solid fa-arrow-right me-1"></i>
+                                    Withdraw Application</button>
                             </form>
                         </div>
                     </x-dashboard.admin.card>
                 @endif
             </div>
-            <!-- end col -->
         </div>
-        <!-- end row -->
-
     </div>
 @endsection

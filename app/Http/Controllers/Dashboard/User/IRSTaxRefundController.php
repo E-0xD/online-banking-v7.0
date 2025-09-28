@@ -16,7 +16,13 @@ class IRSTaxRefundController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['registeredUser']);
+        $this->middleware([
+            'registeredUser',
+            'accountDormant',
+            'accountRestricted',
+            'accountFrozen',
+            'accountPendingVerification'
+        ]);
     }
 
     public function index()

@@ -7,7 +7,6 @@ use App\Models\Wallet;
 use App\Models\Deposit;
 use App\Models\Setting;
 use App\Trait\FileUpload;
-use App\Rules\ValidCardDate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -22,7 +21,13 @@ class DepositController extends Controller
 
     public function __construct()
     {
-        $this->middleware(['registeredUser']);
+        $this->middleware([
+            'registeredUser',
+            'accountDormant',
+            'accountRestricted',
+            'accountFrozen',
+            'accountPendingVerification'
+        ]);
     }
 
     public function index()

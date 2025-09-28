@@ -449,10 +449,90 @@ return  [
     ],
     'accountStates' => [
         'Active',
-        'Disabled',
-        'Kyc',
-        'Frozen'
+        'Dormant',
+        'Restricted',
+        'Frozen',
+        'Closed',
+        'Pending Verification',
+        'Suspended'
     ],
+    'accountStatesDetails' => [
+        'Active' => [
+            'label' => 'Active',
+            'description' => 'Your account is fully active. You can perform all banking activities.',
+            'actions' => [
+                'Deposit funds',
+                'Withdraw funds',
+                'Transfer money',
+                'Pay bills',
+                'Update profile'
+            ],
+            'loginAllowed' => true
+        ],
+
+        'Dormant' => [
+            'label' => 'Dormant',
+            'description' => 'Your account has been inactive for a long time. Limited services are available until reactivation.',
+            'actions' => [
+                'Contact support for reactivation',
+                'Make a deposit to reactivate'
+            ],
+            'loginAllowed' => true
+        ],
+
+        'Restricted' => [
+            'label' => 'Restricted',
+            'description' => 'Your account has limited functionality due to compliance or policy reasons.',
+            'actions' => [
+                'Deposit funds',
+                'Contact support to resolve restriction',
+                'Submit required documents'
+            ],
+            'loginAllowed' => true
+        ],
+
+        'Frozen' => [
+            'label' => 'Frozen',
+            'description' => 'Your account is temporarily frozen due to security or regulatory issues.',
+            'actions' => [
+                'Contact compliance team',
+                'Submit additional verification documents',
+                'Wait for resolution'
+            ],
+            'loginAllowed' => true
+        ],
+
+        'Closed' => [
+            'label' => 'Closed',
+            'description' => 'Your account has been permanently closed and cannot be used.',
+            'actions' => [
+                'Contact support if you think this was a mistake',
+                'Open a new account'
+            ],
+            'loginAllowed' => false
+        ],
+
+        'PendingVerification' => [
+            'label' => 'Pending Verification',
+            'description' => 'Your account is awaiting KYC/identity verification. You cannot fully use it until verification is complete.',
+            'actions' => [
+                'Upload verification documents',
+                'Update profile details',
+                'Contact support for verification status'
+            ],
+            'loginAllowed' => true
+        ],
+
+        'Suspended' => [
+            'label' => 'Suspended',
+            'description' => 'Your account has been suspended. You cannot log in or access any services until this is resolved.',
+            'actions' => [
+                'Contact support to resolve suspension'
+            ],
+            'loginAllowed' => false
+        ]
+    ],
+
     'userStatuses' => [
         1 => 'Active',
         0 => 'Inactive'
