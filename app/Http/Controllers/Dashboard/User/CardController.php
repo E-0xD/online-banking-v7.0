@@ -23,11 +23,13 @@ class CardController extends Controller
         ];
 
         $user = User::where('role', 'user')->where('id', Auth::id())->firstOrFail();
+        $cards = $user->card()->with(['user'])->where('status', 'approved')->latest()->get();
 
         $data = [
             'title' => 'Cards',
             'breadcrumbs' => $breadcrumbs,
-            'user' => $user
+            'user' => $user,
+            'cards' => $cards
         ];
 
         return view('dashboard.user.card.index', $data);

@@ -646,10 +646,10 @@ return  [
         'Black' => 'Black - $50.00'
     ],
     'cardLevelFees' => [
-        'Standard' => '$5.00',
-        'Gold' => '$10.00',
-        'Platinum' => '$20.00',
-        'Black' => '$50.00'
+        'Standard' => '5.00',
+        'Gold' => '10.00',
+        'Platinum' => '20.00',
+        'Black' => '50.00'
     ],
     'cardCurrencies' => [
         'USD - US Dollar - $' => 'USD - US Dollar',

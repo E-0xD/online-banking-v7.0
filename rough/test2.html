@@ -4,85 +4,191 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Virtual Cards Dashboard</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <title>Virtual Card</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .card-wrapper {
+            perspective: 1000px;
+            width: 350px;
+            height: 200px;
+            margin: 20px auto;
+        }
+
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+
+        .card-wrapper:hover .card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .card-front,
+        .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 15px;
+            backface-visibility: hidden;
+            color: white;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Themes */
+        .theme-blue {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+        }
+
+        .theme-purple {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+        }
+
+        .theme-green {
+            background: linear-gradient(135deg, #11998e, #38ef7d);
+        }
+
+        .card-front .brand {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: right;
+        }
+
+        .card-front .number {
+            font-size: 20px;
+            letter-spacing: 3px;
+        }
+
+        .card-front .holder {
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+
+        .card-back {
+            transform: rotateY(180deg);
+        }
+
+        .magnetic-strip {
+            background: #000;
+            height: 40px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
+
+        .cvv-box {
+            background: #fff;
+            color: #000;
+            width: 100px;
+            text-align: center;
+            border-radius: 5px;
+            font-weight: bold;
+            padding: 5px;
+            margin-left: auto;
+        }
+    </style>
 </head>
 
 <body class="bg-light">
 
-    <div class="container py-4">
-
-        <!-- Top summary row -->
-        <div class="row g-3">
+    <div class="container text-center py-5">
+        <h3 class="mb-4">My Virtual Cards</h3>
+        <div class="row">
+            <!-- Example Card -->
             <div class="col-md-4">
-                <div class="card shadow-sm text-center p-3">
-                    <small class="text-muted">ACTIVE CARDS</small>
-                    <h4 class="mt-2 mb-0">0</h4>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card shadow-sm text-center p-3">
-                    <small class="text-muted">PENDING APPLICATIONS</small>
-                    <h4 class="mt-2 mb-0">0</h4>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card shadow-sm text-center p-3">
-                    <small class="text-muted">TOTAL BALANCE</small>
-                    <h4 class="mt-2 mb-0">$0.00</h4>
-                </div>
-            </div>
-        </div>
-
-        <!-- Banner -->
-        <div class="card shadow-sm border-0 mt-4 text-white"
-            style="background: linear-gradient(135deg, #007BFF, #0096FF);">
-            <div class="card-body d-flex flex-column flex-md-row align-items-center justify-content-between">
-                <div>
-                    <h2 class="fw-bold">Virtual Cards Made Easy</h2>
-                    <p class="mb-3">Create virtual cards for secure online payments, subscription management, and more.
-                        Enhanced security and spending control.</p>
-                    <div class="row text-center">
-                        <div class="col">
-                            <i class="bi bi-shield-lock fs-4"></i>
-                            <p class="mb-0 small">Secure<br>Protected payments</p>
+                <div class="card-wrapper">
+                    <div class="card-inner">
+                        <!-- Front -->
+                        <div class="card-front theme-blue">
+                            <div class="brand">VISA</div>
+                            <div class="number">**** **** **** 1234</div>
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <div class="holder">John Doe</div>
+                                    <div class="expiry">12/28</div>
+                                </div>
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Visa.svg/1200px-Visa.svg.png"
+                                    alt="visa" width="60">
+                            </div>
                         </div>
-                        <div class="col">
-                            <i class="bi bi-globe fs-4"></i>
-                            <p class="mb-0 small">Global<br>Worldwide acceptance</p>
-                        </div>
-                        <div class="col">
-                            <i class="bi bi-sliders fs-4"></i>
-                            <p class="mb-0 small">Control<br>Spending limits</p>
-                        </div>
-                        <div class="col">
-                            <i class="bi bi-lightning-charge fs-4"></i>
-                            <p class="mb-0 small">Instant<br>Quick issuance</p>
+                        <!-- Back -->
+                        <div class="card-back theme-blue">
+                            <div class="magnetic-strip"></div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span></span>
+                                <div class="cvv-box">123</div>
+                            </div>
+                            <div class="text-end small">Authorized Signature</div>
                         </div>
                     </div>
                 </div>
-                <div class="mt-4 mt-md-0">
-                    <!-- Replace with your card image -->
-                    <img src="https://via.placeholder.com/250x150.png?text=Card+Image" class="img-fluid rounded"
-                        alt="Virtual Card">
+            </div>
+
+            <!-- Another Card -->
+            <div class="col-md-4">
+                <div class="card-wrapper">
+                    <div class="card-inner">
+                        <!-- Front -->
+                        <div class="card-front theme-purple">
+                            <div class="brand">MasterCard</div>
+                            <div class="number">**** **** **** 5678</div>
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <div class="holder">Jane Smith</div>
+                                    <div class="expiry">07/27</div>
+                                </div>
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png"
+                                    alt="mc" width="60">
+                            </div>
+                        </div>
+                        <!-- Back -->
+                        <div class="card-back theme-purple">
+                            <div class="magnetic-strip"></div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span></span>
+                                <div class="cvv-box">456</div>
+                            </div>
+                            <div class="text-end small">Authorized Signature</div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Your Cards Section -->
-        <div class="mt-4">
-            <h5 class="mb-3">Your Cards <a href="#" class="float-end text-primary"><i class="bi bi-plus-circle"></i> New
-                    Card</a></h5>
-            <div class="card shadow-sm border-0 text-center p-5">
-                <i class="bi bi-credit-card fs-1 text-primary"></i>
-                <h6 class="mt-3">No Cards Yet</h6>
-                <p class="text-muted">Get started by applying for your first virtual card. It only takes a few minutes!
-                </p>
-                <a href="#" class="btn btn-primary px-4">+ Apply for Your First Card</a>
+            <!-- Another Card -->
+            <div class="col-md-4">
+                <div class="card-wrapper">
+                    <div class="card-inner">
+                        <!-- Front -->
+                        <div class="card-front theme-green">
+                            <div class="brand">VISA</div>
+                            <div class="number">**** **** **** 9876</div>
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <div class="holder">Mike Johnson</div>
+                                    <div class="expiry">09/29</div>
+                                </div>
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Visa.svg/1200px-Visa.svg.png"
+                                    alt="visa" width="60">
+                            </div>
+                        </div>
+                        <!-- Back -->
+                        <div class="card-back theme-green">
+                            <div class="magnetic-strip"></div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span></span>
+                                <div class="cvv-box">789</div>
+                            </div>
+                            <div class="text-end small">Authorized Signature</div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
 
+        </div>
     </div>
 
 </body>

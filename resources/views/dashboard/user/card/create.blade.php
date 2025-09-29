@@ -93,7 +93,7 @@
                                     <div class="list-group">
                                         <label class="list-group-item d-flex align-items-center">
                                             <input class="form-check-input me-3 @error('card_type') is-invalid @enderror"
-                                                type="radio" value="Visa" name="card_type" checked>
+                                                type="radio" value="Visa" name="card_type" @checked(old('card_type', 'Visa'))>
                                             <div>
                                                 <div class="fw-bold">Visa <span class="badge bg-primary ms-2">VISA</span>
                                                 </div>
@@ -103,7 +103,8 @@
                                         </label>
                                         <label class="list-group-item d-flex align-items-center">
                                             <input class="form-check-input me-3 @error('card_type') is-invalid @enderror"
-                                                type="radio" value="Mastercard" name="card_type">
+                                                type="radio" value="Mastercard" name="card_type"
+                                                @checked(old('card_type', 'Mastercard'))>
                                             <div>
                                                 <div class="fw-bold">Mastercard <span
                                                         class="badge bg-warning text-dark ms-2">MASTERCARD</span></div>
@@ -113,7 +114,8 @@
                                         </label>
                                         <label class="list-group-item d-flex align-items-center">
                                             <input class="form-check-input me-3 @error('card_type') is-invalid @enderror"
-                                                type="radio" value="American Express" name="card_type">
+                                                type="radio" value="American Express" name="card_type"
+                                                @checked(old('card_type', 'American Express'))>
                                             <div>
                                                 <div class="fw-bold">American Express <span
                                                         class="badge bg-secondary ms-2">AMEX</span>
@@ -137,7 +139,7 @@
                                             class="form-select @error('card_level') is-invalid @enderror">
                                             <option value="">Select Card Level</option>
                                             @foreach (config('setting.cardLevels') as $key => $cardLevel)
-                                                <option value="{{ $key }}" @selected(old('card_level') == $cardLevel)>
+                                                <option value="{{ $key }}" @selected(old('card_level') == $key)>
                                                     {{ $cardLevel }}</option>
                                             @endforeach
                                         </select>
@@ -192,7 +194,7 @@
                                     <label class="form-label fw-bold">Cardholder Name</label>
                                     <input type="text" name="card_holder_name"
                                         class="form-control @error('card_holder_name') is-invalid @enderror"
-                                        placeholder="Enter name">
+                                        placeholder="Enter name" value="{{ old('card_holder_name') }}">
 
                                     @error('card_holder_name')
                                         <span class="invalid-feedback">{{ $message }}</span>
@@ -202,7 +204,7 @@
                                     <label class="form-label fw-bold">Billing Address</label>
                                     <input type="text" name="billing_address"
                                         class="form-control @error('billing_address') is-invalid @enderror"
-                                        placeholder="Enter address">
+                                        placeholder="Enter address" value="{{ old('billing_address') }}">
 
                                     @error('billing_address')
                                         <span class="invalid-feedback">{{ $message }}</span>
@@ -213,7 +215,7 @@
                                         <label class="form-label fw-bold">City</label>
                                         <input type="text" name="city"
                                             class="form-control @error('city') is-invalid @enderror"
-                                            placeholder="Enter city">
+                                            placeholder="Enter city" value="{{ old('city') }}">
 
                                         @error('city')
                                             <span class="invalid-feedback">{{ $message }}</span>
@@ -223,7 +225,7 @@
                                         <label class="form-label fw-bold">ZIP / Postal Code</label>
                                         <input type="text" name="zip"
                                             class="form-control @error('zip') is-invalid @enderror"
-                                            placeholder="Enter ZIP code">
+                                            placeholder="Enter ZIP code" value="{{ old('zip') }}">
 
                                         @error('zip')
                                             <span class="invalid-feedback">{{ $message }}</span>

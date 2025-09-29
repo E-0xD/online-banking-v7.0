@@ -101,6 +101,55 @@
 
                     </div>
 
+                    @if ($card->isPending())
+                        <div class="d-flex justify-content-end">
+                            <form action="{{ route('admin.user.card.approved', [$user->uuid, $card->uuid]) }}"
+                                method="POST">
+                                @csrf
+                                @method('PATCH')
+
+                                <button type="submit" name="status" value="active" class="btn btn-success btn-sm me-2">
+                                    <i class="fa-solid fa-check me-1"></i> Approve
+                                </button>
+                            </form>
+                            <form action="{{ route('admin.user.card.rejected', [$user->uuid, $card->uuid]) }}"
+                                method="POST">
+                                @csrf
+                                @method('PATCH')
+
+                                <button type="submit" name="status" value="rejected" class="btn btn-danger btn-sm me-2">
+                                    <i class="fa-solid fa-ban me-1"></i> Reject
+                                </button>
+                            </form>
+                        </div>
+                    @endif
+
+                    @if ($card->isActive())
+                        <div class="d-flex justify-content-end">
+                            <form action="{{ route('admin.user.card.blocked', [$user->uuid, $card->uuid]) }}"
+                                method="POST">
+                                @csrf
+                                @method('PATCH')
+
+                                <button type="submit" name="status" value="blocked" class="btn btn-danger btn-sm me-2">
+                                    <i class="fa-solid fa-ban me-1"></i> Block
+                                </button>
+                            </form>
+                        </div>
+                    @elseif($card->isBlocked())
+                        <div class="d-flex justify-content-end">
+                            <form action="{{ route('admin.user.card.unblocked', [$user->uuid, $card->uuid]) }}"
+                                method="POST">
+                                @csrf
+                                @method('PATCH')
+
+                                <button type="submit" name="status" value="active" class="btn btn-success btn-sm me-2">
+                                    <i class="fa-solid fa-check me-1"></i> Unblock
+                                </button>
+                            </form>
+                        </div>
+                    @endif
+
                 </x-dashboard.admin.card>
             </div>
             <!-- end col -->

@@ -115,4 +115,8 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     Route::get('/user/{user}/card/{card}', [UserCardController::class, 'show'])->name('admin.user.card.show');
     Route::patch('/user/{user}/card/{card}/update', [UserCardController::class, 'update'])->name('admin.user.card.update');
     Route::delete('/user/{user}/card/{card}/delete', [UserCardController::class, 'delete'])->name('admin.user.card.delete');
+    Route::patch('/user/{user}/card/{card}/approved', [UserCardController::class, 'approved'])->name('admin.user.card.approved');
+    Route::patch('/user/{user}/card/{card}/rejected', [UserCardController::class, 'rejected'])->name('admin.user.card.rejected');
+    Route::patch('/user/{user}/card/{card}/blocked', [UserCardController::class, 'blocked'])->name('admin.user.card.blocked');
+    Route::patch('/user/{user}/card/{card}/unblocked', [UserCardController::class, 'unblocked'])->name('admin.user.card.unblocked');
 });

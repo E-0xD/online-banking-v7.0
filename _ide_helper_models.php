@@ -14,6 +14,7 @@
 namespace App\Models{
 /**
  * @property int $id
+ * @property string|null $uuid
  * @property int $user_id
  * @property string $card_type
  * @property string $card_level
@@ -50,6 +51,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Card whereStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Card whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Card whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Card whereUuid($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Card whereZip($value)
  */
 	class Card extends \Eloquent {}

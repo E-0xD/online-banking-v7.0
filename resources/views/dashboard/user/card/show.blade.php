@@ -25,7 +25,7 @@
                                 </h3>
                                 <p class="text-muted mb-0">Detailed information about your virtual card</p>
                             </div>
-                            <a href="{{ route('user.card.history') }}" class="btn btn-outline-secondary btn-sm">
+                            <a href="{{ route('user.card.index') }}" class="btn btn-outline-secondary btn-sm">
                                 <i class="fa-solid fa-arrow-left me-1"></i> Back to Cards
                             </a>
                         </div>

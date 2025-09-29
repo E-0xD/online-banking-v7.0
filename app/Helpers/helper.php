@@ -155,3 +155,17 @@ function cardCurrency($currency, $type = 'symbol')
             break;
     }
 }
+
+function cardFee($cardLevel)
+{
+    $cardLevelsFees = config('setting.cardLevelFees');
+
+    $cardLevelPrice = (int) $cardLevelsFees[$cardLevel];
+
+    return $cardLevelPrice;
+}
+
+function cardExpiryDateFormat($date)
+{
+    return date('m/y', strtotime($date));
+}
