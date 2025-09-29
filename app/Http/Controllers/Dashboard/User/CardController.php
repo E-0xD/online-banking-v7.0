@@ -23,7 +23,7 @@ class CardController extends Controller
         ];
 
         $user = User::where('role', 'user')->where('id', Auth::id())->firstOrFail();
-        $cards = $user->card()->with(['user'])->where('status', 'approved')->latest()->get();
+        $cards = $user->card()->with(['user'])->where('status', 'active')->latest()->get();
 
         $data = [
             'title' => 'Cards',
