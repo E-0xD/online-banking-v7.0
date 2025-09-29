@@ -638,5 +638,34 @@ return  [
     'transactionDirections' => [
         'credit',
         'debit'
+    ],
+    'cardLevels' => [
+        'Standard' => 'Standard - $5.00',
+        'Gold' => 'Gold - $10.00',
+        'Platinum' => 'Platinum - $20.00',
+        'Black' => 'Black - $50.00'
+    ],
+    'cardLevelFees' => [
+        'Standard' => '$5.00',
+        'Gold' => '$10.00',
+        'Platinum' => '$20.00',
+        'Black' => '$50.00'
+    ],
+    'cardCurrencies' => [
+        'USD - US Dollar - $' => 'USD - US Dollar',
+        'EUR - Euro - €' => 'EUR - Euro',
+        'GBP - British Pound - £' => 'GBP - British Pound',
+    ],
+    'cardTypes' => [
+        'Visa',
+        'Mastercard',
+        'American Express'
+    ],
+    'cardStatuses' => [
+        'pending',
+        'approved',
+        'rejected',
+        'active',
+        'blocked'
     ]
 ];

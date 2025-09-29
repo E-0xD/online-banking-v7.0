@@ -14,6 +14,50 @@
 namespace App\Models{
 /**
  * @property int $id
+ * @property int $user_id
+ * @property string $card_type
+ * @property string $card_level
+ * @property string $currency
+ * @property string $daily_limit
+ * @property string|null $card_number
+ * @property string|null $expiry_date
+ * @property string|null $cvv
+ * @property string $card_holder_name
+ * @property string $billing_address
+ * @property string|null $city
+ * @property string|null $zip
+ * @property string|null $reference_id
+ * @property string $status
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\User $user
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Card newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Card newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Card query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Card whereBillingAddress($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Card whereCardHolderName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Card whereCardLevel($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Card whereCardNumber($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Card whereCardType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Card whereCity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Card whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Card whereCurrency($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Card whereCvv($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Card whereDailyLimit($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Card whereExpiryDate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Card whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Card whereReferenceId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Card whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Card whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Card whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Card whereZip($value)
+ */
+	class Card extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * @property int $id
  * @property string $uuid
  * @property int $user_id
  * @property string $method
@@ -456,6 +500,8 @@ namespace App\Models{
  * @property string|null $remember_token
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Card> $card
+ * @property-read int|null $card_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Deposit> $deposit
  * @property-read int|null $deposit_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\GrantApplication> $grantApplication

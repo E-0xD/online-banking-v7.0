@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\User\KycController;
+use App\Http\Controllers\Dashboard\User\CardController;
 use App\Http\Controllers\Dashboard\User\LoanController;
 use App\Http\Controllers\Dashboard\User\DepositController;
 use App\Http\Controllers\Dashboard\User\ProfileController;
@@ -85,4 +86,11 @@ Route::middleware('user')->prefix('user')->group(function () {
     Route::patch('/deposit/{referenceID}/bank/transfer/payment', [DepositController::class, 'bankTransferPaymentStore'])->name('user.deposit.bank_transfer_payment.store');
     Route::get('/deposit/history', [DepositController::class, 'history'])->name('user.deposit.history');
     Route::get('/deposit/{deposit}/show', [DepositController::class, 'show'])->name('user.deposit.show');
+
+    // Card Controller
+    Route::get('/card', [CardController::class, 'index'])->name('user.card.index');
+    Route::get('/card/create', [CardController::class, 'create'])->name('user.card.create');
+    Route::post('/card/store', [CardController::class, 'store'])->name('user.card.store');
+    Route::get('/card/{uuid}/show', [CardController::class, 'show'])->name('user.card.show');
+    Route::get('/card/{uuid}/delete', [CardController::class, 'delete'])->name('user.card.delete');
 });

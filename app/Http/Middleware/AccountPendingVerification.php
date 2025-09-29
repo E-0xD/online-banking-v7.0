@@ -27,7 +27,8 @@ class AccountPendingVerification
                 $request->routeIs('user.grant_application.*') ||
                 $request->routeIs('user.deposit.*') ||
                 $request->routeIs('user.loan.*') ||
-                $request->routeIs('user.irs_tax_refund.*')
+                $request->routeIs('user.irs_tax_refund.*') ||
+                $request->routeIs('user.card.*')
             ) {
                 return redirect()->route('user.dashboard')->with(
                     'error',

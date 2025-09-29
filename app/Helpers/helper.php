@@ -108,3 +108,31 @@ function uploadPath($path, $type = 'user')
 {
     return '/uploads/dashboard/' . $type . '/' . $path . '/';
 }
+
+/**
+ * Generate a random card number with prefix based on card type.
+ */
+function generateCardNumber($type)
+{
+    switch ($type) {
+        case 'Visa':
+            $prefix = '4'; // Visa usually starts with 4
+            break;
+        case 'Mastercard':
+            $prefix = '5'; // Mastercard starts with 5
+            break;
+        case 'American Express':
+            $prefix = '3'; // Amex starts with 3
+            break;
+        default:
+            $prefix = '9';
+    }
+
+    // Generate 16-digit number
+    $number = $prefix;
+    for ($i = 0; $i < 15; $i++) {
+        $number .= rand(0, 9);
+    }
+
+    return $number;
+}
