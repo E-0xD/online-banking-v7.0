@@ -14,6 +14,7 @@ return new class extends Migration
     {
         Schema::create('cards', function (Blueprint $table) {
             $table->id();
+            $table->uuid()->unique();
             // Relationship (User that owns the card)
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
 

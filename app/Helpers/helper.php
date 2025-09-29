@@ -136,3 +136,22 @@ function generateCardNumber($type)
 
     return $number;
 }
+
+function cardCurrency($currency, $type = 'symbol')
+{
+
+    $explodeCurrency = explode(' - ', $currency);
+
+    switch ($type) {
+        case 'code':
+            return @$explodeCurrency[0];
+            break;
+        case 'name':
+            return @$explodeCurrency[1];
+        case 'symbol':
+            return @$explodeCurrency[2];
+        default:
+            return @$explodeCurrency[2];
+            break;
+    }
+}

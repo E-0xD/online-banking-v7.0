@@ -38,13 +38,7 @@
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-        <style>
-            /* .btn-primary {
-                background-color: #232E51 !important;
-                color: #fff !important;
-                border-color: #232E51 !important;
-            } */
-        </style>
+        @stack('styles')
     </head>
 
     <body>
@@ -124,6 +118,8 @@
                 }, 15000); // 5000ms = 5 seconds
             </script>
         @endif
+
+        @stack('scripts')
 
         @include('partials.live_chat')
     </body>

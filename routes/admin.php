@@ -5,6 +5,7 @@ use App\Http\Controllers\Dashboard\Admin\UserController;
 use App\Http\Controllers\Dashboard\Admin\WalletController;
 use App\Http\Controllers\Dashboard\Admin\SettingController;
 use App\Http\Controllers\Dashboard\Admin\UserKycController;
+use App\Http\Controllers\Dashboard\Admin\UserCardController;
 use App\Http\Controllers\Dashboard\Admin\UserLoanController;
 use App\Http\Controllers\Dashboard\Admin\DashboardController;
 use App\Http\Controllers\Dashboard\Admin\UserDepositController;
@@ -108,4 +109,10 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     Route::get('/user/{user}/deposit/{deposit}', [UserDepositController::class, 'show'])->name('admin.user.deposit.show');
     Route::patch('/user/{user}/deposit/{deposit}/update', [UserDepositController::class, 'update'])->name('admin.user.deposit.update');
     Route::delete('/user/{user}/deposit/{deposit}/delete', [UserDepositController::class, 'delete'])->name('admin.user.deposit.delete');
+
+    // User Card Controller
+    Route::get('/user/{user}/card', [UserCardController::class, 'index'])->name('admin.user.card.index');
+    Route::get('/user/{user}/card/{card}', [UserCardController::class, 'show'])->name('admin.user.card.show');
+    Route::patch('/user/{user}/card/{card}/update', [UserCardController::class, 'update'])->name('admin.user.card.update');
+    Route::delete('/user/{user}/card/{card}/delete', [UserCardController::class, 'delete'])->name('admin.user.card.delete');
 });

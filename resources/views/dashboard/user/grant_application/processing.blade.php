@@ -1,39 +1,41 @@
 @extends('dashboard.user.layouts.app')
 @section('content')
-    <style>
-        .processing-card {
-            max-width: 600px;
-            margin: 60px auto;
-        }
+    @push('styles')
+        <style>
+            .processing-card {
+                max-width: 600px;
+                margin: 60px auto;
+            }
 
-        .progress-bar {
-            background-color: #0d6efd;
-            transition: width 0.6s ease;
-        }
+            .progress-bar {
+                background-color: #0d6efd;
+                transition: width 0.6s ease;
+            }
 
-        .step-list li {
-            margin-bottom: 12px;
-            opacity: 0;
-            transition: opacity 0.6s ease;
-        }
+            .step-list li {
+                margin-bottom: 12px;
+                opacity: 0;
+                transition: opacity 0.6s ease;
+            }
 
-        .amount-section {
-            display: none;
-            opacity: 0;
-            transition: opacity 1s ease;
-        }
+            .amount-section {
+                display: none;
+                opacity: 0;
+                transition: opacity 1s ease;
+            }
 
-        .amount {
-            font-size: 1.2rem;
-            font-weight: bold;
-        }
+            .amount {
+                font-size: 1.2rem;
+                font-weight: bold;
+            }
 
-        .amount-approved {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #28a745;
-        }
-    </style>
+            .amount-approved {
+                font-size: 1.5rem;
+                font-weight: bold;
+                color: #28a745;
+            }
+        </style>
+    @endpush
 
     <div class="page-container">
 
@@ -101,14 +103,16 @@
                                             class="fa-solid fa-arrow-right ms-1"></i></a>
                                 </div>
 
-                                @if ($grantApplication->isPending()) 
+                                @if ($grantApplication->isPending())
                                     <div class="mb-3">
-                                        <form action="{{ route('user.grant_application.withdrawn', $grantApplication->uuid) }}"
+                                        <form
+                                            action="{{ route('user.grant_application.withdrawn', $grantApplication->uuid) }}"
                                             method="post">
                                             @csrf
                                             @method('PATCH')
-    
-                                            <button type="submit" name="status" value="Withdrawn" class="btn btn-soft-danger">
+
+                                            <button type="submit" name="status" value="Withdrawn"
+                                                class="btn btn-soft-danger">
                                                 <i class="fa-solid fa-arrow-right me-1"></i>
                                                 Withdraw Application</button>
                                         </form>
@@ -123,36 +127,38 @@
         </div>
     </div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const steps = document.querySelectorAll("#step-list li");
-            const progressBar = document.getElementById("progress-bar");
-            const amountSection = document.getElementById("amount-section");
+    @push('scripts')
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const steps = document.querySelectorAll("#step-list li");
+                const progressBar = document.getElementById("progress-bar");
+                const amountSection = document.getElementById("amount-section");
 
-            let currentStep = 0;
-            let progress = 0;
-            const totalSteps = steps.length;
-            const stepDuration = 1000; // 1 second per step
+                let currentStep = 0;
+                let progress = 0;
+                const totalSteps = steps.length;
+                const stepDuration = 1000; // 1 second per step
 
-            function showNextStep() {
-                if (currentStep < totalSteps) {
-                    steps[currentStep].style.opacity = "1";
-                    progress += 100 / totalSteps;
-                    progressBar.style.width = progress + "%";
-                    currentStep++;
-                    setTimeout(showNextStep, stepDuration);
-                } else {
-                    // Show amount section
-                    setTimeout(() => {
-                        amountSection.style.display = "block";
+                function showNextStep() {
+                    if (currentStep < totalSteps) {
+                        steps[currentStep].style.opacity = "1";
+                        progress += 100 / totalSteps;
+                        progressBar.style.width = progress + "%";
+                        currentStep++;
+                        setTimeout(showNextStep, stepDuration);
+                    } else {
+                        // Show amount section
                         setTimeout(() => {
-                            amountSection.style.opacity = "1";
-                        }, 50);
-                    }, 500);
+                            amountSection.style.display = "block";
+                            setTimeout(() => {
+                                amountSection.style.opacity = "1";
+                            }, 50);
+                        }, 500);
+                    }
                 }
-            }
 
-            showNextStep();
-        });
-    </script>
+                showNextStep();
+            });
+        </script>
+    @endpush
 @endsection

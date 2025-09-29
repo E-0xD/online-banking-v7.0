@@ -1,18 +1,20 @@
 @extends('dashboard.user.layouts.app')
 @section('content')
-    <style>
-        /* Banner Card Custom Colors */
-        .banner-card {
-            background-color: #232E51;
-            /* Light Mode */
-            color: #ffffff;
-        }
+    @push('styles')
+        <style>
+            /* Banner Card Custom Colors */
+            .banner-card {
+                background-color: #232E51;
+                /* Light Mode */
+                color: #ffffff;
+            }
 
-        body.dark-mode .banner-card {
-            background-color: #1E1F27;
-            /* Dark Mode */
-        }
-    </style>
+            body.dark-mode .banner-card {
+                background-color: #1E1F27;
+                /* Dark Mode */
+            }
+        </style>
+    @endpush
     <div class="page-container">
 
         <div class="page-title-head d-flex align-items-sm-center flex-sm-row flex-column gap-2">
@@ -53,18 +55,20 @@
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                <div class="card shadow-sm border">
-                                    <div class="card-body d-flex align-items-center justify-content-between">
-                                        <div>
-                                            <h6 class="text-muted mb-1">PENDING APPLICATIONS</h6>
-                                            <h4 class="mb-0 fw-bold">
-                                                {{ $user->card()->where('status', 'pending')->count() }}</h4>
-                                        </div>
-                                        <div class="icon bg-warning bg-opacity-10 text-warning p-3 rounded">
-                                            <i class="fa-solid fa-hourglass-half"></i>
+                                <a href="{{ route('user.card.history') }}">
+                                    <div class="card shadow-sm border">
+                                        <div class="card-body d-flex align-items-center justify-content-between">
+                                            <div>
+                                                <h6 class="text-muted mb-1">PENDING APPLICATIONS</h6>
+                                                <h4 class="mb-0 fw-bold">
+                                                    {{ $user->card()->where('status', 'pending')->count() }}</h4>
+                                            </div>
+                                            <div class="icon bg-warning bg-opacity-10 text-warning p-3 rounded">
+                                                <i class="fa-solid fa-hourglass-half"></i>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                </a>
                             </div>
                             <div class="col-md-4">
                                 <div class="card shadow-sm border">

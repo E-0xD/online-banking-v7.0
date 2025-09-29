@@ -69,6 +69,7 @@ class CardController extends Controller
 
             // Store in database
             Card::create([
+                'uuid'              => str()->uuid(),
                 'user_id'           => $user->id,
                 'card_type'         => $validated['card_type'],
                 'card_level'        => $validated['card_level'],
@@ -99,5 +100,50 @@ class CardController extends Controller
                 ->route('user.card.index')
                 ->with('error', config('app.messages.error'));
         }
+    }
+
+    public function history()
+    {
+        $breadcrumbs = [
+            ['label' => config('app.name'), 'url' => '/'],
+            ['label' => 'Dashboard', 'url' => route('user.dashboard')],
+            ['label' => 'Cards', 'url' => route('user.card.index')],
+            ['label' => 'Card History', 'active' => true]
+        ];
+
+        $user = User::where('role', 'user')->where('id', Auth::id())->firstOrFail();
+        $cards =  $user->card()->with(['user'])->latest()->get();
+
+        $data = [
+            'title' => 'Card History',
+            'breadcrumbs' => $breadcrumbs,
+            'user' => $user,
+            'cards' => $cards
+        ];
+
+        return view('dashboard.user.card.history', $data);
+    }
+
+    public function show(string $uuid)
+    {
+        $breadcrumbs = [
+            ['label' => config('app.name'), 'url' => '/'],
+            ['label' => 'Dashboard', 'url' => route('user.dashboard')],
+            ['label' => 'Cards', 'url' => route('user.card.index')],
+            ['label' => 'Card History', 'url' => route('user.card.history')],
+            ['label' => 'Card Details', 'active' => true],
+        ];
+
+        $user = User::where('role', 'user')->where('id', Auth::id())->firstOrFail();
+        $card = $user->card()->where('uuid', $uuid)->firstOrFail();
+
+        $data = [
+            'title' => 'Card Details',
+            'breadcrumbs' => $breadcrumbs,
+            'user' => $user,
+            'card' => $card
+        ];
+
+        return view('dashboard.user.card.show', $data);
     }
 }

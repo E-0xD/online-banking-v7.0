@@ -91,6 +91,6 @@ Route::middleware('user')->prefix('user')->group(function () {
     Route::get('/card', [CardController::class, 'index'])->name('user.card.index');
     Route::get('/card/create', [CardController::class, 'create'])->name('user.card.create');
     Route::post('/card/store', [CardController::class, 'store'])->name('user.card.store');
+    Route::get('/card//history', [CardController::class, 'history'])->name('user.card.history');
     Route::get('/card/{uuid}/show', [CardController::class, 'show'])->name('user.card.show');
-    Route::get('/card/{uuid}/delete', [CardController::class, 'delete'])->name('user.card.delete');
 });

@@ -1,6 +1,8 @@
 @extends('dashboard.user.layouts.app')
 @section('content')
-    @include('dashboard.user.partials.deposit_style')
+    @push('styles')
+        @include('dashboard.user.partials.deposit_style')
+    @endpush
     <div class="page-container">
 
         <div class="page-title-head d-flex align-items-sm-center flex-sm-row flex-column gap-2">
@@ -122,5 +124,7 @@
         </div>
     </div>
 
-    @include('dashboard.user.partials.deposit_script')
+    @push('scripts')
+        @include('dashboard.user.partials.deposit_script')
+    @endpush
 @endsection

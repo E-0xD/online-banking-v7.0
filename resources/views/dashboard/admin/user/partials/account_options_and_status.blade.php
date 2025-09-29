@@ -27,7 +27,7 @@
                         class="fa-solid fa-file-import me-1"></i>Loans</a>
                 <a class="dropdown-item" href="{{ route('admin.user.grant_application.index', $user->uuid) }}"> <i
                         class="fa-solid fa-gift me-1"></i>Grants</a>
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="{{ route('admin.user.card.index', $user->uuid) }}">
                     <i class="fa-solid fa-credit-card me-1"></i>Cards</a>
                 <a class="dropdown-item" href="{{ route('admin.user.support.index', $user->uuid) }}">
                     <i class="ti ti-help-circle me-1"></i>Support Tickets</a>

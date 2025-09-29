@@ -2,11 +2,16 @@
 
 namespace App\Models;
 
+use App\Enum\CardStatus;
 use Illuminate\Database\Eloquent\Model;
 
 class Card extends Model
 {
     protected $guarded = [];
+
+    protected $casts = [
+        'status' => CardStatus::class
+    ];
 
     public function user()
     {

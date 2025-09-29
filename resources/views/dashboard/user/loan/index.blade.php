@@ -1,49 +1,51 @@
 @extends('dashboard.user.layouts.app')
 @section('content')
-    <style>
-        .section-box {
-            /* background: #fff; */
-            border-radius: 10px;
-            padding: 25px;
-            margin-bottom: 25px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-        }
+    @push('styles')
+        <style>
+            .section-box {
+                /* background: #fff; */
+                border-radius: 10px;
+                padding: 25px;
+                margin-bottom: 25px;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            }
 
-        .loan-type-box {
-            /* background: #f9fcff; */
-            border: 1px solid #e0e6f1;
-            border-radius: 8px;
-            padding: 18px;
-            text-align: left;
-            margin-bottom: 15px;
-            transition: 0.3s;
-        }
+            .loan-type-box {
+                /* background: #f9fcff; */
+                border: 1px solid #e0e6f1;
+                border-radius: 8px;
+                padding: 18px;
+                text-align: left;
+                margin-bottom: 15px;
+                transition: 0.3s;
+            }
 
-        .loan-type-box:hover {
-            /* background: #eef6ff; */
-        }
+            .loan-type-box:hover {
+                /* background: #eef6ff; */
+            }
 
-        .how-it-works-step {
-            /* background: #eef6ff; */
-            border-radius: 50%;
-            width: 32px;
-            height: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            color: #007bff;
-            margin-right: 10px;
-        }
+            .how-it-works-step {
+                /* background: #eef6ff; */
+                border-radius: 50%;
+                width: 32px;
+                height: 32px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: bold;
+                color: #007bff;
+                margin-right: 10px;
+            }
 
-        .cta-section {
-            /* background: #f0f7ff; */
-            border-radius: 10px;
-            padding: 25px;
-            text-align: center;
-            margin-top: 20px;
-        }
-    </style>
+            .cta-section {
+                /* background: #f0f7ff; */
+                border-radius: 10px;
+                padding: 25px;
+                text-align: center;
+                margin-top: 20px;
+            }
+        </style>
+    @endpush
     <div class="page-container">
 
         <div class="page-title-head d-flex align-items-sm-center flex-sm-row flex-column gap-2">

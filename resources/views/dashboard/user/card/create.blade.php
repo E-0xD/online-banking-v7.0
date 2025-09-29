@@ -1,43 +1,45 @@
 @extends('dashboard.user.layouts.app')
 @section('content')
-    <style>
-        .header-card {
-            background: linear-gradient(90deg, #232E51, #1E1F27);
-            border-radius: 10px;
-            color: #fff;
-            padding: 20px;
-            margin-bottom: 20px;
-            position: relative;
-        }
+    @push('styles')
+        <style>
+            .header-card {
+                background: linear-gradient(90deg, #232E51, #1E1F27);
+                border-radius: 10px;
+                color: #fff;
+                padding: 20px;
+                margin-bottom: 20px;
+                position: relative;
+            }
 
-        .section-title {
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
+            .section-title {
+                font-weight: bold;
+                margin-bottom: 15px;
+            }
 
-        .info-card {
-            /* background: #232E51; */
-            /* background: #fff; */
-            border: 1px solid #eaeaea;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
+            .info-card {
+                /* background: #232E51; */
+                /* background: #fff; */
+                border: 1px solid #eaeaea;
+                border-radius: 10px;
+                padding: 20px;
+                margin-bottom: 20px;
+            }
 
-        .feature-card {
-            border-radius: 10px;
-            padding: 20px;
-            /* background: #232E51; */
-            /* background: #fff; */
-            text-align: center;
-            border: 1px solid #eaeaea;
-        }
+            .feature-card {
+                border-radius: 10px;
+                padding: 20px;
+                /* background: #232E51; */
+                /* background: #fff; */
+                text-align: center;
+                border: 1px solid #eaeaea;
+            }
 
-        .feature-card i {
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
-    </style>
+            .feature-card i {
+                font-size: 24px;
+                margin-bottom: 10px;
+            }
+        </style>
+    @endpush
     <div class="page-container">
 
         <div class="page-title-head d-flex align-items-sm-center flex-sm-row flex-column gap-2">
