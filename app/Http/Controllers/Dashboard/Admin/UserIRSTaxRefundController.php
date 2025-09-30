@@ -93,4 +93,19 @@ class UserIRSTaxRefundController extends Controller
             return redirect()->route('admin.user.irs_tax_refund.show', [$uuid, $irsTaxRefundUUID])->with('error', $e->getMessage());
         }
     }
+
+    public function delete(string $uuid, string $irsTaxRefundUUID)
+    {
+        try {
+            DB::beginTransaction();
+            $user = User::where('uuid', $uuid)->firstOrFail();
+            $irsTaxRefund = $user->irsTaxRefund()->where('uuid', $irsTaxRefundUUID)->firstOrFail();
+            $irsTaxRefund->delete();
+            DB::commit();
+            return redirect()->route('admin.user.irs_tax_refund.index', $uuid)->with('success', 'IRS Tax Refund deleted successfully.');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->route('admin.user.irs_tax_refund.index', $uuid)->with('error', $e->getMessage());
+        }
+    }
 }

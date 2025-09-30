@@ -93,4 +93,22 @@ class UserController extends Controller
             return redirect()->back()->with('error', config('app.messages.error'));
         }
     }
+
+    public function delete(string $uuid)
+    {
+        try {
+            DB::beginTransaction();
+            $user = User::where('uuid', $uuid)->where('role', 'user')->firstOrFail();
+            $user->delete();
+
+            // Remove user images
+
+            DB::commit();
+            return redirect()->route('admin.user.index')->with('success', 'User deleted successfully');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Log::error($e->getMessage());
+            return redirect()->back()->with('error', config('app.messages.error'));
+        }
+    }
 }

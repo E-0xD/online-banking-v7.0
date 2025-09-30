@@ -37,7 +37,7 @@
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger  btn-sm m-1"
-                                onclick="return confirm('Are you sure?')">
+                                onclick="return confirm('Are you sure you want to delete this account?')">
                                 <i class="ti ti-trash me-1">
                                 </i>Delete </button>
                         </form>

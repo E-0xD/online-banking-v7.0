@@ -84,9 +84,22 @@ class User extends Authenticatable
         return $this->kyc->value === UserKycStatus::Approved->value;
     }
 
-    public function kycIsPending()
+    public function kycIsPendingAndHasDocument(): bool
     {
-        return $this->kyc->value === UserKycStatus::Pending->value;
+        if ($this->front_side != null && $this->back_side != null && $this->document_type != null && $this->kyc->value === UserKycStatus::Pending->value) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public function kycIsPendingAndHasNoDocument(): bool
+    {
+        if ($this->kyc->value === UserKycStatus::Pending->value) {
+            return true;
+        }
+
+        return false;
     }
 
     public function kycIsRejected()

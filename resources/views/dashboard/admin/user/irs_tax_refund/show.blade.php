@@ -37,7 +37,7 @@
                     @endif
 
                 </x-dashboard.admin.card>
-                @if ($irsTaxRefund->isPending() || $irsTaxRefund->isSubmitted())
+                @if ($irsTaxRefund->isSubmitted())
                     <x-dashboard.admin.card>
                         <div class="mb-3">
                             <form

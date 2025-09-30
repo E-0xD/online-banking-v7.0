@@ -15,91 +15,6 @@
             }
         </style>
 
-        {{-- <style>
-            .card-wrapper {
-                perspective: 1000px;
-                width: 350px;
-                height: 200px;
-                margin: 20px auto;
-            }
-
-            .card-inner {
-                position: relative;
-                width: 100%;
-                height: 100%;
-                transition: transform 0.8s;
-                transform-style: preserve-3d;
-            }
-
-            .card-wrapper:hover .card-inner {
-                transform: rotateY(180deg);
-            }
-
-            .card-front,
-            .card-back {
-                position: absolute;
-                width: 100%;
-                height: 100%;
-                border-radius: 15px;
-                backface-visibility: hidden;
-                color: white;
-                padding: 20px;
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-            }
-
-            /* Themes */
-            .theme-blue {
-                background: linear-gradient(135deg, #1e3c72, #2a5298);
-            }
-
-            .theme-purple {
-                background: linear-gradient(135deg, #6a11cb, #2575fc);
-            }
-
-            .theme-green {
-                background: linear-gradient(135deg, #11998e, #38ef7d);
-            }
-
-            .card-front .brand {
-                font-size: 24px;
-                font-weight: bold;
-                text-align: right;
-            }
-
-            .card-front .number {
-                font-size: 20px;
-                letter-spacing: 3px;
-            }
-
-            .card-front .holder {
-                font-size: 14px;
-                text-transform: uppercase;
-            }
-
-            .card-back {
-                transform: rotateY(180deg);
-            }
-
-            .magnetic-strip {
-                background: #000;
-                height: 40px;
-                margin-bottom: 15px;
-                border-radius: 5px;
-            }
-
-            .cvv-box {
-                background: #fff;
-                color: #000;
-                width: 100px;
-                text-align: center;
-                border-radius: 5px;
-                font-weight: bold;
-                padding: 5px;
-                margin-left: auto;
-            }
-        </style> --}}
         <style>
             .card-wrapper {
                 perspective: 1000px;
@@ -296,12 +211,12 @@
                                 <h5 class="mb-0">Your Cards</h5>
                                 <a href="{{ route('user.card.create') }}" class="text-decoration-none">+ New Card</a>
                             </div>
-                            <div class="card-body text-center p-5">
+                            <div class="card-body">
                                 <div class="row">
                                     @forelse ($cards as $key => $card)
                                         @if ($card->isTypeVisa())
                                             <!-- Example Card -->
-                                            <div class="col-md-4">
+                                            <div class="col-sm-12 col-md-6 col-lg-4">
                                                 <div class="card-wrapper">
                                                     <div class="card-inner">
                                                         <!-- Front -->
@@ -317,7 +232,7 @@
                                                                         {{ cardExpiryDateFormat($card->expiry_date) }}
                                                                     </div>
                                                                 </div>
-                                                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Visa.svg/1200px-Visa.svg.png"
+                                                                <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png"
                                                                     alt="visa" width="60">
                                                             </div>
                                                         </div>
@@ -336,7 +251,7 @@
                                             </div>
                                         @elseif($card->isTypeMastercard())
                                             <!-- Another Card -->
-                                            <div class="col-md-4">
+                                            <div class="col-sm-12 col-md-6 col-lg-4">
                                                 <div class="card-wrapper">
                                                     <div class="card-inner">
                                                         <!-- Front -->
@@ -371,7 +286,7 @@
                                             </div>
                                         @elseif($card->isTypeAmex())
                                             <!-- Another Card -->
-                                            <div class="col-md-4">
+                                            <div class="col-sm-12 col-md-6 col-lg-4">
                                                 <div class="card-wrapper">
                                                     <div class="card-inner">
                                                         <!-- Front -->
@@ -406,18 +321,21 @@
                                             </div>
                                         @endif
                                     @empty
-                                        <div class="mb-3">
-                                            <i class="fa-solid fa-credit-card fa-3x text-primary"></i>
+                                        <div class="text-center p-5">
+                                            <div class="mb-3">
+                                                <i class="fa-solid fa-credit-card fa-3x text-primary"></i>
+                                            </div>
+                                            <h5 class="fw-bold">No Cards Yet</h5>
+                                            <p class="text-muted">Get started by applying for your first virtual card. It
+                                                only
+                                                takes
+                                                a
+                                                few minutes!
+                                            </p>
+                                            <a href="{{ route('user.card.create') }}" class="btn btn-primary btn-lg">
+                                                <i class="fa-solid fa-plus-circle me-1"></i> Apply for Your First Card
+                                            </a>
                                         </div>
-                                        <h5 class="fw-bold">No Cards Yet</h5>
-                                        <p class="text-muted">Get started by applying for your first virtual card. It only
-                                            takes
-                                            a
-                                            few minutes!
-                                        </p>
-                                        <a href="{{ route('user.card.create') }}" class="btn btn-primary btn-lg">
-                                            <i class="fa-solid fa-plus-circle me-1"></i> Apply for Your First Card
-                                        </a>
                                     @endforelse
 
                                 </div>

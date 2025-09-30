@@ -85,7 +85,7 @@ class KycController extends Controller
 
             DB::commit();
 
-            return redirect()->route('user.dashboard')->with('success', 'KYC Verification successful.');
+            return redirect()->route('user.dashboard')->with('success', 'Your KYC has been submitted successfully, please wait for approval.');
         } catch (\Exception $e) {
             DB::rollBack();
             Log::error($e->getMessage());

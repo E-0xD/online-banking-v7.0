@@ -50,7 +50,17 @@
                 <a class="dropdown-item" href="{{ route('admin.user.account_state.index', $user->uuid) }}"> <i
                         class="fa-solid fa-lock me-1"></i> Account State
                     Setting</a>
-                <a class="dropdown-item" href="#"> <i class="fa-solid fa-trash me-1"></i> Delete Account</a>
+                {{-- <a class="dropdown-item" href="{{ route('admin.user.delete', $user->uuid) }}"> <i
+                        class="fa-solid fa-trash me-1"></i> Delete Account</a> --}}
+                <form action="{{ route('admin.user.delete', $user->uuid) }}" method="POST" class="d-inline">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="dropdown-item text-danger"
+                        onclick="return confirm('Are you sure you want to delete this account?')">
+                        <i class="fa-solid fa-trash me-1"></i> Delete Account
+                    </button>
+                </form>
+
             </div>
         </div>
     </div>

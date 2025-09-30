@@ -25,7 +25,7 @@
                     </x-dashboard.user.card>
 
                     @include('dashboard.user.partials.kyc_form')
-                @elseif($user->kycIsPending())
+                @elseif($user->kycIsPendingAndHasDocument())
                     <div class="alert alert-info mb-3" role="alert">
                         <strong>Verification in Progress</strong>
                         <p>Your verification documents have been successfully submitted and are currently under review.
