@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Dashboard\Admin;
 
+use App\Enum\IRSTaxRefundStatus;
 use App\Models\User;
 use App\Models\IRSTaxRefund;
 use Illuminate\Http\Request;
@@ -72,13 +73,13 @@ class UserIRSTaxRefundController extends Controller
                 'status' => $request->status
             ]);
 
-            if ($request->status == 'rejected') {
+            if ($request->status == IRSTaxRefundStatus::Rejected->value) {
                 $user->notification()->create([
                     'uuid' => str()->uuid(),
                     'title' => 'IRS Tax Refund Rejected',
                     'description' => 'Unfortunately, your IRS tax refund request has been rejected. Please review your information and try submitting again if necessary.',
                 ]);
-            } elseif ($request->status == 'accepted') {
+            } elseif ($request->status == IRSTaxRefundStatus::Refunded->value) {
                 $user->notification()->create([
                     'uuid' => str()->uuid(),
                     'title' => 'IRS Tax Refund Accepted',

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Dashboard\User;
 
+use App\Enum\IRSTaxRefundStatus;
 use App\Models\User;
 use App\Models\IRSTaxRefund;
 use Illuminate\Http\Request;
@@ -102,7 +103,7 @@ class IRSTaxRefundController extends Controller
         ]);
 
         try {
-            $irsTaxRefund = IRSTaxRefund::where('filing_id', $request->filing_id)->firstOrFail();
+            $irsTaxRefund = IRSTaxRefund::where('filing_id', $request->filing_id)->where('status', IRSTaxRefundStatus::Pending->value)->firstOrFail();
 
             if (!$irsTaxRefund) {
                 return redirect()->back()->with('error', 'Filing ID not found.');
