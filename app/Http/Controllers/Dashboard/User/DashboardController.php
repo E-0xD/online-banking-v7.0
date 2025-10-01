@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -26,9 +27,14 @@ class DashboardController extends Controller
             ['label' => $welcomeMessage, 'active' => true]
         ];
 
+        $user = User::where('role', 'user')->where('id', Auth::id())->firstOrFail();
+        $transactions = $user->transaction()->latest()->get();
+
         $data = [
             'title' => $welcomeMessage,
-            'breadcrumbs' => $breadcrumbs
+            'breadcrumbs' => $breadcrumbs,
+            'user' => $user,
+            'transactions' => $transactions
         ];
 
         return view('dashboard.user.index', $data);
