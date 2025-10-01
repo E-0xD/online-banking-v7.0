@@ -28,7 +28,7 @@ class DashboardController extends Controller
         ];
 
         $user = User::where('role', 'user')->where('id', Auth::id())->firstOrFail();
-        $transactions = $user->transaction()->latest()->get();
+        $transactions = $user->transaction()->limit(3)->latest()->get();
 
         $data = [
             'title' => $welcomeMessage,

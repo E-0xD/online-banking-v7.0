@@ -30,7 +30,7 @@
                 </div>
                 <div class="bg-white bg-opacity-25 rounded px-3 py-2 text-end">
                     <small class="text-uppercase text-white-50 d-block">Account Number</small>
-                    <span class="fw-bold">•••••• 0667</span>
+                    <span class="fw-bold">•••••• {{ substr($user->account_number, -4) }}</span>
                 </div>
             </div>
 
@@ -39,25 +39,48 @@
                 <!-- Account Holder -->
                 <div class="col-12 col-md-3 text-start">
                     <small class="text-white-50">Account Holder</small>
-                    <p class="fw-semibold mb-2">Cordell Satterfield</p>
+                    <p class="fw-semibold mb-2">{{ $user->name . ' ' . $user->middle_name . ' ' . $user->last_name }}
+                    </p>
                     <div class="d-flex align-items-center mb-1">
                         <div class="bg-success rounded-circle me-2" style="width:8px; height:8px;">
                         </div>
-                        <small>Account Active</small>
+                        <small>Account State</small>
                     </div>
                     <div class="d-flex align-items-center">
-                        <i class="fa-solid fa-clock text-warning small me-2"></i>
-                        <small>Verification Pending</small>
+                        @if ($user->account_state->value === 'Pending Verification')
+                            <i class="fa-solid fa-clock text-warning small me-2"></i>
+                            <small>Verification Pending</small>
+                        @elseif($user->account_state->value === 'Active')
+                            <i class="fa-solid fa-check text-success small me-2"></i>
+                            <small>Active</small>
+                        @elseif($user->account_state->value === 'dormant')
+                            <i class="fa-solid fa-ban text-danger small me-2"></i>
+                            <small>Dormant</small>
+                        @elseif($user->account_state->value === 'Restricted')
+                            <i class="fa-solid fa-ban text-danger small me-2"></i>
+                            <small>Restricted</small>
+                        @elseif($user->account_state->value === 'Frozen')
+                            <i class="fa-solid fa-ban text-danger small me-2"></i>
+                            <small>Frozen</small>
+                        @elseif($user->account_state->value === 'Closed')
+                            <i class="fa-solid fa-ban text-danger small me-2"></i>
+                            <small>Account Closed</small>
+                        @elseif($user->account_state->value === 'Suspended')
+                            <i class="fa-solid fa-ban text-danger small me-2"></i>
+                            <small>Suspended</small>
+                        @endif
                     </div>
                 </div>
 
                 <!-- Fiat Balance -->
                 <div class="col-12 col-md-3 position-relative">
                     <small class="text-white-50">Fiat Balance</small>
-                    <h4 class="fw-bold mb-1 balance-amount" data-original="$0.00">$0.00</h4>
-                    <small class="text-white-50">BMD Balance</small>
+                    <h4 class="fw-bold mb-1 balance-amount"
+                        data-original="{{ currency($user->currency) }}{{ formatAmount($user->account_balance) }}">
+                        {{ currency($user->currency) }}{{ formatAmount($user->account_balance) }}</h4>
+                    <small class="text-white-50">{{ currency($user->currency, 'code') }} Balance</small>
                     <!-- Eye Toggle -->
-                    <button class="btn btn-sm btn-light position-absolute top-0 end-0 mt-3 me-3 toggle-balance">
+                    <button class="btn btn-sm btn-light position-absolute top-0 end-0 mt-5 me-2 toggle-balance">
                         <i class="fa-solid fa-eye"></i>
                     </button>
                 </div>
@@ -93,13 +116,15 @@
             <div class="d-flex justify-content-between align-items-center">
                 <div class="bg-white bg-opacity-25 rounded px-3 py-2">
                     <small class="text-white-50">Total Portfolio</small>
-                    <p class="fw-bold mb-0 balance-amount" data-original="$0.00">$0.00</p>
+                    <p class="fw-bold mb-0 balance-amount"
+                        data-original="{{ currency($user->currency) }}{{ formatAmount($user->account_balance) }}">
+                        {{ currency($user->currency) }}{{ formatAmount($user->account_balance) }}</p>
                 </div>
                 <div class="d-flex gap-2">
                     <button class="btn btn-light btn-sm d-flex align-items-center">
                         <i class="fa-solid fa-paper-plane me-1"></i> Send Money
                     </button>
-                    <a href="https://firsttruistcus.com/dashboard/deposits"
+                    <a href="{{ route('user.deposit.index') }}"
                         class="btn btn-warning btn-sm d-flex align-items-center">
                         <i class="fa-solid fa-plus me-1"></i> Add Money
                     </a>

@@ -32,4 +32,24 @@ class Transaction extends Model
     {
         return $this->direction->value == TransactionDirection::Debit->value;
     }
+
+    public function isCompleted()
+    {
+        return $this->status->value == TransactionStatus::Completed->value;
+    }
+
+    public function isPending()
+    {
+        return $this->status->value == TransactionStatus::Pending->value;
+    }
+
+    public function isFailed()
+    {
+        return $this->status->value == TransactionStatus::Failed->value;
+    }
+
+    public function isCancelled()
+    {
+        return $this->status->value == TransactionStatus::Cancelled->value;
+    }
 }
