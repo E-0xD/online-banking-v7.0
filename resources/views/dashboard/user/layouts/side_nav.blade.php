@@ -44,6 +44,15 @@
                 </a>
             </li>
 
+            @if ($user->kycIsPendingAndHasDocument() || $user->kycIsPendingAndHasNoDocument())
+                <li class="side-nav-item">
+                    <a href="{{ route('user.kyc.index') }}" class="side-nav-link">
+                        <span class="menu-icon"><i class="ti ti-id"></i></span>
+                        <span class="menu-text">KYC Verification</span>
+                    </a>
+                </li>
+            @endif
+
             <li class="side-nav-title mt-2">Transfers</li>
 
             <li class="side-nav-item">

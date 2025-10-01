@@ -58,7 +58,7 @@
                         </dd>
                     </dl>
 
-                    @if ($user->kycIsPendingAndHasNoDocument())
+                    @if ($user->kycIsPendingAndHasDocument())
                         <div class="mb-3">
                             <form action="{{ route('admin.user.kyc.approve', $user->uuid) }}" method="post">
                                 @csrf
