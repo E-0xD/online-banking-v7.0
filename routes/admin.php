@@ -11,6 +11,7 @@ use App\Http\Controllers\Dashboard\Admin\DashboardController;
 use App\Http\Controllers\Dashboard\Admin\UserDepositController;
 use App\Http\Controllers\Dashboard\Admin\UserSupportController;
 use App\Http\Controllers\Dashboard\Admin\GrantCategoryController;
+use App\Http\Controllers\Dashboard\Admin\UserTransactionController;
 use App\Http\Controllers\Dashboard\Admin\UserAccountStateController;
 use App\Http\Controllers\Dashboard\Admin\UserIRSTaxRefundController;
 use App\Http\Controllers\Dashboard\Admin\UserNotificationController;
@@ -119,4 +120,10 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     Route::patch('/user/{user}/card/{card}/rejected', [UserCardController::class, 'rejected'])->name('admin.user.card.rejected');
     Route::patch('/user/{user}/card/{card}/blocked', [UserCardController::class, 'blocked'])->name('admin.user.card.blocked');
     Route::patch('/user/{user}/card/{card}/unblocked', [UserCardController::class, 'unblocked'])->name('admin.user.card.unblocked');
+
+    // User transaction controller
+    Route::get('/user/{user}/transaction', [UserTransactionController::class, 'index'])->name('admin.user.transaction.index');
+    Route::get('/user/{user}/transaction/{transaction}', [UserTransactionController::class, 'show'])->name('admin.user.transaction.show');
+    Route::post('/user/{user}/transaction/store', [UserTransactionController::class, 'store'])->name('admin.user.transaction.store');
+    Route::delete('/user/{user}/transaction/{transaction}/delete', [UserTransactionController::class, 'delete'])->name('admin.user.transaction.delete');
 });

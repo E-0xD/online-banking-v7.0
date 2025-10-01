@@ -31,7 +31,7 @@
             </li>
 
             <li class="side-nav-item">
-                <a href="#" class="side-nav-link">
+                <a href="{{ route('user.transaction.index') }}" class="side-nav-link">
                     <span class="menu-icon"><i class="ti ti-arrows-exchange"></i></span>
                     <span class="menu-text">Transactions</span>
                 </a>
@@ -44,7 +44,7 @@
                 </a>
             </li>
 
-            @if ($user->kycIsPendingAndHasDocument() || $user->kycIsPendingAndHasNoDocument())
+            @if (auth()->user()->kycIsPendingAndHasDocument() || auth()->user()->kycIsPendingAndHasNoDocument())
                 <li class="side-nav-item">
                     <a href="{{ route('user.kyc.index') }}" class="side-nav-link">
                         <span class="menu-icon"><i class="ti ti-id"></i></span>

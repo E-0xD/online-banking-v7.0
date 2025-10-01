@@ -66,7 +66,8 @@
                                                 </span>
                                                 <span class="flex-grow-1 text-muted">
                                                     <span
-                                                        class="fw-medium text-body">{{ $notification->title }}</span> <br><span
+                                                        class="fw-medium text-body">{{ ucwords($notification->title) }}</span>
+                                                    <br><span
                                                         class="fw-medium text-body">{{ limitText($notification->description, 20) }}</span>
                                                     <br />
                                                     <span
@@ -124,11 +125,11 @@
                         <i class="ti ti-chevron-down d-none d-lg-block align-middle ms-2"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end">
-                            <!-- item-->
-                            <a href="{{ route('user.kyc.index') }}" class="dropdown-item">
-                                <i class="ti ti-id me-1 fs-17 align-middle"></i>
-                                <span class="align-middle">KYC Verification</span>
-                            </a>
+                        <!-- item-->
+                        <a href="{{ route('user.kyc.index') }}" class="dropdown-item">
+                            <i class="ti ti-id me-1 fs-17 align-middle"></i>
+                            <span class="align-middle">KYC Verification</span>
+                        </a>
                         <!-- item-->
                         <a href="{{ route('user.profile.index') }}" class="dropdown-item">
                             <i class="ti ti-user-hexagon me-1 fs-17 align-middle"></i>

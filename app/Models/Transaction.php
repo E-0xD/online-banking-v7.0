@@ -22,4 +22,14 @@ class Transaction extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function isDirectionCredit()
+    {
+        return $this->direction->value == TransactionDirection::Credit->value;
+    }
+
+    public function isDirectionDebit()
+    {
+        return $this->direction->value == TransactionDirection::Debit->value;
+    }
 }

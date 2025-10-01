@@ -32,10 +32,16 @@ class KycController extends Controller
             ['label' => 'Verify Your Identity', 'active' => true]
         ];
 
+        $user = User::where('role', 'user')->where('id', Auth::id())->firstOrFail();
+
+        if ($user->kycIsPendingAndHasDocument()) {
+            return redirect()->route('user.kyc.form');
+        }
+
         $data = [
             'title' => 'Verify Your Identity',
             'breadcrumbs' => $breadcrumbs,
-            'user' => User::where('role', 'user')->where('id', Auth::id())->firstOrFail()
+            'user' => $user
         ];
 
         return view('dashboard.user.kyc.index', $data);

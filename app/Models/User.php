@@ -116,4 +116,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Card::class);
     }
+
+    public function transaction()
+    {
+        return $this->hasMany(Transaction::class);
+    }
 }

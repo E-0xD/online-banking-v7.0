@@ -8,6 +8,7 @@ use App\Http\Controllers\Dashboard\User\DepositController;
 use App\Http\Controllers\Dashboard\User\ProfileController;
 use App\Http\Controllers\Dashboard\User\SupportController;
 use App\Http\Controllers\Dashboard\User\DashboardController;
+use App\Http\Controllers\Dashboard\User\TransactionController;
 use App\Http\Controllers\Dashboard\User\IRSTaxRefundController;
 use App\Http\Controllers\Dashboard\User\NotificationController;
 use App\Http\Controllers\Dashboard\User\GrantApplicationController;
@@ -93,4 +94,8 @@ Route::middleware('user')->prefix('user')->group(function () {
     Route::post('/card/store', [CardController::class, 'store'])->name('user.card.store');
     Route::get('/card//history', [CardController::class, 'history'])->name('user.card.history');
     Route::get('/card/{uuid}/show', [CardController::class, 'show'])->name('user.card.show');
+
+    // Transaction Controller
+    Route::get('/transaction', [TransactionController::class, 'index'])->name('user.transaction.index');
+    Route::get('/transaction/{transaction}/show', [TransactionController::class, 'show'])->name('user.transaction.show');
 });

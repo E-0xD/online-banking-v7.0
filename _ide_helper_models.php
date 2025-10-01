@@ -14,7 +14,7 @@
 namespace App\Models{
 /**
  * @property int $id
- * @property string|null $uuid
+ * @property string $uuid
  * @property int $user_id
  * @property string $card_type
  * @property string $card_level
@@ -518,6 +518,8 @@ namespace App\Models{
  * @property-read int|null $notifications_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Support> $support
  * @property-read int|null $support_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Transaction> $transaction
+ * @property-read int|null $transaction_count
  * @method static \Database\Factories\UserFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User newQuery()
