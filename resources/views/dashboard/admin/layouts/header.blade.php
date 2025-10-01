@@ -22,7 +22,7 @@
 
         <div class="d-flex align-items-center gap-2">
             <!-- Light/Dark Mode Button -->
-            <div class="topbar-item d-none d-sm-flex">
+            <div class="topbar-item">
                 <button class="topbar-link" id="light-dark-mode" type="button">
                     <i class="ti ti-moon fs-22"></i>
                 </button>
