@@ -11,7 +11,6 @@ use Illuminate\Http\Request;
 use App\Enum\TransactionType;
 use App\Models\LoanRepayment;
 use App\Enum\TransactionStatus;
-use App\Enum\LoanRepaymentStatus;
 use App\Enum\TransactionDirection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Dashboard\Admin;
 
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
@@ -99,9 +98,20 @@ class UserController extends Controller
         try {
             DB::beginTransaction();
             $user = User::where('uuid', $uuid)->where('role', 'user')->firstOrFail();
+
+            $userImage = $user->image;
+            $userDocumentFrontSide = $user->front_side;
+            $userDocumentBackSide = $user->back_side;
+
+            foreach ($user->deposit as $deposit) {
+                $this->deleteFile($deposit->proof);
+            }
+
             $user->delete();
 
-            // Remove user images
+            $this->deleteFile($userImage);
+            $this->deleteFile($userDocumentFrontSide);
+            $this->deleteFile($userDocumentBackSide);
 
             DB::commit();
             return redirect()->route('admin.user.index')->with('success', 'User deleted successfully');

@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Dashboard\Admin;
 
 use Mail;
 use App\Models\User;
-use App\Enum\CardStatus;
 use App\Mail\CardApproved;
 use App\Mail\CardRejected;
 use App\Models\Transaction;

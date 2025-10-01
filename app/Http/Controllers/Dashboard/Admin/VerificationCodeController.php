@@ -3,14 +3,12 @@
 namespace App\Http\Controllers\Dashboard\Admin;
 
 use App\Models\User;
-use Illuminate\Http\Request;
 use App\Models\VerificationCode;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\VerificationCodeControllerStoreRequest;
 use App\Http\Requests\VerificationCodeControllerUpdateRequest;
-use Illuminate\Support\Facades\Auth;
 
 class VerificationCodeController extends Controller
 {

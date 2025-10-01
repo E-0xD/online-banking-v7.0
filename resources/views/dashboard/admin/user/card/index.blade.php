@@ -57,7 +57,8 @@
                                                 <i class="ti ti-eye me-1">
                                                 </i>View </a>
 
-                                            <form action="" method="POST">
+                                            <form action="{{ route('admin.user.card.delete', [$user->uuid, $card->uuid]) }}"
+                                                method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger  btn-sm m-1"

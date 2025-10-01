@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Dashboard\Admin;
 
 use App\Models\Wallet;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminWalletStoreRequest;
