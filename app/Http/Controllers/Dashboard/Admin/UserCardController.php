@@ -92,6 +92,12 @@ class UserCardController extends Controller
             DB::beginTransaction();
 
             $user = User::where('uuid', $uuid)->firstOrFail();
+
+            if ($user->transactionLimitExceeded()) {
+                DB::rollBack();
+                return redirect()->back()->with('error', 'Transaction limit exceeded!');
+            }
+
             $card = $user->card()->where('uuid', $cardUUID)->firstOrFail();
 
             $cardFee = cardFee($card->card_level);

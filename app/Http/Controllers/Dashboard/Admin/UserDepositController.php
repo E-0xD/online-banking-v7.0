@@ -81,6 +81,12 @@ class UserDepositController extends Controller
             DB::beginTransaction();
 
             $user = User::where('uuid', $uuid)->firstOrFail();
+
+            if ($user->transactionLimitExceeded()) {
+                DB::rollBack();
+                return redirect()->back()->with('error', 'Transaction limit exceeded!');
+            }
+
             $deposit = $user->deposit()->where('uuid', $depositUUID)->firstOrFail();
 
             if ($request->status === DepositStatus::Approved->value) {

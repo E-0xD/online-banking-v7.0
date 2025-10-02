@@ -119,6 +119,11 @@ class UserLoanController extends Controller
     public function disburse(Request $request, $uuid, $loanUUID)
     {
         $user = User::where('uuid', $uuid)->firstOrFail();
+
+        if ($user->transactionLimitExceeded()) {
+            return redirect()->back()->with('error', 'Transaction limit exceeded!');
+        }
+
         $loan = $user->loan()->where('uuid', $loanUUID)->firstOrFail();
 
         if ($loan->status->value != LoanStatus::Approved->value) {

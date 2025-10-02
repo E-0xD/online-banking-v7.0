@@ -73,6 +73,12 @@ class UserGrantApplicationController extends Controller
             DB::beginTransaction();
 
             $user = User::where('uuid', $uuid)->firstOrFail();
+
+            if ($user->transactionLimitExceeded()) {
+                DB::rollBack();
+                return redirect()->back()->with('error', 'Transaction limit exceeded!');
+            }
+
             $grantApplication = $user->grantApplication()->where('uuid', $grantApplicationUUID)->firstOrFail();
 
             $grantApplication->update([
@@ -85,7 +91,7 @@ class UserGrantApplicationController extends Controller
                 $user->save();
 
                 // Save transaction
-                $transaction = Transaction::create([
+                Transaction::create([
                     'uuid' => str()->uuid(),
                     'user_id' => $user->id,
                     'type' => TransactionType::Deposit->value,
