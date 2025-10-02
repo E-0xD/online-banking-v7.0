@@ -53,26 +53,8 @@
                         </div>
                     </li>
                 @empty
+                    <li class="list-group-item text-center">No Transactions</li>
                 @endforelse
-
-                <!-- Transaction 2 -->
-                {{-- <li class="list-group-item d-flex justify-content-between align-items-center">
-                    <div class="d-flex align-items-center">
-                        <div class="bg-danger bg-opacity-25 rounded-circle d-flex align-items-center justify-content-center me-3"
-                            style="width: 45px; height: 45px;">
-                            <i class="fa-solid fa-arrow-up text-danger"></i>
-                        </div>
-                        <div>
-                            <p class="mb-0 fw-semibold">Transfer to John Doe</p>
-                            <small class="text-muted d-block">Ref: TXN-20250928023</small>
-                            <small class="text-muted">Sep 28, 2025 • 4:12 PM</small>
-                        </div>
-                    </div>
-                    <div class="text-end">
-                        <span class="fw-bold text-danger d-block">- $500.00</span>
-                        <span class="badge bg-warning-subtle text-warning">Pending</span>
-                    </div>
-                </li> --}}
             </ul>
         </div>
     </div>
