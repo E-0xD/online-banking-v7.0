@@ -11,7 +11,8 @@
                         </div>
                         <span class="text-muted small fw-medium">Available</span>
                     </div>
-                    <h3 class="h5 fw-bold mb-1">$500,000.00</h3>
+                    <h3 class="h5 fw-bold mb-1">{{ currency($user->currency) }}{{ formatAmount($user->account_limit) }}
+                    </h3>
                     <p class="text-muted small mb-0">Account Limit</p>
                 </div>
             </div>
@@ -28,7 +29,7 @@
                         </div>
                         <span class="text-muted small fw-medium">This Month</span>
                     </div>
-                    <h3 class="h5 fw-bold mb-1">$0.00</h3>
+                    <h3 class="h5 fw-bold mb-1">{{ currency($user->currency) }}{{ formatAmount($monthlyDeposits) }}</h3>
                     <p class="text-muted small mb-0">Monthly Deposits</p>
                 </div>
             </div>
@@ -45,7 +46,7 @@
                         </div>
                         <span class="text-muted small fw-medium">This Month</span>
                     </div>
-                    <h3 class="h5 fw-bold mb-1">$0.00</h3>
+                    <h3 class="h5 fw-bold mb-1">{{ currency($user->currency) }}{{ formatAmount($monthlyExpenses) }}</h3>
                     <p class="text-muted small mb-0">Monthly Expenses</p>
                 </div>
             </div>
@@ -62,7 +63,7 @@
                         </div>
                         <span class="text-muted small fw-medium">All Time</span>
                     </div>
-                    <h3 class="h5 fw-bold mb-1">$0.00</h3>
+                    <h3 class="h5 fw-bold mb-1">{{ currency($user->currency) }}{{ formatAmount($totalVolume) }}</h3>
                     <p class="text-muted small mb-0">Total Volume</p>
                 </div>
             </div>

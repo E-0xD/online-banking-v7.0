@@ -19,9 +19,9 @@ function currency($currency, $type = 'symbol')
     }
 }
 
-function formatAmount($amount)
+function formatAmount($amount, $decimals = 2)
 {
-    return number_format($amount, 2);
+    return number_format($amount, $decimals);
 }
 
 function generateReferenceId()
@@ -168,4 +168,22 @@ function cardFee($cardLevel)
 function cardExpiryDateFormat($date)
 {
     return date('m/y', strtotime($date));
+}
+
+function getCryptoPriceUSD($id)
+{
+    // e.g. $id = 'bitcoin' or 'ethereum'
+    $url = "https://api.coingecko.com/api/v3/simple/price?ids={$id}&vs_currencies=usd";
+
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $response = curl_exec($ch);
+    curl_close($ch);
+
+    $data = json_decode($response, true);
+    if (isset($data[$id]['usd'])) {
+        return $data[$id]['usd'];
+    }
+    return null;
 }

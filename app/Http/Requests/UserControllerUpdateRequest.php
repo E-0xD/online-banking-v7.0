@@ -49,6 +49,7 @@ class UserControllerUpdateRequest extends FormRequest
 
             'currency'              => 'nullable|string|max:50',
             'account_type'          => 'nullable',
+            'account_limit'         => 'required|numeric|min:0',
 
             'security_number'       => 'nullable|string|max:50|unique:users,security_number,' . $user->id,
             'salary_range'          => 'nullable',

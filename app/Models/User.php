@@ -121,4 +121,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Transaction::class);
     }
+
+    public function transactionLimitExceeded()
+    {
+        return $this->transaction()->sum('amount') >= $this->account_limit;
+    }
 }

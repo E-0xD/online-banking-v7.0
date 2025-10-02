@@ -83,6 +83,9 @@
                          <x-dashboard.admin.form-select name="account_type" label="Account Type" type="select"
                              class="col-md-6 mb-3" value="{{ $user->account_type }}" :options="config('setting.accountTypes')" />
 
+                         <x-dashboard.admin.form-input name="account_limit" label="Account Limit"
+                             class="col-md-6 mb-3" type="number" value="{{ $user->account_limit }}" />
+
                          <x-dashboard.admin.form-input name="security_number"
                              label="State Security Number (SSN, NI, SIN etc.)" class="col-md-6 mb-3"
                              value="{{ $user->security_number }}" />

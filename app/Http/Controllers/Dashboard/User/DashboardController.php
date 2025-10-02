@@ -30,11 +30,39 @@ class DashboardController extends Controller
         $user = User::where('role', 'user')->where('id', Auth::id())->firstOrFail();
         $transactions = $user->transaction()->limit(3)->latest()->get();
 
+        $bitcoin = getCryptoPriceUSD('bitcoin');
+        $ethereum = getCryptoPriceUSD('ethereum');
+
+        $btcPrice = $bitcoin;
+        $ethPrice = $ethereum;
+
+        $monthlyDeposits = $user->transaction()
+            ->where('type', 'deposit')
+            ->whereMonth('transaction_at', now()->month)
+            ->whereYear('transaction_at', now()->year)
+            ->sum('amount');
+
+        $monthlyExpenses = $user->transaction()
+            ->whereIn('type', ['transfer', 'payment'])
+            ->whereMonth('transaction_at', now()->month)
+            ->whereYear('transaction_at', now()->year)
+            ->sum('amount');
+
+        $totalVolume = $user->transaction()->sum('amount');
+
+        $pendingTransactions = $user->transaction()->where('status', 'pending')->sum('amount');
+
         $data = [
             'title' => $welcomeMessage,
             'breadcrumbs' => $breadcrumbs,
             'user' => $user,
-            'transactions' => $transactions
+            'transactions' => $transactions,
+            'btcPrice' => $btcPrice,
+            'ethPrice' => $ethPrice,
+            'monthlyDeposits' => $monthlyDeposits,
+            'monthlyExpenses' => $monthlyExpenses,
+            'totalVolume' => $totalVolume,
+            'pendingTransactions' => $pendingTransactions
         ];
 
         return view('dashboard.user.index', $data);

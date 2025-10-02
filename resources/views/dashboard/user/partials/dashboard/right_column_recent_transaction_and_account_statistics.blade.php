@@ -94,7 +94,8 @@
                     </div>
                     <div>
                         <p class="small text-muted mb-1">Transaction Limit</p>
-                        <h6 class="fw-bold mb-0">$500,000.00</h6>
+                        <h6 class="fw-bold mb-0">{{ currency($user->currency) }}{{ formatAmount($user->account_limit) }}
+                        </h6>
                         <small class="text-muted">Daily limit available</small>
                     </div>
                 </div>
@@ -112,7 +113,9 @@
                     </div>
                     <div>
                         <p class="small text-muted mb-1">Pending Transactions</p>
-                        <h6 class="fw-bold mb-0">$0.00</h6>
+                        <h6 class="fw-bold mb-0">
+                            {{ currency($user->currency) }}{{ formatAmount($pendingTransactions) }}
+                        </h6>
                         <small class="text-muted">Awaiting processing</small>
                     </div>
                 </div>
@@ -130,7 +133,7 @@
                     </div>
                     <div>
                         <p class="small text-muted mb-1">Total Volume</p>
-                        <h6 class="fw-bold mb-0">$0.00</h6>
+                        <h6 class="fw-bold mb-0">{{ currency($user->currency) }}{{ formatAmount($totalVolume) }}</h6>
                         <small class="text-muted">All-time transactions</small>
                     </div>
                 </div>

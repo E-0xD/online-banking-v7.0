@@ -478,6 +478,9 @@ namespace App\Models{
  * @property string|null $account_type
  * @property \App\Enum\UserAccountState $account_state
  * @property string|null $account_state_message
+ * @property string|null $account_limit
+ * @property string|null $bitcoin_balance
+ * @property string|null $ethereum_balance
  * @property string|null $transaction_pin
  * @property string|null $account_number
  * @property string $account_balance
@@ -525,12 +528,14 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User query()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereAccountBalance($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereAccountLimit($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereAccountNumber($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereAccountState($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereAccountStateMessage($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereAccountType($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereAddress($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereBackSide($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereBitcoinBalance($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereCity($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereCountry($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereCreatedAt($value)
@@ -542,6 +547,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereEmailCodeExpiresAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereEmailVerifiedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereEmployment($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereEthereumBalance($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereFrontSide($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereGender($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereId($value)

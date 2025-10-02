@@ -43,6 +43,10 @@ return new class extends Migration
             $table->enum('account_type', config('setting.accountTypes'))->nullable();
             $table->enum('account_state', config('setting.accountStates'))->default('Pending Verification');
             $table->text('account_state_message')->nullable();
+            $table->decimal('account_limit', 15, 2)->default(500000);
+
+            $table->decimal('bitcoin_balance', 20, 8)->default(0);   // up to 20 digits, 8 decimal places
+            $table->decimal('ethereum_balance', 20, 8)->default(0);
 
             $table->string('transaction_pin')->nullable();
             $table->string('account_number')->nullable();

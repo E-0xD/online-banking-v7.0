@@ -88,26 +88,33 @@
                 <!-- BTC Balance -->
                 <div class="col-12 col-md-3">
                     <small class="text-white-50">Bitcoin Balance</small>
-                    <p class="fw-bold mb-1 balance-amount" data-original="0.000000 BTC">0.000000 BTC
+                    <p class="fw-bold mb-1 balance-amount"
+                        data-original="{{ formatAmount($user->bitcoin_balance, 8) }} BTC">
+                        {{ formatAmount($user->bitcoin_balance, 8) }} BTC
                     </p>
-                    <small class="d-block text-white-50">≈ $0.00</small>
+                    <small class="d-block text-white-50">
+                        ≈ ${{ formatAmount($user->bitcoin_balance * $btcPrice) }}
+                    </small>
                     <div class="d-flex justify-content-center align-items-center mt-1">
                         <div class="bg-warning rounded-circle me-1" style="width:6px; height:6px;">
                         </div>
-                        <small class="text-white-50">1 BTC = $113,894</small>
+                        <small class="text-white-50">{{ "1 BTC = $" . formatAmount($btcPrice) }}</small>
                     </div>
                 </div>
 
                 <!-- ETH Balance -->
                 <div class="col-12 col-md-3">
                     <small class="text-white-50">Ethereum Balance</small>
-                    <p class="fw-bold mb-1 balance-amount" data-original="0.000000 ETH">0.000000
-                        ETH</p>
-                    <small class="d-block text-white-50">≈ $0.00</small>
+                    <p class="fw-bold mb-1 balance-amount"
+                        data-original="{{ formatAmount($user->ethereum_balance, 8) }} ETH">
+                        {{ formatAmount($user->ethereum_balance, 8) }} ETH</p>
+                    <small class="d-block text-white-50">
+                        ≈ ${{ formatAmount($user->ethereum_balance * $ethPrice) }}
+                    </small>
                     <div class="d-flex justify-content-center align-items-center mt-1">
                         <div class="bg-purple rounded-circle me-1" style="width:6px; height:6px; background:#6f42c1;">
                         </div>
-                        <small class="text-white-50">1 ETH = $4,148</small>
+                        <small class="text-white-50">{{ "1 ETH = $" . formatAmount($ethPrice) }}</small>
                     </div>
                 </div>
             </div>

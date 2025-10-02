@@ -74,6 +74,11 @@ class UserTransactionController extends Controller
 
             $user = User::where('uuid', $uuid)->first();
 
+            if ($user->transactionLimitExceeded()) {
+                DB::rollBack();
+                return redirect()->back()->with('error', 'Transaction limit exceeded!');
+            }
+
             switch ($validated['direction']) {
                 case 'debit':
                     if ($user->account_balance < $validated['amount']) {

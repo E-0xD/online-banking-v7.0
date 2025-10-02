@@ -82,6 +82,9 @@
                             {{ currency($user->currency, 'code') }}
                         </dd>
 
+                        <dt class="col-sm-3">Account Limit:</dt>
+                        <dd class="col-sm-9">{{ currency($user->currency) }}{{ formatAmount($user->account_limit) }}</dd>
+
                         <!-- KYC & Document Details -->
                         <dt class="col-sm-3">KYC Status:</dt>
                         <dd class="col-sm-9">
