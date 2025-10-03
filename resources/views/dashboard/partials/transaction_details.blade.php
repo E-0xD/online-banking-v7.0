@@ -16,6 +16,9 @@
         @endif
     </dd>
 
+    <dt class="col-sm-3">Balance</dt>
+    <dd class="col-sm-9">{{ currency($user->currency) }}{{ formatAmount($transaction->current_balance) }}</dd>
+
     <dt class="col-sm-3">Description</dt>
     <dd class="col-sm-9">{{ $transaction->description ?? 'N/A' }}</dd>
 

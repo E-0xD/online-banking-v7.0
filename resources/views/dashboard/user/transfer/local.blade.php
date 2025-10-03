@@ -33,7 +33,7 @@
                     </div>
 
                     <!-- Quick Transfer -->
-                    <div class="card shadow-sm border-0 mb-4">
+                    {{-- <div class="card shadow-sm border-0 mb-4">
                         <div class="card-header border-bottom d-flex justify-content-between align-items-center">
                             <h4 class="mb-0"><i class="bi bi-lightning-charge text-primary"></i> Quick Transfer</h4>
                             <a href="#" class="small text-decoration-none"><i class="bi bi-arrow-repeat"></i>
@@ -58,7 +58,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
 
                     <x-dashboard.available_balance :user="$user" badge />
 
@@ -176,7 +176,7 @@
                             <a href="{{ route('user.dashboard') }}" class="btn btn-outline-secondary"><i
                                     class="bi bi-arrow-left me-1"></i> Back to Dashboard</a>
                             <div class="d-flex gap-2">
-                                <button type="button" class="btn btn-outline-info">Save Beneficiary</button>
+                                {{-- <button type="button" class="btn btn-outline-info">Save Beneficiary</button> --}}
                                 <button type="submit" class="btn btn-primary"><i class="bi bi-eye me-1"></i> Preview
                                     Transfer</button>
                             </div>
