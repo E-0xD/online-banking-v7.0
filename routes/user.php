@@ -98,7 +98,7 @@ Route::middleware('user')->prefix('user')->group(function () {
     Route::get('/card/{uuid}/show', [CardController::class, 'show'])->name('user.card.show');
 
     // Currency Swap Controller
-    Route::get('/currency/swap', [CurrencySwapController::class, 'index'])->name('swap.create');
+    Route::get('/currency/swap', [CurrencySwapController::class, 'index'])->name('user.currency_swap.create');
 
     // Transaction Controller
     Route::get('/transaction', [TransactionController::class, 'index'])->name('user.transaction.index');

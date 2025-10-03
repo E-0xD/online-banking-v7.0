@@ -77,7 +77,7 @@
             </li>
 
             <li class="side-nav-item">
-                <a href="#" class="side-nav-link">
+                <a href="{{ route('user.currency_swap.create') }}" class="side-nav-link">
                     <span class="menu-icon"><i class="ti ti-exchange"></i></span>
                     <span class="menu-text">Currency Swap</span>
                 </a>

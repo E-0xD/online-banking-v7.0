@@ -28,7 +28,8 @@ class AccountPendingVerification
                 $request->routeIs('user.deposit.*') ||
                 $request->routeIs('user.loan.*') ||
                 $request->routeIs('user.irs_tax_refund.*') ||
-                $request->routeIs('user.card.*')
+                $request->routeIs('user.card.*') ||
+                $request->routeIs('user.currency_swap.create')
             ) {
                 return redirect()->route('user.dashboard')->with(
                     'error',
