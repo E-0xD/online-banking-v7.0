@@ -128,9 +128,10 @@
                         {{ currency($user->currency) }}{{ formatAmount($user->account_balance) }}</p>
                 </div>
                 <div class="d-flex gap-2">
-                    <button class="btn btn-light btn-sm d-flex align-items-center">
+                    <a href="{{ route('user.transfer.international') }}"
+                        class="btn btn-light btn-sm d-flex align-items-center">
                         <i class="fa-solid fa-paper-plane me-1"></i> Send Money
-                    </button>
+                    </a>
                     <a href="{{ route('user.deposit.index') }}"
                         class="btn btn-warning btn-sm d-flex align-items-center">
                         <i class="fa-solid fa-plus me-1"></i> Add Money
@@ -175,7 +176,8 @@
                     </a>
                 </div>
                 <div class="col-6 col-md-3">
-                    <a href="{{ route('user.support.index') }}" class="text-decoration-none d-block p-2 rounded hover-shadow">
+                    <a href="{{ route('user.support.index') }}"
+                        class="text-decoration-none d-block p-2 rounded hover-shadow">
                         <div
                             class="bg-warning rounded mb-2 p-3 d-inline-flex align-items-center justify-content-center">
                             <i class="fa-solid fa-headset text-white"></i>
