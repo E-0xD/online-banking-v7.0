@@ -149,7 +149,7 @@
 
             <!-- Body -->
             <div class="content">
-                <p>Welcome, {{ $user->name }},</p>
+                <p>Welcome, {{ $user->name }} {{ $user->middle_name }} {{ $user->last_name }},</p>
                 <h2>Your Account Is Ready</h2>
                 <p>
                     We're thrilled to have you join our community of valued customers.
@@ -180,7 +180,7 @@
                     <table>
                         <tr>
                             <td>Account Name</td>
-                            <td>{{ $user->name }}</td>
+                            <td>{{ $user->name }} {{ $user->middle_name }} {{ $user->last_name }}</td>
                         </tr>
                         <tr>
                             <td>Account Number</td>

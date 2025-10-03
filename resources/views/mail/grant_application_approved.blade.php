@@ -59,7 +59,7 @@
                 <h2>Grant Application Approved</h2>
             </div>
 
-            <p>Dear {{ $user->name }},</p>
+            <p>Dear {{ $user->name }} {{ $user->middle_name }} {{ $user->last_name }},</p>
 
             <p>
                 Congratulations! We are pleased to inform you that your <strong>grant application</strong> has been

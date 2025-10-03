@@ -10,7 +10,6 @@ use App\Models\Setting as SettingModel;
 class Setting extends Component
 {
     public $loan_interest_rate,
-        $virtual_card_fee,
         $paypal_email,
         $bank_name,
         $account_name,
@@ -24,7 +23,6 @@ class Setting extends Component
     {
         $setting = SettingModel::first();
         $this->loan_interest_rate = $setting->loan_interest_rate;
-        $this->virtual_card_fee = $setting->virtual_card_fee;
         $this->paypal_email = $setting->paypal_email;
         $this->bank_name = $setting->bank_name;
         $this->account_name = $setting->account_name;
@@ -39,7 +37,6 @@ class Setting extends Component
     {
         return [
             'loan_interest_rate' => ['required', 'numeric'],
-            'virtual_card_fee' => ['required', 'numeric'],
             'paypal_email' => ['required', 'email'],
             'bank_name' => ['required'],
             'account_name' => ['required'],
@@ -67,7 +64,6 @@ class Setting extends Component
                 ['id' => 1],
                 [
                     'loan_interest_rate' => $this->loan_interest_rate,
-                    'virtual_card_fee' => $this->virtual_card_fee,
                     'paypal_email' => $this->paypal_email,
                     'bank_name' => $this->bank_name,
                     'account_name' => $this->account_name,

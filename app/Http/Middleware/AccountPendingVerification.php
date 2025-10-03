@@ -23,7 +23,7 @@ class AccountPendingVerification
         if ($user && $user->account_state->value === UserAccountState::PendingVerification->value) {
             // Block all financial transactions until verified
             if (
-                $request->is('user/transfer*') ||
+                $request->routeIs('user.transfer.*') ||
                 $request->routeIs('user.grant_application.*') ||
                 $request->routeIs('user.deposit.*') ||
                 $request->routeIs('user.loan.*') ||

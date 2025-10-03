@@ -18,8 +18,8 @@ enum TransactionDirection: string
     public function badge(): string
     {
         return match ($this) {
-            self::Credit => '<span class="badge bg-success-subtle text-success fs-12 p-1">Credit</span>',
-            self::Debit => '<span class="badge bg-danger-subtle text-danger fs-12 p-1">Debit</span>',
+            self::Credit => 'badge bg-success-subtle text-success fs-12 p-1',
+            self::Debit => 'badge bg-danger-subtle text-danger fs-12 p-1',
         };
     }
 }

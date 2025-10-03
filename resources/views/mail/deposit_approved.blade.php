@@ -89,7 +89,7 @@
                 <img src="{{ asset(config('app.assets.logo')) }}" alt="Logo">
             </div>
             <div class="content">
-                <p>Dear {{ $user->name }},</p>
+                <p>Dear {{ $user->name }} {{ $user->middle_name }} {{ $user->last_name }},</p>
                 <p>We are pleased to inform you that your
                     {{ $transaction->direction->label() }}
                     transaction has been successfully completed. Below are

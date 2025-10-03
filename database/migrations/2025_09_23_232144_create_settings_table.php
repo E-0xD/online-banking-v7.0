@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
             $table->decimal('loan_interest_rate', 5, 2)->default(5.00);
-            $table->decimal('virtual_card_fee', 5, 2)->default(5.00);
 
             $table->string('paypal_email')->nullable();
 

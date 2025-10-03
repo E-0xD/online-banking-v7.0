@@ -96,7 +96,7 @@
 
             <!-- Content -->
             <div class="content">
-                <h2>Hello {{ $user->name }} {{ $user->last_name }},</h2>
+                <h2>Hello {{ $user->name }} {{ $user->middle_name }} {{ $user->last_name }},</h2>
                 <p>We regret to inform you that your application for a <strong>{{ $card->card_type }} -
                         {{ $card->card_level }}</strong> card has been <strong>rejected</strong>.</p>
 

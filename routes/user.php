@@ -7,6 +7,7 @@ use App\Http\Controllers\Dashboard\User\LoanController;
 use App\Http\Controllers\Dashboard\User\DepositController;
 use App\Http\Controllers\Dashboard\User\ProfileController;
 use App\Http\Controllers\Dashboard\User\SupportController;
+use App\Http\Controllers\Dashboard\User\TransferController;
 use App\Http\Controllers\Dashboard\User\DashboardController;
 use App\Http\Controllers\Dashboard\User\TransactionController;
 use App\Http\Controllers\Dashboard\User\IRSTaxRefundController;
@@ -102,4 +103,22 @@ Route::middleware('user')->prefix('user')->group(function () {
     // Transaction Controller
     Route::get('/transaction', [TransactionController::class, 'index'])->name('user.transaction.index');
     Route::get('/transaction/{transaction}/show', [TransactionController::class, 'show'])->name('user.transaction.show');
+
+    // Transfer Controller
+    Route::get('/transfer', [TransferController::class, 'index'])->name('user.transfer.index');
+    Route::get('/transfer/local', [TransferController::class, 'local'])->name('user.transfer.local');
+    Route::post('/transfer/local', [TransferController::class, 'localStore']);
+
+    Route::get('/transfer/international', [TransferController::class, 'international'])->name('user.transfer.international');
+    Route::post('/transfer/international', [TransferController::class, 'internationalStore'])->name('user.transfer.international');
+
+    Route::get('/transfer/{transfer}/preview', [TransferController::class, 'preview'])->name('user.transfer.preview');
+    Route::get('/transfer/{transfer}/complete', [TransferController::class, 'complete'])->name('user.transfer.complete');
+    Route::get('/transfer/{transfer}/cancel', [TransferController::class, 'cancel'])->name('user.transfer.cancel');
+    Route::get('/transfer/{transfer}/show', [TransferController::class, 'show'])->name('user.transfer.show');
+    Route::get('/transfer/{transfer}/fail', [TransferController::class, 'fail'])->name('user.transfer.fail');
+    Route::get('/transfer/{transfer}/success', [TransferController::class, 'success'])->name('user.transfer.success');
+
+    Route::get('/transfer/{transfer}/{orderNo}/verify', [TransferController::class, 'verify'])->name('user.transfer.verify');
+    Route::post('/transfer/{transfer}/{orderNo}/verify', [TransferController::class, 'verifyStore']);
 });

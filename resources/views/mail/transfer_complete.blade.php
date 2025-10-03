@@ -63,6 +63,7 @@
             }
 
             .content th {
+                /* background-color: #f2d7d5; */
                 color: #333333;
             }
 
@@ -89,15 +90,61 @@
             </div>
             <div class="content">
                 <p>Dear {{ $user->name }} {{ $user->middle_name }} {{ $user->last_name }},</p>
-                <p>We are pleased to inform you that your loan repayment of
-                    <strong>{{ currency($user->currency) }}{{ formatAmount($loan->approved_amount) }}</strong>
-                    for loan <strong>Ref: {{ $loan->reference_id }}</strong> has been successfully received.
-                </p>
+                <p>We are pleased to inform you that your transaction has been successfully completed. Below are the
+                    details of your transaction:</p>
+                <h3 style="text-align: center">Transaction Details</h3>
 
-                <p>Thank you for keeping up with your repayment schedule. If you have any questions, feel free to
-                    contact our support team.
-                </p>
-                <p>Thanks for banking with us!</p>
+                <table>
+                    <tr>
+                        <th>Beneficiary Bank</th>
+                        <td>{{ $transfer->recipient_bank }}</td>
+                    </tr>
+                    <tr>
+                        <th>Beneficiary Name</th>
+                        <td>{{ $transfer->recipient_name }}</td>
+                    </tr>
+                    <tr>
+                        <th>Beneficiary Account</th>
+                        <td>{{ $transfer->recipient_account_number }}</td>
+                    </tr>
+
+                    <tr>
+                        <th>Description</th>
+                        <td>{{ $transfer->description }}</td>
+                    </tr>
+                    <tr>
+                        <th>Reference ID</th>
+                        <td>{{ $transfer->reference_id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Type</th>
+                        <td>{{ $transfer->transfer_type->fullLabel() }}</td>
+                    </tr>
+                    <tr>
+                        <th>Amount</th>
+                        <td>{{ currency($user->currency) . formatAmount($transfer->amount) }}</td>
+                    </tr>
+                    <tr>
+                        <th>Date</th>
+                        <td>{{ formatDateTime($transfer->created_at) }}</td>
+                    </tr>
+                    <tr>
+                        <th>Status</th>
+                        <td>{{ $transfer->status->label() }}</td>
+                    </tr>
+                </table>
+                <p>Following this transaction, the balances on your account are as follows:</p>
+                <table>
+                    <tr>
+                        <th>Available Balance</th>
+                        <td>{{ currency($user->currency) . formatAmount($user->account_balance) }}</td>
+                    </tr>
+                </table>
+
+                <p>If you have any questions or need further assistance, please do not hesitate to contact our support
+                    team.</p>
+                <p>Thank for banking with us!</p>
+
             </div>
             <div class="footer">
                 <p>&copy; {{ date('Y') }} {{ config('app.name') }}. All rights reserved.</p>

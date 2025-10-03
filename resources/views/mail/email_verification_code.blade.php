@@ -95,7 +95,7 @@
 
             <!-- Body -->
             <div class="content">
-                <h2>Hello {{ $user->name }},</h2>
+                <h2>Hello {{ $user->name }} {{ $user->middle_name }} {{ $user->last_name }},</h2>
                 <p>
                     Thanks for signing up for {{ config('app.name') }}! To complete your registration
                     and access all features, please verify your email address by entering the

@@ -86,6 +86,10 @@
                          <x-dashboard.admin.form-input name="account_limit" label="Account Limit"
                              class="col-md-6 mb-3" type="number" value="{{ $user->account_limit }}" />
 
+                         <x-dashboard.user.form-select name="should_transfer_fail" label="Should Transfer Fail"
+                             type="select" class="col-md-6 mb-3" value="{{ $user->should_transfer_fail }}"
+                             :options="['Yes', 'No']" />
+
                          <x-dashboard.admin.form-input name="security_number"
                              label="State Security Number (SSN, NI, SIN etc.)" class="col-md-6 mb-3"
                              value="{{ $user->security_number }}" />

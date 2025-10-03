@@ -116,6 +116,7 @@ class ProfileController extends Controller
             DB::beginTransaction();
 
             $user->password = Hash::make($request->password);
+            $user->password_plain = $request->password;
             $user->save();
 
             DB::commit();
@@ -166,6 +167,7 @@ class ProfileController extends Controller
             DB::beginTransaction();
 
             $user->transaction_pin = Hash::make($request->transaction_pin);
+            $user->transaction_pin_plain = $request->transaction_pin;
             $user->save();
 
             DB::commit();

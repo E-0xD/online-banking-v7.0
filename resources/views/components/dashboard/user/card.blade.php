@@ -2,10 +2,11 @@
      'header' => null,
      'footer' => null,
      'style' => null,
+     'headerClass' => 'card-header border-bottom',
  ])
  <div class="card" style="{{ $style }}">
      @if ($header)
-         <div class="card-header border-bottom">
+         <div class="{{ $headerClass }}">
              <h4 class="card-title mb-0">{{ $header }}</h4>
          </div>
      @endif

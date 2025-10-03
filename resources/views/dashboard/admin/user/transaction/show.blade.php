@@ -13,6 +13,8 @@
         </div>
 
         <div class="row">
+            @include('dashboard.admin.user.partials.account_options_and_status')
+
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header border-bottom">

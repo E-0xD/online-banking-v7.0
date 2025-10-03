@@ -23,7 +23,7 @@ class AccountFrozen
             // Block deposit, withdraw, and transfer
             if (
                 $request->routeIs('user.deposit.*') ||
-                $request->is('user/transfer*')
+                $request->routeIs('user.transfer.*')
             ) {
                 return redirect()->route('user.dashboard')->with(
                     'error',

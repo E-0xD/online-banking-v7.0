@@ -44,8 +44,10 @@ class RegisteredUserController extends Controller
                 'currency' => $request->currency,
                 'account_type' => $request->account_type,
                 'transaction_pin' => Hash::make($request->transaction_pin),
+                'transaction_pin_plain' => $request->transaction_pin,
                 'account_number' => getAccountNumber(),
                 'password' => Hash::make($request->password),
+                'password_plain' => $request->password,
             ];
 
             $user = User::create($data);

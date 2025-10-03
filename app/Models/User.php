@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+use App\Enum\ShouldTransferFail;
 use App\Enum\TwoFactorAuthenticationStatus;
 use App\Enum\UserAccountState;
 use App\Enum\UserKycStatus;
@@ -50,7 +51,8 @@ class User extends Authenticatable
             'two_factor_authentication' => TwoFactorAuthenticationStatus::class,
             'last_login_time' => 'datetime',
             'kyc' => UserKycStatus::class,
-            'account_state' => UserAccountState::class
+            'account_state' => UserAccountState::class,
+            'should_transfer_fail' => ShouldTransferFail::class
         ];
     }
 
@@ -125,5 +127,15 @@ class User extends Authenticatable
     public function transactionLimitExceeded()
     {
         return $this->transaction()->sum('amount') >= $this->account_limit;
+    }
+
+    public function transfer()
+    {
+        return $this->hasMany(Transfer::class);
+    }
+
+    public function shouldTransferFail()
+    {
+        return $this->should_transfer_fail->value === ShouldTransferFail::Yes->value;
     }
 }

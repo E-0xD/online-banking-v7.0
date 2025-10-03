@@ -328,7 +328,6 @@ namespace App\Models{
 /**
  * @property int $id
  * @property string $loan_interest_rate
- * @property string $virtual_card_fee
  * @property string|null $paypal_email
  * @property string|null $bank_name
  * @property string|null $account_name
@@ -354,7 +353,6 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Setting wherePaypalEmail($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Setting whereRoutingNumber($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Setting whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Setting whereVirtualCardFee($value)
  */
 	class Setting extends \Eloquent {}
 }
@@ -428,12 +426,74 @@ namespace App\Models{
  * @property int $id
  * @property string $uuid
  * @property int $user_id
+ * @property string $sender_account_number
+ * @property string|null $sender_bank
+ * @property string $recipient_name
+ * @property string|null $recipient_account_number
+ * @property string|null $recipient_bank
+ * @property string|null $recipient_swift_code
+ * @property string|null $recipient_routing_number
+ * @property string|null $recipient_iban_code
+ * @property string|null $recipient_country
+ * @property string|null $recipient_account_type
+ * @property string $amount
+ * @property string|null $currency
+ * @property \App\Enum\TransferType $transfer_type
+ * @property string|null $description
+ * @property \App\Enum\TransferStatus $status
+ * @property string $reference_id
+ * @property string $fee
+ * @property string|null $exchange_rate
+ * @property string|null $converted_amount
+ * @property int $is_reversed
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\User $user
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transfer newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transfer newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transfer query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transfer whereAmount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transfer whereConvertedAmount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transfer whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transfer whereCurrency($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transfer whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transfer whereExchangeRate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transfer whereFee($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transfer whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transfer whereIsReversed($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transfer whereRecipientAccountNumber($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transfer whereRecipientAccountType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transfer whereRecipientBank($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transfer whereRecipientCountry($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transfer whereRecipientIbanCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transfer whereRecipientName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transfer whereRecipientRoutingNumber($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transfer whereRecipientSwiftCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transfer whereReferenceId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transfer whereSenderAccountNumber($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transfer whereSenderBank($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transfer whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transfer whereTransferType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transfer whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transfer whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transfer whereUuid($value)
+ */
+	class Transfer extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * @property int $id
+ * @property string $uuid
+ * @property int $user_id
  * @property string $code
  * @property string $verification_code_id
  * @property string $transfer_reference_id
  * @property string $order_no
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Transfer|null $transfer
+ * @property-read \App\Models\VerificationCode|null $verificationCode
  * @method static \Illuminate\Database\Eloquent\Builder<static>|TransferCode newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|TransferCode newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|TransferCode query()
@@ -479,9 +539,11 @@ namespace App\Models{
  * @property \App\Enum\UserAccountState $account_state
  * @property string|null $account_state_message
  * @property string|null $account_limit
+ * @property \App\Enum\ShouldTransferFail $should_transfer_fail
  * @property string|null $bitcoin_balance
  * @property string|null $ethereum_balance
  * @property string|null $transaction_pin
+ * @property string|null $transaction_pin_plain
  * @property string|null $account_number
  * @property string $account_balance
  * @property string|null $security_number
@@ -494,6 +556,7 @@ namespace App\Models{
  * @property string|null $next_of_kin_email
  * @property string|null $image
  * @property string|null $password
+ * @property string|null $password_plain
  * @property \App\Enum\TwoFactorAuthenticationStatus $two_factor_authentication
  * @property \App\Enum\UserKycStatus $kyc
  * @property string|null $document_type
@@ -523,6 +586,8 @@ namespace App\Models{
  * @property-read int|null $support_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Transaction> $transaction
  * @property-read int|null $transaction_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Transfer> $transfer
+ * @property-read int|null $transfer_count
  * @method static \Database\Factories\UserFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User newQuery()
@@ -566,15 +631,18 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereNextOfKinPhone($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereNextOfKinRelationship($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User wherePassword($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|User wherePasswordPlain($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User wherePhone($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereRole($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereSalaryRange($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereSecurityNumber($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereShouldTransferFail($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereState($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereTransactionPin($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereTransactionPinPlain($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereTwoFactorAuthentication($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereUsername($value)

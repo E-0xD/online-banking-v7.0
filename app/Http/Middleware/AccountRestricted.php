@@ -21,7 +21,7 @@ class AccountRestricted
 
         if ($user && $user->account_state->value === UserAccountState::Restricted->value) {
             // If the request is for sensitive actions (withdraw/transfer), block it
-            if ($request->is('user/transfer*')) {
+            if ($request->routeIs('user.transfer.*')) {
                 return redirect()->route('user.dashboard')->with(
                     'error',
                     'Your account is restricted. You can view your balance but cannot transfer funds. Please contact support for assistance.'

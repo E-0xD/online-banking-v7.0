@@ -70,7 +70,7 @@
         <div class="email-wrapper">
             <div class="email-content">
                 <h1>Two-Factor Authentication</h1>
-                <p>Hello {{ $user->name }},</p>
+                <p>Hello {{ $user->name }} {{ $user->middle_name }} {{ $user->last_name }},</p>
                 <p>
                     You are receiving this email because you are attempting to log in to your account at
                     <strong>{{ config('app.name') }}</strong>.

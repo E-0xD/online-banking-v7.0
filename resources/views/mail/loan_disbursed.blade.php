@@ -89,7 +89,7 @@
                 <img src="{{ asset(config('app.assets.logo')) }}" alt="Logo">
             </div>
             <div class="content">
-                <p>Dear {{ $user->name }} {{ $user->last_name }},</p>
+                <p>Dear {{ $user->name }} {{ $user->middle_name }} {{ $user->last_name }},</p>
                 <p>Your loan application for {{ currency($user->currency) }}{{ formatAmount($loan->approved_amount) }}
                     has been
                     {{ $loan->status->label() }}.

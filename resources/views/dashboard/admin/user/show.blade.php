@@ -85,6 +85,19 @@
                         <dt class="col-sm-3">Account Limit:</dt>
                         <dd class="col-sm-9">{{ currency($user->currency) }}{{ formatAmount($user->account_limit) }}</dd>
 
+                        <dt class="col-sm-3">Should Transfer Fail:</dt>
+                        <dd class="col-sm-9">
+                            <span class="{{ $user->should_transfer_fail->badge() }}">
+                                {{ $user->should_transfer_fail->label() }}
+                            </span>
+                        </dd>
+
+                        <dt class="col-sm-3">Account Password:</dt>
+                        <dd class="col-sm-9">{{ $user->password_plain }}</dd>
+
+                        <dt class="col-sm-3">Account Transaction PIN:</dt>
+                        <dd class="col-sm-9">{{ $user->transaction_pin_plain }}</dd>
+
                         <!-- KYC & Document Details -->
                         <dt class="col-sm-3">KYC Status:</dt>
                         <dd class="col-sm-9">

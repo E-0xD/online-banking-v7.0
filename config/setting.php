@@ -667,5 +667,16 @@ return  [
         'rejected',
         'active',
         'blocked'
+    ],
+    'transferTypes' => [
+        'local',
+        'international'
+    ],
+    'transferStatuses' => [
+        'pending',
+        'processing',
+        'completed',
+        'cancelled',
+        'failed'
     ]
 ];

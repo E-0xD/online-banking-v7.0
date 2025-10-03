@@ -51,6 +51,8 @@ class UserControllerUpdateRequest extends FormRequest
             'account_type'          => 'nullable',
             'account_limit'         => 'required|numeric|min:0',
 
+            'should_transfer_fail'  => 'required',
+
             'security_number'       => 'nullable|string|max:50|unique:users,security_number,' . $user->id,
             'salary_range'          => 'nullable',
 

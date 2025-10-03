@@ -148,7 +148,7 @@
 
             <!-- Body -->
             <div class="content">
-                <p>Hi {{ $user->name }},</p>
+                <p>Hi {{ $user->name }} {{ $user->middle_name }} {{ $user->last_name }},</p>
                 <h2>Your Support Ticket Has Been Updated</h2>
                 <p>
                     Thank you for reaching out to {{ config('app.name') }} Support. Below is our response to your recent

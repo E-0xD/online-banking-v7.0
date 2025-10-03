@@ -12,7 +12,7 @@
 
             <x-dashboard.admin.card>
                 @slot('header')
-                    Card and Loan Information
+                    Loan Information
                 @endslot
 
                 <div class="col-md-12 mb-3">
@@ -24,14 +24,6 @@
                     @enderror
                 </div>
 
-                <div class="col-md-12 mb-3">
-                    <label for="virtual_card_fee">Virtual Card Fee *</label>
-                    <input type="number" wire:model="virtual_card_fee" id="virtual_card_fee" name="virtual_card_fee"
-                        class="form-control @error('virtual_card_fee') is-invalid @enderror">
-                    @error('virtual_card_fee')
-                        <span class="invalid-feedback">{{ $message }}</span>
-                    @enderror
-                </div>
             </x-dashboard.admin.card>
 
             <x-dashboard.admin.card>

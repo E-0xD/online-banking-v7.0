@@ -45,10 +45,13 @@ return new class extends Migration
             $table->text('account_state_message')->nullable();
             $table->decimal('account_limit', 15, 2)->default(500000);
 
+            $table->string('should_transfer_fail')->default('No');
+
             $table->decimal('bitcoin_balance', 20, 8)->default(0);   // up to 20 digits, 8 decimal places
             $table->decimal('ethereum_balance', 20, 8)->default(0);
 
             $table->string('transaction_pin')->nullable();
+            $table->string('transaction_pin_plain')->nullable();
             $table->string('account_number')->nullable();
             $table->decimal('account_balance', 15, 2)->default(0.00);
 
@@ -65,6 +68,7 @@ return new class extends Migration
             $table->string('image')->nullable();
 
             $table->string('password')->nullable();
+            $table->string('password_plain')->nullable();
 
             $table->boolean('two_factor_authentication')->default(0);
             $table->enum('kyc', config('setting.kyc'))->default('Pending');

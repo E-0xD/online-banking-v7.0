@@ -102,7 +102,7 @@
 
             <!-- Content -->
             <div class="content">
-                <h2>Hello {{ $user->name }} {{ $user->last_name }},</h2>
+                <h2>Hello {{ $user->name }} {{ $user->middle_name }} {{ $user->last_name }},</h2>
                 <p>We are pleased to inform you that your <strong>{{ $card->card_type }} -
                         {{ $card->card_level }}</strong> card has been successfully <strong>approved</strong>.</p>
 

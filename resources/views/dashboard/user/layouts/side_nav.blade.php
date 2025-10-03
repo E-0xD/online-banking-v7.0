@@ -56,14 +56,14 @@
             <li class="side-nav-title mt-2">Transfers</li>
 
             <li class="side-nav-item">
-                <a href="#" class="side-nav-link">
+                <a href="{{ route('user.transfer.local') }}" class="side-nav-link">
                     <span class="menu-icon"><i class="ti ti-arrow-right-circle"></i></span>
                     <span class="menu-text">Local Transfer</span>
                 </a>
             </li>
 
             <li class="side-nav-item">
-                <a href="#" class="side-nav-link">
+                <a href="{{ route('user.transfer.international') }}" class="side-nav-link">
                     <span class="menu-icon"><i class="ti ti-world"></i></span>
                     <span class="menu-text">International</span>
                 </a>
