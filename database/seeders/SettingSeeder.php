@@ -15,7 +15,6 @@ class SettingSeeder extends Seeder
     {
         Setting::create([
             'loan_interest_rate' => 5.00,
-            'virtual_card_fee'   => 5.00,
         ]);
     }
 }
