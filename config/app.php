@@ -18,7 +18,6 @@ return [
     'phone' => env('APP_PHONE', '+44 1753 815000'),
     'address' => env('APP_ADDRESS', '123 High St, Anytown, UK'),
     'slogan' => env('APP_SLOGAN', 'Building financial strength together with personalized banking solutions for every member. Your trusted partner in financial growth.'),
-    'routing_number' => env('APP_ROUTING_NUMBER', '251480576'),
 
     'assets' => [
         'logo' => env('APP_LOGO', 'assets/images/logo.png'),
