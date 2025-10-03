@@ -124,6 +124,7 @@
                                     <label class="form-label">Account Type</label>
                                     <select name="account_type"
                                         class="form-select @error('account_type') is-invalid @enderror">
+                                        <option value="">Select account type</option>
                                         <option value="Checking" @selected(old('account_type') == 'Checking')>Checking</option>
                                         <option value="Savings" @selected(old('account_type') == 'Savings')>Savings</option>
                                         <option value="Joint Account" @selected(old('account_type') == 'Joint Account')>Joint Account</option>
