@@ -30,7 +30,7 @@ Route::prefix('services')->group(function () {
     Route::get('/grant', [ServiceController::class, 'grant'])->name('services.grant');
 });
 
-Route::get('/transaction/{transaction}/receipt/{user}', [TransactionReceiptController::class, 'index'])->name('transaction.receipt');
+Route::middleware('auth')->get('/transaction/{transaction}/receipt/{user}', [TransactionReceiptController::class, 'index'])->name('transaction.receipt');
 
 require __DIR__ . '/auth.php';
 require __DIR__ . '/master.php';
