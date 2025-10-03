@@ -1,19 +1,6 @@
 <div>
     <div class="card">
         <div class="card-body">
-            @if (session()->has('success'))
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    {{ session('success') }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            @endif
-
-            @if (session()->has('error'))
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    {{ session('error') }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            @endif
             <div class="container-fluid mb-4">
                 <div class="row g-4">
                     <!-- Available -->
@@ -29,7 +16,7 @@
                                         class="text-muted small fw-medium">{{ currency(Auth::user()->currency) }}</span>
                                 </div>
                                 <h3 class="h5 fw-bold mb-1">
-                                    {{ currency(Auth::user()->currency) }}{{ number_format(Auth::user()->account_balance, 2) }}
+                                    {{ currency(Auth::user()->currency) }}{{ formatAmount(Auth::user()->account_balance, 2) }}
                                 </h3>
 
                             </div>
@@ -47,7 +34,7 @@
                                     </div>
                                     <span class="text-muted small fw-medium">BITCOIN</span>
                                 </div>
-                                <h3 class="h5 fw-bold mb-1">{{ number_format(Auth::user()->bitcoin_balance, 8) }} BTC
+                                <h3 class="h5 fw-bold mb-1">{{ formatAmount(Auth::user()->bitcoin_balance, 8) }} BTC
                                 </h3>
 
                             </div>
@@ -65,7 +52,7 @@
                                     </div>
                                     <span class="text-muted small fw-medium">ETHEREUM</span>
                                 </div>
-                                <h3 class="h5 fw-bold mb-1">{{ number_format(Auth::user()->ethereum_balance, 8) }} ETH
+                                <h3 class="h5 fw-bold mb-1">{{ formatAmount(Auth::user()->ethereum_balance, 8) }} ETH
                                 </h3>
 
                             </div>
@@ -74,6 +61,8 @@
 
                 </div>
             </div>
+
+            @include('partials.bootstrap_alert')
 
             <form wire:submit.prevent="swap">
                 <div class="mb-3">
@@ -140,7 +129,7 @@
                             <div class="input-group">
                                 <span class="input-group-text">From:</span>
                                 <input type="text" class="form-control" readonly
-                                    value="{{ number_format($amount, $fromCurrency == 'BTC' || $fromCurrency == 'ETH' ? 8 : 2) }} {{ $fromCurrency }}">
+                                    value="{{ formatAmount($amount, $fromCurrency == 'BTC' || $fromCurrency == 'ETH' ? 8 : 2) }} {{ $fromCurrency }}">
                             </div>
                         </div>
                         <div class="col-auto d-flex align-items-center">
@@ -150,7 +139,7 @@
                             <div class="input-group">
                                 <span class="input-group-text">To:</span>
                                 <input type="text" class="form-control" readonly
-                                    value="{{ number_format($estimatedAmount, $toCurrency == 'BTC' || $toCurrency == 'ETH' ? 8 : 2) }} {{ $toCurrency }}">
+                                    value="{{ formatAmount($estimatedAmount, $toCurrency == 'BTC' || $toCurrency == 'ETH' ? 8 : 2) }} {{ $toCurrency }}">
                             </div>
                         </div>
                     </div>

@@ -7,13 +7,15 @@
             <div class="flex-grow-1">
                 <h4 class="fs-18 fw-semibold mb-0">{{ $title }}</h4>
             </div>
+
+            <div class="text-end">
+                <x-dashboard.user.breadcrumbs :breadcrumbs="$breadcrumbs" />
+            </div>
         </div>
 
-        <div class="page-body">
-            <div class="row row-deck row-cards">
-                <div class="col-12">
-                    @livewire('dashboard.currency-swap')
-                </div>
+        <div class="row">
+            <div class="col-lg-12">
+                @livewire('dashboard.currency-swap')
             </div>
         </div>
     </div>

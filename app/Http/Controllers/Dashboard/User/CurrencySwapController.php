@@ -20,10 +20,20 @@ class CurrencySwapController extends Controller
 
     public function index()
     {
-        try {
-            $title = 'Currency Swap';
 
-            return view('dashboard.user.currency_swap.index', compact('title'));
+        try {
+            $breadcrumbs = [
+                ['label' => config('app.name'), 'url' => '/'],
+                ['label' => 'Dashboard', 'url' => route('user.dashboard')],
+                ['label' => 'Currency Swap', 'active' => true]
+            ];
+
+            $data = [
+                'title' => 'Currency Swap',
+                'breadcrumbs' => $breadcrumbs
+            ];
+
+            return view('dashboard.user.currency_swap.index', $data);
         } catch (\Throwable $th) {
             Log::error($th);
             session()->flash('error', 'An Error Occurred');
