@@ -22,7 +22,11 @@
                     @include('dashboard.partials.transaction_details')
 
                     <div class="d-flex justify-content-end">
-                        <a href="{{ route('user.transaction.index') }}" class="btn btn-primary"> <i
+                        <a href="{{ route('transaction.receipt', [$transaction->uuid, $user->uuid]) }}"
+                            class="btn btn-dark m-1">
+                            <i class="bi bi-printer me-1"></i> Print Receipt
+                        </a>
+                        <a href="{{ route('user.transaction.index') }}" class="btn btn-primary m-1"> <i
                                 class="ti ti-arrow-left me-1"></i> Back</a>
                     </div>
 

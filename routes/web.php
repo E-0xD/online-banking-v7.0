@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Dashboard\TransactionReceiptController;
 use App\Http\Controllers\Frontend\AboutController;
 use App\Http\Controllers\Frontend\AppController;
 use App\Http\Controllers\Frontend\ContactController;
@@ -28,6 +29,8 @@ Route::prefix('services')->group(function () {
     Route::get('/loan-and-credit', [ServiceController::class, 'loanAndCredit'])->name('services.loan_and_credit');
     Route::get('/grant', [ServiceController::class, 'grant'])->name('services.grant');
 });
+
+Route::get('/transaction/{transaction}/receipt/{user}', [TransactionReceiptController::class, 'index'])->name('transaction.receipt');
 
 require __DIR__ . '/auth.php';
 require __DIR__ . '/master.php';
