@@ -400,6 +400,10 @@ namespace App\Models{
  * @property \App\Enum\TransactionStatus $status
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Card|null $card
+ * @property-read \App\Models\Deposit|null $deposit
+ * @property-read \App\Models\Loan|null $loan
+ * @property-read \App\Models\Transfer|null $transfer
  * @property-read \App\Models\User $user
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Transaction newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Transaction newQuery()
@@ -431,6 +435,7 @@ namespace App\Models{
  * @property string $recipient_name
  * @property string|null $recipient_account_number
  * @property string|null $recipient_bank
+ * @property string|null $recipient_bank_address
  * @property string|null $recipient_swift_code
  * @property string|null $recipient_routing_number
  * @property string|null $recipient_iban_code
@@ -464,6 +469,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Transfer whereRecipientAccountNumber($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Transfer whereRecipientAccountType($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Transfer whereRecipientBank($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transfer whereRecipientBankAddress($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Transfer whereRecipientCountry($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Transfer whereRecipientIbanCode($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Transfer whereRecipientName($value)

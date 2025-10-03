@@ -52,4 +52,24 @@ class Transaction extends Model
     {
         return $this->status->value == TransactionStatus::Cancelled->value;
     }
+
+    public function transfer()
+    {
+        return $this->belongsTo(Transfer::class, 'reference_id', 'reference_id');
+    }
+
+    public function loan()
+    {
+        return $this->belongsTo(Loan::class, 'reference_id', 'reference_id');
+    }
+
+    public function deposit()
+    {
+        return $this->belongsTo(Deposit::class, 'reference_id', 'reference_id');
+    }
+
+    public function card()
+    {
+        return $this->belongsTo(Card::class, 'reference_id', 'reference_id');
+    }
 }
