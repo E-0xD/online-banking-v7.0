@@ -167,10 +167,6 @@ class LoanController extends Controller
     {
         $user = User::where('role', 'user')->where('id', Auth::id())->firstOrFail();
 
-        if ($user->transactionLimitExceeded()) {
-            return redirect()->back()->with('error', 'Transaction limit exceeded!');
-        }
-
         $loan = $user->loan()->where('uuid', $uuid)->firstOrFail();
         $latestLoanRepayment = $loan->loanRepayment()->latest()->first();
 

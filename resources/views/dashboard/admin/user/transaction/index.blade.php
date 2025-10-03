@@ -16,8 +16,9 @@
             @include('dashboard.admin.user.partials.account_options_and_status')
 
             <div class="col-lg-12">
+                <x-dashboard.available_balance :user="$user" />
                 <div class="card">
-                    <div class="card-header">
+                    <div class="card-header border-bottom">
                         <h5 class="card-title mb-0">
                             Fund Account
                         </h5>
@@ -121,8 +122,8 @@
                     </div>
                 </div>
                 <div class="card">
-                    <div class="card-header">
-                        <h5 class="card-title border-bottom mb-0">
+                    <div class="card-header border-bottom">
+                        <h5 class="card-title mb-0">
                             Transaction History
                         </h5>
                     </div>

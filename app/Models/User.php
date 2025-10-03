@@ -124,11 +124,6 @@ class User extends Authenticatable
         return $this->hasMany(Transaction::class);
     }
 
-    public function transactionLimitExceeded()
-    {
-        return $this->transaction()->sum('amount') >= $this->account_limit;
-    }
-
     public function transfer()
     {
         return $this->hasMany(Transfer::class);
@@ -137,5 +132,50 @@ class User extends Authenticatable
     public function shouldTransferFail()
     {
         return $this->should_transfer_fail->value === ShouldTransferFail::Yes->value;
+    }
+
+    // 1. Per Transaction Limit
+    public function exceedsTransactionLimit($amount)
+    {
+        return $amount > $this->account_limit;
+    }
+
+    // 2. Daily Limit
+    public function exceedsDailyLimit()
+    {
+        $todayTotal = $this->transaction()
+            ->whereDate('transaction_at', today())
+            ->sum('amount');
+
+        return $todayTotal >= $this->account_limit;
+    }
+
+    // 3. Monthly Limit
+    public function exceedsMonthlyLimit()
+    {
+        $monthlyTotal = $this->transaction()
+            ->whereMonth('transaction_at', now()->month)
+            ->whereYear('transaction_at', now()->year)
+            ->sum('amount');
+
+        return $monthlyTotal >= $this->account_limit;
+    }
+
+    // 4. Combined (Transaction + Daily)
+    public function exceedsCombinedLimit($amount)
+    {
+        $todayTotal = $this->transaction()
+            ->whereDate('transaction_at', today())
+            ->sum('amount');
+
+        return $amount > $this->account_limit || ($todayTotal + $amount) > $this->account_limit;
+    }
+
+    public function exceedsAccountCapacity($amount)
+    {
+        // Calculate new balance if this amount is added
+        $newBalance = $this->account_balance + $amount;
+
+        return $newBalance > $this->account_limit;
     }
 }

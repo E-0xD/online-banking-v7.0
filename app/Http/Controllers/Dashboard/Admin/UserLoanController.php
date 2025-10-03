@@ -120,11 +120,12 @@ class UserLoanController extends Controller
     {
         $user = User::where('uuid', $uuid)->firstOrFail();
 
-        if ($user->transactionLimitExceeded()) {
-            return redirect()->back()->with('error', 'Transaction limit exceeded!');
-        }
-
         $loan = $user->loan()->where('uuid', $loanUUID)->firstOrFail();
+
+        if ($user->exceedsAccountCapacity($loan->approved_amount)) {
+            DB::rollBack();
+            return redirect()->back()->with('error', 'This account cannot hold more than ' . currency($user->currency) . number_format($user->account_limit));
+        }
 
         if ($loan->status->value != LoanStatus::Approved->value) {
             return redirect()->back()->with('error', 'Loan not approved, Only approved loans can be disbursed.');

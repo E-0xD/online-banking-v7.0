@@ -74,11 +74,6 @@ class UserGrantApplicationController extends Controller
 
             $user = User::where('uuid', $uuid)->firstOrFail();
 
-            if ($user->transactionLimitExceeded()) {
-                DB::rollBack();
-                return redirect()->back()->with('error', 'Transaction limit exceeded!');
-            }
-
             $grantApplication = $user->grantApplication()->where('uuid', $grantApplicationUUID)->firstOrFail();
 
             $grantApplication->update([
@@ -87,6 +82,12 @@ class UserGrantApplicationController extends Controller
             ]);
 
             if ($request->status === GrantApplicationStatus::Approved->value) {
+
+                if ($user->exceedsAccountCapacity($grantApplication->amount)) {
+                    DB::rollBack();
+                    return redirect()->back()->with('error', 'This account cannot hold more than ' . currency($user->currency) . number_format($user->account_limit));
+                }
+
                 $user->account_balance = $user->account_balance + $grantApplication->amount;
                 $user->save();
 
