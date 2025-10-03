@@ -81,6 +81,7 @@ class TransferController extends Controller
                 'uuid' => str()->uuid(),
                 'user_id' => $user->id,
                 'amount' => $request->amount,
+                'currency' => $user->currency,
                 'sender_account_number' => $user->account_number,
                 'sender_bank' => config('app.name'),
                 'recipient_name' => $request->beneficiary_name,
@@ -125,6 +126,52 @@ class TransferController extends Controller
         ];
 
         return view('dashboard.user.transfer.international', $data);
+    }
+
+    public function internationalStore(StoreLocalTransferRequest $request)
+    {
+        $request->validated();
+
+        if (!password_verify($request->transaction_pin, Auth::user()->transaction_pin)) {
+            return redirect()->back()->withErrors(['transaction_pin' => 'Transaction PIN is incorrect']);
+        }
+
+        try {
+            DB::beginTransaction();
+
+            $user = User::where('role', 'user')->where('id', Auth::id())->firstOrFail();
+
+            $transfer = Transfer::create([
+                'uuid' => str()->uuid(),
+                'user_id' => $user->id,
+                'amount' => $request->amount,
+                'currency' => $user->currency,
+                'sender_account_number' => $user->account_number,
+                'sender_bank' => config('app.name'),
+                'recipient_name' => $request->beneficiary_name,
+                'recipient_account_number' => $request->beneficiary_account_number,
+                'recipient_bank' => $request->bank_name,
+                'recipient_bank_address' => $request->bank_address,
+                'recipient_account_type' => $request->account_type,
+                'recipient_country' => $request->country,
+                'recipient_swift_code' => $request->swift_code,
+                'recipient_iban_code' => $request->iban_number,
+                'description' => $request->description ?? "International transfer of " . currency($user->currency) . formatAmount($request->amount),
+                'transfer_type' => TransferType::International->value,
+                'reference_id' => generateReferenceId()
+            ]);
+
+            $transferCode = new TransferCode();
+            $transferCode->createTransferCode($transfer->reference_id, $user);
+
+            DB::commit();
+
+            return redirect()->route('user.transfer.preview', $transfer->uuid);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Log::error($e->getMessage());
+            return redirect()->back()->with('error', config('app.messages.error'));
+        }
     }
 
     public function show(string $uuid)

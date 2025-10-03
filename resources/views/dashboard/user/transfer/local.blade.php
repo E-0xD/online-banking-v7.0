@@ -128,7 +128,7 @@
                                         <option value="Checking" @selected(old('account_type') == 'Checking')>Checking</option>
                                         <option value="Savings" @selected(old('account_type') == 'Savings')>Savings</option>
                                         <option value="Joint Account" @selected(old('account_type') == 'Joint Account')>Joint Account</option>
-                                        <option value="Online Banking" @selected(old('account_type') == 'Online Banking')>Online Banking</option>
+                                        <option value="Online Banking" @selected(old('account_type', 'Online Banking') == 'Online Banking')>Online Banking</option>
                                     </select>
                                 </div>
                                 <div class="col-md-6">

@@ -24,10 +24,21 @@ function formatAmount($amount, $decimals = 2)
     return number_format($amount, $decimals);
 }
 
-function generateReferenceId()
+function generateReferenceId($prefix = 'REF')
 {
-    return random_int(100000000, 999999999);
+    // Uppercase prefix (default = REF)
+    $prefix = strtoupper($prefix);
+
+    // Date part (YYMMDD)
+    $date = date('ymd');
+
+    // Random unique part (6 digits)
+    $random = random_int(100000, 999999);
+
+    // Combine
+    return $prefix . $date . $random;
 }
+
 
 function getAccountNumber()
 {

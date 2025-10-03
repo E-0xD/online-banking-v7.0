@@ -79,7 +79,7 @@
                             @endif
                             @if ($transfer->recipient_iban_code)
                                 <div class="col-md-6">
-                                    <strong>IBAN:</strong>
+                                    <strong>IBAN Number:</strong>
                                     <p class="mb-0 text-muted">{{ $transfer->recipient_iban_code }}</p>
                                 </div>
                             @endif
@@ -90,11 +90,11 @@
                         <div class="row g-3 mb-4">
                             <div class="col-md-6">
                                 <strong>Amount Sent:</strong>
-                                <p class="mb-0 text-muted">
+                                <p class="mb-0 fw-bold">
                                     {{ currency($transfer->user->currency) }}{{ formatAmount($transfer->amount) }}
                                 </p>
                             </div>
-                            <div class="col-md-6">
+                            {{-- <div class="col-md-6">
                                 <strong>Transfer Fee:</strong>
                                 <p class="mb-0 text-muted">
                                     {{ currency($transfer->user->currency) }}{{ formatAmount($transfer->fee) }}
@@ -105,7 +105,7 @@
                                 <p class="mb-0 fw-bold">
                                     {{ currency($transfer->user->currency) }}{{ formatAmount($transfer->amount + $transfer->fee) }}
                                 </p>
-                            </div>
+                            </div> --}}
                         </div>
 
                         <!-- Description -->

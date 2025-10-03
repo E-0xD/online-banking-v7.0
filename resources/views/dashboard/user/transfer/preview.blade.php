@@ -39,15 +39,19 @@
                             <p class="mb-0 text-muted">{{ $transfer->recipient_bank }}</p>
                         </div>
 
-                        @if ($transfer->isTypeInternational())
+                        @if ($transfer->recipient_swift_code)
                             <div class="mb-3">
                                 <strong>SWIFT Code:</strong>
                                 <p class="mb-0 text-muted">{{ $transfer->recipient_swift_code }}</p>
                             </div>
+                        @endif
+                        @if ($transfer->recipient_iban_code)
                             <div class="mb-3">
-                                <strong>IBAN:</strong>
+                                <strong>IBAN Number:</strong>
                                 <p class="mb-0 text-muted">{{ $transfer->recipient_iban_code }}</p>
                             </div>
+                        @endif
+                        @if ($transfer->recipient_routing_number)
                             <div class="mb-3">
                                 <strong>Routing Number:</strong>
                                 <p class="mb-0 text-muted">{{ $transfer->recipient_routing_number }}</p>
@@ -56,12 +60,12 @@
 
                         <div class="mb-3">
                             <strong>Amount:</strong>
-                            <p class="mb-0 text-muted">
+                            <p class="mb-0 fw-bold">
                                 {{ currency($user->currency) }}{{ formatAmount($transfer->amount) }}
                             </p>
                         </div>
 
-                        <div class="mb-3">
+                        {{-- <div class="mb-3">
                             <strong>Transfer Fee:</strong>
                             <p class="mb-0 text-muted">
                                 {{ currency($user->currency) }}{{ formatAmount($transfer->fee) }}
@@ -73,7 +77,7 @@
                             <p class="mb-0 fw-bold">
                                 {{ currency($user->currency) }}{{ formatAmount($transfer->amount + $transfer->fee) }}
                             </p>
-                        </div>
+                        </div> --}}
 
                         <div class="mb-3">
                             <strong>Description:</strong>

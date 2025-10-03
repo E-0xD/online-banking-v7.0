@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('recipient_name');
             $table->string('recipient_account_number')->nullable();
             $table->string('recipient_bank')->nullable();
+            $table->string('recipient_bank_address')->nullable();
             $table->string('recipient_swift_code')->nullable(); // for international
             $table->string('recipient_routing_number')->nullable(); // for international
             $table->string('recipient_iban_code')->nullable(); // for international
