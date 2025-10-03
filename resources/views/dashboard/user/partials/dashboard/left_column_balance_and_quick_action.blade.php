@@ -146,7 +146,8 @@
             <h5 class="card-title mb-3">Quick Actions</h5>
             <div class="row g-3 text-center">
                 <div class="col-6 col-md-3">
-                    <a href="#" class="text-decoration-none d-block p-2 rounded hover-shadow">
+                    <a href="{{ route('user.transfer.local') }}"
+                        class="text-decoration-none d-block p-2 rounded hover-shadow">
                         <div
                             class="bg-primary rounded mb-2 p-3 d-inline-flex align-items-center justify-content-center">
                             <i class="fa-solid fa-exchange-alt text-white"></i>
@@ -155,7 +156,8 @@
                     </a>
                 </div>
                 <div class="col-6 col-md-3">
-                    <a href="#" class="text-decoration-none d-block p-2 rounded hover-shadow">
+                    <a href="{{ route('user.transfer.international') }}"
+                        class="text-decoration-none d-block p-2 rounded hover-shadow">
                         <div
                             class="bg-success rounded mb-2 p-3 d-inline-flex align-items-center justify-content-center">
                             <i class="fa-solid fa-file-invoice text-white"></i>
@@ -164,20 +166,21 @@
                     </a>
                 </div>
                 <div class="col-6 col-md-3">
-                    <a href="#" class="text-decoration-none d-block p-2 rounded hover-shadow">
+                    <a href="{{ route('user.profile.index') }}"
+                        class="text-decoration-none d-block p-2 rounded hover-shadow">
                         <div class="bg-info rounded mb-2 p-3 d-inline-flex align-items-center justify-content-center">
-                            <i class="fa-solid fa-hand-holding-dollar text-white"></i>
+                            <i class="fa-solid fa-user text-white"></i>
                         </div>
-                        <small class="text-dark">Request</small>
+                        <small class="text-dark">Profile</small>
                     </a>
                 </div>
                 <div class="col-6 col-md-3">
-                    <a href="#" class="text-decoration-none d-block p-2 rounded hover-shadow">
+                    <a href="{{ route('user.support.index') }}" class="text-decoration-none d-block p-2 rounded hover-shadow">
                         <div
                             class="bg-warning rounded mb-2 p-3 d-inline-flex align-items-center justify-content-center">
-                            <i class="fa-solid fa-building-columns text-white"></i>
+                            <i class="fa-solid fa-headset text-white"></i>
                         </div>
-                        <small class="text-dark">Bank Details</small>
+                        <small class="text-dark">Support</small>
                     </a>
                 </div>
             </div>
