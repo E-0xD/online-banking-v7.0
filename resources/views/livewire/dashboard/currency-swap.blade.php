@@ -1,7 +1,19 @@
 <div>
     <div class="card">
         <div class="card-body">
+            @if (session()->has('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ session('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
 
+            @if (session()->has('error'))
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    {{ session('error') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
             <div class="container-fluid mb-4">
                 <div class="row g-4">
                     <!-- Available -->
@@ -81,6 +93,10 @@
                             @endif
                         @endforeach
                     </select>
+                    @error('fromCurrency')
+                        <small class="text-danger">{{ $message }}</small>
+                    @enderror
+
                 </div>
 
                 <div class="mb-3">
@@ -100,6 +116,9 @@
                             @endif
                         @endforeach
                     </select>
+                    @error('toCurrency')
+                        <small class="text-danger">{{ $message }}</small>
+                    @enderror
                 </div>
 
                 <div class="mb-3">
@@ -110,7 +129,7 @@
                         <span class="input-group-text">{{ $fromCurrency }}</span>
                     </div>
                     @error('amount')
-                        <span class="text-danger">{{ $message }}</span>
+                        <small class="text-danger">{{ $message }}</small>
                     @enderror
                 </div>
 
