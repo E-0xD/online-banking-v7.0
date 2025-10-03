@@ -12,6 +12,7 @@ use App\Http\Controllers\Dashboard\User\TransactionController;
 use App\Http\Controllers\Dashboard\User\IRSTaxRefundController;
 use App\Http\Controllers\Dashboard\User\NotificationController;
 use App\Http\Controllers\Dashboard\User\GrantApplicationController;
+use App\Http\Controllers\Dashboard\User\CurrencySwapController;
 
 Route::middleware('user')->prefix('user')->group(function () {
     Route::get('/dashboard', DashboardController::class)->name('user.dashboard');
@@ -94,6 +95,9 @@ Route::middleware('user')->prefix('user')->group(function () {
     Route::post('/card/store', [CardController::class, 'store'])->name('user.card.store');
     Route::get('/card//history', [CardController::class, 'history'])->name('user.card.history');
     Route::get('/card/{uuid}/show', [CardController::class, 'show'])->name('user.card.show');
+
+    // Currency Swap Controller
+    Route::get('/currency/swap', [CurrencySwapController::class, 'index'])->name('swap.create');
 
     // Transaction Controller
     Route::get('/transaction', [TransactionController::class, 'index'])->name('user.transaction.index');
