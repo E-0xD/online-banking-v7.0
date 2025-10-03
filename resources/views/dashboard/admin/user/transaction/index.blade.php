@@ -17,6 +17,7 @@
 
             <div class="col-lg-12">
                 <x-dashboard.available_balance :user="$user" />
+                
                 <div class="card">
                     <div class="card-header border-bottom">
                         <h5 class="card-title mb-0">

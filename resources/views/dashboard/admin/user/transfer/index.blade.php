@@ -17,50 +17,58 @@
 
             <div class="col-lg-12">
                 <x-dashboard.available_balance :user="$user" />
-                
+
                 <x-dashboard.admin.card>
                     @slot('header')
-                        User {{ $title }}
+                        User Transfer History
                     @endslot
 
                     <div class="table-responsive">
-                        <table id="myTable" class="table table-bordered table-striped">
+                        <table id="myTable" class="table table-bordered">
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Grant Type</th>
+                                    <th>Reference ID</th>
+                                    <th>Type</th>
                                     <th>Amount</th>
+                                    <th>Date</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($grantApplications as $grantApplication)
+                                @foreach ($transfers as $transfer)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $grantApplication->type }}</td>
+                                        <td>{{ $transfer->reference_id }}</td>
                                         <td>
-                                            {{ currency($user->currency) }}{{ formatAmount($grantApplication->amount) }}
+                                            {{ $transfer->transfer_type->fullLabel() }}
                                         </td>
                                         <td>
-                                            <span class="{{ $grantApplication->status->badge() }}">
-                                                {{ $grantApplication->status->label() }}
+                                            {{ currency($transfer->user->currency) }}{{ formatAmount($transfer->amount) }}
+                                        </td>
+                                        <td>
+                                            {{ formatDateTime($transfer->created_at) }}
+                                        </td>
+                                        <td>
+                                            <span class="{{ $transfer->status->badge() }}">
+                                                {{ $transfer->status->label() }}
                                             </span>
                                         </td>
                                         <td>
-                                            <a href="{{ route('admin.user.grant_application.show', [$user->uuid, $grantApplication->uuid]) }}"
-                                                class="btn btn-warning  btn-sm m-1">
+                                            <a href="{{ route('admin.user.transfer.show', [$user->uuid, $transfer->uuid]) }}"
+                                                class="btn btn-warning btn-sm m-1">
                                                 <i class="ti ti-eye me-1">
                                                 </i>View </a>
-
                                             <form
-                                                action="{{ route('admin.user.grant_application.delete', [$user->uuid, $grantApplication->uuid]) }}"
+                                                action="{{ route('admin.user.transfer.delete', [$user->uuid, $transfer->uuid]) }}"
                                                 method="post">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger btn-sm m-1"
-                                                    onclick="return confirm('Are you sure?')"> <i
-                                                        class="ti ti-trash me-1"></i> Delete</button>
+                                                    onclick="return confirm('Are you sure you want to delete this transfer?')">
+                                                    <i class="ti ti-trash me-1"></i>Delete
+                                                </button>
                                             </form>
                                         </td>
                                     </tr>
@@ -68,8 +76,8 @@
                             </tbody>
                         </table>
                     </div>
-
                 </x-dashboard.admin.card>
+
             </div>
             <!-- end col -->
         </div>

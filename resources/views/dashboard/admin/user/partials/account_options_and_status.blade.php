@@ -16,8 +16,8 @@
                 <a class="dropdown-item" href="{{ route('admin.user.transaction.index', $user->uuid) }}">
                     <i class="fa-solid fa-file-invoice me-1"></i>Transactions </a>
 
-                <a class="dropdown-item" href="#">
-                    <i class="fa-solid fa-history me-1"></i>Withdrawals
+                <a class="dropdown-item" href="{{ route('admin.user.transfer.index', $user->uuid) }}">
+                    <i class="fa-solid fa-money-bill-transfer me-1"></i> Transfers
                 </a>
 
                 <a class="dropdown-item" href="{{ route('admin.user.deposit.index', $user->uuid) }}">

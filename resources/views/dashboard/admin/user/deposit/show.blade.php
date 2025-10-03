@@ -16,6 +16,8 @@
             @include('dashboard.admin.user.partials.account_options_and_status')
 
             <div class="col-lg-12">
+                <x-dashboard.available_balance :user="$user" />
+                
                 <div class="card">
                     <div class="card-body">
                         <!-- Invoice Logo-->
