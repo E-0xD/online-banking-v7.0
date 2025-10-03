@@ -14,6 +14,17 @@ use Illuminate\Support\Facades\Log;
 
 class CardController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware([
+            'registeredUser',
+            'accountDormant',
+            'accountRestricted',
+            'accountFrozen',
+            'accountPendingVerification'
+        ]);
+    }
+    
     public function index()
     {
         $breadcrumbs = [

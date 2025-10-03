@@ -8,6 +8,17 @@ use Illuminate\Support\Facades\Auth;
 
 class CurrencySwapController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware([
+            'registeredUser',
+            'accountDormant',
+            'accountRestricted',
+            'accountFrozen',
+            'accountPendingVerification'
+        ]);
+    }
+    
     public function index()
     {
         $title = 'Currency Swap';

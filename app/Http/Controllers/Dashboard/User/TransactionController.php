@@ -9,6 +9,17 @@ use Illuminate\Support\Facades\Auth;
 
 class TransactionController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware([
+            'registeredUser',
+            'accountDormant',
+            'accountRestricted',
+            'accountFrozen',
+            'accountPendingVerification'
+        ]);
+    }
+    
     public function index()
     {
         $breadcrumbs = [
