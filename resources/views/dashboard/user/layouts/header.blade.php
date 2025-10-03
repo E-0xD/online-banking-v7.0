@@ -22,7 +22,7 @@
 
         <div class="d-flex align-items-center gap-2">
             <!-- Notification Dropdown -->
-            <div class="topbar-item">
+            <div class="topbar-item d-none d-sm-flex">
                 <div class="dropdown">
                     <button class="topbar-link dropdown-toggle drop-arrow-none" data-bs-toggle="dropdown"
                         data-bs-offset="0,25" type="button" data-bs-auto-close="outside" aria-haspopup="false"
