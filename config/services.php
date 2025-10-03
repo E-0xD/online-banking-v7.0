@@ -35,4 +35,8 @@ return [
         ],
     ],
 
+    'exchange_rate_url' => env('EXCHANGE_RATE_URL'),
+
+    'crypto_price_url' => env('CRYPTO_PRICE_URL')
+
 ];
