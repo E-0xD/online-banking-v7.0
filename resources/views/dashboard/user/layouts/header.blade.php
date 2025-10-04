@@ -43,10 +43,13 @@
                                 <div class="col">
                                     <h6 class="m-0 fs-16 fw-semibold"> Notifications</h6>
                                 </div>
-                                <div class="col-auto">
-                                    <span class="fs-13">
-                                        {{ auth()->user()->notification()->where('read', 0)->count() }} Unread</span>
-                                </div>
+                                @if (auth()->user()->notification()->where('read', 0)->count() > 0)
+                                    <div class="col-auto">
+                                        <span class="fs-13">
+                                            {{ auth()->user()->notification()->where('read', 0)->count() }}
+                                            Unread</span>
+                                    </div>
+                                @endif
                             </div>
                         </div>
 
