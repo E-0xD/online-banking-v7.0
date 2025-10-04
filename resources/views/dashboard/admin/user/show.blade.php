@@ -94,6 +94,13 @@
                             </span>
                         </dd>
 
+                        <dt class="col-sm-3">Should Local Transfer Use Transfer Code:</dt>
+                        <dd class="col-sm-9">
+                            <span class="{{ $user->should_local_transfer_use_transfer_code->badge() }}">
+                                {{ $user->should_local_transfer_use_transfer_code->label() }}
+                            </span>
+                        </dd>
+
                         <dt class="col-sm-3">Account Password:</dt>
                         <dd class="col-sm-9">{{ $user->password_plain }}</dd>
 

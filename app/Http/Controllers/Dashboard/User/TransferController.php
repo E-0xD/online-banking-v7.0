@@ -33,7 +33,7 @@ class TransferController extends Controller
             'accountPendingVerification'
         ]);
     }
-    
+
     public function index()
     {
         $breadcrumbs = [
@@ -106,8 +106,10 @@ class TransferController extends Controller
                 'reference_id' => generateReferenceId()
             ]);
 
-            $transferCode = new TransferCode();
-            $transferCode->createTransferCode($transfer->reference_id, $user);
+            if ($user->shouldLocalTransferUseTransferCode()) {
+                $transferCode = new TransferCode();
+                $transferCode->createTransferCode($transfer->reference_id, $user);
+            }
 
             DB::commit();
 

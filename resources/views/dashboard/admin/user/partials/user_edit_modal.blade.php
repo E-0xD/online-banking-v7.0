@@ -90,6 +90,12 @@
                              type="select" class="col-md-6 mb-3" value="{{ $user->should_transfer_fail }}"
                              :options="['Yes', 'No']" />
 
+                         <x-dashboard.user.form-select name="should_local_transfer_use_transfer_code"
+                             label="Should Local Transfer Use Transfer Code" type="selectKeyValuePair"
+                             class="col-md-6 mb-3"
+                             value="{{ old('should_local_transfer_use_transfer_code', $user->should_local_transfer_use_transfer_code) }}"
+                             :options="['1' => 'Yes', '0' => 'No']" />
+
                          <x-dashboard.admin.form-input name="security_number"
                              label="State Security Number (SSN, NI, SIN etc.)" class="col-md-6 mb-3"
                              value="{{ $user->security_number }}" />

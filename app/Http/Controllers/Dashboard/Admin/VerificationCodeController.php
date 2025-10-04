@@ -46,7 +46,7 @@ class VerificationCodeController extends Controller
             ['label' => 'Create Verification Code', 'active' => true],
         ];
 
-        $users = User::latest()->get();
+        $users = User::where('role', 'user')->latest()->get();
 
         $data = [
             'title' => 'Create Verification Code',
@@ -115,7 +115,7 @@ class VerificationCodeController extends Controller
             ['label' => 'Edit Verification Code', 'active' => true],
         ];
 
-        $users = User::latest()->get();
+        $users = User::where('role', 'user')->latest()->get();
 
         $verificationCode = VerificationCode::with(['user'])->where('uuid', $uuid)->first();
 

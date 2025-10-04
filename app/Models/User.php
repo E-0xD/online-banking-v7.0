@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+use App\Enum\ShouldLocalTransferUseTransferCode;
 use App\Enum\ShouldTransferFail;
 use App\Enum\TwoFactorAuthenticationStatus;
 use App\Enum\UserAccountState;
@@ -52,7 +53,8 @@ class User extends Authenticatable
             'last_login_time' => 'datetime',
             'kyc' => UserKycStatus::class,
             'account_state' => UserAccountState::class,
-            'should_transfer_fail' => ShouldTransferFail::class
+            'should_transfer_fail' => ShouldTransferFail::class,
+            'should_local_transfer_use_transfer_code' => ShouldLocalTransferUseTransferCode::class
         ];
     }
 
@@ -177,5 +179,10 @@ class User extends Authenticatable
         $newBalance = $this->account_balance + $amount;
 
         return $newBalance > $this->account_limit;
+    }
+
+    public function shouldLocalTransferUseTransferCode()
+    {
+        return $this->should_local_transfer_use_transfer_code->value === ShouldLocalTransferUseTransferCode::Yes->value;
     }
 }

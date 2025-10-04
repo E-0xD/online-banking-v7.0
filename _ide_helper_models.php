@@ -546,6 +546,7 @@ namespace App\Models{
  * @property string|null $account_state_message
  * @property string|null $account_limit
  * @property \App\Enum\ShouldTransferFail $should_transfer_fail
+ * @property \App\Enum\ShouldLocalTransferUseTransferCode $should_local_transfer_use_transfer_code
  * @property string|null $bitcoin_balance
  * @property string|null $ethereum_balance
  * @property string|null $transaction_pin
@@ -643,6 +644,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereRole($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereSalaryRange($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereSecurityNumber($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereShouldLocalTransferUseTransferCode($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereShouldTransferFail($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereState($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereStatus($value)

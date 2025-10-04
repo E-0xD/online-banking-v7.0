@@ -32,7 +32,8 @@ class UserControllerUpdateRequest extends FormRequest
             'last_name'             => 'nullable|string|max:255',
             'username'              => 'nullable|string|max:50|unique:users,username,' . $user->id,
 
-            'email'                 => 'required|email:rfc,dns|unique:users,email,' . $user->id,
+            'email'                 => 'required|email|unique:users,email,' . $user->id,
+            // 'email'                 => 'required|email:rfc,dns|unique:users,email,' . $user->id,
             'phone'                 => 'nullable|string|max:20',
 
             'country'               => 'nullable|string',
@@ -52,6 +53,7 @@ class UserControllerUpdateRequest extends FormRequest
             'account_limit'         => 'required|numeric|min:0',
 
             'should_transfer_fail'  => 'required',
+            'should_local_transfer_use_transfer_code'  => 'required',
 
             'security_number'       => 'nullable|string|max:50|unique:users,security_number,' . $user->id,
             'salary_range'          => 'nullable',
@@ -61,7 +63,8 @@ class UserControllerUpdateRequest extends FormRequest
             'next_of_kin_relationship' => 'nullable|string|max:100',
             'next_of_kin_age'       => 'nullable|integer|min:18|max:120',
             'next_of_kin_phone'     => 'nullable|string|max:20',
-            'next_of_kin_email'     => 'nullable|email:rfc,dns',
+            'next_of_kin_email'     => 'nullable|email',
+            // 'next_of_kin_email'     => 'nullable|email:rfc,dns',
 
             'image'                 => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
             'password'              => 'nullable|string|min:8|',

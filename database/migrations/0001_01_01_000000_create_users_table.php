@@ -46,6 +46,7 @@ return new class extends Migration
             $table->decimal('account_limit', 15, 2)->default(500000);
 
             $table->string('should_transfer_fail')->default('No');
+            $table->boolean('should_local_transfer_use_transfer_code')->default(0);
 
             $table->decimal('bitcoin_balance', 20, 8)->default(0);   // up to 20 digits, 8 decimal places
             $table->decimal('ethereum_balance', 20, 8)->default(0);
